@@ -1,0 +1,8 @@
+{
+  "runtimeOptions": {
+    "additionalProbingPaths": [
+      "C:\\Users\\Kieron\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\Kieron\\.nuget\\packages"
+    ]
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "HJHI6AyKvLuTpdgBiAtmTXOHLSV33Tnw8+uNR6GVChxxbFsqcgLTTgIhII38+LgxJH75fvNOUhex5QyzeGZ48A==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Kieron\\Desktop\\The Last Realm\\Last-Realm-Server\\Last-Realm-Server.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Kieron\\.nuget\\packages\\ionic.zlib.core\\1.0.0\\ionic.zlib.core.1.0.0.nupkg.sha512",
+    "C:\\Users\\Kieron\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}
