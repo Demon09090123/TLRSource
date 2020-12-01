@@ -35,7 +35,6 @@ namespace Last_Realm_Server.Common
         public static Dictionary<string, byte[]> WebFiles = new Dictionary<string, byte[]>();
 
 
-        public static List<XElement> News = new List<XElement>();
 
         public static string CombineResourcePath(string path)
         {
@@ -48,7 +47,6 @@ namespace Last_Realm_Server.Common
             LoadQuests();
             LoadWorlds();
             LoadWebFiles();
-            LoadNews();
         }
 
         private static void LoadGameData()
@@ -152,18 +150,6 @@ namespace Last_Realm_Server.Common
                 Program.Print(PrintType.Debug, $"Loading Web File <{display}>");
 #endif
                 WebFiles[display] = File.ReadAllBytes(paths[i]);
-            }
-        }
-
-        public static void LoadNews()
-        {
-            News.Clear();
-            string data = File.ReadAllText(CombineResourcePath("News.xml"));
-            if (!string.IsNullOrWhiteSpace(data))
-            {
-                XElement news = XElement.Parse(data);
-                foreach (XElement item in news.Elements("Item").OrderByDescending(k => k.ParseInt("Date", Database.UnixTime())))
-                    News.Add(item);
             }
         }
     }

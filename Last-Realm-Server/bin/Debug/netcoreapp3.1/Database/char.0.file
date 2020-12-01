@@ -1,0 +1,16 @@
+<Char>
+  <Level>1</Level>
+  <Experience>0</Experience>
+  <ClassType>782</ClassType>
+  <HP>100</HP>
+  <MP>100</MP>
+  <Stats>100,100,12,0,10,15,12,12</Stats>
+  <Inventory>2711,2606,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1</Inventory>
+  <ItemDatas>-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1</ItemDatas>
+  <Tex1>0</Tex1>
+  <Tex2>0</Tex2>
+  <SkinType>0</SkinType>
+  <HealthPotions>6</HealthPotions>
+  <MagicPotions>6</MagicPotions>
+  <HasBackpack>false</HasBackpack>
+</Char>

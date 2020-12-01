@@ -9,19 +9,6 @@ using System.Text;
 
 namespace Last_Realm_Server.Common
 {
-    public struct FameStats
-    {
-        public int BaseFame;
-        public int TotalFame;
-        public List<FameBonus> Bonuses;
-    }
-
-    public struct FameBonus
-    {
-        public string Name;
-        public int Fame;
-    }
-
     public struct TileData
     {
         public ushort TileType;

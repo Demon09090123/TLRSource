@@ -1,20 +1,10 @@
 ﻿using Last_Realm_Server.Common;
 using Last_Realm_Server.Game;
 using Last_Realm_Server.Game.Entities;
-using Last_Realm_Server.Utils;
 using System;
 using System.Collections.Generic;
-using System.Data;
-using System.IO;
-using System.Linq;
 using System.Net;
 using System.Net.Sockets;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
-using System.Text.Json.Serialization;
-using System.Threading;
-using System.Threading.Tasks;
-using System.Threading.Tasks.Dataflow;
 
 namespace Last_Realm_Server.Networking
 {
@@ -82,10 +72,7 @@ namespace Last_Realm_Server.Networking
                 {
                     Player.SaveToCharacter();
                     Player.Parent.RemoveEntity(Player);
-                    if (!Character.Dead) //Already saved during death.
-                    {
-                        Database.SaveCharacter(Character);
-                    }
+                    Database.SaveCharacter(Character);
                 }
             }
 

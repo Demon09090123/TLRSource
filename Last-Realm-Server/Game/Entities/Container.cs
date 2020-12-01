@@ -6,11 +6,11 @@ namespace Last_Realm_Server.Game.Entities
 {
     public interface IContainer
     {
-        public int[] Inventory { get; set; }
-        public int[] ItemDatas { get; set; }
-        public void UpdateInventory();
-        public void UpdateInventorySlot(int slot);
-        public bool ValidSlot(int slot);
+        int[] Inventory { get; set; }
+        int[] ItemDatas { get; set; }
+        void UpdateInventory();
+        void UpdateInventorySlot(int slot);
+        bool ValidSlot(int slot);
     }
 
     public class Container : Entity, IContainer

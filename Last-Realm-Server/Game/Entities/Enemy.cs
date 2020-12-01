@@ -60,10 +60,6 @@ namespace Last_Realm_Server.Game.Entities
                     int exp = baseExp;
                     if (exp > Player.GetNextLevelEXP(player.Level) / 10)
                         exp = Player.GetNextLevelEXP(player.Level) / 10;
-                    if (player.GainEXP(exp))
-                        foreach (Entity p in l)
-                            if (!p.Equals(player)) 
-                                (p as Player).FameStats.LevelUpAssists++;
                 }
             }
 
@@ -87,14 +83,6 @@ namespace Last_Realm_Server.Game.Entities
                         player.MagicPotions = Math.Min(Player.MaxPotions, player.MagicPotions + 1);
                 }
 
-                if (!player.Equals(killer))
-                {
-                    player.FameStats.MonsterAssists++;
-                    if (Desc.Cube) player.FameStats.CubeAssists++;
-                    if (Desc.Oryx) player.FameStats.OryxAssists++;
-                    if (Desc.God) player.FameStats.GodAssists++;
-                }
-
                 if (Behavior != null && Behavior.Loots.Count > 0)
                 {
                     List<int> items = new List<int>();
@@ -116,10 +104,6 @@ namespace Last_Realm_Server.Game.Entities
                                 bagType = d.BagType;
                         }
 
-                        if (bagType == 2) player.FameStats.CyanBags++;
-                        else if (bagType == 3) player.FameStats.BlueBags++;
-                        else if (bagType == 4) player.FameStats.WhiteBags++;
-
                         Container c = new Container(Container.FromBagType(bagType), player.Id, 40000 * bagType);
                         for (int k = 0; k < items.Count; k++)
                         {
@@ -134,11 +118,6 @@ namespace Last_Realm_Server.Game.Entities
 
                 position++;
             }
-
-            killer.FameStats.MonsterKills++;
-            if (Desc.Cube) killer.FameStats.CubeKills++;
-            if (Desc.Oryx) killer.FameStats.OryxKills++;
-            if (Desc.God) killer.FameStats.GodKills++;
 
             if (Behavior != null)
             {
@@ -184,8 +163,6 @@ namespace Last_Realm_Server.Game.Entities
                 DamageStorage[hitter.Id] += damageWithDefense;
             else DamageStorage.Add(hitter.Id, damageWithDefense);
 
-            hitter.FameStats.DamageDealt += damageWithDefense;
-
             byte[] packet = GameServer.Damage(Id, new ConditionEffectIndex[0], damageWithDefense);
             foreach (Entity en in Parent.PlayerChunks.HitTest(Position, Player.SightRadius))
                 if (en is Player player && player.Client.Account.AllyDamage && !player.Equals(hitter))
@@ -208,7 +185,6 @@ namespace Last_Realm_Server.Game.Entities
             if (projectile.Owner == null || !(projectile.Owner is Player))
                 throw new Exception("Projectile owner is not player");
 #endif
-            (projectile.Owner as Player).FameStats.ShotsThatDamage++;
             return Damage(projectile.Owner as Player, projectile.Damage, projectile.Desc.Effects, projectile.Desc.ArmorPiercing);
         }
 

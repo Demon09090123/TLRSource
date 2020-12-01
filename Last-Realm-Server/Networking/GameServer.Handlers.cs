@@ -69,9 +69,6 @@ namespace Last_Realm_Server.Networking
 
         public static void Read(Client client, int id, byte[] data)
         {
-#if DEBUG
-            Program.Print(PrintType.Debug, $"Packet received <{id}> <{string.Join(" ,",data.Select(k => k.ToString()).ToArray())}>");
-#endif
 
             if (!client.Active)
             {
@@ -149,9 +146,6 @@ namespace Last_Realm_Server.Networking
         public static void Escape(Client client, PacketReader rdr)
         {
             client.Active = false;
-            client.Player.FameStats.Escapes++;
-            if (client.Player.HP <= 10)
-                client.Player.FameStats.NearDeathEscapes++;
             client.Send(Reconnect(Manager.NexusId));
             Manager.AddTimedAction(2000, client.Disconnect);
         }
@@ -324,6 +318,8 @@ namespace Last_Realm_Server.Networking
             int classType = rdr.ReadInt16();
             int skinType = rdr.ReadInt16();
 
+            Program.Print(PrintType.Debug, "CREATE !!!");
+
             if (client.State == ProtocolState.Awaiting)
             {
                 CharacterModel character = Database.CreateCharacter(client.Account, classType, skinType);
@@ -338,18 +334,16 @@ namespace Last_Realm_Server.Networking
                 client.Character = character;
                 client.Player = new Player(client);
                 client.State = ProtocolState.Connected;
-                client.Send(CreateSuccess(world.AddEntity(client.Player, world.GetRegion(Region.Spawn).ToPosition()), client.Character.Id));
+                client.Send(CreateSuccess(world.AddEntity(client.Player, world.GetRegion(Region.Spawn).ToPosition())));
             }
         }
 
         public static void Load(Client client, PacketReader rdr)
         {
-            int charId = rdr.ReadInt32();
-
             if (client.State == ProtocolState.Awaiting)
             {
-                CharacterModel character = Database.LoadCharacter(client.Account, charId);
-                if (character.IsNull || character.Dead)
+                CharacterModel character = Database.LoadCharacter(client.Account);
+                if (character.IsNull)
                 {
                     client.Send(Failure(0, "Failed to load character."));
                     client.Disconnect();
@@ -360,7 +354,7 @@ namespace Last_Realm_Server.Networking
                 client.Character = character;
                 client.Player = new Player(client);
                 client.State = ProtocolState.Connected;
-                client.Send(CreateSuccess(world.AddEntity(client.Player, world.GetRegion(Region.Spawn).ToPosition()), client.Character.Id));
+                client.Send(CreateSuccess(world.AddEntity(client.Player, world.GetRegion(Region.Spawn).ToPosition())));
             }
         }
 
@@ -427,13 +421,12 @@ namespace Last_Realm_Server.Networking
             }
         }
 
-        public static byte[] CreateSuccess(int objectId, int charId)
+        public static byte[] CreateSuccess(int objectId)
         {
             using (PacketWriter wtr = new PacketWriter(new MemoryStream()))
             {
                 wtr.Write((byte)PacketId.CreateSuccess);
                 wtr.Write(objectId);
-                wtr.Write(charId);
                 return (wtr.BaseStream as MemoryStream).ToArray();
             }
         }
@@ -557,13 +550,12 @@ namespace Last_Realm_Server.Networking
             }
         }
 
-        public static byte[] Death(int accountId, int charId, string killer)
+        public static byte[] Death(int accountId, string killer)
         {
             using (PacketWriter wtr = new PacketWriter(new MemoryStream()))
             {
                 wtr.Write((byte)PacketId.Death);
                 wtr.Write(accountId);
-                wtr.Write(charId);
                 wtr.Write(killer);
                 return (wtr.BaseStream as MemoryStream).ToArray();
             }

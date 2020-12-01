@@ -74,19 +74,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Kieron\\.nuget\\packages\\": {}
+    "C:\\Users\\mangz\\.nuget\\packages\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Kieron\\Desktop\\The Last Realm\\Last-Realm-Server\\Last-Realm-Server.csproj",
+      "projectUniqueName": "C:\\Users\\mangz\\OneDrive\\Documents\\GitHub\\TLRSource\\Last-Realm-Server\\Last-Realm-Server.csproj",
       "projectName": "Last-Realm-Server",
-      "projectPath": "C:\\Users\\Kieron\\Desktop\\The Last Realm\\Last-Realm-Server\\Last-Realm-Server.csproj",
-      "packagesPath": "C:\\Users\\Kieron\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Kieron\\Desktop\\The Last Realm\\Last-Realm-Server\\obj\\",
+      "projectPath": "C:\\Users\\mangz\\OneDrive\\Documents\\GitHub\\TLRSource\\Last-Realm-Server\\Last-Realm-Server.csproj",
+      "packagesPath": "C:\\Users\\mangz\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\mangz\\OneDrive\\Documents\\GitHub\\TLRSource\\Last-Realm-Server\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+      ],
       "configFilePaths": [
-        "C:\\Users\\Kieron\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\mangz\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -98,6 +102,7 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
           "projectReferences": {}
         }
       },
@@ -109,6 +114,7 @@
     },
     "frameworks": {
       "netcoreapp3.1": {
+        "targetAlias": "netcoreapp3.1",
         "dependencies": {
           "Ionic.Zlib.Core": {
             "target": "Package",
@@ -134,7 +140,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
       }
     }
   }

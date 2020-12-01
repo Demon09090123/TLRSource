@@ -40,9 +40,6 @@ namespace Last_Realm_Server.Game.Entities
         public void InitLevel(CharacterModel character)
         {
             if (character.Experience != 0) EXP = character.Experience;
-            if (character.Fame != 0) CharFame = character.Fame;
-            ClassStatsInfo classStat = Client.Account.Stats.GetClassStats((int)Type);
-            NextClassQuestFame = GetNextClassQuestFame(classStat.BestFame > CharFame ? classStat.BestFame : CharFame);
             NextLevelEXP = GetNextLevelEXP(Level);
             GainEXP(0);
         }
@@ -50,24 +47,6 @@ namespace Last_Realm_Server.Game.Entities
         public bool GainEXP(int exp)
         {
             EXP += exp;
-
-            int newFame = EXP / EXPPerFame;
-            if (newFame != CharFame)
-                CharFame = newFame;
-
-            ClassStatsInfo classStat = Client.Account.Stats.GetClassStats((int)Type);
-            int newClassQuestFame = GetNextClassQuestFame(classStat.BestFame > newFame ? classStat.BestFame : newFame);
-            if (newClassQuestFame > NextClassQuestFame)
-            {
-                byte[] notification = GameServer.Notification(Id, "Class Quest Complete!", 0xFF00FF00);
-                foreach (Entity en in Parent.PlayerChunks.HitTest(Position, SightRadius))
-                {
-                    if (en is Player player && 
-                        (player.Client.Account.Notifications || player.Equals(this)))
-                        player.Client.Send(notification);
-                }
-                NextClassQuestFame = newClassQuestFame;
-            }
 
             bool levelledUp = false;
             if (EXP - GetLevelEXP(Level) >= NextLevelEXP && Level < MaxLevel)

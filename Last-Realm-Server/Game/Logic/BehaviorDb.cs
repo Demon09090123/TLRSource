@@ -11,7 +11,7 @@ namespace Last_Realm_Server.Game.Logic
 
     public interface IBehaviorDatabase
     {
-        public void Init(BehaviorDb db);
+        void Init(BehaviorDb db);
     }
 
     public class BehaviorModel 

@@ -1,5 +1,4 @@
 ﻿using Last_Realm_Server.Common;
-using Last_Realm_Server.Utils;
 using System.Collections.Specialized;
 using System.Net;
 using System.Xml.Linq;
@@ -22,18 +21,13 @@ namespace Last_Realm_Server.Networking
                 AccountModel acc = Database.Verify(username, password, GetIPFromContext(context)) ?? Database.GuestAccount();
                 if (!(accountInUse = Database.IsAccountInUse(acc)))
                 {
-                    data.Add(new XAttribute("nextCharId", acc.NextCharId));
-                    data.Add(new XAttribute("maxNumChars", acc.MaxNumChars));
                     data.Add(acc.Export());
-                    data.Add(Database.GetNews(acc));
                     data.Add(new XElement("OwnedSkins", string.Join(",", acc.OwnedSkins)));
-                    foreach (int charId in acc.AliveChars)
-                    {
-                        CharacterModel character = Database.LoadCharacter(acc, charId);
-                        XElement export = character.Export();
-                        export.Add(new XAttribute("id", charId));
-                        data.Add(export);
-                    }
+
+                    if (acc.HasCharacter)
+                        data.Add(Database.LoadCharacter(acc).Export());
+
+                    Program.Print(PrintType.Debug, data.ToString());
                 }
             }, () => _listenEvent.Set());
             _listenEvent.WaitOne();
@@ -83,81 +77,6 @@ namespace Last_Realm_Server.Networking
                 if (status == RegisterStatus.Success)
                     data = WriteSuccess();
                 else data = WriteError(status.ToString());
-            }, () => _listenEvent.Set());
-            _listenEvent.WaitOne();
-
-            return data;
-        }
-
-        private static byte[] FameList(HttpListenerContext context, NameValueCollection query)
-        {
-            byte[] data = null;
-            _listenEvent.Reset(); 
-            Program.PushWork(() =>
-            {
-                data = Write(Database.GetLegends(query["timespan"]).ToString());
-            }, () => _listenEvent.Set());
-            _listenEvent.WaitOne();
-            return data;
-        }
-
-        private static byte[] CharFame(HttpListenerContext context, NameValueCollection query)
-        {
-            byte[] data = null;
-            int accId = int.Parse(query["accountId"]);
-            int charId = int.Parse(query["charId"]);
-            _listenEvent.Reset();
-            Program.PushWork(() =>
-            {
-                string legend = Database.GetLegend(accId, charId);
-                data = string.IsNullOrWhiteSpace(legend) ? WriteError("Invalid character") : Write(legend);
-            }, () => _listenEvent.Set());
-            _listenEvent.WaitOne();
-            return data;
-        }
-
-        private static byte[] CharDelete(HttpListenerContext context, NameValueCollection query)
-        {
-            byte[] data = null;
-
-            string username = query["username"];
-            string password = query["password"];
-            int charId = int.Parse(query["charId"]);
-
-            _listenEvent.Reset();
-            Program.PushWork(() =>
-            {
-                AccountModel acc = Database.Verify(username, password, GetIPFromContext(context));
-                if (acc == null)
-                    data = WriteError("Invalid account.");
-                else if (Database.IsAccountInUse(acc))
-                    data = WriteError("Account in use!");
-                else
-                    data = Database.DeleteCharacter(acc, charId) ? WriteSuccess() : WriteError("Issue deleting character");
-            }, () => _listenEvent.Set());
-            _listenEvent.WaitOne();
-
-            return data;
-        }
-
-        private static byte[] AccountPurchaseCharSlot(HttpListenerContext context, NameValueCollection query)
-        {
-
-            byte[] data = null;
-
-            string username = query["username"];
-            string password = query["password"];
-
-            _listenEvent.Reset();
-            Program.PushWork(() =>
-            {
-                AccountModel acc = Database.Verify(username, password, GetIPFromContext(context));
-                if (acc == null)
-                    data = WriteError("Invalid account.");
-                else if (Database.IsAccountInUse(acc))
-                    data = WriteError("Account in use!");
-                else
-                    data = Database.BuyCharSlot(acc) ? WriteSuccess() : WriteError("Not enough fame");
             }, () => _listenEvent.Set());
             _listenEvent.WaitOne();
 

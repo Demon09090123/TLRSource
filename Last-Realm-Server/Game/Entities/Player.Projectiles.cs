@@ -277,8 +277,6 @@ namespace Last_Realm_Server.Game.Entities
                     foreach (Entity en in Parent.PlayerChunks.HitTest(Position, SightRadius))
                         if (en is Player player && player.Client.Account.AllyShots && !player.Equals(this))
                             player.Client.Send(packet);
-
-                    FameStats.Shots += numShots;
                 }
                 else
                 {
@@ -307,7 +305,6 @@ namespace Last_Realm_Server.Game.Entities
                         if (en is Player player && player.Client.Account.AllyShots && !player.Equals(this))
                             player.Client.Send(packet);
 
-                    FameStats.Shots += numShots;
                     float rateOfFireMod = ItemDesc.GetStat(ItemDatas[0], ItemData.RateOfFire, ItemDesc.RateOfFireMultiplier);
                     float rateOfFire = desc.RateOfFire;
                     rateOfFire *= 1 + rateOfFireMod;

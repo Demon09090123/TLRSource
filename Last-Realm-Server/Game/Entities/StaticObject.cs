@@ -26,9 +26,7 @@ namespace Last_Realm_Server.Game.Entities
                 int damageWithDefense = this.GetDefenseDamage(projectile.Damage, Desc.Defense, projectile.Desc.ArmorPiercing);
                 HP -= damageWithDefense;
 
-                Player owner = projectile.Owner as Player;
-                owner.FameStats.DamageDealt += damageWithDefense;
-                owner.FameStats.ShotsThatDamage++; 
+                Player owner = projectile.Owner as Player; 
                 
                 byte[] packet = GameServer.Damage(Id, new ConditionEffectIndex[0], damageWithDefense);
                 foreach (Entity en in Parent.PlayerChunks.HitTest(Position, Player.SightRadius))

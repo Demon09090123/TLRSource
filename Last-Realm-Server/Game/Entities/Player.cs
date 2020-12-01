@@ -59,27 +59,6 @@ namespace Last_Realm_Server.Game.Entities
             set { TrySetSV(StatType.Level, _level = value); }
         }
 
-        private int _charFame;
-        public int CharFame
-        {
-            get { return _charFame; }
-            set { TrySetSV(StatType.CharFame, _charFame = value); }
-        }
-
-        private int _fame;
-        public int Fame
-        {
-            get { return _fame; }
-            set { SetPrivateSV(StatType.Fame, _fame = value); }
-        }
-
-        private int _nextClassQuestFame;
-        public int NextClassQuestFame
-        {
-            get { return _nextClassQuestFame; }
-            set { SetPrivateSV(StatType.NextClassQuestFame, _nextClassQuestFame = value); }
-        }
-
         private int _numStars;
         public int NumStars
         {
@@ -178,8 +157,6 @@ namespace Last_Realm_Server.Game.Entities
             set { TrySetSV(StatType.SinkLevel, _sinkLevel = value); }
         }
 
-        public FameStatsInfo FameStats;
-
         public Player(Client client) : base((ushort)client.Character.ClassType)
         {
             PrivateSVs = new Dictionary<StatType, object>();
@@ -198,7 +175,6 @@ namespace Last_Realm_Server.Game.Entities
             if (client.Character.Tex1 != 0) Tex1 = client.Character.Tex1;
             if (client.Character.Tex2 != 0) Tex2 = client.Character.Tex2;
             if (client.Account.Stats.Credits != 0) Credits = client.Account.Stats.Credits;
-            if (client.Account.Stats.Fame != 0) Fame = client.Account.Stats.Fame;
 
             if (!string.IsNullOrWhiteSpace(client.Account.GuildName))
             {
@@ -209,10 +185,6 @@ namespace Last_Realm_Server.Game.Entities
             int stars = Database.GetStars(client.Account);
             if (stars != 0) NumStars = stars;
 
-            if (Database.IsLegend(client.Account.Id))
-                SetSV(StatType.LegendaryRank, 0);
-
-            FameStats = client.Character.FameStats;
             InitInventory(client.Character);
             InitStats(client.Character);
             InitLevel(client.Character);
@@ -232,7 +204,6 @@ namespace Last_Realm_Server.Game.Entities
             Client.Character.Tex1 = Tex1;
             Client.Character.Tex2 = Tex2;
             Client.Character.Experience = EXP;
-            Client.Character.Fame = CharFame;
             Client.Character.Inventory = Inventory.ToArray();
             Client.Character.ItemDatas = ItemDatas.ToArray();
             Client.Character.Stats = Stats.ToArray();
@@ -301,9 +272,8 @@ namespace Last_Realm_Server.Game.Entities
             Dead = true;
 
             SaveToCharacter();
-            Database.Death(killer, Client.Account, Client.Character);
 
-            byte[] death = GameServer.Death(Client.Account.Id, Client.Character.Id, killer);
+            byte[] death = GameServer.Death(Client.Account.Id, killer);
             Client.Send(death);
 
             byte[] text = GameServer.Text("", 0, -1, 0, "", $"{Name} died at level {Level} killed by {killer}!");
@@ -373,7 +343,6 @@ namespace Last_Realm_Server.Game.Entities
                 damageWithDefense = 0;
 
             HP -= damageWithDefense;
-            FameStats.DamageTaken += damageWithDefense;
             if (HP <= 0)
             {
                 Death(hitter);
@@ -394,9 +363,6 @@ namespace Last_Realm_Server.Game.Entities
                 Client.Disconnect();
                 return;
             }
-
-            if (Manager.TotalTime % 60000 == 0)
-                FameStats.MinutesActive++;
 
             TickRegens();
             TickProjectiles();

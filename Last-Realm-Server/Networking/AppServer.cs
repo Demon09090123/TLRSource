@@ -47,7 +47,7 @@ namespace Last_Realm_Server.Networking
 #if DEBUG
                             Program.Print(PrintType.Debug, $"Received <{request}> request from <{context.Request.RemoteEndPoint}>");
 #endif
-
+                    
                     NameValueCollection query;
                     using (StreamReader r = new StreamReader(context.Request.InputStream))
                         query = HttpUtility.ParseQueryString(r.ReadToEnd());
@@ -63,18 +63,6 @@ namespace Last_Realm_Server.Networking
                             break;
                         case "/account/register":
                             buffer = Register(context, query);
-                            break;
-                        case "/fame/list":
-                            buffer = FameList(context, query);
-                            break;
-                        case "/char/fame":
-                            buffer = CharFame(context, query);
-                            break;
-                        case "/char/delete":
-                            buffer = CharDelete(context, query);
-                            break;
-                        case "/account/purchaseCharSlot":
-                            buffer = AccountPurchaseCharSlot(context, query);
                             break;
                         case "/account/purchaseSkin":
                             buffer = AccountPurchaseSkin(context, query);

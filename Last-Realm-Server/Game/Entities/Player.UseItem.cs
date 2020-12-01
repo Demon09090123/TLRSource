@@ -515,11 +515,8 @@ namespace Last_Realm_Server.Game.Entities
                 int cooldown = desc.CooldownMS;
                 cooldown = cooldown + ((int)(cooldown * -cooldownMod));
                 UseDuration = cooldown;
-                FameStats.AbilitiesUsed++;
             }
 
-            if (desc.Potion)
-                FameStats.PotionsDrank++;
 
             if (desc.Consumable)
             {

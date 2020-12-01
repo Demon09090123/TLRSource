@@ -208,10 +208,7 @@ namespace Last_Realm_Server.Game.Entities
             Entities.RemoveWhere(k => droppedIds.Contains(k.Id));
 
             if (tiles.Count > 0 || adds.Count > 0 || drops.Count > 0)
-            {
                 Client.Send(GameServer.Update(tiles, adds, drops));
-                FameStats.TilesUncovered += tiles.Count;
-            }
         }
 
         IntPoint _p; int _w;

@@ -217,43 +217,6 @@ namespace Last_Realm_Server.Game.Entities
                         if (findTarget == null) SendError("Couldn't find player");
                         else SendInfo(findTarget.ToString());
                         break;
-                    case "/fame":
-                    case "/famestats":
-                    case "/stats":
-                        SaveToCharacter();
-                        FameStats fameStats = Database.CalculateStats(Client.Account, Client.Character, "");
-                        SendInfo($"Active: {FameStats.MinutesActive} minutes");
-                        SendInfo($"Shots: {FameStats.Shots}");
-                        SendInfo($"Accuracy: {(int)(((float)FameStats.ShotsThatDamage / FameStats.Shots) * 100f)}% ({FameStats.ShotsThatDamage}/{FameStats.Shots})");
-                        SendInfo($"Abilities Used: {FameStats.AbilitiesUsed}");
-                        SendInfo($"Tiles Seen: {FameStats.TilesUncovered}");
-                        SendInfo($"Monster Kills: {FameStats.MonsterKills} ({FameStats.MonsterAssists} Assists, {(int)(((float)FameStats.MonsterKills / (FameStats.MonsterKills + FameStats.MonsterAssists)) * 100f)}% Final Blows)");
-                        SendInfo($"God Kills: {FameStats.GodKills} ({(int)(((float)FameStats.GodKills / FameStats.MonsterKills) * 100f)}%) ({FameStats.GodKills}/{FameStats.MonsterKills})");
-                        SendInfo($"Oryx Kills: {FameStats.OryxKills} ({(int)(((float)FameStats.OryxKills / FameStats.MonsterKills) * 100f)}%) ({FameStats.OryxKills}/{FameStats.MonsterKills})");
-                        SendInfo($"Cube Kills: {FameStats.CubeKills} ({(int)(((float)FameStats.CubeKills / FameStats.MonsterKills) * 100f)}%) ({FameStats.CubeKills}/{FameStats.MonsterKills})");
-                        SendInfo($"Cyan Bags: {FameStats.CyanBags}");
-                        SendInfo($"Blue Bags: {FameStats.BlueBags}");
-                        SendInfo($"White Bags: {FameStats.WhiteBags}");
-                        SendInfo($"Damage Taken: {FameStats.DamageTaken}");
-                        SendInfo($"Damage Dealt: {FameStats.DamageDealt}");
-                        SendInfo($"Teleports: {FameStats.Teleports}");
-                        SendInfo($"Potions Drank: {FameStats.PotionsDrank}");
-                        SendInfo($"Quests Completed: {FameStats.QuestsCompleted}");
-                        SendInfo($"Pirate Caves Completed: {FameStats.PirateCavesCompleted}");
-                        SendInfo($"Spider Dens Completed: {FameStats.SpiderDensCompleted}");
-                        SendInfo($"Snake Pits Completed: {FameStats.SnakePitsCompleted}");
-                        SendInfo($"Sprite Worlds Completed: {FameStats.SpriteWorldsCompleted}");
-                        SendInfo($"Undead Lairs Completed: {FameStats.UndeadLairsCompleted}");
-                        SendInfo($"Abyss Of Demons Completed: {FameStats.AbyssOfDemonsCompleted}");
-                        SendInfo($"Tombs Completed: {FameStats.TombsCompleted}");
-                        SendInfo($"Escapes: {FameStats.Escapes}");
-                        SendInfo($"Near Death Escapes: {FameStats.NearDeathEscapes}");
-                        SendInfo($"Party Member Level Ups: {FameStats.LevelUpAssists}");
-                        foreach (FameBonus bonus in fameStats.Bonuses)
-                            SendHelp($"{bonus.Name}: +{bonus.Fame}");
-                        SendInfo($"Base Fame: {fameStats.BaseFame}");
-                        SendInfo($"Total Fame: {fameStats.TotalFame}");
-                        break;
                     default:
                         SendError("Unknown command");
                         break;
