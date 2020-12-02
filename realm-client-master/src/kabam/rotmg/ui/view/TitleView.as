@@ -13,6 +13,8 @@ import kabam.rotmg.ui.view.components.ScreenBase;
 
 import org.osflash.signals.Signal;
 
+
+
    public class TitleView extends Sprite
    {
       private static const COPYRIGHT:String = "© 2010, 2011 by Wild Shadow Studios, Inc.";

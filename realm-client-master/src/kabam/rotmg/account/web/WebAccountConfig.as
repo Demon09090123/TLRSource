@@ -26,8 +26,6 @@ package kabam.rotmg.account.web
    import kabam.rotmg.account.web.signals.WebChangePasswordSignal;
    import kabam.rotmg.account.web.view.WebAccountDetailDialog;
    import kabam.rotmg.account.web.view.WebAccountDetailMediator;
-   import kabam.rotmg.account.web.view.WebAccountInfoMediator;
-   import kabam.rotmg.account.web.view.WebAccountInfoView;
    import kabam.rotmg.account.web.view.WebChangePasswordDialog;
    import kabam.rotmg.account.web.view.WebChangePasswordMediator;
    import kabam.rotmg.account.web.view.WebLoginDialog;
@@ -82,7 +80,6 @@ package kabam.rotmg.account.web
       
       protected function mapMediators() : void
       {
-         this.mediatorMap.map(WebAccountInfoView).toMediator(WebAccountInfoMediator);
          this.mediatorMap.map(WebChangePasswordDialog).toMediator(WebChangePasswordMediator);
          this.mediatorMap.map(WebAccountDetailDialog).toMediator(WebAccountDetailMediator);
          this.mediatorMap.map(WebRegisterDialog).toMediator(WebRegisterMediator);

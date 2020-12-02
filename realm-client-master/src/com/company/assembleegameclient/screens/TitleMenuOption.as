@@ -6,12 +6,16 @@ package com.company.assembleegameclient.screens
    import flash.display.Sprite;
    import flash.events.Event;
    import flash.events.MouseEvent;
-   import flash.filters.DropShadowFilter;
-   import flash.geom.ColorTransform;
+import flash.filters.BitmapFilterQuality;
+import flash.filters.BlurFilter;
+import flash.filters.DropShadowFilter;
+import flash.filters.GlowFilter;
+import flash.geom.ColorTransform;
    import flash.utils.getTimer;
    import org.osflash.signals.Signal;
-   
-   public class TitleMenuOption extends Sprite
+import org.osmf.net.qos.QualityLevel;
+
+public class TitleMenuOption extends Sprite
    {
       protected static const OVER_COLOR_TRANSFORM:ColorTransform = new ColorTransform(1,220 / 255,133 / 255);
 
@@ -23,11 +27,16 @@ package com.company.assembleegameclient.screens
       private var active:Boolean;
       private var originalWidth:Number;
       private var originalHeight:Number;
+
+      private var bold:Boolean;
+      private var txtClr:uint;
       
-      public function TitleMenuOption(text:String, size:int, pulse:Boolean)
+      public function TitleMenuOption(text:String, size:int = 18, pulse:Boolean = false, bold:Boolean = true, txtClr:uint = 16777215)
       {
          super();
          this.size = size;
+          this.bold = bold;
+          this.txtClr = txtClr;
          this.setText(text);
          this.isPulse = pulse;
          this.originalWidth = width;
@@ -42,16 +51,16 @@ package com.company.assembleegameclient.screens
          {
             removeChild(this.textField);
          }
-         this.textField = new SimpleText(this.size,16777215,false,0,0);
-         this.textField.setBold(true);
-         this.textField.text = text.toLowerCase();
+         this.textField = new SimpleText(this.size,txtClr,false,0,0);
+         this.textField.setBold(bold);
+         this.textField.text = text;
          this.textField.updateMetrics();
-         this.textField.filters = [new DropShadowFilter(0,0,0,0.5,12,12)];
          addChild(this.textField);
       }
 
       public function activate():void
       {
+          setColorTransform(null);
          addEventListener(MouseEvent.MOUSE_OVER,this.onMouseOver);
          addEventListener(MouseEvent.MOUSE_OUT,this.onMouseOut);
          addEventListener(MouseEvent.CLICK,this.onMouseClick);
@@ -63,14 +72,22 @@ package com.company.assembleegameclient.screens
       public function deactivate():void {
          var ct:ColorTransform = new ColorTransform();
          ct.color = 0x363636;
-         this.setColorTransform(ct);
+         setColorTransform(ct);
          removeEventListener(MouseEvent.MOUSE_OVER,this.onMouseOver);
          removeEventListener(MouseEvent.MOUSE_OUT,this.onMouseOut);
          removeEventListener(MouseEvent.CLICK,this.onMouseClick);
          removeEventListener(Event.ADDED_TO_STAGE,this.onAddedToStage);
          removeEventListener(Event.REMOVED_FROM_STAGE,this.onRemovedFromStage);
-         this.active = false;
       }
+
+       public function addOutline(thickness:int = 1, clr:uint = 0):void {
+           var filter:GlowFilter = new GlowFilter(clr, 1, thickness, thickness, thickness * 10, BitmapFilterQuality.HIGH);
+           filters = [filter];
+       }
+
+       public function removeOutline():void {
+           filters = [];
+       }
       
       private function onAddedToStage(event:Event) : void
       {

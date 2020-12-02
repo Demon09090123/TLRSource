@@ -24,9 +24,6 @@ package kabam.rotmg.ui.commands
       
       [Inject]
       public var openDialog:OpenDialogSignal;
-
-      private const DEFAULT_CHARACTER:int = 782;
-      
       public function EnterGameCommand()
       {
          super();
@@ -40,19 +37,6 @@ package kabam.rotmg.ui.commands
       private function showCurrentCharacterScreen() : void
       {
          this.setScreenWithValidData.dispatch(new CharacterSelectionAndNewsScreen());
-      }
-      
-      private function launchGame() : void
-      {
-         this.playGame.dispatch(this.makeGameInitData());
-      }
-      
-      private function makeGameInitData() : GameInitData
-      {
-         var data:GameInitData = new GameInitData();
-         data.createCharacter = true;
-         data.isNewGame = true;
-         return data;
       }
    }
 }

@@ -7,6 +7,8 @@ import com.company.ui.fonts.MyriadProBoldCFF;
 import com.company.ui.fonts.MyriadProCFF;
 
 import flash.events.Event;
+import flash.filters.BitmapFilterQuality;
+import flash.filters.GlowFilter;
 import flash.text.Font;
 import flash.text.TextField;
 import flash.text.TextFieldType;
@@ -158,6 +160,15 @@ import flash.text.TextLineMetrics;
          width = this.inputWidth_ == 0 ? (textWidth + 4) : (this.inputWidth_);
          height = this.inputHeight_ == 0 ? (textHeight + 4) : (this.inputHeight_);
       }
+
+       public function addOutline(thickness:int = 2, clr:uint = 0):void {
+           var filter:GlowFilter = new GlowFilter(clr, 1, thickness, thickness, 20, BitmapFilterQuality.HIGH);
+           filters = [filter];
+       }
+
+       public function removeOutline():void {
+           filters = [];
+       }
 
       /*override public function set x(newValue:Number) : void
       {

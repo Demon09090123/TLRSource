@@ -13,7 +13,9 @@ import kabam.rotmg.core.model.PlayerModel;
    import kabam.rotmg.game.model.GameInitData;
    import kabam.rotmg.game.signals.PlayGameSignal;
    import kabam.rotmg.ui.signals.NameChangedSignal;
-   import robotlegs.bender.bundles.mvcs.Mediator;
+import kabam.rotmg.ui.welcomeview.WelcomeScreen;
+
+import robotlegs.bender.bundles.mvcs.Mediator;
    
    public class CurrentCharacterMediator extends Mediator
    {
@@ -73,13 +75,11 @@ import kabam.rotmg.core.model.PlayerModel;
 
       private function onClose() : void
       {
-         this.setScreen.dispatch(new TitleView());
+         this.setScreen.dispatch(new WelcomeScreen());
       }
       
       private function onPlayGame() : void
       {
-          trace("Current Character PLAY!");
-
          var character:SavedCharacter = this.playerModel.getSavedCharacter();
          var characterClass:CharacterClass = this.classesModel.getCharacterClass(character.objectType());
          characterClass.setIsSelected(true);

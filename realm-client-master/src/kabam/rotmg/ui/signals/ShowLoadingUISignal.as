@@ -4,8 +4,6 @@ package kabam.rotmg.ui.signals
    
    public class ShowLoadingUISignal extends Signal
    {
-       
-      
       public function ShowLoadingUISignal()
       {
          super();

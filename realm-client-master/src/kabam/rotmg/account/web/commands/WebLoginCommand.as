@@ -17,8 +17,9 @@ package kabam.rotmg.account.web.commands
    import kabam.rotmg.core.signals.SetScreenWithValidDataSignal;
    import kabam.rotmg.core.signals.TaskErrorSignal;
    import kabam.rotmg.dialogs.control.OpenDialogSignal;
-   
-   public class WebLoginCommand
+import kabam.rotmg.ui.welcomeview.WelcomeScreen;
+
+public class WebLoginCommand
    {
        
       
@@ -67,7 +68,7 @@ package kabam.rotmg.account.web.commands
          sequence.add(new DispatchSignalTask(this.openDialog,new WebAccountDetailDialog()));
          sequence.add(new DispatchSignalTask(this.updateLogin));
          sequence.add(new DispatchSignalTask(this.invalidate));
-         sequence.add(new DispatchSignalTask(this.setScreenWithValidData,this.getTargetScreen()));
+          sequence.add(new DispatchSignalTask(this.setScreenWithValidData,this.getTargetScreen()));
          return sequence;
       }
       
@@ -79,10 +80,10 @@ package kabam.rotmg.account.web.commands
       private function getTargetScreen() : Sprite
       {
          var type:Class = this.screenModel.currentType;
-         if(type == null || type == GameSprite)
-         {
+         if(type == null || type == GameSprite) {
             type = CharacterSelectionAndNewsScreen;
          }
+
          return new type();
       }
    }

@@ -6,8 +6,6 @@ package kabam.rotmg.account.core.view
    
    public class AccountInfoMediator extends Mediator
    {
-       
-      
       [Inject]
       public var account:Account;
       

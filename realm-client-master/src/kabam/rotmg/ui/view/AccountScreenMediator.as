@@ -3,8 +3,6 @@ package kabam.rotmg.ui.view
    import com.company.assembleegameclient.screens.AccountScreen;
    import com.company.assembleegameclient.ui.tooltip.ToolTip;
    import kabam.rotmg.account.core.Account;
-   import kabam.rotmg.account.core.view.AccountInfoView;
-   import kabam.rotmg.account.web.view.WebAccountInfoView;
    import kabam.rotmg.core.model.PlayerModel;
    import kabam.rotmg.core.signals.HideTooltipsSignal;
    import kabam.rotmg.core.signals.ShowTooltipSignal;
@@ -39,14 +37,8 @@ package kabam.rotmg.ui.view
          this.view.tooltip.add(this.onTooltip);
          this.view.setRank(this.playerModel.getLevel());
          this.view.setGuild(this.playerModel.getGuildName(),this.playerModel.getGuildRank());
-         this.view.setAccountInfo(this.getInfoView());
       }
-      
-      private function getInfoView() : AccountInfoView
-      {
-         var view:AccountInfoView = new WebAccountInfoView();
-         return view;
-      }
+
       
       override public function destroy() : void
       {

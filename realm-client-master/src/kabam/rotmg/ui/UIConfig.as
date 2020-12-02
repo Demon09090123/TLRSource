@@ -26,7 +26,8 @@ import kabam.rotmg.startup.control.StartupSequence;
    import kabam.rotmg.ui.commands.RefreshScreenAfterLoginCommand;
    import kabam.rotmg.ui.commands.ShowLoadingUICommand;
    import kabam.rotmg.ui.commands.ShowTitleUICommand;
-   import kabam.rotmg.ui.model.HUDModel;
+import kabam.rotmg.ui.commands.WelcomeScreenCommand;
+import kabam.rotmg.ui.model.HUDModel;
    import kabam.rotmg.ui.signals.EnterGameSignal;
    import kabam.rotmg.ui.signals.HUDModelInitialized;
    import kabam.rotmg.ui.signals.HUDSetupStarted;
@@ -38,6 +39,7 @@ import kabam.rotmg.ui.signals.StatsTabHotKeyInputSignal;
 import kabam.rotmg.ui.signals.UpdateBackpackTabSignal;
 import kabam.rotmg.ui.signals.UpdateHUDSignal;
 import kabam.rotmg.ui.signals.UpdatePotionInventorySignal;
+import kabam.rotmg.ui.signals.WelcomeScreenSignal;
 import kabam.rotmg.ui.view.AccountScreenMediator;
    import kabam.rotmg.ui.view.CharacterDetailsMediator;
    import kabam.rotmg.ui.view.CharacterDetailsView;
@@ -66,6 +68,8 @@ import kabam.rotmg.ui.view.HUDMediator;
    import kabam.rotmg.ui.view.TitleView;
 import kabam.rotmg.ui.view.components.PotionSlotMediator;
 import kabam.rotmg.ui.view.components.PotionSlotView;
+import kabam.rotmg.ui.welcomeview.WelcomeScreen;
+import kabam.rotmg.ui.welcomeview.WelcomeScreenMediator;
 
 import org.swiftsuspenders.Injector;
    import robotlegs.bender.extensions.mediatorMap.api.IMediatorMap;
@@ -101,6 +105,7 @@ import org.swiftsuspenders.Injector;
          this.injector.map(UpdateBackpackTabSignal).asSingleton();
          this.injector.map(StatsTabHotKeyInputSignal).asSingleton();
          this.commandMap.map(ShowLoadingUISignal).toCommand(ShowLoadingUICommand);
+          this.commandMap.map(WelcomeScreenSignal).toCommand(WelcomeScreenCommand);
          this.commandMap.map(ShowTitleUISignal).toCommand(ShowTitleUICommand);
          this.commandMap.map(EnterGameSignal).toCommand(EnterGameCommand);
          this.mediatorMap.map(LoadingScreen).toMediator(LoadingMediator);
@@ -127,10 +132,18 @@ import org.swiftsuspenders.Injector;
          this.mediatorMap.map(PotionSlotView).toMediator(PotionSlotMediator);
          this.commandMap.map(RefreshScreenAfterLoginSignal).toCommand(RefreshScreenAfterLoginCommand);
          this.setupCharacterWindow();
-         this.startup.addSignal(ShowLoadingUISignal,-1);
+
+          this.mediatorMap.map(WelcomeScreen).toMediator(WelcomeScreenMediator);
+
+         /*this.startup.addSignal(ShowLoadingUISignal,-1);
          this.startup.addTask(LoadAccountTask);
          this.startup.addTask(GetCharListTask);
-         this.startup.addSignal(ShowTitleUISignal,StartupSequence.LAST);
+         this.startup.addSignal(ShowTitleUISignal,StartupSequence.LAST);*/
+
+          this.startup.addSignal(ShowLoadingUISignal, -1);
+          this.startup.addTask(LoadAccountTask);
+          this.startup.addTask(GetCharListTask);
+          this.startup.addSignal(WelcomeScreenSignal, StartupSequence.LAST);
       }
       
       private function setupCharacterWindow() : void
