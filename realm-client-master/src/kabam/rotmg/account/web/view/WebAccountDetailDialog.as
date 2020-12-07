@@ -1,9 +1,12 @@
 package kabam.rotmg.account.web.view
 {
-   import com.company.assembleegameclient.account.ui.Frame;
-   import com.company.assembleegameclient.ui.ClickableText;
    import com.company.ui.SimpleText;
-   import flash.events.MouseEvent;
+
+import drawing.components.ClickableText;
+
+import drawing.components.Frame;
+
+import flash.events.MouseEvent;
    import flash.filters.DropShadowFilter;
    import org.osflash.signals.Signal;
    import org.osflash.signals.natives.NativeMappedSignal;

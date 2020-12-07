@@ -18,7 +18,7 @@
 			
 		<Size>100</Size>
 		<MaxHitPoints>85000</MaxHitPoints>
-		<Defense>60</Defense>
+		<PhysicalDefense>60</PhysicalDefense>
 		<XpMult>0.35</XpMult>
 
 
@@ -216,7 +216,7 @@
 		</AltTexture>
 
 		<MaxHitPoints>4000</MaxHitPoints>
-		<Defense>10</Defense>
+		<PhysicalDefense>10</PhysicalDefense>
 		<XpMult>0</XpMult>
 		<Size>100</Size>
 		<ShadowSize>100</ShadowSize>
@@ -252,7 +252,7 @@
 		<Texture><File>lofiObj2</File><Index>0x78</Index></Texture>
 
 		<MaxHitPoints>1000</MaxHitPoints>
-		<Defense>50</Defense>
+		<PhysicalDefense>50</PhysicalDefense>
 		<XpMult>0</XpMult>
 		<Size>80</Size>
 		<ShadowSize>40</ShadowSize>
@@ -302,7 +302,7 @@
 
 
 		<MaxHitPoints>1000</MaxHitPoints>
-		<Defense>50</Defense>
+		<PhysicalDefense>50</PhysicalDefense>
 		<XpMult>0</XpMult>
 		<Size>100</Size>
 		<ShadowSize>30</ShadowSize>
@@ -334,7 +334,7 @@
 		<Group>AttackType</Group>
 		<Class>Character</Class>
 		<MaxHitPoints>100000</MaxHitPoints>
-		<Defense>1000</Defense>
+		<PhysicalDefense>1000</PhysicalDefense>
 		<Enemy/>
 
 
@@ -394,7 +394,7 @@
 		<Texture><File>lofiObj2</File><Index>0x5f</Index></Texture>
 		<HitSound>monster/cubes_hit</HitSound>
 		<DeathSound>monster/cubes_death</DeathSound>
-		<Defense>5</Defense>
+		<PhysicalDefense>5</PhysicalDefense>
 		<XpMult>0.0</XpMult>
 		<MaxHitPoints>1000</MaxHitPoints>
 		<Size>100</Size>
@@ -423,7 +423,7 @@
 		<Texture><File>lofiCharBig</File><Index>0x09</Index></Texture>
 		<HitSound>monster/cubes_hit</HitSound>
 		<DeathSound>monster/cubes_death</DeathSound>
-		<Defense>5</Defense>
+		<PhysicalDefense>5</PhysicalDefense>
 		<XpMult>0.0</XpMult>
 		<MaxHitPoints>1000</MaxHitPoints>
 		<Size>100</Size>
@@ -457,7 +457,7 @@
 		<AnimatedTexture><File>chars8x8dEncounters</File><Index>7</Index></AnimatedTexture>
 		<HitSound>monster/cubes_hit</HitSound>
 		<DeathSound>monster/cubes_death</DeathSound>
-		<Defense>5</Defense>
+		<PhysicalDefense>5</PhysicalDefense>
 		<XpMult>0.0</XpMult>
 		<MaxHitPoints>1000</MaxHitPoints>
 		<Size>100</Size>
@@ -480,7 +480,7 @@
 		<Group>AttackType</Group>
 		<Class>Character</Class>
 		<MaxHitPoints>100000</MaxHitPoints>
-		<Defense>1000</Defense>
+		<PhysicalDefense>1000</PhysicalDefense>
 		<Enemy/>
 
 
@@ -519,7 +519,7 @@
 		<Group>Minions of Oryx</Group>
 		<Class>Character</Class>
 		<MaxHitPoints>4000</MaxHitPoints>
-		<Defense>12</Defense>
+		<PhysicalDefense>12</PhysicalDefense>
 		<Enemy/>
 
 
@@ -564,7 +564,7 @@
 		<Group>AttackType</Group>
 		<Class>Character</Class>
 		<MaxHitPoints>100000</MaxHitPoints>
-		<Defense>1000</Defense>
+		<PhysicalDefense>1000</PhysicalDefense>
 		<Enemy/>
 		<StasisImmune/>
 
@@ -604,7 +604,7 @@
 		<Group>AttackType</Group>
 		<Class>Character</Class>
 		<MaxHitPoints>100000</MaxHitPoints>
-		<Defense>1000</Defense>
+		<PhysicalDefense>1000</PhysicalDefense>
 		<Enemy/>
 		<StasisImmune/>
 
@@ -644,7 +644,7 @@
 		<Group>AttackType</Group>
 		<Class>Character</Class>
 		<MaxHitPoints>100000</MaxHitPoints>
-		<Defense>1000</Defense>
+		<PhysicalDefense>1000</PhysicalDefense>
 		<Enemy/>
 		<StasisImmune/>
 
@@ -684,7 +684,7 @@
 		<Group>AttackType</Group>
 		<Class>Character</Class>
 		<MaxHitPoints>100000</MaxHitPoints>
-		<Defense>1000</Defense>
+		<PhysicalDefense>1000</PhysicalDefense>
 		<Enemy/>
 		<StasisImmune/>
 
@@ -724,7 +724,7 @@
 		<Group>AttackType</Group>
 		<Class>Character</Class>
 		<MaxHitPoints>100000</MaxHitPoints>
-		<Defense>1000</Defense>
+		<PhysicalDefense>1000</PhysicalDefense>
 		<Enemy/>
 		<StasisImmune/>
 

@@ -583,14 +583,14 @@ namespace Last_Realm_Server.Networking
             }
         }
 
-        public static byte[] Text(string name, int objectId, int numStars, int bubbleTime, string recipent, string text)
+        public static byte[] Text(string name, int objectId, int level, int bubbleTime, string recipent, string text)
         {
             using (PacketWriter wtr = new PacketWriter(new MemoryStream()))
             {
                 wtr.Write((byte)PacketId.Text);
                 wtr.Write(name);
                 wtr.Write(objectId);
-                wtr.Write(numStars);
+                wtr.Write(level);
                 wtr.Write((byte)bubbleTime);
                 wtr.Write(recipent);
                 wtr.Write(text);

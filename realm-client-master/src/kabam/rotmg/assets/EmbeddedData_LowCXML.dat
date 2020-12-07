@@ -10,7 +10,7 @@
 		<DeathSound>monster/dark_elves_death</DeathSound>
 		<Size>100</Size>
 		<MaxHitPoints>30</MaxHitPoints>
-		<Defense>0</Defense>
+		<PhysicalDefense>0</PhysicalDefense>
 		<Terrain>LowSand</Terrain>
 		
 		<Projectile id="0">
@@ -33,7 +33,7 @@
 		<DeathSound>monster/dark_elves_death</DeathSound>
 		<Size>100</Size>
 		<MaxHitPoints>88</MaxHitPoints>
-		<Defense>0</Defense>
+		<PhysicalDefense>0</PhysicalDefense>
 		<Terrain>LowSand</Terrain>
 		
 		<Projectile id="0">
@@ -63,7 +63,7 @@
 		<DeathSound>monster/dark_elves_death</DeathSound>
 		<Size>120</Size>
 		<MaxHitPoints>270</MaxHitPoints>
-		<Defense>2</Defense>
+		<PhysicalDefense>2</PhysicalDefense>
 		<Terrain>LowSand</Terrain>
 		<Quest/>
 		<Level>4</Level>
@@ -90,7 +90,7 @@
 		<DeathSound>monster/scorpions_death</DeathSound>
 		<Size>100</Size>
 		<MaxHitPoints>300</MaxHitPoints>
-		<Defense>2</Defense>
+		<PhysicalDefense>2</PhysicalDefense>
 		<Terrain>LowSand</Terrain>
 		<Quest/>
 		<Level>3</Level>
@@ -146,7 +146,7 @@
 		<DeathSound>monster/scorpions_death</DeathSound>
 		<Size>100</Size>
 		<MaxHitPoints>100</MaxHitPoints>
-		<Defense>1</Defense>
+		<PhysicalDefense>1</PhysicalDefense>
 		<Terrain>LowSand</Terrain>
 		<XpMult>0.4</XpMult>		
 		<SpawnProb>1.0</SpawnProb>
@@ -175,7 +175,7 @@
 		<DeathSound>monster/hobbits_death</DeathSound>
 		<Size>75</Size>
 		<MaxHitPoints>26</MaxHitPoints>
-		<Defense>0</Defense>
+		<PhysicalDefense>0</PhysicalDefense>
 		<Terrain>LowPlains</Terrain>
 		
 		<Projectile id="0">
@@ -197,7 +197,7 @@
 		<DeathSound>monster/hobbits_death</DeathSound>
 		<Size>75</Size>
 		<MaxHitPoints>22</MaxHitPoints>
-		<Defense>0</Defense>
+		<PhysicalDefense>0</PhysicalDefense>
 		<Terrain>LowPlains</Terrain>
 		
 		<Projectile id="0">
@@ -219,7 +219,7 @@
 		<DeathSound>monster/hobbits_death</DeathSound>
 		<Size>88</Size>
 		<MaxHitPoints>200</MaxHitPoints>
-		<Defense>2</Defense>
+		<PhysicalDefense>2</PhysicalDefense>
 		<Terrain>LowPlains</Terrain>
 		<Quest/>
 		<Level>3</Level>
@@ -259,7 +259,7 @@
 		<DeathSound>monster/undead_hobbits_death</DeathSound>
 		<Size>75</Size>
 		<MaxHitPoints>34</MaxHitPoints>
-		<Defense>0</Defense>
+		<PhysicalDefense>0</PhysicalDefense>
 		<Terrain>LowPlains</Terrain>
 
 		<Projectile id="0">
@@ -281,7 +281,7 @@
 		<DeathSound>monster/undead_hobbits_death</DeathSound>
 		<Size>75</Size>
 		<MaxHitPoints>28</MaxHitPoints>
-		<Defense>0</Defense>
+		<PhysicalDefense>0</PhysicalDefense>
 		<Terrain>LowPlains</Terrain>
 
 		<Projectile id="0">
@@ -303,7 +303,7 @@
 		<DeathSound>monster/undead_hobbits_death</DeathSound>
 		<Size>100</Size>
 		<MaxHitPoints>270</MaxHitPoints>
-		<Defense>5</Defense>
+		<PhysicalDefense>5</PhysicalDefense>
 		<Terrain>LowPlains</Terrain>
 		<Quest/>
 		<Level>4</Level>
@@ -388,7 +388,7 @@
         </Projectile>
         
         <Size>100</Size>
-        <Defense>5</Defense>
+        <PhysicalDefense>5</PhysicalDefense>
         <XpMult>1.65</XpMult>
         
         
@@ -420,7 +420,7 @@
         </Projectile>
        
         <Size>100</Size>
-        <Defense>4</Defense>
+        <PhysicalDefense>4</PhysicalDefense>
         <XpMult>2.0</XpMult>
         
 		
@@ -438,7 +438,7 @@
 		<DeathSound>monster/elves_death</DeathSound>
 		<Size>100</Size>
 		<MaxHitPoints>22</MaxHitPoints>
-		<Defense>2</Defense>
+		<PhysicalDefense>2</PhysicalDefense>
 		<Terrain>LowForest</Terrain>
 		
 		<Projectile id="0">
@@ -460,7 +460,7 @@
 		<DeathSound>monster/elves_death</DeathSound>
 		<Size>100</Size>
 		<MaxHitPoints>26</MaxHitPoints>
-		<Defense>2</Defense>
+		<PhysicalDefense>2</PhysicalDefense>
 		<Terrain>LowForest</Terrain>
 		
 		<Projectile id="0">
@@ -483,7 +483,7 @@
 		<DeathSound>monster/elves_death</DeathSound>
 		<Size>100</Size>
 		<MaxHitPoints>22</MaxHitPoints>
-		<Defense>0</Defense>
+		<PhysicalDefense>0</PhysicalDefense>
 		<Terrain>LowForest</Terrain>
 		
 		<Projectile id="0">
@@ -505,7 +505,7 @@
 		<DeathSound>monster/elves_death</DeathSound>
 		<Size>140</Size>
 		<MaxHitPoints>200</MaxHitPoints>
-		<Defense>0</Defense>
+		<PhysicalDefense>0</PhysicalDefense>
 		<Terrain>LowForest</Terrain>
 		<Quest/>
 		<Level>3</Level>
@@ -533,7 +533,7 @@
 		<DeathSound>monster/goblins_death</DeathSound>
 		<Size>75</Size>
 		<MaxHitPoints>25</MaxHitPoints>
-		<Defense>0</Defense>
+		<PhysicalDefense>0</PhysicalDefense>
 		<Terrain>LowForest</Terrain>
 		
 		<Projectile id="0">
@@ -556,7 +556,7 @@
 		<DeathSound>monster/goblins_death</DeathSound>
 		<Size>75</Size>
 		<MaxHitPoints>25</MaxHitPoints>
-		<Defense>2</Defense>
+		<PhysicalDefense>2</PhysicalDefense>
 		<Terrain>LowForest</Terrain>
 		
 		<Projectile id="0">
@@ -579,7 +579,7 @@
 		<DeathSound>monster/goblins_death</DeathSound>
 		<Size>120</Size>
 		<MaxHitPoints>280</MaxHitPoints>
-		<Defense>0</Defense>
+		<PhysicalDefense>0</PhysicalDefense>
 		<Quest/>
 		<Level>4</Level>
 		<XpMult>1.4</XpMult>
@@ -614,7 +614,7 @@
 		<DeathSound>monster/night_elves_death</DeathSound>
 		<Size>100</Size>
 		<MaxHitPoints>40</MaxHitPoints>
-		<Defense>0</Defense>
+		<PhysicalDefense>0</PhysicalDefense>
 		<Terrain>LowForest</Terrain>
 		<XpMult>0</XpMult>
 		<SpawnProb>0.7</SpawnProb>
@@ -630,7 +630,7 @@
 		<DeathSound>monster/night_elves_death</DeathSound>
 		<Size>100</Size>
 		<MaxHitPoints>130</MaxHitPoints>
-		<Defense>1</Defense>
+		<PhysicalDefense>1</PhysicalDefense>
 		<XpMult>0.5</XpMult>
 
 		<Projectile id="0">
@@ -654,7 +654,7 @@
 		<DeathSound>monster/elves_death</DeathSound>
 		<Size>100</Size>
 		<MaxHitPoints>120</MaxHitPoints>
-		<Defense>1</Defense>
+		<PhysicalDefense>1</PhysicalDefense>
 		<Terrain>LowForest</Terrain>
 		<XpMult>0.5</XpMult>	
 		<SpawnProb>1.0</SpawnProb>

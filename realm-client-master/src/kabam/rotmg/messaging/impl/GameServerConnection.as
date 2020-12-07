@@ -1035,8 +1035,13 @@ import kabam.rotmg.ui.view.MessageCloseDialog;
                case StatData.ATTACK_STAT:
                   player.attack_ = value;
                   continue;
-               case StatData.DEFENSE_STAT:
-                  go.defense_ = value;
+                case StatData.MAGIC_POWER_STAT:
+                  player.magicPower_ = value;
+               case StatData.PHYSICAL_DEFENSE_STAT:
+                  go.physicalDefense = value;
+                  continue;
+                case StatData.MAGIC_DEFENSE_STAT:
+                  go.magicDefense_ = value;
                   continue;
                case StatData.SPEED_STAT:
                   player.speed_ = value;
@@ -1098,9 +1103,6 @@ import kabam.rotmg.ui.view.MessageCloseDialog;
                case StatData.ACCOUNT_ID_STAT:
                   player.accountId_ = value;
                   continue;
-               case StatData.FAME_STAT:
-                  player.fame_ = value;
-                  continue;
                case StatData.MERCHANDISE_CURRENCY_STAT:
                   (go as SellableObject).setCurrency(value);
                   continue;
@@ -1121,30 +1123,6 @@ import kabam.rotmg.ui.view.MessageCloseDialog;
                   continue;
                case StatData.MERCHANDISE_RANK_REQ_STAT:
                   (go as SellableObject).setRankReq(value);
-                  continue;
-               case StatData.MAX_HP_BOOST_STAT:
-                  player.maxHPBoost_ = value;
-                  continue;
-               case StatData.MAX_MP_BOOST_STAT:
-                  player.maxMPBoost_ = value;
-                  continue;
-               case StatData.ATTACK_BOOST_STAT:
-                  player.attackBoost_ = value;
-                  continue;
-               case StatData.DEFENSE_BOOST_STAT:
-                  player.defenseBoost_ = value;
-                  continue;
-               case StatData.SPEED_BOOST_STAT:
-                  player.speedBoost_ = value;
-                  continue;
-               case StatData.VITALITY_BOOST_STAT:
-                  player.vitalityBoost_ = value;
-                  continue;
-               case StatData.WISDOM_BOOST_STAT:
-                  player.wisdomBoost_ = value;
-                  continue;
-               case StatData.DEXTERITY_BOOST_STAT:
-                  player.dexterityBoost_ = value;
                   continue;
                case StatData.CHAR_FAME_STAT:
                   player.charFame_ = value;
@@ -1340,14 +1318,6 @@ import kabam.rotmg.ui.view.MessageCloseDialog;
          this.gs_.dispatchEvent(reconnectEvent);
       }
       
-      private function parseXML(xmlString:String) : void
-      {
-         var extraXML:XML = XML(xmlString);
-         GroundLibrary.parseFromXML(extraXML);
-         ObjectLibrary.parseFromXML(extraXML);
-         ObjectLibrary.parseFromXML(extraXML);
-      }
-      
       private function onMapInfo(mapInfo:MapInfo) : void
       {
          this.gs_.applyMapInfo(mapInfo);
@@ -1425,7 +1395,7 @@ import kabam.rotmg.ui.view.MessageCloseDialog;
          var hit:Boolean = this.player.distTo(aoe.pos_) < aoe.radius_;
          if(hit)
          {
-            d = GameObject.damageWithDefense(aoe.damage_,this.player.defense_,false,this.player.condition_);
+            d = GameObject.damageWithDefense(aoe.damage_,this.player.physicalDefense,false,this.player.condition_);
             effects = null;
             if(aoe.effect_ != 0)
             {

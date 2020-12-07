@@ -1,9 +1,11 @@
 package com.company.assembleegameclient.ui.panels
 {
    import com.company.assembleegameclient.game.GameSprite;
-   import com.company.assembleegameclient.ui.TextButton;
    import com.company.ui.SimpleText;
-   import flash.events.Event;
+
+import drawing.components.TextButton;
+
+import flash.events.Event;
    import flash.events.MouseEvent;
    import flash.events.TimerEvent;
    import flash.filters.DropShadowFilter;

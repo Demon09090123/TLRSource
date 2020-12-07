@@ -7,11 +7,13 @@ package com.company.assembleegameclient.mapeditor
    import com.company.assembleegameclient.map.RegionLibrary;
    import com.company.assembleegameclient.objects.ObjectLibrary;
    import com.company.assembleegameclient.screens.AccountScreen;
-   import com.company.assembleegameclient.ui.dropdown.DropDown;
    import com.company.util.IntPoint;
    import com.company.util.SpriteUtil;
    import com.hurlant.util.Base64;
-   import flash.display.Sprite;
+
+import drawing.components.DropDown;
+
+import flash.display.Sprite;
    import flash.events.Event;
    import flash.events.IOErrorEvent;
    import flash.geom.Rectangle;
@@ -20,7 +22,6 @@ package com.company.assembleegameclient.mapeditor
    import flash.utils.ByteArray;
    import kabam.lib.json.JsonParser;
    import kabam.rotmg.core.StaticInjectorContext;
-   import kabam.rotmg.ui.view.components.ScreenBase;
    import net.hires.debug.Stats;
    
    public class EditingScreen extends Sprite
@@ -58,7 +59,6 @@ package com.company.assembleegameclient.mapeditor
       public function EditingScreen()
       {
          super();
-         addChild(new ScreenBase());
          addChild(new AccountScreen());
          this.json = StaticInjectorContext.getInjector().getInstance(JsonParser);
          this.commandMenu_ = new MECommandMenu();

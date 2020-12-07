@@ -60,8 +60,6 @@ namespace Last_Realm_Server.Game.Entities
                     int min = stats[i].MinIncrease;
                     int max = stats[i].MaxIncrease;
                     Stats[i] += MathUtils.NextInt(min, max);
-                    if (Stats[i] > stats[i].MaxValue)
-                        Stats[i] = stats[i].MaxValue;
                 }
 
                 HP = Stats[0];

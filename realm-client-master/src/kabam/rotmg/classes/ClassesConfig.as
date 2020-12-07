@@ -1,19 +1,14 @@
 package kabam.rotmg.classes
 {
-   import kabam.rotmg.account.core.control.IsAccountRegisteredGuard;
    import kabam.rotmg.account.core.signals.CharListDataSignal;
    import kabam.rotmg.account.core.signals.LogoutSignal;
    import kabam.rotmg.assets.EmbeddedData;
-   import kabam.rotmg.classes.control.BuyCharacterSkinCommand;
-   import kabam.rotmg.classes.control.BuyCharacterSkinSignal;
-   import kabam.rotmg.classes.control.FocusCharacterSkinSignal;
    import kabam.rotmg.classes.control.ParseCharListXmlCommand;
    import kabam.rotmg.classes.control.ParseClassesXMLSignal;
    import kabam.rotmg.classes.control.ParseClassesXmlCommand;
    import kabam.rotmg.classes.control.ParseSkinsXmlCommand;
    import kabam.rotmg.classes.control.ResetClassDataCommand;
    import kabam.rotmg.classes.model.ClassesModel;
-   import kabam.rotmg.classes.services.BuySkinTask;
    import kabam.rotmg.classes.view.CharacterSkinListItem;
    import kabam.rotmg.classes.view.CharacterSkinListItemFactory;
    import kabam.rotmg.classes.view.CharacterSkinListItemMediator;
@@ -54,8 +49,6 @@ package kabam.rotmg.classes
       {
          this.injector.map(ClassesModel).asSingleton();
          this.injector.map(CharacterSkinListItemFactory).asSingleton();
-         this.injector.map(FocusCharacterSkinSignal).asSingleton();
-         this.injector.map(BuySkinTask);
          this.mediatorMap.map(CharacterSkinListItem).toMediator(CharacterSkinListItemMediator);
          this.mediatorMap.map(CharacterSkinListView).toMediator(CharacterSkinListMediator);
          this.mediatorMap.map(CharacterSkinView).toMediator(CharacterSkinMediator);
@@ -64,7 +57,6 @@ package kabam.rotmg.classes
          this.commandMap.map(CharListDataSignal).toCommand(ParseCharListXmlCommand);
          this.commandMap.map(ParseClassesXMLSignal).toCommand(ParseClassesXmlCommand);
          this.commandMap.map(ParseClassesXMLSignal).toCommand(ParseSkinsXmlCommand);
-         this.commandMap.map(BuyCharacterSkinSignal).toCommand(BuyCharacterSkinCommand).withGuards(IsAccountRegisteredGuard);
          this.context.lifecycle.afterInitializing(this.init);
       }
       

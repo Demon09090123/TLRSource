@@ -5,7 +5,6 @@ package kabam.rotmg.classes.view
    import flash.utils.Timer;
    import kabam.rotmg.assets.model.Animation;
    import kabam.rotmg.assets.services.CharacterFactory;
-   import kabam.rotmg.classes.control.FocusCharacterSkinSignal;
    import kabam.rotmg.classes.model.CharacterClass;
    import kabam.rotmg.classes.model.CharacterSkin;
    import kabam.rotmg.classes.model.ClassesModel;
@@ -24,10 +23,7 @@ package kabam.rotmg.classes.view
       
       [Inject]
       public var playerModel:PlayerModel;
-      
-      [Inject]
-      public var focusSet:FocusCharacterSkinSignal;
-      
+
       [Inject]
       public var factory:CharacterFactory;
       
@@ -48,14 +44,12 @@ package kabam.rotmg.classes.view
       {
          this.character = this.classesModel.getSelected();
          this.nextSkinTimer.addEventListener(TimerEvent.TIMER,this.delayedFocusSet);
-         this.focusSet.add(this.onFocusSet);
          this.setCharacterData();
          this.onFocusSet();
       }
       
       override public function destroy() : void
       {
-         this.focusSet.remove(this.onFocusSet);
          this.nextSkinTimer.removeEventListener(TimerEvent.TIMER,this.delayedFocusSet);
          this.view.setWalkingAnimation(null);
          this.disposeAnimations();

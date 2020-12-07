@@ -5,7 +5,7 @@
 		<Class>Character</Class>
 		
 		<AnimatedTexture><File>chars8x8rEncounters</File><Index>29</Index></AnimatedTexture>
-		<Defense>35</Defense>
+		<PhysicalDefense>35</PhysicalDefense>
 		<XpMult>0</XpMult>
 		<Size>120</Size>
 		
@@ -86,7 +86,7 @@
 		<DeathSound>monster/eggs_death</DeathSound>
 		
 		<MaxHitPoints>650000</MaxHitPoints>
-		<Defense>0</Defense>
+		<PhysicalDefense>0</PhysicalDefense>
 		<XpMult>0.0</XpMult>
    		<Size>130</Size>
 		<ShadowSize>100</ShadowSize>
@@ -101,7 +101,7 @@
 		<AnimatedTexture><File>chars16x16rEncounters</File><Index>22</Index></AnimatedTexture>
 	
 		<MaxHitPoints>65000</MaxHitPoints>
-		<Defense>55</Defense>
+		<PhysicalDefense>55</PhysicalDefense>
 		<XpMult>0.35</XpMult>
 		
 		<Size>40</Size>
@@ -205,7 +205,7 @@
         <DeathSound>monster/flying_brain_death</DeathSound>
         <Size>150</Size>
         <ShadowSize>50</ShadowSize>
-        <Defense>10</Defense>
+        <PhysicalDefense>10</PhysicalDefense>
 
 
     </Object>

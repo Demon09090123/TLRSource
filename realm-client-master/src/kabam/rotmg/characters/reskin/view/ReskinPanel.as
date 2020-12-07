@@ -1,9 +1,9 @@
 package kabam.rotmg.characters.reskin.view
 {
    import com.company.assembleegameclient.game.GameSprite;
-   import com.company.assembleegameclient.ui.TextButton;
    import com.company.assembleegameclient.ui.panels.Panel;
    import com.company.ui.SimpleText;
+   import drawing.components.TextButton;
    import flash.events.MouseEvent;
    import flash.filters.DropShadowFilter;
    import flash.text.TextFieldAutoSize;

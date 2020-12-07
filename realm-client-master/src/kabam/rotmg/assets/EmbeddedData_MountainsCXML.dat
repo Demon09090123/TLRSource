@@ -10,7 +10,7 @@
 		<DeathSound>monster/greater_demons_death</DeathSound>
 		<Size>100</Size>
 		<MaxHitPoints>1000</MaxHitPoints>
-		<Defense>12</Defense>
+		<PhysicalDefense>12</PhysicalDefense>
 		<Terrain>Mountains</Terrain>
 		<SpawnProb>1.0</SpawnProb>
 		<Spawn><Mean>2</Mean><StdDev>1</StdDev><Min>2</Min><Max>4</Max></Spawn>
@@ -35,7 +35,7 @@
 		<DeathSound>monster/sprite_god_death</DeathSound>
 		<Size>100</Size>
 		<MaxHitPoints>2000</MaxHitPoints>
-		<Defense>12</Defense>
+		<PhysicalDefense>12</PhysicalDefense>
 		<Terrain>Mountains</Terrain>
 		<SpawnProb>1.0</SpawnProb>
 		<Flying/>
@@ -67,7 +67,7 @@
 		<DeathSound>monster/sprites_death</DeathSound>
 		<Size>75</Size>
 		<MaxHitPoints>50</MaxHitPoints>
-		<Defense>0</Defense>
+		<PhysicalDefense>0</PhysicalDefense>
 		<Terrain>Mountains</Terrain>
 		<Flying/>
 	</Object>
@@ -81,7 +81,7 @@
 		<DeathSound>monster/medusa_death</DeathSound>
 		<Size>100</Size>
 		<MaxHitPoints>2000</MaxHitPoints>
-		<Defense>18</Defense>
+		<PhysicalDefense>18</PhysicalDefense>
 		<Terrain>Mountains</Terrain>
 		<SpawnProb>1.0</SpawnProb>
 		<Spawn><Mean>3</Mean><StdDev>1</StdDev><Min>2</Min><Max>5</Max></Spawn>
@@ -104,7 +104,7 @@
 		<DeathSound>monster/ents_death</DeathSound>
 		<Size>100</Size>
 		<MaxHitPoints>1000</MaxHitPoints>
-		<Defense>18</Defense>
+		<PhysicalDefense>18</PhysicalDefense>
 		<Terrain>Mountains</Terrain>
 		<SpawnProb>1.0</SpawnProb>
 		<Spawn><Mean>3</Mean><StdDev>1</StdDev><Min>2</Min><Max>5</Max></Spawn>
@@ -127,7 +127,7 @@
 		<DeathSound>monster/beholder_death</DeathSound>
 		<Size>100</Size>
 		<MaxHitPoints>1500</MaxHitPoints>
-		<Defense>12</Defense>
+		<PhysicalDefense>12</PhysicalDefense>
 		<Terrain>Mountains</Terrain>
 		<SpawnProb>1.0</SpawnProb>
 		<Spawn><Mean>3</Mean><StdDev>1</StdDev><Min>2</Min><Max>7</Max></Spawn>
@@ -159,7 +159,7 @@
 		<DeathSound>monster/flying_brain_death</DeathSound>
 		<Size>100</Size>
 		<MaxHitPoints>1000</MaxHitPoints>
-		<Defense>12</Defense>
+		<PhysicalDefense>12</PhysicalDefense>
 		<Terrain>Mountains</Terrain>
 		<SpawnProb>1.0</SpawnProb>
 		<Spawn><Mean>3</Mean><StdDev>1</StdDev><Min>2</Min><Max>5</Max></Spawn>
@@ -184,7 +184,7 @@
 		<DeathSound>monster/slimes_death</DeathSound>
 		<Size>100</Size>
 		<MaxHitPoints>1000</MaxHitPoints>
-		<Defense>12</Defense>
+		<PhysicalDefense>12</PhysicalDefense>
 		<Terrain>Mountains</Terrain>
 		<SpawnProb>1.0</SpawnProb>
 		<God/>
@@ -213,7 +213,7 @@
 		<DeathSound>monster/ghost_god_death</DeathSound>
 		<Size>100</Size>
 		<MaxHitPoints>1000</MaxHitPoints>
-		<Defense>12</Defense>
+		<PhysicalDefense>12</PhysicalDefense>
 		<Terrain>Mountains</Terrain>
 		<SpawnProb>1.0</SpawnProb>
 		<Spawn><Mean>3</Mean><StdDev>1</StdDev><Min>2</Min><Max>5</Max></Spawn>
@@ -252,7 +252,7 @@
 
 		<MaxHitPoints>2000</MaxHitPoints>
 		<Size>70</Size>
-		<Defense>20</Defense>
+		<PhysicalDefense>20</PhysicalDefense>
 		<XpMult>2.0</XpMult>
 		<Terrain>Mountains</Terrain>
 		<SpawnProb>0.3</SpawnProb>
@@ -288,7 +288,7 @@
 
 		<MaxHitPoints>2000</MaxHitPoints>
 		<Size>70</Size>
-		<Defense>20</Defense>
+		<PhysicalDefense>20</PhysicalDefense>
 		<XpMult>0.0</XpMult>
 		<Terrain>Mountains</Terrain>
 
@@ -324,7 +324,7 @@
 
 		<MaxHitPoints>2000</MaxHitPoints>
 		<Size>70</Size>
-		<Defense>20</Defense>
+		<PhysicalDefense>20</PhysicalDefense>
 		<XpMult>0.0</XpMult>
 		<Terrain>Mountains</Terrain>
 
@@ -346,7 +346,7 @@
 		<DeathSound>monster/djinn_death</DeathSound>
 		<Size>100</Size>
 		<MaxHitPoints>1000</MaxHitPoints>
-		<Defense>12</Defense>
+		<PhysicalDefense>12</PhysicalDefense>
 		<Terrain>Mountains</Terrain>
 		<Spawn><Mean>3</Mean><StdDev>1</StdDev><Min>2</Min><Max>5</Max></Spawn>
 		<Flying/>
@@ -381,7 +381,7 @@
 			
 		<Size>120</Size>
 		<MaxHitPoints>1000000</MaxHitPoints>
-		<Defense>0</Defense>
+		<PhysicalDefense>0</PhysicalDefense>
 		<Terrain>Mountains</Terrain>
 		<SpawnProb>0.025</SpawnProb>
 		<XpMult>0</XpMult>
@@ -414,7 +414,7 @@
 		<DeathSound>monster/medusa_death</DeathSound>
 		<Size>100</Size>
 		<MaxHitPoints>2000</MaxHitPoints>
-		<Defense>20</Defense>
+		<PhysicalDefense>20</PhysicalDefense>
 		<Terrain>Mountains</Terrain>
 		<SpawnProb>0.55</SpawnProb>
 		<God/>

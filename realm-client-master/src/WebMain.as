@@ -5,6 +5,8 @@ import com.company.assembleegameclient.sound.SoundEffectLibrary;
 import com.company.assembleegameclient.util.AssetLoader;
 import com.company.assembleegameclient.util.StageProxy;
 
+import drawing.uiAssets.UIComponentHelper;
+
 import flash.display.LoaderInfo;
    import flash.display.Sprite;
 import flash.display.Stage;
@@ -13,12 +15,14 @@ import flash.display.StageScaleMode;
 import flash.events.MouseEvent;
 import flash.system.Capabilities;
 import flash.system.Security;
+import flash.utils.getTimer;
 
 import kabam.lib.net.NetConfig;
    import kabam.rotmg.account.AccountConfig;
    import kabam.rotmg.appengine.AppEngineConfig;
    import kabam.rotmg.assets.AssetsConfig;
-   import kabam.rotmg.characters.CharactersConfig;
+import kabam.rotmg.assets.EmbeddedAssets;
+import kabam.rotmg.characters.CharactersConfig;
    import kabam.rotmg.classes.ClassesConfig;
    import kabam.rotmg.core.CoreConfig;
    import kabam.rotmg.core.StaticInjectorContext;
@@ -70,6 +74,7 @@ import robotlegs.bender.bundles.mvcs.MVCSBundle;
          this.hackParameters();
          this.createContext();
          new AssetLoader().load();
+         UIComponentHelper.load();
          stage.scaleMode = StageScaleMode.EXACT_FIT;
          var startup:StartupSignal = this.context.injector.getInstance(StartupSignal);
          startup.dispatch();
@@ -77,6 +82,15 @@ import robotlegs.bender.bundles.mvcs.MVCSBundle;
          STAGE.addEventListener(MouseEvent.RIGHT_CLICK, onRightClick)
          STAGE.addEventListener(Event.ENTER_FRAME, onEnterFrame);
          UIUtils.toggleQuality(Parameters.data_.quality);
+      }
+
+      public static function sleep(ms:int):void {
+          var init:int = getTimer();
+          while(true) {
+              if (getTimer() - init > ms) {
+                  break;
+              }
+          }
       }
 
       private static function onRightClick(event:MouseEvent) : void

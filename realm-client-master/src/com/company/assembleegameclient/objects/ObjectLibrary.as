@@ -336,8 +336,12 @@ import com.company.util.AssetLibrary;
                   return p.level_ >= val;
                case StatData.ATTACK_STAT:
                   return p.attack_ >= val;
-               case StatData.DEFENSE_STAT:
-                  return p.defense_ >= val;
+                case StatData.MAGIC_POWER_STAT:
+                  return p.magicPower_ >= val;
+               case StatData.PHYSICAL_DEFENSE_STAT:
+                  return p.physicalDefense >= val;
+                case StatData.MAGIC_DEFENSE_STAT:
+                  return p.magicDefense_ >= val;
                case StatData.SPEED_STAT:
                   return p.speed_ >= val;
                case StatData.VITALITY_STAT:

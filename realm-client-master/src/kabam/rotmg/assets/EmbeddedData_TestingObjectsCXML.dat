@@ -12,7 +12,7 @@
 		<DeathSound>monster/oryx_death</DeathSound>
 		<Size>120</Size>
 		<MaxHitPoints>75000</MaxHitPoints>
-		<Defense>60</Defense>
+		<PhysicalDefense>60</PhysicalDefense>
 		<Quest/>
 		<God/>
 		<Oryx/>
@@ -113,7 +113,7 @@
 		<DeathSound>monster/minion_of_oryx_death</DeathSound>
 		<Size>100</Size>
 		<MaxHitPoints>4000</MaxHitPoints>
-		<Defense>25</Defense>
+		<PhysicalDefense>25</PhysicalDefense>
 		<XpMult>0.1</XpMult>
 		<Projectile id="0">
 			<ObjectId>Blue Shuriken</ObjectId>
@@ -155,7 +155,7 @@
 
 		<Size>95</Size>
 		<MaxHitPoints>300000</MaxHitPoints>
-		<Defense>7</Defense>
+		<PhysicalDefense>7</PhysicalDefense>
 		<Hero/>
 		<Quest/>
 		<Level>15</Level>
@@ -202,7 +202,7 @@
 
 		<Size>100</Size>
 		<MaxHitPoints>100000</MaxHitPoints>
-		<Defense>2</Defense>
+		<PhysicalDefense>2</PhysicalDefense>
 		<XpMult>0.01</XpMult>
 
 
@@ -240,7 +240,7 @@
 
 		<Size>95</Size>
 		<MaxHitPoints>5000</MaxHitPoints>
-		<Defense>7</Defense>
+		<PhysicalDefense>7</PhysicalDefense>
 		<Hero/>
 		<Quest/>
 		<Level>15</Level>
@@ -273,7 +273,7 @@
 
 		<Size>100</Size>
 		<MaxHitPoints>1000</MaxHitPoints>
-		<Defense>2</Defense>
+		<PhysicalDefense>2</PhysicalDefense>
 
 
 		<Projectile id="0">
@@ -306,7 +306,7 @@
 
 
 		<MaxHitPoints>4000</MaxHitPoints>
-		<Defense>7</Defense>
+		<PhysicalDefense>7</PhysicalDefense>
 
 
 		<Projectile id="0">
@@ -342,7 +342,7 @@
 
 		<Size>180</Size>
 		<MaxHitPoints>8000</MaxHitPoints>
-		<Defense>20</Defense>
+		<PhysicalDefense>20</PhysicalDefense>
 
 
 		<Projectile id="0">
@@ -374,7 +374,7 @@
 		<DeathSound>monster/skeletons_death</DeathSound>
 		<Size>120</Size>
 		<MaxHitPoints>300000</MaxHitPoints>
-		<Defense>7</Defense>
+		<PhysicalDefense>7</PhysicalDefense>
 		<Hero/>
 		<Quest/>
 		<Level>9</Level>
@@ -422,7 +422,7 @@
 		<DeathSound>monster/skeletons_death</DeathSound>
 		<Size>120</Size>
 		<MaxHitPoints>1100</MaxHitPoints>
-		<Defense>7</Defense>
+		<PhysicalDefense>7</PhysicalDefense>
 		<Hero/>
 		<Quest/>
 		<Level>9</Level>
@@ -465,7 +465,7 @@
 
 		<Size>80</Size>
 		<MaxHitPoints>6000</MaxHitPoints>
-		<Defense>4</Defense>
+		<PhysicalDefense>4</PhysicalDefense>
 		<XpMult>0.3</XpMult>
 
 
@@ -509,7 +509,7 @@
 
 		<Size>100</Size>
 		<MaxHitPoints>4000</MaxHitPoints>
-		<Defense>18</Defense>
+		<PhysicalDefense>18</PhysicalDefense>
 		<XpMult>0.3</XpMult>
 
 
@@ -539,7 +539,7 @@
 		<DeathSound>monster/ents_death</DeathSound>
 		<Size>140</Size>
 		<MaxHitPoints>300000</MaxHitPoints>
-		<Defense>7</Defense>
+		<PhysicalDefense>7</PhysicalDefense>
 		<Hero/>
 		<Quest/>
 		<Level>11</Level>
@@ -574,7 +574,7 @@
 		<DeathSound>monster/ents_death</DeathSound>
 		<Size>140</Size>
 		<MaxHitPoints>1200</MaxHitPoints>
-		<Defense>15</Defense>
+		<PhysicalDefense>15</PhysicalDefense>
 		<Hero/>
 		<Quest/>
 		<Level>11</Level>
@@ -671,7 +671,7 @@
 		<DeathSound>monster/ents_death</DeathSound>
 		<Size>120</Size>
 		<MaxHitPoints>4500</MaxHitPoints>
-		<Defense>11</Defense>
+		<PhysicalDefense>11</PhysicalDefense>
 		<XpMult>0.15</XpMult>
 
 		<Projectile id="0">
@@ -697,7 +697,7 @@
 		<DeathSound>monster/ents_death</DeathSound>
 		<Size>90</Size>
 		<MaxHitPoints>200</MaxHitPoints>
-		<Defense>3</Defense>
+		<PhysicalDefense>3</PhysicalDefense>
 		<XpMult>0.1</XpMult>
 		<Projectile id="0">
 			<ObjectId>Leaf Bolt</ObjectId>
@@ -721,7 +721,7 @@
 		<DeathSound>monster/sprites_death</DeathSound>
 		<Size>140</Size>
 		<MaxHitPoints>3600</MaxHitPoints>
-		<Defense>7</Defense>
+		<PhysicalDefense>7</PhysicalDefense>
 		<Flying/>
 		<XpMult>0.0</XpMult>
 
@@ -752,7 +752,7 @@
 		<DeathSound>monster/sprites_death</DeathSound>
 		<Size>140</Size>
 		<MaxHitPoints>3600</MaxHitPoints>
-		<Defense>7</Defense>
+		<PhysicalDefense>7</PhysicalDefense>
 		<Flying/>
 		<XpMult>0.4</XpMult>
 
@@ -781,7 +781,7 @@
 		<DeathSound>monster/skeletons_death</DeathSound>
 		<Size>100</Size>
 		<MaxHitPoints>900</MaxHitPoints>
-		<Defense>11</Defense>
+		<PhysicalDefense>11</PhysicalDefense>
 		<Quest/>
 		<Level>7</Level>
 		<XpMult>3.0</XpMult>
@@ -805,7 +805,7 @@
 		<DeathSound>monster/pirates_death</DeathSound>
 		<Size>80</Size>
 		<MaxHitPoints>300</MaxHitPoints>
-		<Defense>0</Defense>
+		<PhysicalDefense>0</PhysicalDefense>
 		<Quest/>
 		<Level>1</Level>
 		<XpMult>0.7</XpMult>
@@ -832,7 +832,7 @@
 		<DeathSound>monster/spider_queen_death</DeathSound>
 		<Size>100</Size>
 		<MaxHitPoints>2700</MaxHitPoints>
-		<Defense>4</Defense>
+		<PhysicalDefense>4</PhysicalDefense>
 		<Enemy/>
 		<God/>
 		<StasisImmune/>
@@ -868,7 +868,7 @@
 		<Group>AttackType</Group>
 		<Class>Character</Class>
 		<StasisImmune/>
-		<MaxHitPoints>100000</MaxHitPoints><Defense>1000</Defense>
+		<MaxHitPoints>100000</MaxHitPoints><PhysicalDefense>1000</PhysicalDefense>
         <Texture><File>lofiObj2</File><Index>0x49</Index></Texture>
 		<Size>250</Size>
 		<StasisImmune/>
@@ -893,7 +893,7 @@
 		<Group>AttackType</Group>
 		<Class>Character</Class>
 		<StasisImmune/>
-		<MaxHitPoints>100000</MaxHitPoints><Defense>1000</Defense>
+		<MaxHitPoints>100000</MaxHitPoints><PhysicalDefense>1000</PhysicalDefense>
         <Texture><File>lofiObj2</File><Index>0x49</Index></Texture>
 		<Size>250</Size>
 		<StasisImmune/>
@@ -918,7 +918,7 @@
 		<Group>AttackType</Group>
 		<Class>Character</Class>
 		<StasisImmune/>
-		<MaxHitPoints>100000</MaxHitPoints><Defense>1000</Defense>
+		<MaxHitPoints>100000</MaxHitPoints><PhysicalDefense>1000</PhysicalDefense>
         <Texture><File>lofiObj2</File><Index>0x49</Index></Texture>
 		<Size>250</Size>
 		<StasisImmune/>
@@ -943,7 +943,7 @@
 		<Group>AttackType</Group>
 		<Class>Character</Class>
 		<StasisImmune/>
-		<MaxHitPoints>100000</MaxHitPoints><Defense>1000</Defense>
+		<MaxHitPoints>100000</MaxHitPoints><PhysicalDefense>1000</PhysicalDefense>
         <Texture><File>lofiObj2</File><Index>0x49</Index></Texture>
 		<Size>250</Size>
 		<StasisImmune/>
@@ -968,7 +968,7 @@
 		<Group>AttackType</Group>
 		<Class>Character</Class>
 		<StasisImmune/>
-		<MaxHitPoints>100000</MaxHitPoints><Defense>1000</Defense>
+		<MaxHitPoints>100000</MaxHitPoints><PhysicalDefense>1000</PhysicalDefense>
         <Texture><File>lofiObj2</File><Index>0x49</Index></Texture>
 		<Size>250</Size>
 		<StasisImmune/>
@@ -993,7 +993,7 @@
 		<Group>AttackType</Group>
 		<Class>Character</Class>
 		<StasisImmune/>
-		<MaxHitPoints>100000</MaxHitPoints><Defense>1000</Defense>
+		<MaxHitPoints>100000</MaxHitPoints><PhysicalDefense>1000</PhysicalDefense>
         <Texture><File>lofiObj2</File><Index>0x49</Index></Texture>
 		<Size>250</Size>
 		<StasisImmune/>
@@ -1018,7 +1018,7 @@
 		<Group>AttackType</Group>
 		<Class>Character</Class>
 		<StasisImmune/>
-		<MaxHitPoints>100000</MaxHitPoints><Defense>1000</Defense>
+		<MaxHitPoints>100000</MaxHitPoints><PhysicalDefense>1000</PhysicalDefense>
         <Texture><File>lofiObj2</File><Index>0x49</Index></Texture>
 		<Size>250</Size>
 		<StasisImmune/>
@@ -1043,7 +1043,7 @@
 		<Group>AttackType</Group>
 		<Class>Character</Class>
 		<StasisImmune/>
-		<MaxHitPoints>100000</MaxHitPoints><Defense>1000</Defense>
+		<MaxHitPoints>100000</MaxHitPoints><PhysicalDefense>1000</PhysicalDefense>
         <Texture><File>lofiObj2</File><Index>0x49</Index></Texture>
 		<Size>250</Size>
 		<StasisImmune/>
@@ -1068,7 +1068,7 @@
 		<Group>AttackType</Group>
 		<Class>Character</Class>
 		<StasisImmune/>
-		<MaxHitPoints>100000</MaxHitPoints><Defense>1000</Defense>
+		<MaxHitPoints>100000</MaxHitPoints><PhysicalDefense>1000</PhysicalDefense>
         <Texture><File>lofiObj2</File><Index>0x49</Index></Texture>
 		<Size>250</Size>
 		<StasisImmune/>
@@ -1101,7 +1101,7 @@
 
 		<MaxHitPoints>600</MaxHitPoints>
 		<Size>180</Size>
-		<Defense>0</Defense>
+		<PhysicalDefense>0</PhysicalDefense>
 		<XpMult>70</XpMult>
 
 
@@ -1121,7 +1121,7 @@
 
 		<MaxHitPoints>400</MaxHitPoints>
 		<Size>180</Size>
-		<Defense>0</Defense>
+		<PhysicalDefense>0</PhysicalDefense>
 		<XpMult>70</XpMult>
 
 
@@ -1141,7 +1141,7 @@
 
 		<MaxHitPoints>800</MaxHitPoints>
 		<Size>180</Size>
-		<Defense>0</Defense>
+		<PhysicalDefense>0</PhysicalDefense>
 		<XpMult>70</XpMult>
 
 
@@ -1161,7 +1161,7 @@
 
 		<MaxHitPoints>600</MaxHitPoints>
 		<Size>180</Size>
-		<Defense>0</Defense>
+		<PhysicalDefense>0</PhysicalDefense>
 		<XpMult>50</XpMult>
 
 
@@ -1181,7 +1181,7 @@
 
 		<MaxHitPoints>600</MaxHitPoints>
 		<Size>180</Size>
-		<Defense>0</Defense>
+		<PhysicalDefense>0</PhysicalDefense>
 		<XpMult>90</XpMult>
 
 
@@ -1201,7 +1201,7 @@
 
 		<MaxHitPoints>600</MaxHitPoints>
 		<Size>180</Size>
-		<Defense>0</Defense>
+		<PhysicalDefense>0</PhysicalDefense>
 		<XpMult>120</XpMult>
 
 
@@ -1221,7 +1221,7 @@
 
 		<MaxHitPoints>600</MaxHitPoints>
 		<Size>180</Size>
-		<Defense>0</Defense>
+		<PhysicalDefense>0</PhysicalDefense>
 		<XpMult>200</XpMult>
 
 
@@ -1241,7 +1241,7 @@
 
 		<MaxHitPoints>600</MaxHitPoints>
 		<Size>180</Size>
-		<Defense>0</Defense>
+		<PhysicalDefense>0</PhysicalDefense>
 		<XpMult>300</XpMult>
 
 
@@ -1258,7 +1258,7 @@
 		<DeathSound>monster/ghost_god_death</DeathSound>
 		<Size>100</Size>
 		<MaxHitPoints>27000</MaxHitPoints>
-		<Defense>25</Defense>
+		<PhysicalDefense>25</PhysicalDefense>
 		<God/>
 		<StasisImmune/>
 		<XpMult>0.5</XpMult>
@@ -1322,7 +1322,7 @@
 		<DeathSound>monster/ghost_god_death</DeathSound>
 		<Size>100</Size>
 		<MaxHitPoints>15000</MaxHitPoints>
-		<Defense>12</Defense>
+		<PhysicalDefense>12</PhysicalDefense>
 
 		<Level>1</Level>
 		<XpMult>0.1</XpMult>
@@ -1353,7 +1353,7 @@
 		<DeathSound>monster/cyclops_death</DeathSound>
 		<Size>100</Size>
 		<MaxHitPoints>6000</MaxHitPoints>
-		<Defense>11</Defense>
+		<PhysicalDefense>11</PhysicalDefense>
 
 		<Level>1</Level>
 		<XpMult>0.25</XpMult>

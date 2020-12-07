@@ -4,8 +4,6 @@ package kabam.rotmg.account.core.signals
    
    public class CharListDataSignal extends Signal
    {
-       
-      
       public function CharListDataSignal()
       {
          super(XML);

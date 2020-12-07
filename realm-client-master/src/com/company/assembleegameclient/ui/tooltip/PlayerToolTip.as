@@ -50,12 +50,12 @@ package com.company.assembleegameclient.ui.tooltip
             addChild(this.guildText_);
             yOffset = yOffset + 30;
          }
-         this.hpBar_ = new StatusBar(176,16,14693428,5526612,"HP");
+         this.hpBar_ = new StatusBar(176,16,14693428,5526612, 0xFFFFFF,false,"HP");
          this.hpBar_.x = 6;
          this.hpBar_.y = yOffset;
          addChild(this.hpBar_);
          yOffset = yOffset + 24;
-         this.mpBar_ = new StatusBar(176,16,6325472,5526612,"MP");
+         this.mpBar_ = new StatusBar(176,16,6325472,5526612,0xFFFFFF,false,"MP");
          this.mpBar_.x = 6;
          this.mpBar_.y = yOffset;
          addChild(this.mpBar_);
@@ -76,8 +76,8 @@ package com.company.assembleegameclient.ui.tooltip
       
       override public function draw() : void
       {
-         this.hpBar_.draw(this.player_.hp_,this.player_.maxHP_,this.player_.maxHPBoost_,this.player_.maxHPMax_);
-         this.mpBar_.draw(this.player_.mp_,this.player_.maxMP_,this.player_.maxMPBoost_,this.player_.maxMPMax_);
+         this.hpBar_.draw(this.player_.hp_,this.player_.maxHP_);
+         this.mpBar_.draw(this.player_.mp_,this.player_.maxMP_);
          this.eGrid.setItems(this.player_.equipment_, this.player_.itemDatas_);
          this.rankText_.draw(this.player_.numStars_);
          super.draw();

@@ -93,11 +93,13 @@ namespace Last_Realm_Server.Common
             data.Add(new XElement("MaxMagicPoints", Stats[1]));
             data.Add(new XElement("MagicPoints", MP));
             data.Add(new XElement("Attack", Stats[2]));
-            data.Add(new XElement("Defense", Stats[3]));
-            data.Add(new XElement("Speed", Stats[4]));
-            data.Add(new XElement("Dexterity", Stats[5]));
-            data.Add(new XElement("HpRegen", Stats[6]));
-            data.Add(new XElement("MpRegen", Stats[7]));
+            data.Add(new XElement("MagicPower", Stats[3]));
+            data.Add(new XElement("PhysicalDefense", Stats[4]));
+            data.Add(new XElement("MagicDefense", Stats[5]));
+            data.Add(new XElement("Speed", Stats[6]));
+            data.Add(new XElement("Dexterity", Stats[7]));
+            data.Add(new XElement("HpRegen", Stats[8]));
+            data.Add(new XElement("MpRegen", Stats[9]));
             data.Add(new XElement("Tex1", Tex1));
             data.Add(new XElement("Tex2", Tex2));
             data.Add(new XElement("Texture", SkinType));
@@ -114,16 +116,21 @@ namespace Last_Realm_Server.Common
                 data.Add(new XElement("Exp", Experience));
                 data.Add(new XElement("Equipment", string.Join(",", Inventory)));
                 data.Add(new XElement("ItemDatas", string.Join(",", ItemDatas)));
-                data.Add(new XElement("MaxHitPoints", Stats[0]));
-                data.Add(new XElement("HitPoints", HP));
-                data.Add(new XElement("MaxMagicPoints", Stats[1]));
-                data.Add(new XElement("MagicPoints", MP));
-                data.Add(new XElement("Attack", Stats[2]));
-                data.Add(new XElement("Defense", Stats[3]));
-                data.Add(new XElement("Speed", Stats[4]));
-                data.Add(new XElement("Dexterity", Stats[5]));
-                data.Add(new XElement("HpRegen", Stats[6]));
-                data.Add(new XElement("MpRegen", Stats[7]));
+                
+
+                var statElement = new XElement("Stats");
+                statElement.Add(new XElement("MaxHitPoints", Stats[0]));
+                statElement.Add(new XElement("MaxMagicPoints", Stats[1]));
+                statElement.Add(new XElement("Attack", Stats[2]));
+                statElement.Add(new XElement("MagicPower", Stats[3]));
+                statElement.Add(new XElement("PhysicalDefense", Stats[4]));
+                statElement.Add(new XElement("MagicDefense", Stats[5]));
+                statElement.Add(new XElement("Speed", Stats[6]));
+                statElement.Add(new XElement("Dexterity", Stats[7]));
+                statElement.Add(new XElement("HpRegen", Stats[8]));
+                statElement.Add(new XElement("MpRegen", Stats[9]));
+                data.Add(statElement);
+
                 data.Add(new XElement("Tex1", Tex1));
                 data.Add(new XElement("Tex2", Tex2));
                 data.Add(new XElement("Texture", SkinType));
@@ -172,7 +179,6 @@ namespace Last_Realm_Server.Common
         public bool Effects;
         public bool Sounds;
         public bool Notifications;
-        public bool HasCharacter;
 
         public AccountModel() : base(null) { }
         public AccountModel(int key) : base($"account.{key}")
@@ -200,7 +206,6 @@ namespace Last_Realm_Server.Common
             Effects = Data.ParseBool("Effects", true);
             Sounds = Data.ParseBool("Sounds", true);
             Notifications = Data.ParseBool("Notifications", true);
-            HasCharacter = Data.ParseBool("HasCharacter", true);
 
 
             Stats = new StatsInfo
@@ -219,7 +224,6 @@ namespace Last_Realm_Server.Common
             {
                 data.Add(new XElement("Name", Name));
                 data.Add(new XElement("Guild", new XElement("Name", GuildName), new XElement("Rank", GuildRank)));
-				data.Add(new XElement("HasCharacter", HasCharacter));
             }
             else
             {
@@ -237,7 +241,6 @@ namespace Last_Realm_Server.Common
                 data.Add(new XElement("Effects", Effects));
                 data.Add(new XElement("Sounds", Sounds));
                 data.Add(new XElement("Notifications", Notifications));
-                data.Add(new XElement("HasCharacter", HasCharacter));
             }
 
             data.Add(Stats.Export(appExport));

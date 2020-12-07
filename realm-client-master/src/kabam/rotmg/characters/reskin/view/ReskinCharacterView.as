@@ -1,8 +1,10 @@
 package kabam.rotmg.characters.reskin.view
 {
-   import com.company.assembleegameclient.ui.TextButton;
    import com.company.ui.SimpleText;
-   import flash.display.CapsStyle;
+
+import drawing.components.TextButton;
+
+import flash.display.CapsStyle;
    import flash.display.DisplayObject;
    import flash.display.JointStyle;
    import flash.display.LineScaleMode;

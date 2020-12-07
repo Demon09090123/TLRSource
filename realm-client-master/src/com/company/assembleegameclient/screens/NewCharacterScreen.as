@@ -1,14 +1,15 @@
 package com.company.assembleegameclient.screens
 {
-   import com.company.assembleegameclient.appengine.SavedCharactersList;
    import com.company.assembleegameclient.objects.ObjectLibrary;
    import com.company.rotmg.graphics.ScreenGraphic;
-   import flash.display.Sprite;
+
+import drawing.components.TitleMenuOption;
+
+import flash.display.Sprite;
    import flash.events.Event;
    import flash.events.MouseEvent;
    import kabam.rotmg.core.model.PlayerModel;
    import kabam.rotmg.game.view.CreditDisplay;
-   import kabam.rotmg.ui.view.components.ScreenBase;
    import org.osflash.signals.Signal;
    
    public class NewCharacterScreen extends Sprite
@@ -29,7 +30,6 @@ package com.company.assembleegameclient.screens
          this.tooltip = new Signal(Sprite);
          this.selected = new Signal(int);
          this.close = new Signal();
-         addChild(new ScreenBase());
          addChild(new AccountScreen());
          addChild(new ScreenGraphic());
       }

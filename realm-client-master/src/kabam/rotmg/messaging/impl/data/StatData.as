@@ -26,87 +26,83 @@ package kabam.rotmg.messaging.impl.data
       public static const INVENTORY_10_STAT:int = 18;
       public static const INVENTORY_11_STAT:int = 19;
       public static const ATTACK_STAT:int = 20;
-      public static const DEFENSE_STAT:int = 21;
-      public static const SPEED_STAT:int = 22;
-      public static const VITALITY_STAT:int = 23;
-      public static const WISDOM_STAT:int = 24;
-      public static const DEXTERITY_STAT:int = 25;
-      public static const CONDITION_STAT:int = 26;
-      public static const NUM_STARS_STAT:int = 27;
-      public static const NAME_STAT:int = 28;
-      public static const TEX1_STAT:int = 29;
-      public static const TEX2_STAT:int = 30;
-      public static const MERCHANDISE_TYPE_STAT:int = 31;
-      public static const MERCHANDISE_PRICE_STAT:int = 32;
-      public static const CREDITS_STAT:int = 33;
-      public static const ACTIVE_STAT:int = 34;
-      public static const ACCOUNT_ID_STAT:int = 35;
-      public static const FAME_STAT:int = 36;
-      public static const MERCHANDISE_CURRENCY_STAT:int = 37;
-      public static const CONNECT_STAT:int = 38;
-      public static const MERCHANDISE_COUNT_STAT:int = 39;
-      public static const MERCHANDISE_MINS_LEFT_STAT:int = 40;
-      public static const MERCHANDISE_DISCOUNT_STAT:int = 41;
-      public static const MERCHANDISE_RANK_REQ_STAT:int = 42;
-      public static const MAX_HP_BOOST_STAT:int = 43;
-      public static const MAX_MP_BOOST_STAT:int = 44;
-      public static const ATTACK_BOOST_STAT:int = 45;
-      public static const DEFENSE_BOOST_STAT:int = 46;
-      public static const SPEED_BOOST_STAT:int = 47;
-      public static const VITALITY_BOOST_STAT:int = 48;
-      public static const WISDOM_BOOST_STAT:int = 49;
-      public static const DEXTERITY_BOOST_STAT:int = 50;
-      public static const CHAR_FAME_STAT:int = 51;
-      public static const NEXT_CLASS_QUEST_FAME_STAT:int = 52;
-      public static const LEGENDARY_RANK_STAT:int = 53;
-      public static const SINK_LEVEL_STAT:int = 54;
-      public static const ALT_TEXTURE_STAT:int = 55;
-      public static const GUILD_NAME_STAT:int = 56;
-      public static const GUILD_RANK_STAT:int = 57;
-      public static const BREATH_STAT:int = 58;
-      public static const HEALTH_POTION_STACK_STAT:int = 59;
-      public static const MAGIC_POTION_STACK_STAT:int = 60;
-      public static const BACKPACK_0_STAT:int = 61;
-      public static const BACKPACK_1_STAT:int = 62;
-      public static const BACKPACK_2_STAT:int = 63;
-      public static const BACKPACK_3_STAT:int = 64;
-      public static const BACKPACK_4_STAT:int = 65;
-      public static const BACKPACK_5_STAT:int = 66;
-      public static const BACKPACK_6_STAT:int = 67;
-      public static const BACKPACK_7_STAT:int = 68;
-      public static const HASBACKPACK_STAT:int = 69;
-      public static const TEXTURE_STAT:int = 70;
-      public static const ITEMDATA_0_STAT:int = 71;
-      public static const ITEMDATA_1_STAT:int = 72;
-      public static const ITEMDATA_2_STAT:int = 73;
-      public static const ITEMDATA_3_STAT:int = 74;
-      public static const ITEMDATA_4_STAT:int = 75;
-      public static const ITEMDATA_5_STAT:int = 76;
-      public static const ITEMDATA_6_STAT:int = 77;
-      public static const ITEMDATA_7_STAT:int = 78;
-      public static const ITEMDATA_8_STAT:int = 79;
-      public static const ITEMDATA_9_STAT:int = 80;
-      public static const ITEMDATA_10_STAT:int = 81;
-      public static const ITEMDATA_11_STAT:int = 82;
-      public static const ITEMDATA_12_STAT:int = 83;
-      public static const ITEMDATA_13_STAT:int = 84;
-      public static const ITEMDATA_14_STAT:int = 85;
-      public static const ITEMDATA_15_STAT:int = 86;
-      public static const ITEMDATA_16_STAT:int = 87;
-      public static const ITEMDATA_17_STAT:int = 88;
-      public static const ITEMDATA_18_STAT:int = 89;
-      public static const ITEMDATA_19_STAT:int = 90;
-       
-      
+      public static const MAGIC_POWER_STAT:int = 21;
+      public static const PHYSICAL_DEFENSE_STAT:int = 22;
+      public static const MAGIC_DEFENSE_STAT:int = 23;
+      public static const SPEED_STAT:int = 24;
+      public static const VITALITY_STAT:int = 25;
+      public static const WISDOM_STAT:int = 26;
+      public static const DEXTERITY_STAT:int = 27;
+      public static const CONDITION_STAT:int = 28;
+      public static const NUM_STARS_STAT:int = 29;
+      public static const NAME_STAT:int = 30;
+      public static const TEX1_STAT:int = 31;
+      public static const TEX2_STAT:int = 32;
+      public static const MERCHANDISE_TYPE_STAT:int = 33;
+      public static const MERCHANDISE_PRICE_STAT:int = 34;
+      public static const CREDITS_STAT:int = 35;
+      public static const ACTIVE_STAT:int = 36;
+      public static const ACCOUNT_ID_STAT:int = 37;
+      public static const MERCHANDISE_CURRENCY_STAT:int = 38;
+      public static const CONNECT_STAT:int = 39;
+      public static const MERCHANDISE_COUNT_STAT:int = 40;
+      public static const MERCHANDISE_MINS_LEFT_STAT:int = 41;
+      public static const MERCHANDISE_DISCOUNT_STAT:int = 42;
+      public static const MERCHANDISE_RANK_REQ_STAT:int = 43;
+      public static const CHAR_FAME_STAT:int = 44;
+      public static const NEXT_CLASS_QUEST_FAME_STAT:int = 45;
+      public static const LEGENDARY_RANK_STAT:int = 46;
+      public static const SINK_LEVEL_STAT:int = 47;
+      public static const ALT_TEXTURE_STAT:int = 48;
+      public static const GUILD_NAME_STAT:int = 49;
+      public static const GUILD_RANK_STAT:int = 50;
+      public static const BREATH_STAT:int = 51;
+      public static const HEALTH_POTION_STACK_STAT:int = 52;
+      public static const MAGIC_POTION_STACK_STAT:int = 53;
+      public static const BACKPACK_0_STAT:int = 54;
+      public static const BACKPACK_1_STAT:int = 55;
+      public static const BACKPACK_2_STAT:int = 56;
+      public static const BACKPACK_3_STAT:int = 57;
+      public static const BACKPACK_4_STAT:int = 58;
+      public static const BACKPACK_5_STAT:int = 59;
+      public static const BACKPACK_6_STAT:int = 60;
+      public static const BACKPACK_7_STAT:int = 61;
+      public static const HASBACKPACK_STAT:int = 62;
+      public static const TEXTURE_STAT:int = 63;
+      public static const ITEMDATA_0_STAT:int = 64;
+      public static const ITEMDATA_1_STAT:int = 65;
+      public static const ITEMDATA_2_STAT:int = 66;
+      public static const ITEMDATA_3_STAT:int = 67;
+      public static const ITEMDATA_4_STAT:int = 68;
+      public static const ITEMDATA_5_STAT:int = 69;
+      public static const ITEMDATA_6_STAT:int = 70;
+      public static const ITEMDATA_7_STAT:int = 71;
+      public static const ITEMDATA_8_STAT:int = 72;
+      public static const ITEMDATA_9_STAT:int = 73;
+      public static const ITEMDATA_10_STAT:int = 74;
+      public static const ITEMDATA_11_STAT:int = 75;
+      public static const ITEMDATA_12_STAT:int = 76;
+      public static const ITEMDATA_13_STAT:int = 77;
+      public static const ITEMDATA_14_STAT:int = 78;
+      public static const ITEMDATA_15_STAT:int = 79;
+      public static const ITEMDATA_16_STAT:int = 80;
+      public static const ITEMDATA_17_STAT:int = 81;
+      public static const ITEMDATA_18_STAT:int = 82;
+      public static const ITEMDATA_19_STAT:int = 83;
+
       public var statType_:uint = 0;
-      
       public var statValue_:int;
-      
       public var strStatValue_:String;
+      public var statName:String;
       
-      public function StatData()
+      public function StatData(name:String = "", value:int = 0)
       {
          super();
+
+         if (name != "" && value != 0) {
+             statName = name;
+             statValue_ = value;
+         }
       }
       
       public static function statToName(stat:int) : String
@@ -119,15 +115,19 @@ package kabam.rotmg.messaging.impl.data
                return "Maximum MP";
             case 2:
                return "Attack";
-            case 3:
-               return "Defense";
+             case 3:
+               return "Magic Power";
             case 4:
-               return "Speed";
+               return "Physical Defense";
             case 5:
-               return "Dexterity";
+               return "Magic Defense";
             case 6:
-               return "Vitality";
+               return "Speed";
             case 7:
+               return "Dexterity";
+            case 8:
+               return "Vitality";
+            case 9:
                return "Wisdom";
             default:
                return "Unknown Stat";

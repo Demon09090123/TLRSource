@@ -1,28 +1,14 @@
 package kabam.rotmg.game.view.components
 {
    import com.company.assembleegameclient.objects.Player;
-   import flash.display.Graphics;
+import com.company.assembleegameclient.ui.Stats;
+
    import flash.display.Sprite;
-   import flash.events.MouseEvent;
    import kabam.rotmg.game.model.StatModel;
-   import org.osflash.signals.natives.NativeSignal;
-   
-   public class StatsView extends Sprite
+
+
+public class StatsView extends Sprite
    {
-      
-      public static const ATTACK:int = 0;
-      
-      public static const DEFENSE:int = 1;
-      
-      public static const SPEED:int = 2;
-      
-      public static const DEXTERITY:int = 3;
-      
-      public static const VITALITY:int = 4;
-      
-      public static const WISDOM:int = 5;
-      
-      public static const NUM_STAT:int = 6;
 
       private static const statsModel:Array = [new StatModel("ATT","Attack","This stat increases the amount of damage done.",true),new StatModel("DEF","Defense","This stat decreases the amount of damage taken.",false),new StatModel("SPD","Speed","This stat increases the speed at which the character moves.",true),new StatModel("DEX","Dexterity","This stat increases the speed at which the character attacks.",true),new StatModel("VIT","Vitality","This stat increases the speed at which hit points are recovered.",true),new StatModel("WIS","Wisdom","This stat increases the speed at which magic points are recovered.",true)];
        
@@ -60,12 +46,14 @@ package kabam.rotmg.game.view.components
       {
          if(go != null)
          {
-            this.stats_[ATTACK].draw(go.attack_,go.attackBoost_,go.attackMax_);
-            this.stats_[DEFENSE].draw(go.defense_,go.defenseBoost_,go.defenseMax_);
-            this.stats_[SPEED].draw(go.speed_,go.speedBoost_,go.speedMax_);
-            this.stats_[DEXTERITY].draw(go.dexterity_,go.dexterityBoost_,go.dexterityMax_);
-            this.stats_[VITALITY].draw(go.vitality_,go.vitalityBoost_,go.vitalityMax_);
-            this.stats_[WISDOM].draw(go.wisdom_,go.wisdomBoost_,go.wisdomMax_);
+            this.stats_[Stats.ATTACK].draw(go.attack_);
+            this.stats_[Stats.MAGIC_POWER].draw(go.magicPower_);
+            this.stats_[Stats.PHYSICAL_DEFENSE].draw(go.physicalDefense);
+            this.stats_[Stats.MAGIC_DEFENSE].draw(go.magicDefense_);
+            this.stats_[Stats.SPEED].draw(go.speed_);
+            this.stats_[Stats.DEXTERITY].draw(go.dexterity_);
+            this.stats_[Stats.VITALITY].draw(go.vitality_);
+            this.stats_[Stats.WISDOM].draw(go.wisdom_);
          }
          this.containerSprite.x = 30 + (191 - this.containerSprite.width) * 0.5;
       }

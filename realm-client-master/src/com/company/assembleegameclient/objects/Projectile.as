@@ -268,7 +268,7 @@ package com.company.assembleegameclient.objects
             sendMessage = isPlayer && (this.damagesPlayers_ || isTargetAnEnemy && this.ownerId_ == player.objectId_);
             if(sendMessage)
             {
-               d = GameObject.damageWithDefense(this.damage_,target.defense_,this.projProps_.armorPiercing_,target.condition_);
+               d = GameObject.damageWithDefense(this.damage_,target.physicalDefense,this.projProps_.armorPiercing_,target.condition_);
                if(target == player)
                {
                   map_.gs_.gsc_.playerHit(this.bulletId_);

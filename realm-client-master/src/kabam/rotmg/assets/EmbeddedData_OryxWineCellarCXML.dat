@@ -8,7 +8,7 @@
 		<DeathSound>monster/minion_of_oryx_death</DeathSound>
 		<Size>80</Size>
 		<MaxHitPoints>1000</MaxHitPoints>
-		<Defense>12</Defense>
+		<PhysicalDefense>12</PhysicalDefense>
 		<XpMult>0.1</XpMult>
 		<Projectile id="0">
 			<ObjectId>Red Fire</ObjectId>
@@ -50,7 +50,7 @@
 		<DeathSound>monster/minion_of_oryx_death</DeathSound>
 		<Size>80</Size>
 		<MaxHitPoints>1000</MaxHitPoints>
-		<Defense>12</Defense>
+		<PhysicalDefense>12</PhysicalDefense>
 		<XpMult>0.1</XpMult>
 	</Object>
 	
@@ -62,7 +62,7 @@
 		<DeathSound>monster/minion_of_oryx_death</DeathSound>
 		<Size>80</Size>
 		<MaxHitPoints>200</MaxHitPoints>
-		<Defense>0</Defense>
+		<PhysicalDefense>0</PhysicalDefense>
 		<XpMult>0.1</XpMult>
 		<Projectile id="0">
 			<ObjectId>Red Fire</ObjectId>
@@ -80,7 +80,7 @@
 		<DeathSound>monster/minion_of_oryx_death</DeathSound>
 		<Size>80</Size>
 		<MaxHitPoints>1000</MaxHitPoints>
-		<Defense>12</Defense>
+		<PhysicalDefense>12</PhysicalDefense>
 		<XpMult>0.1</XpMult>
 	</Object>
 
@@ -92,7 +92,7 @@
 		<DeathSound>monster/minion_of_oryx_death</DeathSound>
 		<Size>80</Size>
 		<MaxHitPoints>100</MaxHitPoints>
-		<Defense>0</Defense>
+		<PhysicalDefense>0</PhysicalDefense>
 		<XpMult>0.1</XpMult>
 		<Projectile id="0">
 			<ObjectId>Red Fire</ObjectId>
@@ -210,7 +210,7 @@
 		<NoMiniMap/>
 	
 		<MaxHitPoints>2000</MaxHitPoints>
-		<Defense>0</Defense>
+		<PhysicalDefense>0</PhysicalDefense>
 		<XpMult>0</XpMult>
 		<Projectile id="0">
 			<ObjectId>Invisible</ObjectId>
@@ -235,7 +235,7 @@
 		<Size>90</Size>
 		<ShadowSize>0</ShadowSize>
 		<MaxHitPoints>3000</MaxHitPoints>
-		<Defense>80</Defense>
+		<PhysicalDefense>80</PhysicalDefense>
 		<XpMult>0.08</XpMult>
 		
 		
@@ -250,7 +250,7 @@
 		<DeathSound>monster/minion_of_oryx_death</DeathSound>
 		<Size>80</Size>
 		<MaxHitPoints>1500</MaxHitPoints>
-		<Defense>18</Defense>
+		<PhysicalDefense>18</PhysicalDefense>
 		<XpMult>0.1</XpMult>
 		<Projectile id="0">
 			<ObjectId>Wine Bomb</ObjectId>

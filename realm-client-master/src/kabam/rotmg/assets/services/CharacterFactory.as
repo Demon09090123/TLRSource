@@ -30,14 +30,15 @@ import com.company.util.BitmapUtil;
          return AnimatedChars.getAnimatedChar(template.file,template.index);
       }
       
-      public function makeIcon(template:CharacterTemplate, size:int = 100, texture1:int = 0, texture2:int = 0) : BitmapData
+      public function makeIcon(template:CharacterTemplate, size:int = 100, texture1:int = 0, texture2:int = 0, clr:uint = 0,
+      outSize:int = 1.4, animationType:int = 0) : BitmapData
       {
          this.texture1 = texture1;
          this.texture2 = texture2;
          this.size = size;
          var character:AnimatedChar = this.makeCharacter(template);
-         var data:BitmapData = this.makeFrame(character,AnimatedChar.STAND,0);
-         data = GlowRedrawer.outlineGlow(data,0);
+         var data:BitmapData = this.makeFrame(character,animationType, 0);
+         data = GlowRedrawer.outlineGlow(data,0, outSize, true, clr);
          data = BitmapUtil.cropToBitmapData(data,6,6,data.width - 12,data.height - 6);
          return data;
       }

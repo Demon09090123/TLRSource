@@ -6,8 +6,6 @@ package kabam.rotmg.classes.model
       
       public var initial:int;
       
-      public var max:int;
-      
       public var rampMin:int;
       
       public var rampMax:int;

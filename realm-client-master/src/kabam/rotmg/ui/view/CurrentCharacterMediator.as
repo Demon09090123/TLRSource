@@ -46,10 +46,10 @@ import robotlegs.bender.bundles.mvcs.Mediator;
       
       override public function initialize() : void
       {
-         this.view.close.add(this.onClose);
+         //this.view.close.add(this.onClose);
          this.view.newCharacter.add(this.onNewCharacter);
          //this.view.showClasses.add(this.onNewCharacter);
-         this.view.playGame.add(this.onPlayGame);
+         //this.view.playGame.add(this.onPlayGame);
          this.view.initialize(this.playerModel);
          this.nameChanged.add(this.onNameChanged);
       }

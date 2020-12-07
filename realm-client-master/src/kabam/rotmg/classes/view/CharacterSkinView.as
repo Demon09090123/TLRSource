@@ -1,19 +1,19 @@
 package kabam.rotmg.classes.view
 {
    import com.company.assembleegameclient.screens.AccountScreen;
-   import com.company.assembleegameclient.screens.TitleMenuOption;
    import com.company.rotmg.graphics.ScreenGraphic;
-   import flash.display.Shape;
+
+import drawing.components.TitleMenuOption;
+
+import flash.display.Shape;
    import flash.display.Sprite;
    import flash.events.MouseEvent;
    import kabam.rotmg.game.view.CreditDisplay;
-   import kabam.rotmg.ui.view.components.ScreenBase;
    import org.osflash.signals.Signal;
    import org.osflash.signals.natives.NativeMappedSignal;
    
    public class CharacterSkinView extends Sprite
    {
-      private const base:ScreenBase = makeScreenBase();
       private const account:AccountScreen = makeAccountScreen();
       private const lines:Shape = makeLines();
       private const creditsDisplay:CreditDisplay = makeCreditDisplay();
@@ -29,14 +29,6 @@ package kabam.rotmg.classes.view
       {
          super();
       }
-
-      private function makeScreenBase() : ScreenBase
-      {
-         var base:ScreenBase = new ScreenBase();
-         addChild(base);
-         return base;
-      }
-
       private function makeAccountScreen() : AccountScreen
       {
          var screen:AccountScreen = new AccountScreen();

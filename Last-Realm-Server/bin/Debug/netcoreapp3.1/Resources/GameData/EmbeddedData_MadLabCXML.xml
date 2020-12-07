@@ -28,7 +28,7 @@
         <Size>150</Size>
         <ShadowSize>50</ShadowSize>
         <MaxHitPoints>55000</MaxHitPoints>
-        <Defense>25</Defense>
+        <PhysicalDefense>25</PhysicalDefense>
         <XpMult>0.7</XpMult>
         <StasisImmune/>
 
@@ -215,7 +215,7 @@
         <Size>100</Size>
         <ShadowSize>75</ShadowSize>
         <MaxHitPoints>1000</MaxHitPoints>
-        <Defense>10</Defense>
+        <PhysicalDefense>10</PhysicalDefense>
         <XpMult>0.0</XpMult>
 
         <Projectile id="0">
@@ -240,7 +240,7 @@
         <Size>100</Size>
         <ShadowSize>50</ShadowSize>
         <MaxHitPoints>2000</MaxHitPoints>
-        <Defense>10</Defense>
+        <PhysicalDefense>10</PhysicalDefense>
         <StasisImmune/>
         <XpMult>0.1</XpMult>
 
@@ -270,7 +270,7 @@
     <Size>100</Size>
     <ShadowSize>50</ShadowSize>
     <MaxHitPoints>1500</MaxHitPoints>
-    <Defense>15</Defense>
+    <PhysicalDefense>15</PhysicalDefense>
 
     <Projectile id="0">
         <ObjectId>Purple Energy Shot</ObjectId>
@@ -298,7 +298,7 @@
         <Size>100</Size>
         <ShadowSize>50</ShadowSize>
         <MaxHitPoints>1500</MaxHitPoints>
-        <Defense>15</Defense>
+        <PhysicalDefense>15</PhysicalDefense>
         <XpMult>0.1</XpMult>
 
         <Projectile id="0">
@@ -328,7 +328,7 @@
         <Size>100</Size>
         <ShadowSize>50</ShadowSize>
         <MaxHitPoints>2000</MaxHitPoints>
-        <Defense>20</Defense>
+        <PhysicalDefense>20</PhysicalDefense>
 
         <Projectile id="0">
             <ObjectId>Yellow Energy Shot</ObjectId>
@@ -374,7 +374,7 @@
         <Size>100</Size>
         <ShadowSize>50</ShadowSize>
         <MaxHitPoints>2000</MaxHitPoints>
-        <Defense>20</Defense>
+        <PhysicalDefense>20</PhysicalDefense>
         <XpMult>0.1</XpMult>
 
         <Projectile id="0">
@@ -422,7 +422,7 @@
         <Size>100</Size>
         <ShadowSize>50</ShadowSize>
         <MaxHitPoints>2750</MaxHitPoints>
-        <Defense>25</Defense>
+        <PhysicalDefense>25</PhysicalDefense>
 
         <Projectile id="0">
             <ObjectId>Robot Attack</ObjectId>
@@ -448,7 +448,7 @@
         <Size>100</Size>
         <ShadowSize>50</ShadowSize>
         <MaxHitPoints>2750</MaxHitPoints>
-        <Defense>25</Defense>
+        <PhysicalDefense>25</PhysicalDefense>
         <XpMult>0.1</XpMult>
 
         <Projectile id="0">
@@ -475,7 +475,7 @@
         <Size>150</Size>
         <ShadowSize>50</ShadowSize>
         <MaxHitPoints>3500</MaxHitPoints>
-        <Defense>30</Defense>
+        <PhysicalDefense>30</PhysicalDefense>
 
         <Projectile id="0">
             <ObjectId>Lightning Spiral</ObjectId>
@@ -511,7 +511,7 @@
         <Size>150</Size>
         <ShadowSize>50</ShadowSize>
         <MaxHitPoints>4000</MaxHitPoints>
-        <Defense>40</Defense>
+        <PhysicalDefense>40</PhysicalDefense>
 
         <Projectile id="0">
             <ObjectId>Shockwave Blast</ObjectId>
@@ -554,7 +554,7 @@
 
     
 
-    <Object type="0x0990" id="West Automated Defense Turret">
+    <Object type="0x0990" id="West Automated PhysicalDefense Turret">
         <Class>GameObject</Class>
         <Enemy/>
         <Model>Tower</Model>
@@ -570,7 +570,7 @@
         </Projectile>
     </Object>
 
-    <Object type="0x0991" id="East Automated Defense Turret">
+    <Object type="0x0991" id="East Automated PhysicalDefense Turret">
         <Class>GameObject</Class>
         <Enemy/>
         <Model>Tower</Model>
@@ -659,7 +659,7 @@
         <Size>200</Size>
         <ShadowSize>50</ShadowSize>
         <MaxHitPoints>60000</MaxHitPoints>
-        <Defense>30</Defense>
+        <PhysicalDefense>30</PhysicalDefense>
         <XpMult>0.8</XpMult>
         <StasisImmune/>
 
@@ -783,7 +783,7 @@
         <Size>150</Size>
         <ShadowSize>0</ShadowSize>
         <MaxHitPoints>8000</MaxHitPoints>
-        <Defense>30</Defense>
+        <PhysicalDefense>30</PhysicalDefense>
         <Flying/>
         <Z>1</Z>
 

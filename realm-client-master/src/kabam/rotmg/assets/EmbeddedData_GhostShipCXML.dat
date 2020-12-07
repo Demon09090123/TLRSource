@@ -24,7 +24,7 @@
 		<Size>140</Size>
 		<ShadowSize>70</ShadowSize>
 		<MaxHitPoints>30000</MaxHitPoints>
-		<Defense>10</Defense>
+		<PhysicalDefense>10</PhysicalDefense>
         
         
 	</Object>
@@ -42,7 +42,7 @@
 		<Size>100</Size>
 		<ShadowSize>100</ShadowSize>
 		<MaxHitPoints>1000</MaxHitPoints>
-		<Defense>15</Defense>
+		<PhysicalDefense>15</PhysicalDefense>
 		
         
 	</Object>
@@ -58,7 +58,7 @@
 		<Size>100</Size>
 		<ShadowSize>100</ShadowSize>
 		<MaxHitPoints>1000</MaxHitPoints>
-		<Defense>30</Defense>
+		<PhysicalDefense>30</PhysicalDefense>
 		<XpMult>0</XpMult>
 		
 		<Projectile id="0">
@@ -83,7 +83,7 @@
 		<Size>100</Size>
 		<ShadowSize>100</ShadowSize>
 		<MaxHitPoints>1000</MaxHitPoints>
-		<Defense>30</Defense>
+		<PhysicalDefense>30</PhysicalDefense>
 		<XpMult>0</XpMult>
 		
 		<Projectile id="0">
@@ -110,7 +110,7 @@
 		<Size>100</Size>
 		<ShadowSize>100</ShadowSize>
 		<MaxHitPoints>800</MaxHitPoints>
-		<Defense>5</Defense>
+		<PhysicalDefense>5</PhysicalDefense>
 		<NoMiniMap/>
 		<Flying/>
 		<Z>0.2</Z>
@@ -136,7 +136,7 @@
 		<Size>0</Size>
 		<ShadowSize>0</ShadowSize>
 		<MaxHitPoints>1000</MaxHitPoints>
-		<Defense>100</Defense>
+		<PhysicalDefense>100</PhysicalDefense>
 		<NoMiniMap/>
 		
         
@@ -185,7 +185,7 @@
 		<DeathSound>monster/sprites_death</DeathSound>
 		<Size>0</Size>
 		<MaxHitPoints>800</MaxHitPoints>
-		<Defense>15</Defense>
+		<PhysicalDefense>15</PhysicalDefense>
 		<Flying/>
 		<Z>0.8</Z>
 
@@ -246,7 +246,7 @@
 		<Size>0</Size>
 		<ShadowSize>0</ShadowSize>
 		<MaxHitPoints>6000</MaxHitPoints>
-		<Defense>2000</Defense>
+		<PhysicalDefense>2000</PhysicalDefense>
 		<NoMiniMap/>
 		<PerRealmMax>1</PerRealmMax>
 		<Encounter/>
@@ -278,7 +278,7 @@
 		<Size>130</Size>
 		<ShadowSize>100</ShadowSize>
 		<MaxHitPoints>42000</MaxHitPoints>
-		<Defense>40</Defense>
+		<PhysicalDefense>40</PhysicalDefense>
 		<Flying/>
 
         <Hero/>
@@ -367,7 +367,7 @@
    		<Size>0</Size>
 		<MaxHitPoints>8000</MaxHitPoints>
 	    <StasisImmune/>
-		<Defense>35</Defense>
+		<PhysicalDefense>35</PhysicalDefense>
 		<God/>
 		<Quest/>
 		<XpMult>1.75</XpMult>
@@ -431,7 +431,7 @@
 		<XpMult>0</XpMult>
    		<Size>0</Size>
 		<MaxHitPoints>1700</MaxHitPoints>
-		<Defense>15</Defense>
+		<PhysicalDefense>15</PhysicalDefense>
 		
 		<HitSound>monster/ghosts_death</HitSound>
 		<DeathSound>monster/flaming_skulls_hit</DeathSound>
@@ -482,7 +482,7 @@
    		<Size>120</Size>
 		<ShadowColor>0xfec937a</ShadowColor> 
 		<MaxHitPoints>600</MaxHitPoints>
-		<Defense>5000</Defense>
+		<PhysicalDefense>5000</PhysicalDefense>
 
 		
 		
@@ -503,7 +503,7 @@
 		<MaxHitPoints>2000</MaxHitPoints>
 		<XpMult>0.0</XpMult>
    		<Size>120</Size>
-		<Defense>2</Defense>
+		<PhysicalDefense>2</PhysicalDefense>
 		
 
 	</Object>
@@ -665,7 +665,7 @@
    		<Size>90</Size>
 		<ShadowSize>80</ShadowSize>
 		<MaxHitPoints>500</MaxHitPoints>
-		<Defense>30</Defense>
+		<PhysicalDefense>30</PhysicalDefense>
 		<Z>0.33</Z>
 		
 		<DeathSound>monster/flaming_skulls_hit</DeathSound>
@@ -690,7 +690,7 @@
 		<XpMult>1.0</XpMult>
    		<Size>120</Size>
 		<MaxHitPoints>2300</MaxHitPoints>
-		<Defense>50</Defense>
+		<PhysicalDefense>50</PhysicalDefense>
 		<Z>0.15</Z>
 		<HitSound>monster/ghosts_death</HitSound>
 		<DeathSound>monster/flaming_skulls_hit</DeathSound>
@@ -736,7 +736,7 @@
    		<Size>40</Size>
 		<ShadowSize>85</ShadowSize>
 		<MaxHitPoints>200</MaxHitPoints>
-		<Defense>2</Defense>
+		<PhysicalDefense>2</PhysicalDefense>
 		<HitSound>monster/blobs_hit</HitSound>
 		<DeathSound>monster/blobs_death</DeathSound>
 		
@@ -760,7 +760,7 @@
 		<XpMult>1.0</XpMult>
    		<Size>110</Size>
 		<MaxHitPoints>1600</MaxHitPoints>
-		<Defense>3</Defense>
+		<PhysicalDefense>3</PhysicalDefense>
 		<Z>0.1</Z>
 		<HitSound>monster/cubes_death</HitSound>
 		<DeathSound>monster/dark_elves_death</DeathSound>
@@ -793,7 +793,7 @@
 		<XpMult>1.0</XpMult>
    		<Size>110</Size>
 		<MaxHitPoints>1200</MaxHitPoints>
-		<Defense>17</Defense>
+		<PhysicalDefense>17</PhysicalDefense>
 		<HitSound>monster/pirates_hit</HitSound>
 		<DeathSound>monster/undead_hobbits_death</DeathSound>
 		
@@ -820,7 +820,7 @@
 		<XpMult>1.0</XpMult>
    		<Size>110</Size>
 		<MaxHitPoints>700</MaxHitPoints>
-		<Defense>11</Defense>
+		<PhysicalDefense>11</PhysicalDefense>
 		<HitSound>monster/pirates_hit</HitSound>
 		<DeathSound>monster/undead_hobbits_death</DeathSound>
 		
@@ -854,7 +854,7 @@
 		<XpMult>0.005</XpMult>
    		<Size>0</Size>
 		<MaxHitPoints>700</MaxHitPoints>
-		<Defense>0</Defense>
+		<PhysicalDefense>0</PhysicalDefense>
 		
 		<HitSound>monster/ghosts_death</HitSound>
 		<DeathSound>monster/flaming_skulls_hit</DeathSound>
@@ -888,7 +888,7 @@
 		<XpMult>1.0</XpMult>
    		<Size>100</Size>
 		<MaxHitPoints>650</MaxHitPoints>
-		<Defense>5</Defense>
+		<PhysicalDefense>5</PhysicalDefense>
 		
    		<Projectile id="0">
 			<ObjectId>Rat Tail</ObjectId>

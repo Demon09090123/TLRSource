@@ -122,24 +122,6 @@ namespace Last_Realm_Server.Common
                 return false;
             return true;
         }
-
-        public static AccountModel GuestAccount()
-        {
-            return new AccountModel() 
-            {
-                Stats = new StatsInfo() {  },
-                OwnedSkins = new List<int>(),
-                LockedIds = new List<int>(),
-                IgnoredIds = new List<int>(), 
-                HasCharacter = false
-            };
-        }
-
-        public static int GetStars(AccountModel acc)
-        {
-            return 5;
-        }
-
         public static bool IsValidPassword(string input)
         {
             if (string.IsNullOrWhiteSpace(input)) return false;
@@ -211,7 +193,6 @@ namespace Last_Realm_Server.Common
                 Effects = true,
                 Sounds = true,
                 Notifications = true,
-                HasCharacter = false,
                 RegisterTime = UnixTime()
             };
 
@@ -227,6 +208,9 @@ namespace Last_Realm_Server.Common
 
         public static bool IsAccountInUse(AccountModel acc)
         {
+            if (acc == null)
+                return false;
+
             bool accountInUse = acc.Connected && Manager.GetClient(acc.Id) != null;
             if (!accountInUse && acc.Connected)
             {
@@ -329,7 +313,6 @@ namespace Last_Realm_Server.Common
                 MagicPotions = Player.MaxPotions,
             };
 
-            acc.HasCharacter = true;
             character.Save();
             acc.Save();
             return character;

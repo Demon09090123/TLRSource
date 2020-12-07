@@ -11,7 +11,7 @@
 		<DeathSound>monster/demons_death</DeathSound>
 		<Size>100</Size>
 		<MaxHitPoints>900</MaxHitPoints>
-		<Defense>7</Defense>
+		<PhysicalDefense>7</PhysicalDefense>
 		<XpMult>0.1</XpMult>
 		<Projectile id="0">
 			<ObjectId>Red Fire</ObjectId>
@@ -45,7 +45,7 @@
 
 		<MaxHitPoints>4000</MaxHitPoints>
 		<Size>140</Size>
-		<Defense>30</Defense>
+		<PhysicalDefense>30</PhysicalDefense>
 		<XpMult>0.0</XpMult>
 
 
@@ -72,7 +72,7 @@
 
 		<MaxHitPoints>10000</MaxHitPoints>
 		<Size>100</Size>
-		<Defense>20</Defense>
+		<PhysicalDefense>20</PhysicalDefense>
 		<XpMult>0.7</XpMult>
 
 
@@ -140,7 +140,7 @@
 			
 		<MaxHitPoints>1000</MaxHitPoints>
 		<Size>100</Size>
-		<Defense>6</Defense>
+		<PhysicalDefense>6</PhysicalDefense>
 		<XpMult>0.0</XpMult>
 		
 			
@@ -190,7 +190,7 @@
 		<DeathSound>monster/abyss_demons_death</DeathSound>
 		<Size>100</Size>
 		<MaxHitPoints>300</MaxHitPoints>
-		<Defense>30</Defense>
+		<PhysicalDefense>30</PhysicalDefense>
 		<Flying/>
 		<Projectile id="0">
 			<ObjectId>Fire Bolt</ObjectId>
@@ -208,7 +208,7 @@
 		<DeathSound>monster/abyss_demons_death</DeathSound>
 		<Size>100</Size>
 		<MaxHitPoints>400</MaxHitPoints>
-		<Defense>30</Defense>
+		<PhysicalDefense>30</PhysicalDefense>
 		<Projectile id="0">
 			<ObjectId>Red Fire</ObjectId>
 			<Damage>120</Damage>
@@ -226,7 +226,7 @@
 		<DeathSound>monster/abyss_demons_death</DeathSound>
 		<Size>100</Size>
 		<MaxHitPoints>400</MaxHitPoints>
-		<Defense>30</Defense>
+		<PhysicalDefense>30</PhysicalDefense>
 		<Projectile id="0">
 			<ObjectId>Red Fire</ObjectId>
 			<Damage>80</Damage>
@@ -243,7 +243,7 @@
 		<DeathSound>monster/abyss_demons_death</DeathSound>
 		<Size>100</Size>
 		<MaxHitPoints>350</MaxHitPoints>
-		<Defense>30</Defense>
+		<PhysicalDefense>30</PhysicalDefense>
 		<Projectile id="0">
 			<ObjectId>Red Fire</ObjectId>
 			<Damage>80</Damage>
@@ -260,7 +260,7 @@
 		<DeathSound>monster/abyss_brutes_death</DeathSound>
 		<Size>100</Size>
 		<MaxHitPoints>500</MaxHitPoints>
-		<Defense>30</Defense>
+		<PhysicalDefense>30</PhysicalDefense>
 		<Projectile id="0">
 			<ObjectId>Blade</ObjectId>
 			<Damage>80</Damage>
@@ -277,7 +277,7 @@
 		<DeathSound>monster/abyss_brutes_death</DeathSound>
 		<Size>100</Size>
 		<MaxHitPoints>500</MaxHitPoints>
-		<Defense>30</Defense>
+		<PhysicalDefense>30</PhysicalDefense>
 		<Projectile id="0">
 			<ObjectId>Blade</ObjectId>
 			<Damage>80</Damage>
@@ -310,7 +310,7 @@
 		<XpMult>0.35</XpMult>
    		<Size>120</Size>
 		<StasisImmune/>
-		<Defense>30</Defense>
+		<PhysicalDefense>30</PhysicalDefense>
 		
 		<HitSound>monster/stone_walls_hit</HitSound>
 		<DeathSound>monster/stone_walls_hit</DeathSound>

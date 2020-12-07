@@ -1,10 +1,10 @@
 package kabam.rotmg.account.web.view
 {
-   import com.company.assembleegameclient.account.ui.CheckBoxField;
-   import com.company.assembleegameclient.account.ui.Frame;
-   import com.company.assembleegameclient.parameters.Parameters;
 import com.company.ui.SimpleText;
-   import flash.events.MouseEvent;
+
+import drawing.components.Frame;
+
+import flash.events.MouseEvent;
    import flash.events.TextEvent;
    import flash.filters.DropShadowFilter;
    import kabam.rotmg.account.ui.components.DateField;

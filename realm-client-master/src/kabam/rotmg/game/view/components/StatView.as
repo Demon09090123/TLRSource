@@ -46,21 +46,16 @@ package kabam.rotmg.game.view.components
          this.redOnZero_ = redOnZero;
       }
       
-      public function draw(val:int, boost:int, max:int) : void
+      public function draw(val:int) : void
       {
          var newValColor:uint = 0;
          var format:TextFormat = null;
-         if(val == this.val_ && boost == this.boost_)
+         if(val == this.val_)
          {
             return;
          }
          this.val_ = val;
-         this.boost_ = boost;
-         if(val - boost >= max)
-         {
-            newValColor = 16572160;
-         }
-         else if(this.redOnZero_ && this.val_ <= 0 || this.boost_ < 0)
+          if(this.redOnZero_ && this.val_ <= 0 || this.boost_ < 0)
          {
             newValColor = 16726072;
          }

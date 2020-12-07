@@ -23,7 +23,7 @@
             <LifetimeMS>2000</LifetimeMS>
         </Projectile>
         <Size>100</Size>
-        <Defense>0</Defense>
+        <PhysicalDefense>0</PhysicalDefense>
         <XpMult>0.0</XpMult>
 
 
@@ -52,7 +52,7 @@
             <LifetimeMS>2000</LifetimeMS>
         </Projectile>
         <Size>60</Size>
-        <Defense>0</Defense>
+        <PhysicalDefense>0</PhysicalDefense>
         <XpMult>0.0</XpMult>
 
 
@@ -734,7 +734,7 @@
 		<DeathSound>monster/bats_death</DeathSound>
 		
 		<MaxHitPoints>125</MaxHitPoints>
-		<Defense>25</Defense>
+		<PhysicalDefense>25</PhysicalDefense>
 		<XpMult>1</XpMult>
 		<Z>0.24</Z>
 		<Flying/>

@@ -23,7 +23,7 @@ namespace Last_Realm_Server.Game.Entities
 
             if (Desc.Enemy)
             {
-                int damageWithDefense = this.GetDefenseDamage(projectile.Damage, Desc.Defense, projectile.Desc.ArmorPiercing);
+                int damageWithDefense = this.GetDefenseDamage(projectile.Damage, Desc.PhysicalDefense, projectile.Desc.ArmorPiercing);
                 HP -= damageWithDefense;
 
                 Player owner = projectile.Owner as Player; 

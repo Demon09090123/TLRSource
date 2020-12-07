@@ -193,7 +193,7 @@ namespace Last_Realm_Server.Common
         public readonly int MaxSize;
 
         public readonly int MaxHP;
-        public readonly int Defense;
+        public readonly int PhysicalDefense;
 
         public readonly Dictionary<int, ProjectileDesc> Projectiles;
 
@@ -232,7 +232,7 @@ namespace Last_Realm_Server.Common
             MaxSize = e.ParseInt("MaxSize", Size);
 
             MaxHP = e.ParseInt("MaxHitPoints");
-            Defense = e.ParseInt("Defense");
+            PhysicalDefense = e.ParseInt("PhysicalDefense");
 
             Projectiles = new Dictionary<int, ProjectileDesc>();
             foreach (XElement k in e.Elements("Projectile"))
@@ -268,7 +268,7 @@ namespace Last_Realm_Server.Common
             for (int k = 0; k < 20; k++)
                 ItemDatas[k] = -1;
 
-            Stats = new StatDesc[8];
+            Stats = new StatDesc[10];
             for (int i = 0; i < Stats.Length; i++)
                 Stats[i] = new StatDesc(i, e);
             Stats = Stats.OrderBy(k => k.Index).ToArray();
@@ -281,7 +281,6 @@ namespace Last_Realm_Server.Common
     {
         public readonly string Type;
         public readonly int Index;
-        public readonly int MaxValue;
         public readonly int StartingValue;
         public readonly int MinIncrease;
         public readonly int MaxIncrease;
@@ -292,7 +291,6 @@ namespace Last_Realm_Server.Common
             Type = StatIndexToName(index);
 
             StartingValue = e.ParseInt(Type);
-            MaxValue = e.Element(Type).ParseInt("@max");
 
             foreach (XElement stat in e.Elements("LevelIncrease"))
             {
@@ -312,11 +310,13 @@ namespace Last_Realm_Server.Common
                 case 0: return "MaxHitPoints";
                 case 1: return "MaxMagicPoints";
                 case 2: return "Attack";
-                case 3: return "Defense";
-                case 4: return "Speed";
-                case 5: return "Dexterity";
-                case 6: return "HpRegen";
-                case 7: return "MpRegen";
+                case 3: return "MagicPower";
+                case 4: return "PhysicalPhysicalDefense";
+                case 5: return "MagicPhysicalDefense";
+                case 6: return "Speed";
+                case 7: return "Dexterity";
+                case 8: return "HpRegen";
+                case 9: return "MpRegen";
             }
             return null;
         }
@@ -328,11 +328,13 @@ namespace Last_Realm_Server.Common
                 case "MaxHitPoints": return 0;
                 case "MaxMagicPoints": return 1;
                 case "Attack": return 2;
-                case "Defense": return 3;
-                case "Speed": return 4;
-                case "Dexterity": return 5;
-                case "HpRegen": return 6;
-                case "MpRegen": return 7;
+                case "MagicPower": return 3;
+                case "PhysicalPhysicalDefense": return 4;
+                case "MagicPhysicalDefense": return 5;
+                case "Speed": return 6;
+                case "Dexterity": return 7;
+                case "HpRegen": return 8;
+                case "MpRegen": return 9;
             }
             return -1;
         }
@@ -427,7 +429,7 @@ namespace Last_Realm_Server.Common
         {
             ItemData.MaxHP, 
             ItemData.MaxMP, 
-            ItemData.Attack, 
+            ItemData.Attack,
             ItemData.Defense, 
             ItemData.Speed, 
             ItemData.Dexterity, 

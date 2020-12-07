@@ -11,7 +11,7 @@
         <Size>125</Size>
         <ShadowSize>50</ShadowSize>
         <MaxHitPoints>10000</MaxHitPoints>
-        <Defense>10</Defense>
+        <PhysicalDefense>10</PhysicalDefense>
         <XpMult>0.7</XpMult>
 
 
@@ -77,7 +77,7 @@
         <Size>150</Size>
         <ShadowSize>50</ShadowSize>
         <MaxHitPoints>2000</MaxHitPoints>
-        <Defense>10</Defense>
+        <PhysicalDefense>10</PhysicalDefense>
 
         <Projectile id="0">
             <ObjectId>Golden Coin</ObjectId>
@@ -123,7 +123,7 @@
         <Size>100</Size>
         <ShadowSize>50</ShadowSize>
         <StasisImmune/>
-        <Defense>10</Defense>
+        <PhysicalDefense>10</PhysicalDefense>
 
         <Projectile id="0">
             <ObjectId>Invisible</ObjectId>
@@ -152,7 +152,7 @@
         <DeathSound>monster/dark_elves_death</DeathSound>
         <Size>100</Size>
         <MaxHitPoints>4000</MaxHitPoints>
-        <Defense>15</Defense>
+        <PhysicalDefense>15</PhysicalDefense>
 
 
         <Projectile id="0">
@@ -265,7 +265,7 @@
         <Size>125</Size>
         <ShadowSize>0</ShadowSize>
         <MaxHitPoints>2000</MaxHitPoints>
-        <Defense>15</Defense>
+        <PhysicalDefense>15</PhysicalDefense>
 
         <Projectile id="0">
             <ObjectId>Invisible</ObjectId>
@@ -322,7 +322,7 @@
         <Size>125</Size>
         <ShadowSize>0</ShadowSize>
         <MaxHitPoints>2500</MaxHitPoints>
-        <Defense>20</Defense>
+        <PhysicalDefense>20</PhysicalDefense>
 
         <Projectile id="0">
             <ObjectId>Dagger Throw</ObjectId>
@@ -368,7 +368,7 @@
         <Size>225</Size>
         <ShadowSize>0</ShadowSize>
         <MaxHitPoints>25000</MaxHitPoints>
-        <Defense>30</Defense>
+        <PhysicalDefense>30</PhysicalDefense>
 
         <Projectile id="1">
             <ObjectId>Golden Blast</ObjectId>
@@ -451,7 +451,7 @@
         <Size>150</Size>
         <ShadowSize>0</ShadowSize>
         <MaxHitPoints>3000</MaxHitPoints>
-        <Defense>30</Defense>
+        <PhysicalDefense>30</PhysicalDefense>
 
         <Projectile id="1">
             <ObjectId>Golden Blast</ObjectId>
@@ -483,7 +483,7 @@
         <Size>125</Size>
         <ShadowSize>0</ShadowSize>
         <MaxHitPoints>500</MaxHitPoints>
-        <Defense>10</Defense>
+        <PhysicalDefense>10</PhysicalDefense>
         <XpMult>0.0</XpMult>
 
 
@@ -515,7 +515,7 @@
         <Size>250</Size>
         <ShadowSize>0</ShadowSize>
         <MaxHitPoints>1000</MaxHitPoints>
-        <Defense>10</Defense>
+        <PhysicalDefense>10</PhysicalDefense>
 
         <Projectile id="0">
             <ObjectId>Invisible</ObjectId>
@@ -550,7 +550,7 @@
 
         <HitSound>monster/cubes_hit</HitSound>
         <DeathSound>monster/cubes_death</DeathSound>
-        <Defense>5</Defense>
+        <PhysicalDefense>5</PhysicalDefense>
         <XpMult>0.0</XpMult>
         <MaxHitPoints>1000</MaxHitPoints>
         <Size>200</Size>

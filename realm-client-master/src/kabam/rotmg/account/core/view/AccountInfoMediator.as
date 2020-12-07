@@ -22,7 +22,7 @@ package kabam.rotmg.account.core.view
       
       override public function initialize() : void
       {
-         this.view.setInfo(this.account.getUserName(),this.account.isRegistered());
+         this.view.setInfo(this.account.isRegistered());
          this.update.add(this.updateLogin);
       }
       
@@ -33,7 +33,7 @@ package kabam.rotmg.account.core.view
       
       private function updateLogin() : void
       {
-         this.view.setInfo(this.account.getUserName(),this.account.isRegistered());
+         this.view.setInfo(this.account.isRegistered());
       }
    }
 }

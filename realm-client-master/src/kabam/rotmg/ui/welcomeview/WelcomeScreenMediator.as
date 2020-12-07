@@ -42,7 +42,7 @@ public class WelcomeScreenMediator extends Mediator {
             this.openDialog.dispatch(new WebLoginDialog());
         } else {
             this.logoutSignal.dispatch();
-            this.view.setInfo("", false);
+            this.view.setInfo(false);
         }
     }
 }

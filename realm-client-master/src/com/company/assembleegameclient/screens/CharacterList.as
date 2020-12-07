@@ -9,9 +9,9 @@ package com.company.assembleegameclient.screens
    public class CharacterList extends Sprite
    {
       
-      public static const WIDTH:int = 780;
+      public static const WIDTH:int = 800;
       
-      public static const HEIGHT:int = 430;
+      public static const HEIGHT:int = 600;
        
       
       public var charRectList_:CharacterRectList;
@@ -21,11 +21,6 @@ package com.company.assembleegameclient.screens
          super();
          this.charRectList_ = new CharacterRectList(model);
          addChild(this.charRectList_);
-      }
-      
-      public function setPos(pos:Number) : void
-      {
-         this.charRectList_.y = pos;
       }
    }
 }

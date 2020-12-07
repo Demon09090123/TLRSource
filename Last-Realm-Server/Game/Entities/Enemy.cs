@@ -152,7 +152,7 @@ namespace Last_Realm_Server.Game.Entities
             if (HasConditionEffect(ConditionEffectIndex.ArmorBroken))
                 pierces = true;
 
-            int damageWithDefense = this.GetDefenseDamage(damage, Desc.Defense, pierces);
+            int damageWithDefense = this.GetDefenseDamage(damage, Desc.PhysicalDefense, pierces);
 
             if (HasConditionEffect(ConditionEffectIndex.Invulnerable))
                 damageWithDefense = 0;

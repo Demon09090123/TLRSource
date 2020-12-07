@@ -1,9 +1,11 @@
 package com.company.assembleegameclient.ui.dialogs
 {
-   import com.company.assembleegameclient.ui.TextButton;
    import com.company.ui.SimpleText;
    import com.company.util.GraphicsUtil;
-   import flash.display.CapsStyle;
+
+import drawing.components.TextButton;
+
+import flash.display.CapsStyle;
    import flash.display.Graphics;
    import flash.display.GraphicsPath;
    import flash.display.GraphicsSolidFill;

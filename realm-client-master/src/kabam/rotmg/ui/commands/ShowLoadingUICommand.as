@@ -1,8 +1,12 @@
 package kabam.rotmg.ui.commands
 {
    import com.company.assembleegameclient.screens.AccountLoadingScreen;
-   import kabam.rotmg.core.signals.SetScreenSignal;
-   import robotlegs.bender.framework.api.ILogger;
+import com.company.assembleegameclient.util.AssetLoader;
+
+import kabam.rotmg.core.signals.SetScreenSignal;
+import kabam.rotmg.startup.control.StartupSequence;
+
+import robotlegs.bender.framework.api.ILogger;
    
    public class ShowLoadingUICommand
    {

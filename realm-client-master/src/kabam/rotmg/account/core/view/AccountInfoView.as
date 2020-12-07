@@ -4,6 +4,6 @@ package kabam.rotmg.account.core.view
    
    public interface AccountInfoView extends IEventDispatcher
    {
-      function setInfo(param1:String, param2:Boolean) : void;
+      function setInfo(param2:Boolean) : void;
    }
 }

@@ -1,13 +1,14 @@
 package kabam.rotmg.ui.welcomeview {
-import com.company.assembleegameclient.screens.TitleMenuOption;
 import com.company.ui.SimpleText;
+
+import drawing.components.TitleMenuOption;
+
+import drawing.uiAssets.UIComponentHelper;
 
 import flash.display.DisplayObject;
 
 import flash.display.Sprite;
 import flash.events.MouseEvent;
-import flash.filters.DropShadowFilter;
-import flash.geom.ColorTransform;
 
 import kabam.rotmg.account.core.view.AccountInfoView;
 
@@ -20,6 +21,7 @@ public class WelcomeScreen extends Sprite implements AccountInfoView {
     private const LOGOUT:String = "LOGOUT";
     private const REGISTER:String = "REGISTER";
     private const PLAY:String = "PLAY";
+    private const SERVER:String = "SERVER";
 
     private const WIDTH:int = 800;
     private const HEIGHT:int = 600;
@@ -29,8 +31,9 @@ public class WelcomeScreen extends Sprite implements AccountInfoView {
     private var loginBtn:TitleMenuOption;
     private var registerBtn:TitleMenuOption;
     private var playBtn:TitleMenuOption;
+    private var serverBtn:TitleMenuOption;
 
-    private var nameText:SimpleText;
+    private var titleText:SimpleText;
 
     public var loginSignal:Signal;
     public var registerSignal:Signal;
@@ -38,42 +41,42 @@ public class WelcomeScreen extends Sprite implements AccountInfoView {
 
     public function WelcomeScreen() {
 
-        graphics.beginFill(0x404040);
-        graphics.drawRect(0, 0, WIDTH, HEIGHT);
-        graphics.endFill();
-
         this.makeButtons();
-        this.makeText("guest", "is guest account");
+        this.makeText();
         this.setupSignal();
     }
 
-    public function setInfo(user:String, isRegistered:Boolean):void {
-        trace("regis:" + isRegistered + " | user: " + user);
-
+    public function setInfo(isRegistered:Boolean):void {
         while(numChildren) {
             removeChildAt(0);
         }
 
+        addChild(UIComponentHelper._welcomeScreen);
+        this.titleText.y = 20;
+        this.titleText.x = (this.WIDTH - this.titleText.width) / 2;
+
+        addChild(this.titleText);
+
         if (isRegistered == false) {
-            alignDraw(nameText, loginBtn, registerBtn, playBtn);
+            alignDraw(130, this.loginBtn, this.registerBtn, this.serverBtn, this.playBtn);
             return;
         }
-        isLoggedIn = true;
-        playBtn.activate();
-        loginBtn.setText("LOGOUT");
-        nameText.setText(user);
-        nameText.updateMetrics();
 
-        alignDraw(nameText, loginBtn, playBtn);
+        this.isLoggedIn = true;
+        this.playBtn.activate();
+        this.serverBtn.activate();
+        this.loginBtn.setText(LOGOUT);
+
+        alignDraw(130, this.loginBtn, this.serverBtn, this.playBtn);
     }
 
-    private function alignDraw(... ui):void {
-        var yOffset:int = 80;
+    private function alignDraw(xOffset:int, ... ui):void {
+        var yOffset:int = xOffset;
 
         for each(var d:DisplayObject in ui) {
-            d.x = (WIDTH - d.width) / 2;
+            d.x = (this.WIDTH - d.width) / 2;
             d.y = yOffset;
-            yOffset += (d.height + 10);
+            yOffset += (d.height + 5);
 
             addChild(d);
         }
@@ -85,23 +88,27 @@ public class WelcomeScreen extends Sprite implements AccountInfoView {
         this.playSignal = new NativeMappedSignal(this.playBtn, MouseEvent.CLICK);
     }
 
-    private function makeText(name:String, guest:String) :void {
-        this.nameText = new SimpleText(18, 0xFFFFFF);
-        this.nameText.text = name;
-        this.nameText.updateMetrics();
+    private function makeText() :void {
+
+        this.titleText = new SimpleText(38, 0xFFFFFF).setBold(true);
+        this.titleText.text = "Last Realm";
+        this.titleText.updateMetrics();
+        this.titleText.addOutline();
     }
 
     private function makeButtons():void {
-
-        this.loginBtn = new TitleMenuOption(LOGIN, 28, false, true);
-        this.registerBtn = new TitleMenuOption(REGISTER, 28, false, true);
-        this.playBtn = new TitleMenuOption(PLAY, 28, false, true);
+        this.loginBtn = new TitleMenuOption(this.LOGIN, 28, false, true);
+        this.registerBtn = new TitleMenuOption(this.REGISTER, 28, false, true);
+        this.playBtn = new TitleMenuOption(this.PLAY, 28, false, true);
+        this.serverBtn = new TitleMenuOption(this.SERVER, 28, false, true);
 
         this.loginBtn.addOutline(2);
         this.registerBtn.addOutline(2);
         this.playBtn.addOutline(2);
+        this.serverBtn.addOutline(2);
 
         this.playBtn.deactivate();
+        this.serverBtn.deactivate();
     }
 }
 }

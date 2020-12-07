@@ -56,7 +56,9 @@ package kabam.rotmg.classes.control
          character.hp = this.parseCharacterStat(object,"MaxHitPoints");
          character.mp = this.parseCharacterStat(object,"MaxMagicPoints");
          character.attack = this.parseCharacterStat(object,"Attack");
-         character.defense = this.parseCharacterStat(object,"Defense");
+         character.magicPower = this.parseCharacterStat(object, "MagicPower");
+         character.physicalDefense = this.parseCharacterStat(object, "PhysicalDefense");
+         character.magicDefense = this.parseCharacterStat(object,"MagicDefense");
          character.speed = this.parseCharacterStat(object,"Speed");
          character.dexterity = this.parseCharacterStat(object,"Dexterity");
          character.hpRegeneration = this.parseCharacterStat(object,"HpRegen");
@@ -92,7 +94,6 @@ package kabam.rotmg.classes.control
          }
          stat = new CharacterClassStat();
          stat.initial = int(main.toString());
-         stat.max = main.@max;
          stat.rampMin = Boolean(increase)?int(increase.@min):int(0);
          stat.rampMax = Boolean(increase)?int(increase.@max):int(0);
          return stat;

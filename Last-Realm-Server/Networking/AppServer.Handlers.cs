@@ -18,17 +18,18 @@ namespace Last_Realm_Server.Networking
             _listenEvent.Reset();
             Program.PushWork(() =>
             {
-                AccountModel acc = Database.Verify(username, password, GetIPFromContext(context)) ?? Database.GuestAccount();
+                AccountModel acc = Database.Verify(username, password, GetIPFromContext(context));
                 if (!(accountInUse = Database.IsAccountInUse(acc)))
-                {
-                    data.Add(acc.Export());
-                    data.Add(new XElement("OwnedSkins", string.Join(",", acc.OwnedSkins)));
+                    if (acc != null)
+                    {
+                        data.Add(acc.Export());
+                        data.Add(new XElement("OwnedSkins", string.Join(",", acc.OwnedSkins)));
 
-                    if (acc.HasCharacter)
-                        data.Add(Database.LoadCharacter(acc).Export());
+                        var character = Database.LoadCharacter(acc);
 
-                    Program.Print(PrintType.Debug, data.ToString());
-                }
+                        if (!character.IsNull)
+                            data.Add(character.Export());
+                    }
             }, () => _listenEvent.Set());
             _listenEvent.WaitOne();
 

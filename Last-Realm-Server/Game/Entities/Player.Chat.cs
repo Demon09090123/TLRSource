@@ -160,17 +160,6 @@ namespace Last_Realm_Server.Game.Entities
                             SendError($"Entity <{input}> not found in Game Data");
                         }
                         break;
-                    case "/max":
-                        if (!Client.Account.Ranked)
-                        {
-                            SendError("Not ranked");
-                            return;
-                        }
-                        for (int i = 0; i < Stats.Length; i++)
-                            Stats[i] = (Desc as PlayerDesc).Stats[i].MaxValue;
-                        UpdateStats();
-                        SendInfo("Maxed");
-                        break;
                     case "/god":
                         if (!Client.Account.Ranked)
                         {
@@ -230,7 +219,7 @@ namespace Last_Realm_Server.Game.Entities
                 return;
             }
 
-            byte[] packet = GameServer.Text(Name, Id, NumStars, 5, "", validText);
+            byte[] packet = GameServer.Text(Name, Id, Level, 5, "", validText);
 
             foreach (Player player in Parent.Players.Values)
                 if (!player.Client.Account.IgnoredIds.Contains(AccountId))

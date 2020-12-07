@@ -59,13 +59,6 @@ namespace Last_Realm_Server.Game.Entities
             set { TrySetSV(StatType.Level, _level = value); }
         }
 
-        private int _numStars;
-        public int NumStars
-        {
-            get { return _numStars; }
-            set { TrySetSV(StatType.NumStars, _numStars = value); }
-        }
-
         private string _guildName;
         public string GuildName
         {
@@ -182,9 +175,6 @@ namespace Last_Realm_Server.Game.Entities
                 GuildRank = client.Account.GuildRank;
             }
 
-            int stars = Database.GetStars(client.Account);
-            if (stars != 0) NumStars = stars;
-
             InitInventory(client.Character);
             InitStats(client.Character);
             InitLevel(client.Character);
@@ -280,40 +270,7 @@ namespace Last_Realm_Server.Game.Entities
             byte[] sound = GameServer.PlaySound("quack");
 
             foreach (Player p in Parent.Players.Values)
-            {
                 p.Client.Send(text);
-                if (p.Client.Account.Sounds)
-                    p.Client.Send(sound);
-            }
-
-            ushort type;
-            int time;
-            switch (GetMaxedStats())
-            {
-                case 8: type = 0x0735; time = 600000; break;
-                case 7: type = 0x0734; time = 600000; break;
-                case 6: type = 0x072b; time = 600000; break;
-                case 5: type = 0x072a; time = 600000; break;
-                case 4: type = 0x0729; time = 600000; break;
-                case 3: type = 0x0728; time = 600000; break;
-                case 2: type = 0x0727; time = 600000; break;
-                case 1: type = 0x0726; time = 600000; break;
-                default:
-                    type = 0x0725; time = 300000;
-                    if (Level < 20) { type = 0x0724; time = 60000; }
-                    if (Level <= 1) { type = 0x0723; time = 30000; }
-                    break;
-            }
-
-            Entity grave = new Entity(type, time);
-            grave.TrySetSV(StatType.Name, Name);
-            Parent.AddEntity(grave, Position);
-            Parent.RemoveEntity(this);
-
-            Manager.AddTimedAction(1500, () => 
-            {
-                Client.Disconnect();
-            });
         }
 
         public bool Damage(string hitter, int damage, ConditionEffectDesc[] effects, bool pierces)

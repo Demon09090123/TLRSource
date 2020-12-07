@@ -1,13 +1,14 @@
 package com.company.assembleegameclient.ui.panels
 {
    import com.company.assembleegameclient.game.GameSprite;
-   import com.company.assembleegameclient.objects.ObjectLibrary;
    import com.company.assembleegameclient.objects.Portal;
    import com.company.assembleegameclient.parameters.Parameters;
    import com.company.assembleegameclient.ui.TextBox;
-   import com.company.assembleegameclient.ui.TextButton;
    import com.company.ui.SimpleText;
-   import flash.events.Event;
+
+import drawing.components.TextButton;
+
+import flash.events.Event;
    import flash.events.KeyboardEvent;
    import flash.events.MouseEvent;
    import flash.filters.DropShadowFilter;

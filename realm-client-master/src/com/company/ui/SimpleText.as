@@ -162,7 +162,7 @@ import flash.text.TextLineMetrics;
       }
 
        public function addOutline(thickness:int = 2, clr:uint = 0):void {
-           var filter:GlowFilter = new GlowFilter(clr, 1, thickness, thickness, 20, BitmapFilterQuality.HIGH);
+           var filter:GlowFilter = new GlowFilter(clr, 1, thickness, thickness, thickness * 5, BitmapFilterQuality.HIGH);
            filters = [filter];
        }
 

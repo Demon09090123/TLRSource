@@ -142,11 +142,6 @@ namespace Last_Realm_Server.Game.Entities
             return !HasConditionEffect(ConditionEffectIndex.Bleeding) && !HasConditionEffect(ConditionEffectIndex.Sick);
         }
 
-        public int GetMaxedStats()
-        {
-            return (Desc as PlayerDesc).Stats.Where((t, i) => Stats[i] >= t.MaxValue).Count();
-        }
-
         public void InitStats(CharacterModel character)
         {
             Stats = character.Stats.ToArray();
@@ -161,21 +156,15 @@ namespace Last_Realm_Server.Game.Entities
         public void UpdateStats()
         {
             TrySetSV(StatType.MaxHP, Stats[0] + Boosts[0]);
-            TrySetSV(StatType.MaxHPBoost, Boosts[0]);
             TrySetSV(StatType.MaxMP, Stats[1] + Boosts[1]);
-            TrySetSV(StatType.MaxMPBoost, Boosts[1]);
             SetPrivateSV(StatType.Attack, Stats[2] + Boosts[2]);
-            SetPrivateSV(StatType.AttackBoost, Boosts[2]);
-            SetPrivateSV(StatType.Defense, Stats[3] + Boosts[3]);
-            SetPrivateSV(StatType.DefenseBoost, Boosts[3]);
-            TrySetSV(StatType.Speed, Stats[4] + Boosts[4]);
-            TrySetSV(StatType.SpeedBoost, Boosts[4]);
-            TrySetSV(StatType.Dexterity, Stats[5] + Boosts[5]);
-            TrySetSV(StatType.DexterityBoost, Boosts[5]);
-            SetPrivateSV(StatType.Vitality, Stats[6] + Boosts[6]);
-            SetPrivateSV(StatType.VitalityBoost, Boosts[6]);
-            SetPrivateSV(StatType.Wisdom, Stats[7] + Boosts[7]);
-            SetPrivateSV(StatType.WisdomBoost, Boosts[7]);
+            SetPrivateSV(StatType.MagicPower, Stats[3] + Boosts[3]);
+            SetPrivateSV(StatType.PhysicalDefense, Stats[4] + Boosts[4]);
+            SetPrivateSV(StatType.MagicDefense, Stats[5] + Boosts[5]);
+            TrySetSV(StatType.Speed, Stats[6] + Boosts[6]);
+            TrySetSV(StatType.Dexterity, Stats[7] + Boosts[7]);
+            SetPrivateSV(StatType.Vitality, Stats[8] + Boosts[8]);
+            SetPrivateSV(StatType.Wisdom, Stats[9] + Boosts[9]);
         }
     }
 }

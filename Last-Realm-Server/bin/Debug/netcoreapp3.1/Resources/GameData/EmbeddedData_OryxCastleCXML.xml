@@ -185,7 +185,7 @@
 		</Projectile>
 	        
 		<Size>120</Size>
-		<Defense>100</Defense>
+		<PhysicalDefense>100</PhysicalDefense>
 		<XpMult>0.135</XpMult>
 	        
 	        
@@ -261,7 +261,7 @@
 		</Projectile>
 	        
 		<Size>120</Size>
-		<Defense>100</Defense>
+		<PhysicalDefense>100</PhysicalDefense>
 		<XpMult>0.135</XpMult>
 	        
 	        
@@ -292,7 +292,7 @@
 		<MaxHitPoints>100</MaxHitPoints>
 	        
 		<Size>0</Size>
-		<Defense>0</Defense>
+		<PhysicalDefense>0</PhysicalDefense>
 		<XpMult>0.0</XpMult>
 		  
 	    
@@ -332,7 +332,7 @@
 		</Projectile>
 	        
 		<Size>120</Size>
-		<Defense>40</Defense>
+		<PhysicalDefense>40</PhysicalDefense>
 		<XpMult>0.0</XpMult>
 		
 			
@@ -355,7 +355,7 @@
         
         <MaxHitPoints>100</MaxHitPoints>
         <Size>0</Size>
-        <Defense>20</Defense>
+        <PhysicalDefense>20</PhysicalDefense>
         <XpMult>0.0</XpMult>
         
 	</Object>
@@ -398,7 +398,7 @@
         </Projectile>
         
         <Size>120</Size>
-        <Defense>20</Defense>
+        <PhysicalDefense>20</PhysicalDefense>
         <XpMult>0.0</XpMult>
         
         
@@ -434,7 +434,7 @@
         </Projectile>
         
         <Size>120</Size>
-        <Defense>30</Defense>
+        <PhysicalDefense>30</PhysicalDefense>
         
 		
         
@@ -480,7 +480,7 @@
         </Projectile>
         
         <Size>100</Size>
-        <Defense>10</Defense>
+        <PhysicalDefense>10</PhysicalDefense>
         <XpMult>0.2</XpMult>
         
         
@@ -519,7 +519,7 @@
         </Projectile>
         
         <Size>100</Size>
-        <Defense>20</Defense>
+        <PhysicalDefense>20</PhysicalDefense>
         <XpMult>0.4</XpMult>
         
 		
@@ -573,7 +573,7 @@
         </Projectile>
         
         <Size>100</Size>
-        <Defense>30</Defense>
+        <PhysicalDefense>30</PhysicalDefense>
         <XpMult>0.7</XpMult>
         
         
@@ -632,7 +632,7 @@
         </Projectile>
         
         <Size>100</Size>
-        <Defense>20</Defense>
+        <PhysicalDefense>20</PhysicalDefense>
         
 		
         
@@ -668,7 +668,7 @@
         </Projectile>
         
         <Size>100</Size>
-        <Defense>15</Defense>
+        <PhysicalDefense>15</PhysicalDefense>
         <XpMult>0.2</XpMult>
         
         
@@ -717,7 +717,7 @@
 		<MaxHitPoints>100</MaxHitPoints>
 		<XpMult>0.0</XpMult>
 		<Size>90</Size>
-		<Defense>0</Defense>
+		<PhysicalDefense>0</PhysicalDefense>
 		
 		<Texture><File>lofiEnvironment3</File><Index>0x22</Index></Texture>
 		<AltTexture id="1">

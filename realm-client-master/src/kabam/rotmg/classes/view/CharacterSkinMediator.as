@@ -28,7 +28,7 @@ package kabam.rotmg.classes.view
       
       override public function initialize() : void
       {
-          var hasCharacter:Boolean = this.model.charList.hasCharacter;
+          var hasCharacter:Boolean = this.model.hasCharacter();
           this.view.setPlayButtonEnabled(!hasCharacter);
           if (hasCharacter == false) {
               this.view.play.addOnce(onPlay);

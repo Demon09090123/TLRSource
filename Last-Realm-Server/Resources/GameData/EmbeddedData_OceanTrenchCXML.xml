@@ -36,7 +36,7 @@
 		</Projectile>
 		
 		<Size>100</Size>
-		<Defense>52</Defense>
+		<PhysicalDefense>52</PhysicalDefense>
 	        
 		
 	        
@@ -60,7 +60,7 @@
 		<MaxHitPoints>8000</MaxHitPoints>
 		<XpMult>0.0</XpMult>
 		<Size>110</Size>
-		<Defense>50</Defense>
+		<PhysicalDefense>50</PhysicalDefense>
 		
 	
 		
@@ -78,7 +78,7 @@
 		<MaxHitPoints>1000</MaxHitPoints>
 		<XpMult>0.0</XpMult>
 		<Size>120</Size>
-		<Defense>200</Defense>
+		<PhysicalDefense>200</PhysicalDefense>
 	        
 		<Projectile id="0">
 			<ObjectId>Coral Spike</ObjectId>
@@ -103,7 +103,7 @@
 		<MaxHitPoints>1000</MaxHitPoints>
 		<XpMult>0.0</XpMult>
 		<Size>60</Size>
-		<Defense>200</Defense>
+		<PhysicalDefense>200</PhysicalDefense>
 	        
 		<Projectile id="0">
 			<ObjectId>Coral Spike</ObjectId>
@@ -139,7 +139,7 @@
 		<Level>20</Level>
 		<XpMult>0.0</XpMult>
 		<Size>140</Size>
-		<Defense>60</Defense>
+		<PhysicalDefense>60</PhysicalDefense>
 		<NoArticle/>
 	        
 		<Projectile id="0">
@@ -191,7 +191,7 @@
 		<MaxHitPoints>1200</MaxHitPoints>
 		<XpMult>0.0</XpMult>
 		<Size>90</Size>
-		<Defense>5</Defense>
+		<PhysicalDefense>5</PhysicalDefense>
 		
 		<Texture><File>lofiEnvironment3</File><Index>0x22</Index></Texture>
 		<AltTexture id="1">
@@ -226,7 +226,7 @@
 		<Level>20</Level>
 		<XpMult>0.22</XpMult>
 		<Size>140</Size>
-		<Defense>60</Defense>
+		<PhysicalDefense>60</PhysicalDefense>
 		<NoArticle/>
 	        
 		<Projectile id="0">
@@ -289,7 +289,7 @@
 		<PerRealmMax>1</PerRealmMax>
 		<XpMult>0.3</XpMult>
 		<Size>60</Size>
-		<Defense>60</Defense>
+		<PhysicalDefense>60</PhysicalDefense>
 	        
 		<Projectile id="0">
 			<ObjectId>Deep Sea Blast</ObjectId>
@@ -357,7 +357,7 @@
 		</Projectile>
 		
 		<Size>100</Size>
-		<Defense>40</Defense>
+		<PhysicalDefense>40</PhysicalDefense>
 	    
 	        
 		
@@ -390,7 +390,7 @@
 		</Projectile>
 	        
 		<Size>60</Size>
-		<Defense>20</Defense>
+		<PhysicalDefense>20</PhysicalDefense>
 	        
 	        
 	        
@@ -427,7 +427,7 @@
 		</Projectile>
 		
 		<Size>100</Size>
-		<Defense>60</Defense>
+		<PhysicalDefense>60</PhysicalDefense>
 	        
 		
 		
@@ -459,7 +459,7 @@
         </Projectile>
         
         <Size>120</Size>
-        <Defense>40</Defense>
+        <PhysicalDefense>40</PhysicalDefense>
         <XpMult>0</XpMult>
         
        
@@ -494,7 +494,7 @@
         </Projectile>
         
         <Size>120</Size>
-        <Defense>40</Defense>
+        <PhysicalDefense>40</PhysicalDefense>
         
         
 		
@@ -534,7 +534,7 @@
         </Projectile>
         
         <Size>120</Size>
-        <Defense>40</Defense>
+        <PhysicalDefense>40</PhysicalDefense>
         
         
         
@@ -571,7 +571,7 @@
         </Projectile>
         
         <Size>100</Size>
-        <Defense>20</Defense>
+        <PhysicalDefense>20</PhysicalDefense>
         <XpMult>0.05</XpMult>
         
         

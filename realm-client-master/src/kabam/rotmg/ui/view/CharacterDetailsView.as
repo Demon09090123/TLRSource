@@ -1,10 +1,12 @@
 package kabam.rotmg.ui.view
 {
    import com.company.assembleegameclient.objects.Player;
-   import com.company.assembleegameclient.ui.IconButton;
    import com.company.ui.SimpleText;
    import com.company.util.AssetLibrary;
-   import flash.display.Bitmap;
+
+import drawing.components.IconButton;
+
+import flash.display.Bitmap;
    import flash.display.Sprite;
    import flash.events.MouseEvent;
    import flash.filters.DropShadowFilter;

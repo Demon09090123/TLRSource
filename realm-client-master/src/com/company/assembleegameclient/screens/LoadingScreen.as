@@ -5,7 +5,6 @@ package com.company.assembleegameclient.screens
    import flash.display.Sprite;
    import flash.filters.DropShadowFilter;
    import flash.text.TextFieldAutoSize;
-   import kabam.rotmg.ui.view.components.ScreenBase;
    
    public class LoadingScreen extends Sprite
    {
@@ -14,8 +13,6 @@ package com.company.assembleegameclient.screens
       public function LoadingScreen()
       {
          super();
-         addChild(new ScreenBase());
-         addChild(new ScreenGraphic());
          this.text = new SimpleText(30,16777215,false,0,0);
          this.text.y = 526;
          this.text.setBold(true);

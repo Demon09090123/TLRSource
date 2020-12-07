@@ -8,7 +8,7 @@
 		<DeathSound>monster/ghost_god_death</DeathSound>
 		<Size>100</Size>
 		<MaxHitPoints>8000</MaxHitPoints>
-		<Defense>12</Defense>
+		<PhysicalDefense>12</PhysicalDefense>
 		<Flying/>
 		<Quest/>
 		<God/>
@@ -83,7 +83,7 @@
 		<DeathSound>monster/skeletons_death</DeathSound>
 		<Size>100</Size>
 		<MaxHitPoints>350</MaxHitPoints>
-		<Defense>0</Defense>
+		<PhysicalDefense>0</PhysicalDefense>
 		<Projectile id="0">
 			<ObjectId>Blade</ObjectId>
 			<Damage>30</Damage>
@@ -100,7 +100,7 @@
 		<DeathSound>monster/skeletons_death</DeathSound>
 		<Size>100</Size>
 		<MaxHitPoints>400</MaxHitPoints>
-		<Defense>2</Defense>
+		<PhysicalDefense>2</PhysicalDefense>
 		<Projectile id="0">
 			<ObjectId>Blade</ObjectId>
 			<Damage>35</Damage>
@@ -117,7 +117,7 @@
 		<DeathSound>monster/skeletons_death</DeathSound>
 		<Size>100</Size>
 		<MaxHitPoints>450</MaxHitPoints>
-		<Defense>4</Defense>
+		<PhysicalDefense>4</PhysicalDefense>
 		<Projectile id="0">
 			<ObjectId>Blade</ObjectId>
 			<Damage>40</Damage>
@@ -134,7 +134,7 @@
 		<DeathSound>monster/skeletons_death</DeathSound>
 		<Size>100</Size>
 		<MaxHitPoints>500</MaxHitPoints>
-		<Defense>0</Defense>
+		<PhysicalDefense>0</PhysicalDefense>
 		<Projectile id="0">
 			<ObjectId>Blue Magic</ObjectId>
 			<Damage>45</Damage>
@@ -151,7 +151,7 @@
 		<DeathSound>monster/skeletons_death</DeathSound>
 		<Size>100</Size>
 		<MaxHitPoints>600</MaxHitPoints>
-		<Defense>0</Defense>
+		<PhysicalDefense>0</PhysicalDefense>
 		<Projectile id="0">
 			<ObjectId>Blue Bolt</ObjectId>
 			<Damage>50</Damage>
@@ -168,7 +168,7 @@
 		<DeathSound>monster/mummies_death</DeathSound>
 		<Size>100</Size>
 		<MaxHitPoints>400</MaxHitPoints>
-		<Defense>0</Defense>
+		<PhysicalDefense>0</PhysicalDefense>
 		<Projectile id="0">
 			<ObjectId>Green Magic</ObjectId>
 			<Damage>40</Damage>
@@ -185,7 +185,7 @@
 		<DeathSound>monster/mummies_death</DeathSound>
 		<Size>100</Size>
 		<MaxHitPoints>500</MaxHitPoints>
-		<Defense>0</Defense>
+		<PhysicalDefense>0</PhysicalDefense>
 		<Projectile id="0">
 			<ObjectId>Green Magic</ObjectId>
 			<Damage>50</Damage>
@@ -202,7 +202,7 @@
 		<DeathSound>monster/mummies_death</DeathSound>
 		<Size>100</Size>
 		<MaxHitPoints>600</MaxHitPoints>
-		<Defense>0</Defense>
+		<PhysicalDefense>0</PhysicalDefense>
 		<Projectile id="0">
 			<ObjectId>Green Magic</ObjectId>
 			<Damage>60</Damage>
@@ -219,7 +219,7 @@
 		<DeathSound>monster/dwarf_god_death</DeathSound>
 		<Size>110</Size>
 		<MaxHitPoints>700</MaxHitPoints>
-		<Defense>20</Defense>
+		<PhysicalDefense>20</PhysicalDefense>
 		<Projectile id="0">
 			<ObjectId>White Bolt</ObjectId>
 			<Damage>80</Damage>
@@ -244,7 +244,7 @@
 		<DeathSound>monster/dwarf_god_death</DeathSound>
 		<Size>120</Size>
 		<MaxHitPoints>800</MaxHitPoints>
-		<Defense>20</Defense>
+		<PhysicalDefense>20</PhysicalDefense>
 		<Projectile id="0">
 			<ObjectId>Blue Bolt</ObjectId>
 			<Damage>50</Damage>
@@ -268,7 +268,7 @@
 		<DeathSound>monster/slimes_death</DeathSound>
 		<Size>150</Size>
 		<MaxHitPoints>300</MaxHitPoints>
-		<Defense>0</Defense>
+		<PhysicalDefense>0</PhysicalDefense>
 		<Projectile id="0">
 			<ObjectId>Black Magic</ObjectId>
 			<Damage>100</Damage>
@@ -284,7 +284,7 @@
 		<DeathSound>monster/slimes_death</DeathSound>
 		<Size>120</Size>
 		<MaxHitPoints>150</MaxHitPoints>
-		<Defense>0</Defense>
+		<PhysicalDefense>0</PhysicalDefense>
 		<Projectile id="0">
 			<ObjectId>Black Magic</ObjectId>
 			<Damage>80</Damage>
@@ -300,7 +300,7 @@
 		<DeathSound>monster/slimes_death</DeathSound>
 		<Size>75</Size>
 		<MaxHitPoints>50</MaxHitPoints>
-		<Defense>0</Defense>
+		<PhysicalDefense>0</PhysicalDefense>
 		<Projectile id="0">
 			<ObjectId>Black Magic</ObjectId>
 			<Damage>50</Damage>
@@ -317,7 +317,7 @@
 		<DeathSound>monster/slimes_death</DeathSound>
 		<Size>150</Size>
 		<MaxHitPoints>300</MaxHitPoints>
-		<Defense>0</Defense>
+		<PhysicalDefense>0</PhysicalDefense>
 		<Projectile id="0">
 			<ObjectId>Brown Magic</ObjectId>
 			<Damage>100</Damage>
@@ -333,7 +333,7 @@
 		<DeathSound>monster/slimes_death</DeathSound>
 		<Size>75</Size>
 		<MaxHitPoints>150</MaxHitPoints>
-		<Defense>0</Defense>
+		<PhysicalDefense>0</PhysicalDefense>
 		<Projectile id="0">
 			<ObjectId>Brown Magic</ObjectId>
 			<Damage>50</Damage>
@@ -350,7 +350,7 @@
 		<DeathSound>monster/bats_death</DeathSound>
 		<Size>50</Size>
 		<MaxHitPoints>200</MaxHitPoints>
-		<Defense>0</Defense>
+		<PhysicalDefense>0</PhysicalDefense>
 		<Flying/>
 		<Projectile id="0">
 			<ObjectId>Blue Magic</ObjectId>
@@ -368,7 +368,7 @@
 		<DeathSound>monster/bats_death</DeathSound>
 		<Size>50</Size>
 		<MaxHitPoints>200</MaxHitPoints>
-		<Defense>30</Defense>
+		<PhysicalDefense>30</PhysicalDefense>
 		<Flying/>
 		<Projectile id="0">
 			<ObjectId>Blue Magic</ObjectId>
@@ -386,7 +386,7 @@
 		<DeathSound>monster/traps_death</DeathSound>
 		<Size>100</Size>
 		<MaxHitPoints>100</MaxHitPoints>
-		<Defense>0</Defense>
+		<PhysicalDefense>0</PhysicalDefense>
 		<DrawOnGround/>
 		<NoMiniMap/>
 		<Projectile id="0">
@@ -405,7 +405,7 @@
 		<DeathSound>monster/traps_death</DeathSound>
 		<Size>100</Size>
 		<MaxHitPoints>100</MaxHitPoints>
-		<Defense>0</Defense>
+		<PhysicalDefense>0</PhysicalDefense>
 		<DrawOnGround/>
 		<NoMiniMap/>
 		<Projectile id="0">
@@ -424,7 +424,7 @@
 		<DeathSound>monster/ghosts_death</DeathSound>
 		<Size>100</Size>
 		<MaxHitPoints>800</MaxHitPoints>
-		<Defense>20</Defense>
+		<PhysicalDefense>20</PhysicalDefense>
 		<Projectile id="0">
 			<ObjectId>Fire Bolt</ObjectId>
 			<Damage>40</Damage>
@@ -441,7 +441,7 @@
 		<DeathSound>monster/ghosts_death</DeathSound>
 		<Size>100</Size>
 		<MaxHitPoints>300</MaxHitPoints>
-		<Defense>0</Defense>
+		<PhysicalDefense>0</PhysicalDefense>
 		<Projectile id="0">
 			<ObjectId>Green Star</ObjectId>
 			<Damage>80</Damage>
@@ -465,7 +465,7 @@
 		<DeathSound>monster/ghosts_death</DeathSound>
 		<Size>100</Size>
 		<MaxHitPoints>400</MaxHitPoints>
-		<Defense>0</Defense>
+		<PhysicalDefense>0</PhysicalDefense>
 		<Projectile id="0">
 			<ObjectId>Grey Star</ObjectId>
 			<Damage>80</Damage>
@@ -489,7 +489,7 @@
 		<DeathSound>monster/ghosts_death</DeathSound>
 		<Size>100</Size>
 		<MaxHitPoints>200</MaxHitPoints>
-		<Defense>0</Defense>
+		<PhysicalDefense>0</PhysicalDefense>
 		<Flying/>
 		<Projectile id="0">
 			<ObjectId>Pink Bolt</ObjectId>
@@ -507,7 +507,7 @@
 		<DeathSound>monster/ghosts_death</DeathSound>
 		<Size>115</Size>
 		<MaxHitPoints>300</MaxHitPoints>
-		<Defense>0</Defense>
+		<PhysicalDefense>0</PhysicalDefense>
 		<Flying/>
 		<Projectile id="0">
 			<ObjectId>Pink Bolt</ObjectId>
@@ -525,7 +525,7 @@
 		<DeathSound>monster/ghosts_death</DeathSound>
 		<Size>130</Size>
 		<MaxHitPoints>400</MaxHitPoints>
-		<Defense>0</Defense>
+		<PhysicalDefense>0</PhysicalDefense>
 		<Flying/>
 		<Projectile id="0">
 			<ObjectId>Pink Bolt</ObjectId>
@@ -543,7 +543,7 @@
 		<DeathSound>monster/ghosts_death</DeathSound>
 		<Size>100</Size>
 		<MaxHitPoints>700</MaxHitPoints>
-		<Defense>15</Defense>
+		<PhysicalDefense>15</PhysicalDefense>
 		<Projectile id="0">
 			<ObjectId>Blue Arrow</ObjectId>
 			<Damage>60</Damage>
@@ -561,7 +561,7 @@
 		<DeathSound>monster/ghosts_death</DeathSound>
 		<Size>100</Size>
 		<MaxHitPoints>400</MaxHitPoints>
-		<Defense>15</Defense>
+		<PhysicalDefense>15</PhysicalDefense>
 		<Projectile id="0">
 			<ObjectId>Blade</ObjectId>
 			<Damage>35</Damage>
@@ -578,7 +578,7 @@
 		<DeathSound>monster/ghosts_death</DeathSound>
 		<Size>100</Size>
 		<MaxHitPoints>400</MaxHitPoints>
-		<Defense>15</Defense>
+		<PhysicalDefense>15</PhysicalDefense>
 		<Projectile id="0">
 			<ObjectId>Blue Bolt</ObjectId>
 			<Damage>40</Damage>
@@ -595,7 +595,7 @@
 		<DeathSound>monster/ghosts_death</DeathSound>
 		<Size>100</Size>
 		<MaxHitPoints>400</MaxHitPoints>
-		<Defense>15</Defense>
+		<PhysicalDefense>15</PhysicalDefense>
 		<Projectile id="0">
 			<ObjectId>Blade</ObjectId>
 			<Damage>30</Damage>
@@ -612,7 +612,7 @@
 		<DeathSound>monster/ghosts_death</DeathSound>
 		<Size>100</Size>
 		<MaxHitPoints>400</MaxHitPoints>
-		<Defense>15</Defense>
+		<PhysicalDefense>15</PhysicalDefense>
 		<Projectile id="0">
 			<ObjectId>Blade</ObjectId>
 			<Damage>40</Damage>
@@ -629,7 +629,7 @@
 		<DeathSound>monster/ghosts_death</DeathSound>
 		<Size>100</Size>
 		<MaxHitPoints>400</MaxHitPoints>
-		<Defense>15</Defense>
+		<PhysicalDefense>15</PhysicalDefense>
 		<Projectile id="0">
 			<ObjectId>Blade</ObjectId>
 			<Damage>50</Damage>
@@ -646,7 +646,7 @@
 		<DeathSound>monster/ghosts_death</DeathSound>
 		<Size>120</Size>
 		<MaxHitPoints>600</MaxHitPoints>
-		<Defense>20</Defense>
+		<PhysicalDefense>20</PhysicalDefense>
 		<XpMult>0</XpMult>
 		<Projectile id="0">
 			<ObjectId>Blade</ObjectId>
@@ -664,7 +664,7 @@
 		<DeathSound>monster/ghosts_death</DeathSound>
 		<Size>120</Size>
 		<MaxHitPoints>600</MaxHitPoints>
-		<Defense>20</Defense>
+		<PhysicalDefense>20</PhysicalDefense>
 		<XpMult>0</XpMult>
 		<Projectile id="0">
 			<ObjectId>Blue Bolt</ObjectId>
@@ -682,7 +682,7 @@
 		<DeathSound>monster/ghosts_death</DeathSound>
 		<Size>120</Size>
 		<MaxHitPoints>600</MaxHitPoints>
-		<Defense>20</Defense>
+		<PhysicalDefense>20</PhysicalDefense>
 		<XpMult>0</XpMult>
 		<Projectile id="0">
 			<ObjectId>Blade</ObjectId>

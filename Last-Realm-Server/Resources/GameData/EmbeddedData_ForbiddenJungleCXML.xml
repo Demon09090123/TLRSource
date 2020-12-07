@@ -6,7 +6,7 @@
 		<Size>100</Size>
 		<ShadowSize>90</ShadowSize>
 		<MaxHitPoints>50</MaxHitPoints>
-		<Defense>20</Defense>
+		<PhysicalDefense>20</PhysicalDefense>
 		<XpMult>0.1</XpMult>
 		
 		<HitSound>monster/wooden_walls_hit</HitSound>
@@ -38,7 +38,7 @@
 		<Size>100</Size>
 		<ShadowSize>90</ShadowSize>
 		<MaxHitPoints>50</MaxHitPoints>
-		<Defense>20</Defense>
+		<PhysicalDefense>20</PhysicalDefense>
 		<XpMult>0.0</XpMult>
 		
 		<HitSound>monster/wooden_walls_hit</HitSound>
@@ -62,7 +62,7 @@
 		<Size>100</Size>
 		<ShadowSize>90</ShadowSize>
 		<MaxHitPoints>900</MaxHitPoints>
-		<Defense>15</Defense>
+		<PhysicalDefense>15</PhysicalDefense>
 		<Quest/>
 		<Level>8</Level>
 		<XpMult>3.0</XpMult>
@@ -126,7 +126,7 @@
 		<Size>140</Size>
 		<ShadowSize>100</ShadowSize>
 		<MaxHitPoints>4200</MaxHitPoints>
-		<Defense>15</Defense>
+		<PhysicalDefense>15</PhysicalDefense>
 		<XpMult>0.85</XpMult>
 		
 		<God/>
@@ -242,7 +242,7 @@
 		<Size>0</Size>
 		<ShadowSize>0</ShadowSize>
 		<MaxHitPoints>10</MaxHitPoints>
-		<Defense>0</Defense>
+		<PhysicalDefense>0</PhysicalDefense>
 		<XpMult>0</XpMult>
 		<NoMiniMap/>
 		
@@ -310,7 +310,7 @@
 		<Size>80</Size>
 		<ShadowSize>90</ShadowSize>
 		<MaxHitPoints>125</MaxHitPoints>
-		<Defense>25</Defense>
+		<PhysicalDefense>25</PhysicalDefense>
 		<XpMult>0.2</XpMult>
 		<Z>0.26</Z>
 		
@@ -337,7 +337,7 @@
 		<Size>130</Size>
 		<ShadowSize>90</ShadowSize>
 		<MaxHitPoints>900</MaxHitPoints>
-		<Defense>10</Defense>
+		<PhysicalDefense>10</PhysicalDefense>
 		
 		<Projectile id="0">
 			<ObjectId>Totem Blast</ObjectId>
@@ -362,7 +362,7 @@
 		<Size>100</Size>
 		<ShadowSize>100</ShadowSize>
 		<MaxHitPoints>200</MaxHitPoints>
-		<Defense>10</Defense>
+		<PhysicalDefense>10</PhysicalDefense>
 		
 		<Projectile id="0">
 			<ObjectId>Basilisk Acid</ObjectId>
@@ -388,7 +388,7 @@
 		<Size>100</Size>
 		<ShadowSize>100</ShadowSize>
 		<MaxHitPoints>370</MaxHitPoints>
-		<Defense>10</Defense>
+		<PhysicalDefense>10</PhysicalDefense>
 		
 		<Projectile id="0">
 			<ObjectId>Basilisk Acid</ObjectId>
@@ -443,7 +443,7 @@
 		<Size>100</Size>
 		<ShadowSize>100</ShadowSize>
 		<MaxHitPoints>250</MaxHitPoints>
-		<Defense>5</Defense>
+		<PhysicalDefense>5</PhysicalDefense>
 		
 		<Projectile id="0">
 			<ObjectId>Shaman Star</ObjectId>
@@ -470,7 +470,7 @@
 		<Size>100</Size>
 		<ShadowSize>100</ShadowSize>
 		<MaxHitPoints>300</MaxHitPoints>
-		<Defense>20</Defense>
+		<PhysicalDefense>20</PhysicalDefense>
 		
 		
 		<Projectile id="0">
@@ -496,7 +496,7 @@
 		<Size>100</Size>
 		<ShadowSize>100</ShadowSize>
 		<MaxHitPoints>300</MaxHitPoints>
-		<Defense>10</Defense>
+		<PhysicalDefense>10</PhysicalDefense>
 		
 		<Projectile id="0">
 			<ObjectId>Hunter Spear</ObjectId>
@@ -531,7 +531,7 @@
 		<ShadowSize>85</ShadowSize>
 		<ShadowColor>0xFA9632</ShadowColor>
 		<MaxHitPoints>400</MaxHitPoints>
-		<Defense>80</Defense>
+		<PhysicalDefense>80</PhysicalDefense>
 		
 		<Projectile id="0">
 			<ObjectId>Invisible</ObjectId>

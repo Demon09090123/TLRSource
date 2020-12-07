@@ -2,6 +2,8 @@ package com.company.assembleegameclient.screens.charrects
 {
    import com.company.assembleegameclient.appengine.SavedCharacter;
 import com.company.assembleegameclient.parameters.Parameters;
+import com.company.assembleegameclient.util.AnimatedChar;
+import com.company.assembleegameclient.util.AnimatedChars;
 
 import flash.display.Bitmap;
    import flash.display.BitmapData;
@@ -27,7 +29,7 @@ import flash.display.Bitmap;
 
       public function CharacterRectList(pModel:PlayerModel) {
           this.model = pModel;
-          var hasCharacter:Boolean = this.model.charList.hasCharacter;
+          var hasCharacter:Boolean = this.model.hasCharacter();
 
           var injector:Injector = StaticInjectorContext.getInjector();
           this.classes = injector.getInstance(ClassesModel);
@@ -42,20 +44,15 @@ import flash.display.Bitmap;
       }
 
       private function createNew():void {
-          var newRect:CreateNewCharacterRect = new CreateNewCharacterRect(this.model);
-          newRect.addEventListener(MouseEvent.MOUSE_DOWN, this.onNewChar);
-          newRect.y = 5;
+          var newRect:CreateNewCharacterRect = new CreateNewCharacterRect();
+          //newRect.addEventListener(MouseEvent.MOUSE_DOWN, this.onNewChar);
 
           addChild(newRect);
       }
 
       private function createCurrent():void {
-          var curRect:CurrentCharacterRect = new CurrentCharacterRect(this.model.getName(),
-          this.classes.getCharacterClass(this.model.getSavedCharacter().objectType()), this.model.getSavedCharacter());
-
+          var curRect:CurrentCharacterRect = new CurrentCharacterRect(this.model);
           curRect.setIcon(this.getIcon(this.model.getSavedCharacter()));
-          curRect.y = 5;
-
           addChild(curRect);
       }
 
@@ -63,7 +60,7 @@ import flash.display.Bitmap;
       {
          var type:CharacterClass = this.classes.getCharacterClass(savedChar.objectType());
          var skin:CharacterSkin = type.skins.getSkin(savedChar.skinType()) || type.skins.getDefaultSkin();
-         var data:BitmapData = this.assetFactory.makeIcon(skin.template,100,savedChar.tex1(),savedChar.tex2());
+         var data:BitmapData = this.assetFactory.makeIcon(skin.template,100,savedChar.tex1(),savedChar.tex2(), 0, 2);
          return new Bitmap(data);
       }
       

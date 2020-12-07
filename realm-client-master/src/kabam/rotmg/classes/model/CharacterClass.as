@@ -29,8 +29,12 @@ package kabam.rotmg.classes.model
       public var mp:CharacterClassStat;
       
       public var attack:CharacterClassStat;
+
+      public var magicPower:CharacterClassStat;
       
-      public var defense:CharacterClassStat;
+      public var physicalDefense:CharacterClassStat;
+
+      public var magicDefense:CharacterClassStat;
       
       public var speed:CharacterClassStat;
       

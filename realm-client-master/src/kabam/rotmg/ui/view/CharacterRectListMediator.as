@@ -3,7 +3,6 @@ package kabam.rotmg.ui.view
    import com.company.assembleegameclient.screens.NewCharacterScreen;
    import com.company.assembleegameclient.screens.charrects.CharacterRectList;
    import kabam.rotmg.core.signals.SetScreenWithValidDataSignal;
-   import kabam.rotmg.ui.signals.BuyCharacterSlotSignal;
    import robotlegs.bender.bundles.mvcs.Mediator;
    
    public class CharacterRectListMediator extends Mediator
@@ -15,10 +14,7 @@ package kabam.rotmg.ui.view
       
       [Inject]
       public var setScreenWithValidData:SetScreenWithValidDataSignal;
-      
-      [Inject]
-      public var buyCharacterSlotSignal:BuyCharacterSlotSignal;
-      
+
       public function CharacterRectListMediator()
       {
          super();
@@ -37,11 +33,6 @@ package kabam.rotmg.ui.view
       private function onNewCharacter() : void
       {
          this.setScreenWithValidData.dispatch(new NewCharacterScreen());
-      }
-      
-      private function onBuyCharacterSlot(cost:int) : void
-      {
-         this.buyCharacterSlotSignal.dispatch(cost);
       }
    }
 }

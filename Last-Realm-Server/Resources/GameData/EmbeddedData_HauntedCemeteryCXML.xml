@@ -168,7 +168,7 @@
         
 		<MaxHitPoints>1000</MaxHitPoints>
 		<XpMult>0.45</XpMult>
-		<Defense>8</Defense>
+		<PhysicalDefense>8</PhysicalDefense>
         
 		<Projectile id="0">
 			<ObjectId>Skull Wave</ObjectId>
@@ -228,7 +228,7 @@
         
 		<MaxHitPoints>48000</MaxHitPoints>
 		<XpMult>0.85</XpMult>
-		<Defense>15</Defense>
+		<PhysicalDefense>15</PhysicalDefense>
         <StasisImmune/>
         
 		<Projectile id="0">
@@ -285,7 +285,7 @@
 		<ShadowSize>0</ShadowSize>
         
 		<MaxHitPoints>1000</MaxHitPoints>
-		<Defense>8</Defense>
+		<PhysicalDefense>8</PhysicalDefense>
         <NoMiniMap/>
         
         
@@ -308,7 +308,7 @@
         
 		<MaxHitPoints>550</MaxHitPoints>
 		<XpMult>0</XpMult>
-		<Defense>12</Defense>
+		<PhysicalDefense>12</PhysicalDefense>
         
         
 		<Projectile id="0">
@@ -361,7 +361,7 @@
         <DeathSound>monster/goblins_hit</DeathSound>
         <Size>100</Size>
         <MaxHitPoints>550</MaxHitPoints>
-        <Defense>3</Defense>
+        <PhysicalDefense>3</PhysicalDefense>
         
         <Projectile id="0">
             <ObjectId>Wereshot</ObjectId>
@@ -396,7 +396,7 @@
         
 		<MaxHitPoints>3000</MaxHitPoints>
 		<XpMult>0.35</XpMult>
-		<Defense>13</Defense>
+		<PhysicalDefense>13</PhysicalDefense>
         
         <Projectile id="0">
             <ObjectId>Big Zombie Wave</ObjectId>
@@ -446,7 +446,7 @@
         
 		<MaxHitPoints>1000</MaxHitPoints>
 		<XpMult>0.45</XpMult>
-		<Defense>8</Defense>
+		<PhysicalDefense>8</PhysicalDefense>
         
 		<Projectile id="0">
 			<ObjectId>White Ghost Shot</ObjectId>
@@ -469,7 +469,7 @@
 		<DeathSound>monster/cyclops_death</DeathSound>
 		<Size>120</Size>
 		<MaxHitPoints>3000</MaxHitPoints>
-		<Defense>15</Defense>
+		<PhysicalDefense>15</PhysicalDefense>
 		
 		
         <Projectile id="0">
@@ -848,7 +848,7 @@
         <Size>150</Size>
         <ShadowSize>100</ShadowSize>
         <MaxHitPoints>10000</MaxHitPoints>
-        <Defense>20</Defense>
+        <PhysicalDefense>20</PhysicalDefense>
         <Terrain>Mountains</Terrain>
         <SpawnProb>0.045</SpawnProb>
         <XpMult>0.7</XpMult>
@@ -899,7 +899,7 @@
         <DeathSound>monster/ghosts_death</DeathSound>
         <Size>125</Size>
         <MaxHitPoints>3500</MaxHitPoints>
-        <Defense>10</Defense>
+        <PhysicalDefense>10</PhysicalDefense>
         <ShadowSize>70</ShadowSize>
         <Z>.4</Z>
         <Flying/>
@@ -929,7 +929,7 @@
         <Size>125</Size>
         <ShadowSize>100</ShadowSize>
         <MaxHitPoints>2500</MaxHitPoints>
-        <Defense>20</Defense>
+        <PhysicalDefense>20</PhysicalDefense>
 
         <Projectile id="0">
             <ObjectId>Mummy Blast</ObjectId>
@@ -955,7 +955,7 @@
         <Size>125</Size>
         <ShadowSize>100</ShadowSize>
         <MaxHitPoints>2500</MaxHitPoints>
-        <Defense>20</Defense>
+        <PhysicalDefense>20</PhysicalDefense>
 
         <Projectile id="0">
             <ObjectId>Purple Bolt</ObjectId>
@@ -980,7 +980,7 @@
         <Size>125</Size>
         <ShadowSize>100</ShadowSize>
         <MaxHitPoints>2500</MaxHitPoints>
-        <Defense>20</Defense>
+        <PhysicalDefense>20</PhysicalDefense>
 
         <Projectile id="0">
             <ObjectId>Purple Magic</ObjectId>
@@ -1005,7 +1005,7 @@
         <Size>125</Size>
         <ShadowSize>100</ShadowSize>
         <MaxHitPoints>2500</MaxHitPoints>
-        <Defense>20</Defense>
+        <PhysicalDefense>20</PhysicalDefense>
 
         <Projectile id="0">
             <ObjectId>Green Arrow</ObjectId>
@@ -1038,7 +1038,7 @@
         <Size>150</Size>
         <ShadowSize>100</ShadowSize>
         <MaxHitPoints>2500</MaxHitPoints>
-        <Defense>20</Defense>
+        <PhysicalDefense>20</PhysicalDefense>
 
         <Projectile id="0">
             <ObjectId>Yellow Grey Ball</ObjectId>
@@ -1067,7 +1067,7 @@
         <Size>150</Size>
         <ShadowSize>0</ShadowSize>
         <MaxHitPoints>10000</MaxHitPoints>
-        <Defense>30</Defense>
+        <PhysicalDefense>30</PhysicalDefense>
         <ShadowSize>70</ShadowSize>
         <Z>.2</Z>
         <Flying/>
@@ -1166,7 +1166,7 @@
         <Size>125</Size>
         <ShadowSize>100</ShadowSize>
         <MaxHitPoints>14000</MaxHitPoints>
-        <Defense>20</Defense>
+        <PhysicalDefense>20</PhysicalDefense>
         <NoMiniMap/>
 
         <Projectile id="0">
@@ -1242,7 +1242,7 @@
         <DeathSound>monster/ghosts_god_death</DeathSound>
         <Size>125</Size>
         <MaxHitPoints>4000</MaxHitPoints>
-        <Defense>5</Defense>
+        <PhysicalDefense>5</PhysicalDefense>
         <ShadowSize>70</ShadowSize>
         <Z>.4</Z>
         <Flying/>
@@ -1271,7 +1271,7 @@
         <Size>100</Size>
         <ShadowSize>110</ShadowSize>
         <MaxHitPoints>5000</MaxHitPoints>
-        <Defense>50</Defense>
+        <PhysicalDefense>50</PhysicalDefense>
 
         <Projectile id="0">
             <ObjectId>Troll 1 Attack 1</ObjectId>
@@ -1297,7 +1297,7 @@
         <Size>175</Size>
         <ShadowSize>100</ShadowSize>
         <MaxHitPoints>10000</MaxHitPoints>
-        <Defense>20</Defense>
+        <PhysicalDefense>20</PhysicalDefense>
         <StasisImmune/>
 
         <Projectile id="0">
@@ -1347,7 +1347,7 @@
         <Size>125</Size>
         <ShadowSize>100</ShadowSize>
         <MaxHitPoints>3000</MaxHitPoints>
-        <Defense>20</Defense>
+        <PhysicalDefense>20</PhysicalDefense>
 
         <Projectile id="0">
             <ObjectId>Troll 2 Attack 1</ObjectId>
@@ -1374,7 +1374,7 @@
         <Size>125</Size>
         <ShadowSize>100</ShadowSize>
         <MaxHitPoints>1000</MaxHitPoints>
-        <Defense>20</Defense>
+        <PhysicalDefense>20</PhysicalDefense>
 
         <Projectile id="0">
             <ObjectId>Skeleton Attack</ObjectId>
@@ -1399,7 +1399,7 @@
         <Size>125</Size>
         <ShadowSize>100</ShadowSize>
         <MaxHitPoints>2500</MaxHitPoints>
-        <Defense>20</Defense>
+        <PhysicalDefense>20</PhysicalDefense>
 
         <Projectile id="0">
             <ObjectId>Purple Magic Blast</ObjectId>
@@ -1426,7 +1426,7 @@
         <Size>150</Size>
         <ShadowSize>100</ShadowSize>
         <MaxHitPoints>18000</MaxHitPoints>
-        <Defense>15</Defense>
+        <PhysicalDefense>15</PhysicalDefense>
         <StasisImmune/>
 
         <Projectile id="0">
@@ -1470,7 +1470,7 @@
         <Size>90</Size>
         <ShadowSize>100</ShadowSize>
         <MaxHitPoints>2500</MaxHitPoints>
-        <Defense>20</Defense>
+        <PhysicalDefense>20</PhysicalDefense>
 
         <Projectile id="0">
             <ObjectId>Spider Bolt</ObjectId>
@@ -1495,7 +1495,7 @@
         <Size>150</Size>
         <ShadowSize>100</ShadowSize>
         <MaxHitPoints>2500</MaxHitPoints>
-        <Defense>20</Defense>
+        <PhysicalDefense>20</PhysicalDefense>
 
         <Projectile id="0">
             <ObjectId>Orange Pumpkin Wave</ObjectId>
@@ -1520,7 +1520,7 @@
         <Size>150</Size>
         <ShadowSize>100</ShadowSize>
         <MaxHitPoints>2500</MaxHitPoints>
-        <Defense>20</Defense>
+        <PhysicalDefense>20</PhysicalDefense>
 
         <Projectile id="0">
             <ObjectId>Vampire Attack</ObjectId>
@@ -1547,7 +1547,7 @@
         <Size>75</Size>
         <ShadowSize>75</ShadowSize>
         <MaxHitPoints>2500</MaxHitPoints>
-        <Defense>20</Defense>
+        <PhysicalDefense>20</PhysicalDefense>
         <Z>.4</Z>
 
         <Projectile id="0">
@@ -1576,7 +1576,7 @@
         <Size>75</Size>
         <ShadowSize>75</ShadowSize>
         <MaxHitPoints>5000</MaxHitPoints>
-        <Defense>20</Defense>
+        <PhysicalDefense>20</PhysicalDefense>
         <Z>.25</Z>
         <Flying/>
 
@@ -1609,7 +1609,7 @@
         <Size>175</Size>
         <ShadowSize>75</ShadowSize>
         <MaxHitPoints>5000</MaxHitPoints>
-        <Defense>20</Defense>
+        <PhysicalDefense>20</PhysicalDefense>
         <NoMiniMap/>
 
         <Projectile id="0">
@@ -1637,7 +1637,7 @@
         <Size>0</Size>
         <ShadowSize>0</ShadowSize>
         <MaxHitPoints>5000</MaxHitPoints>
-        <Defense>20</Defense>
+        <PhysicalDefense>20</PhysicalDefense>
 
         <Projectile id="0">
             <ObjectId>Blue Magic</ObjectId>
@@ -1670,7 +1670,7 @@
         <Size>125</Size>
         <ShadowSize>0</ShadowSize>
         <MaxHitPoints>14000</MaxHitPoints>
-        <Defense>30</Defense>
+        <PhysicalDefense>30</PhysicalDefense>
         <NoMiniMap/>
 
         <Projectile id="0">

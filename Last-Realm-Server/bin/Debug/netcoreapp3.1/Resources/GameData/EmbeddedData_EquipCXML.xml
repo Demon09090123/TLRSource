@@ -2008,7 +2008,7 @@
         <Texture><File>lofiObj2</File><Index>0x35</Index></Texture>
         <SlotType>10</SlotType>
         <Tier>2</Tier>
-        <Description>A potion that permanently increases defense power.</Description>
+        <Description>A potion that permanently increases Defense power.</Description>
         <Sound>use_potion</Sound>
         <Activate stat="21" amount="1">IncrementStat</Activate>
         <Consumable/>
@@ -2616,7 +2616,7 @@
         <Item/>
         <Texture><File>lofiObj2</File><Index>0xc5</Index></Texture>
         <SlotType>10</SlotType>
-        <Description>A potion that temporarily boosts defense.</Description>
+        <Description>A potion that temporarily boosts Defense.</Description>
         <Sound>use_potion</Sound>
         <Consumable/>
         
@@ -2668,7 +2668,7 @@
         <Item/>
         <Texture><File>lofiObj2</File><Index>0xd5</Index></Texture>
         <SlotType>10</SlotType>
-        <Description>A potion that temporarily boosts the defense of all nearby allies.</Description>
+        <Description>A potion that temporarily boosts the Defense of all nearby allies.</Description>
         <Sound>use_potion</Sound>
         <Consumable/>
         
@@ -6126,7 +6126,7 @@
         <Item/>
         <Texture><File>lofiObj3</File><Index>0x176</Index></Texture>
         <SlotType>10</SlotType>
-        <Description>A bold island drink that boosts defense and vitality.</Description>
+        <Description>A bold island drink that boosts Defense and vitality.</Description>
         <Sound>use_potion</Sound>
         <Consumable/>
         
@@ -6888,7 +6888,7 @@
         <Item/>
         <Texture><File>lofiObj3</File><Index>0x290</Index></Texture>
         <SlotType>10</SlotType>
-        <Description>Gum that temporarily boosts your defense.</Description>
+        <Description>Gum that temporarily boosts your Defense.</Description>
         <Sound>use_potion</Sound>
         <Consumable/>
         <Potion/>

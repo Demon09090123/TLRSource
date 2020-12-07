@@ -10,20 +10,15 @@ package com.company.assembleegameclient.ui
    {
       
       public static const ATTACK:int = 0;
+      public static const MAGIC_POWER:int = 1;
+      public static const PHYSICAL_DEFENSE:int = 2;
+      public static const MAGIC_DEFENSE:int = 3;
+      public static const SPEED:int = 4;
+      public static const DEXTERITY:int = 5;
+      public static const VITALITY:int = 6;
+      public static const WISDOM:int = 7;
       
-      public static const DEFENSE:int = 1;
-      
-      public static const SPEED:int = 2;
-      
-      public static const DEXTERITY:int = 3;
-      
-      public static const VITALITY:int = 4;
-      
-      public static const WISDOM:int = 5;
-      
-      public static const NUM_STAT:int = 6;
-      
-      private static const statsXML:XML = <Stats>
+      public static const statsXML:XML = <Stats>
                 <Stat>
                     <Abbr>ATT</Abbr>
                     <Name>Attack</Name>
@@ -31,9 +26,20 @@ package com.company.assembleegameclient.ui
                     <RedOnZero/>
                 </Stat>
                 <Stat>
-                    <Abbr>DEF</Abbr>
-                    <Name>Defense</Name>
-                    <Description>This stat decreases the amount of damage taken.</Description>
+                    <Abbr>MGP</Abbr>
+                    <Name>Attack</Name>
+                    <Description>This stat increases the amount of magic damage done.</Description>
+                    <RedOnZero/>
+                </Stat>
+                <Stat>
+                    <Abbr>PDEF</Abbr>
+                    <Name>Physical Defense</Name>
+                    <Description>This stat decreases the amount of physical damage taken.</Description>
+                </Stat>
+                <Stat>
+                    <Abbr>MDEF</Abbr>
+                    <Name>Magic Defense</Name>
+                    <Description>This stat decreases the amount of magic damage taken.</Description>
                 </Stat>
                 <Stat>
                     <Abbr>SPD</Abbr>
@@ -93,12 +99,14 @@ package com.company.assembleegameclient.ui
       
       public function draw(go:Player) : void
       {
-         this.stats_[ATTACK].draw(go.attack_,go.attackBoost_,go.attackMax_);
-         this.stats_[DEFENSE].draw(go.defense_,go.defenseBoost_,go.defenseMax_);
-         this.stats_[SPEED].draw(go.speed_,go.speedBoost_,go.speedMax_);
-         this.stats_[DEXTERITY].draw(go.dexterity_,go.dexterityBoost_,go.dexterityMax_);
-         this.stats_[VITALITY].draw(go.vitality_,go.vitalityBoost_,go.vitalityMax_);
-         this.stats_[WISDOM].draw(go.wisdom_,go.wisdomBoost_,go.wisdomMax_);
+         this.stats_[ATTACK].draw(go.attack_);
+         this.stats_[MAGIC_POWER].draw(go.magicPower_)
+         this.stats_[PHYSICAL_DEFENSE].draw(go.physicalDefense);
+         this.stats_[MAGIC_DEFENSE].draw(go.magicPower_);
+         this.stats_[SPEED].draw(go.speed_);
+         this.stats_[DEXTERITY].draw(go.dexterity_);
+         this.stats_[VITALITY].draw(go.vitality_);
+         this.stats_[WISDOM].draw(go.wisdom_);
       }
       
       private function onAddedToStage(event:Event) : void
@@ -168,8 +176,6 @@ class Stat extends Sprite
    
    public var val_:int = -1;
    
-   public var boost_:int = -1;
-   
    public var valColor_:uint = 11776947;
    
    function Stat(name:String, fullName:String, desc:String, redOnZero:Boolean)
@@ -192,27 +198,18 @@ class Stat extends Sprite
       this.redOnZero_ = redOnZero;
    }
    
-   public function draw(val:int, boost:int, max:int) : void
+   public function draw(val:int) : void
    {
       var newValColor:uint = 0;
       var format:TextFormat = null;
-      if(val == this.val_ && boost == this.boost_)
+      if(val == this.val_)
       {
          return;
       }
       this.val_ = val;
-      this.boost_ = boost;
-      if(val - boost >= max)
-      {
-         newValColor = 16572160;
-      }
-      else if(this.redOnZero_ && this.val_ <= 0 || this.boost_ < 0)
+       if(this.redOnZero_ && this.val_ <= 0)
       {
          newValColor = 16726072;
-      }
-      else if(this.boost_ > 0)
-      {
-         newValColor = 6206769;
       }
       else
       {
@@ -227,10 +224,6 @@ class Stat extends Sprite
          this.valText_.defaultTextFormat = format;
       }
       this.valText_.text = this.val_.toString();
-      if(this.boost_ != 0)
-      {
-         this.valText_.text = this.valText_.text + (" (" + (this.boost_ > 0?"+":"") + this.boost_.toString() + ")");
-      }
       this.valText_.updateMetrics();
    }
 }

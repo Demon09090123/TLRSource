@@ -24,37 +24,22 @@ package kabam.rotmg.core.model
 
       public function getCredits() : int
       {
-         return this.charList.credits_;
-      }
-      
-      public function changeCredits(credits:int) : void
-      {
-         this.charList.credits_ = this.charList.credits_ + credits;
-         this.creditsChanged.dispatch(this.charList.credits_);
-      }
-      
-      public function setCredits(credits:int) : void
-      {
-         if(this.charList.credits_ != credits)
-         {
-            this.charList.credits_ = credits;
-            this.creditsChanged.dispatch(credits);
-         }
+         return this.charList.getCredits();
       }
 
       public function getAccountId() : int
       {
-         return this.charList.accountId_;
+         return this.charList.getAccountID();
       }
       
       public function hasAccount() : Boolean
       {
-         return this.charList.accountId_ != -1;
+         return getAccountId() != -1;
       }
 
       public function getLevel() : int {
-          if (this.charList.hasCharacter) {
-              return this.charList.savedChar.level();
+          if (hasCharacter()) {
+              this.charList.getChar().level();
           }
           return 0;
       }
@@ -62,28 +47,23 @@ package kabam.rotmg.core.model
       
       public function getGuildName() : String
       {
-         return this.charList.guildName_;
+         return this.charList.getGuildName();
       }
       
       public function getGuildRank() : int
       {
-         return this.charList.guildRank_;
+         return this.charList.getGuildRank();
       }
       public function getName() : String
       {
-         return this.charList.name_;
+         return this.charList.getName();
       }
-      
-      public function setName(value:String) : void
-      {
-         this.charList.name_ = value;
+      public function getSavedCharacter() : SavedCharacter {
+          return this.charList.getChar();
       }
 
-      public function getSavedCharacter() : SavedCharacter {
-          if (this.charList.hasCharacter) {
-              return this.charList.savedChar;
-          }
-          return null;
+      public function hasCharacter() : Boolean {
+          return (this.charList.getChar() != null);
       }
 
       public function setCharacterList(savedCharactersList:SavedCharactersList) : void

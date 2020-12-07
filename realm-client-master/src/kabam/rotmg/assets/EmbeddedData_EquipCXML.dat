@@ -2002,13 +2002,13 @@
         <Potion/>
         <BagType>3</BagType>
     </Object>
-    <Object type="0xa20" id="Potion of Defense">
+    <Object type="0xa20" id="Potion of PhysicalDefense">
         <Class>Equipment</Class>
         <Item/>
         <Texture><File>lofiObj2</File><Index>0x35</Index></Texture>
         <SlotType>10</SlotType>
         <Tier>2</Tier>
-        <Description>A potion that permanently increases defense power.</Description>
+        <Description>A potion that permanently increases physicalDefense power.</Description>
         <Sound>use_potion</Sound>
         <Activate stat="21" amount="1">IncrementStat</Activate>
         <Consumable/>
@@ -2611,12 +2611,12 @@
         <BagType>3</BagType>
         <Activate stat="3" amount="75" duration="30">StatBoostSelf</Activate>
     </Object>
-    <Object type="0xb0f" id="Tincture of Defense">
+    <Object type="0xb0f" id="Tincture of PhysicalDefense">
         <Class>Equipment</Class>
         <Item/>
         <Texture><File>lofiObj2</File><Index>0xc5</Index></Texture>
         <SlotType>10</SlotType>
-        <Description>A potion that temporarily boosts defense.</Description>
+        <Description>A potion that temporarily boosts physicalDefense.</Description>
         <Sound>use_potion</Sound>
         <Consumable/>
 
@@ -2663,12 +2663,12 @@
         <BagType>3</BagType>
         <Activate stat="3" amount="150" duration="30" range="6">StatBoostAura</Activate>
     </Object>
-    <Object type="0xb13" id="Effusion of Defense">
+    <Object type="0xb13" id="Effusion of PhysicalDefense">
         <Class>Equipment</Class>
         <Item/>
         <Texture><File>lofiObj2</File><Index>0xd5</Index></Texture>
         <SlotType>10</SlotType>
-        <Description>A potion that temporarily boosts the defense of all nearby allies.</Description>
+        <Description>A potion that temporarily boosts the physicalDefense of all nearby allies.</Description>
         <Sound>use_potion</Sound>
         <Consumable/>
 
@@ -2696,7 +2696,7 @@
         <ActivateOnEquip stat="7" amount="3">IncrementStat</ActivateOnEquip>
         <BagType>1</BagType>
     </Object>
-    <Object type="0xa4f" id="Ring of Minor Defense">
+    <Object type="0xa4f" id="Ring of Minor PhysicalDefense">
         <Class>Equipment</Class>
         <Item/>
         <Texture><File>lofiObj</File><Index>0x2c</Index></Texture>
@@ -2716,7 +2716,7 @@
         <ActivateOnEquip stat="2" amount="3">IncrementStat</ActivateOnEquip>
         <BagType>0</BagType>
     </Object>
-    <Object type="0xa25" id="Ring of Defense">
+    <Object type="0xa25" id="Ring of PhysicalDefense">
         <Class>Equipment</Class>
         <Item/>
         <Texture><File>lofiObj5</File><Index>0x81</Index></Texture>
@@ -2797,7 +2797,7 @@
         <BagType>1</BagType>
         <FameBonus>1</FameBonus>
     </Object>
-    <Object type="0xa2a" id="Ring of Greater Defense">
+    <Object type="0xa2a" id="Ring of Greater PhysicalDefense">
         <Class>Equipment</Class>
         <Item/>
         <Texture><File>lofiObj5</File><Index>0x91</Index></Texture>
@@ -2885,7 +2885,7 @@
         <BagType>1</BagType>
         <FameBonus>2</FameBonus>
     </Object>
-    <Object type="0xab8" id="Ring of Superior Defense">
+    <Object type="0xab8" id="Ring of Superior PhysicalDefense">
         <Class>Equipment</Class>
         <Item/>
         <Texture><File>lofiObj5</File><Index>0xa1</Index></Texture>
@@ -2973,7 +2973,7 @@
         <BagType>2</BagType>
         <FameBonus>3</FameBonus>
     </Object>
-    <Object type="0xac0" id="Ring of Paramount Defense">
+    <Object type="0xac0" id="Ring of Paramount PhysicalDefense">
         <Class>Equipment</Class>
         <Item/>
         <Texture><File>lofiObj5</File><Index>0xb1</Index></Texture>
@@ -3061,7 +3061,7 @@
         <BagType>2</BagType>
         <FameBonus>4</FameBonus>
     </Object>
-    <Object type="0xac8" id="Ring of Exalted Defense">
+    <Object type="0xac8" id="Ring of Exalted PhysicalDefense">
         <Class>Equipment</Class>
         <Item/>
         <Texture><File>lofiObj5</File><Index>0xc1</Index></Texture>
@@ -6126,7 +6126,7 @@
         <Item/>
         <Texture><File>lofiObj3</File><Index>0x176</Index></Texture>
         <SlotType>10</SlotType>
-        <Description>A bold island drink that boosts defense and vitality.</Description>
+        <Description>A bold island drink that boosts physicalDefense and vitality.</Description>
         <Sound>use_potion</Sound>
         <Consumable/>
 
@@ -6798,7 +6798,7 @@
         <Item/>
         <Texture><File>lofiObj5</File><Index>0x37</Index></Texture>
         <SlotType>1</SlotType>
-        <Description>For Testing Monster Defense.</Description>
+        <Description>For Testing Monster PhysicalDefense.</Description>
         <RateOfFire>1</RateOfFire>
         <Sound>weapon/blunt_sword</Sound>
         <Projectile>
@@ -6888,7 +6888,7 @@
         <Item/>
         <Texture><File>lofiObj3</File><Index>0x290</Index></Texture>
         <SlotType>10</SlotType>
-        <Description>Gum that temporarily boosts your defense.</Description>
+        <Description>Gum that temporarily boosts your physicalDefense.</Description>
         <Sound>use_potion</Sound>
         <Consumable/>
         <Potion/>
