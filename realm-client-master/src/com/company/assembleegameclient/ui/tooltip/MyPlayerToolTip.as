@@ -3,13 +3,14 @@ package com.company.assembleegameclient.ui.tooltip
    import com.company.assembleegameclient.objects.ObjectLibrary;
    import com.company.assembleegameclient.objects.Player;
    import com.company.assembleegameclient.ui.GameObjectListItem;
-   import com.company.assembleegameclient.ui.LineBreakDesign;
    import com.company.assembleegameclient.ui.StatusBar;
    import com.company.assembleegameclient.ui.panels.itemgrids.EquippedGrid;
    import com.company.assembleegameclient.ui.panels.itemgrids.InventoryGrid;
-   import com.company.assembleegameclient.util.FameUtil;
    import com.company.ui.SimpleText;
-   import flash.filters.DropShadowFilter;
+
+import drawing.components.LineBreakDesign;
+
+import flash.filters.DropShadowFilter;
    import kabam.rotmg.assets.services.CharacterFactory;
    import kabam.rotmg.classes.model.CharacterClass;
    import kabam.rotmg.classes.model.CharacterSkin;
@@ -56,11 +57,11 @@ package com.company.assembleegameclient.ui.tooltip
          this.player_.animatedChar_ = this.factory.makeCharacter(skin.template);
          this.playerPanel_ = new GameObjectListItem(11776947,true,this.player_);
          addChild(this.playerPanel_);
-         this.hpBar_ = new StatusBar(176,16,14693428,5526612,"HP");
+         this.hpBar_ = new StatusBar(176,16,14693428,5526612,164777215, false,"HP");
          this.hpBar_.x = 6;
          this.hpBar_.y = 40;
          addChild(this.hpBar_);
-         this.mpBar_ = new StatusBar(176,16,6325472,5526612,"MP");
+         this.mpBar_ = new StatusBar(176,16,6325472,5526612, 164777215, false, "MP");
          this.mpBar_.x = 6;
          this.mpBar_.y = 64;
          addChild(this.mpBar_);
@@ -89,8 +90,8 @@ package com.company.assembleegameclient.ui.tooltip
       
       override public function draw() : void
       {
-         this.hpBar_.draw(this.player_.hp_,this.player_.maxHP_,this.player_.maxHPBoost_,this.player_.maxHPMax_);
-         this.mpBar_.draw(this.player_.mp_,this.player_.maxMP_,this.player_.maxMPBoost_,this.player_.maxMPMax_);
+         this.hpBar_.draw(this.player_.hp_,this.player_.maxHP_);
+         this.mpBar_.draw(this.player_.mp_,this.player_.maxMP_);
          this.lineBreak_.setWidthColor(width - 10,1842204);
          super.draw();
       }

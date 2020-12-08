@@ -10,21 +10,33 @@ namespace Last_Realm_Server.Utils
 {
     public static class GameUtils
     {
-        public static int GetDefenseDamage(this Entity entity, int damage, int defense, bool pierces)
+        public static int GetDefenseDamage(this Entity entity, ProjType type, int damage, int pDef, int mDef, 
+            bool pierces, bool poison)
         {
 #if DEBUG
             if (entity == null || entity.Parent == null)
                 throw new Exception("Undefined entity");
 #endif
             if (pierces)
-                defense = 0;
+                pDef = 0;
 
             if (entity.HasConditionEffect(ConditionEffectIndex.Armored))
-                defense *= 2;
+                pDef *= 2;
 
-            int min = damage * 3 / 20;
-            int d = Math.Max(min, damage - defense);
-            return d;
+
+            if (poison)
+                return damage;
+
+            int min = 0;
+            int d = 0;
+
+            min = damage * 3 / 20;
+            if (type == ProjType.Physical)
+                d = Math.Min(min, damage - pDef);   
+            else if (type == ProjType.Magic)
+                d = Math.Min(min, damage - mDef);
+
+            return Math.Max(min, damage);
         }
 
         public static Entity GetNearestEntity(this Entity entity, float radius)

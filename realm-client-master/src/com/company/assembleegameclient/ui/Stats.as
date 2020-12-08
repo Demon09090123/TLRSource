@@ -5,8 +5,10 @@ package com.company.assembleegameclient.ui
    import flash.display.Sprite;
    import flash.events.Event;
    import flash.events.MouseEvent;
-   
-   public class Stats extends Sprite
+
+import kabam.rotmg.messaging.impl.data.StatData;
+
+public class Stats extends Sprite
    {
       
       public static const ATTACK:int = 0;
@@ -27,7 +29,7 @@ package com.company.assembleegameclient.ui
                 </Stat>
                 <Stat>
                     <Abbr>MGP</Abbr>
-                    <Name>Attack</Name>
+                    <Name>Magic Attack</Name>
                     <Description>This stat increases the amount of magic damage done.</Description>
                     <RedOnZero/>
                 </Stat>
@@ -88,13 +90,35 @@ package com.company.assembleegameclient.ui
          for each(statXML in statsXML.Stat)
          {
             stat = new Stat(statXML.Abbr,statXML.Name,statXML.Description,statXML.hasOwnProperty("RedOnZero"));
-            stat.x = 8 + 26 + int(this.stats_.length % 2) * (this.w_ / 2 - 4);
-            stat.y = 8 + this.h_ / 6 + int(this.stats_.length / 2) * this.h_ / 3;
             addChild(stat);
             this.stats_.push(stat);
          }
          addEventListener(Event.ADDED_TO_STAGE,this.onAddedToStage);
          addEventListener(Event.REMOVED_FROM_STAGE,this.onRemovedFromStage);
+      }
+
+      private function reposition():void {
+          var oWidth:int = 0;
+
+          for each(var s1:Stat in this.stats_) {
+              if (s1.width + 5 > oWidth) {
+                  oWidth = s1.width + 5;
+              }
+          }
+
+          var yOffset:int = 0;
+          var xOffset:int = 0;
+
+          for each(var s:Stat in this.stats_) {
+              s.x = xOffset;
+              s.y = yOffset;
+
+              xOffset += oWidth;
+              if (xOffset > this.w_) {
+                  xOffset = 0;
+                  yOffset += s.height + 5;
+              }
+          }
       }
       
       public function draw(go:Player) : void
@@ -102,11 +126,26 @@ package com.company.assembleegameclient.ui
          this.stats_[ATTACK].draw(go.attack_);
          this.stats_[MAGIC_POWER].draw(go.magicPower_)
          this.stats_[PHYSICAL_DEFENSE].draw(go.physicalDefense);
-         this.stats_[MAGIC_DEFENSE].draw(go.magicPower_);
+         this.stats_[MAGIC_DEFENSE].draw(go.magicDefense_);
          this.stats_[SPEED].draw(go.speed_);
          this.stats_[DEXTERITY].draw(go.dexterity_);
          this.stats_[VITALITY].draw(go.vitality_);
          this.stats_[WISDOM].draw(go.wisdom_);
+
+         reposition();
+      }
+
+      public function drawXML(stats:XML):void {
+          this.stats_[ATTACK].draw(int(stats.Attack));
+          this.stats_[MAGIC_POWER].draw(int(stats.MagicPower))
+          this.stats_[PHYSICAL_DEFENSE].draw(int(stats.PhysicalDefense));
+          this.stats_[MAGIC_DEFENSE].draw(int(stats.MagicDefense));
+          this.stats_[SPEED].draw(int(stats.Speed));
+          this.stats_[DEXTERITY].draw(int(stats.Dexterity));
+          this.stats_[VITALITY].draw(int(stats.HpRegen));
+          this.stats_[WISDOM].draw(int(stats.MpRegen));
+
+          reposition();
       }
       
       private function onAddedToStage(event:Event) : void
@@ -183,18 +222,21 @@ class Stat extends Sprite
       super();
       this.fullName_ = fullName;
       this.description_ = desc;
+
       this.nameText_ = new SimpleText(12,11776947,false,0,0);
       this.nameText_.text = name + " -";
       this.nameText_.updateMetrics();
-      this.nameText_.x = -this.nameText_.width;
-      this.nameText_.filters = [new DropShadowFilter(0,0,0)];
+      this.nameText_.x = 0;
       addChild(this.nameText_);
+
       this.valText_ = new SimpleText(12,this.valColor_,false,0,0);
       this.valText_.setBold(true);
       this.valText_.text = "-";
       this.valText_.updateMetrics();
-      this.valText_.filters = [new DropShadowFilter(0,0,0)];
+      this.valText_.x = this.nameText_.width;
+
       addChild(this.valText_);
+
       this.redOnZero_ = redOnZero;
    }
    

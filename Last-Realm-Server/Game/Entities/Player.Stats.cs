@@ -72,7 +72,7 @@ namespace Last_Realm_Server.Game.Entities
             if (HasConditionEffect(ConditionEffectIndex.Slowed))
                 return MinMoveSpeed * MoveMultiplier;
 
-            float ret = MinMoveSpeed + GetStat(4) / 75f * (MaxMoveSpeed - MinMoveSpeed);
+            float ret = MinMoveSpeed + GetStat(6) / 75f * (MaxMoveSpeed - MinMoveSpeed);
             if (HasConditionEffect(ConditionEffectIndex.Speedy))
             {
                 ret = ret * 1.5f;
@@ -103,7 +103,7 @@ namespace Last_Realm_Server.Game.Entities
             if (HasConditionEffect(ConditionEffectIndex.Dazed))
                 return MinAttackFreq;
 
-            float ret = MinAttackFreq + GetStat(5) / 75f * (MaxAttackFreq - MinAttackFreq);
+            float ret = MinAttackFreq + GetStat(7) / 75f * (MaxAttackFreq - MinAttackFreq);
             if (HasConditionEffect(ConditionEffectIndex.Berserk))
             {
                 ret = ret * 1.5f;
@@ -124,12 +124,12 @@ namespace Last_Realm_Server.Game.Entities
 
         public float GetHPRegen()
         {
-            return 1 + (GetStat(6) * .12f);
+            return 1 + (GetStat(8) * .12f);
         }
 
         public float GetMPRegen()
         {
-            return 0.5f + (GetStat(7) * .06f);
+            return 0.5f + (GetStat(9) * .06f);
         }
 
         public bool CanMPRegen()
@@ -165,6 +165,17 @@ namespace Last_Realm_Server.Game.Entities
             TrySetSV(StatType.Dexterity, Stats[7] + Boosts[7]);
             SetPrivateSV(StatType.Vitality, Stats[8] + Boosts[8]);
             SetPrivateSV(StatType.Wisdom, Stats[9] + Boosts[9]);
+
+            TrySetSV(StatType.MaxHpBoost, Boosts[0]);
+            TrySetSV(StatType.MaxMpBoost, Boosts[1]);
+            SetPrivateSV(StatType.AttackBoost, Boosts[2]);
+            SetPrivateSV(StatType.MagicPower, Boosts[3]);
+            SetPrivateSV(StatType.PhysicalDefenseBoost, Boosts[4]);
+            SetPrivateSV(StatType.MagicDefenseBoost, Boosts[5]);
+            TrySetSV(StatType.SpeedBoost, Boosts[6]);
+            TrySetSV(StatType.DexterityBoost, Boosts[7]);
+            SetPrivateSV(StatType.VitalityBoost, Boosts[8]);
+            SetPrivateSV(StatType.WisdomBoost, Boosts[9]);
         }
     }
 }

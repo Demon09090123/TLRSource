@@ -2,7 +2,6 @@ package kabam.rotmg.characters
 {
    import kabam.rotmg.characters.model.CharacterModel;
    import kabam.rotmg.characters.model.LegacyCharacterModel;
-   import kabam.rotmg.characters.reskin.ReskinConfig;
    import org.swiftsuspenders.Injector;
    import robotlegs.bender.extensions.signalCommandMap.api.ISignalCommandMap;
    import robotlegs.bender.framework.api.IConfig;
@@ -29,7 +28,6 @@ package kabam.rotmg.characters
       public function configure() : void
       {
          this.injector.map(CharacterModel).toSingleton(LegacyCharacterModel);
-         this.context.configure(ReskinConfig);
       }
    }
 }

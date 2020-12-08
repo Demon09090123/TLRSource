@@ -6,7 +6,6 @@ import com.company.assembleegameclient.objects.GameObject;
 import com.company.assembleegameclient.objects.ObjectLibrary;
 import com.company.assembleegameclient.objects.OneWayContainer;
 import com.company.assembleegameclient.objects.Player;
-import com.company.assembleegameclient.parameters.Parameters;
 import com.company.assembleegameclient.ui.panels.itemgrids.ContainerGrid;
 import com.company.assembleegameclient.ui.panels.itemgrids.InventoryGrid;
 import com.company.assembleegameclient.ui.panels.itemgrids.ItemGrid;
@@ -15,11 +14,9 @@ import com.company.assembleegameclient.ui.panels.itemgrids.itemtiles.ItemTile;
 import com.company.assembleegameclient.ui.panels.itemgrids.itemtiles.ItemTileEvent;
 import com.company.assembleegameclient.ui.tooltip.ToolTip;
 import com.company.assembleegameclient.util.DisplayHierarchy;
-import kabam.rotmg.constants.ItemConstants;
 import kabam.rotmg.core.model.MapModel;
 import kabam.rotmg.core.model.PlayerModel;
 import kabam.rotmg.core.signals.ShowTooltipSignal;
-import kabam.rotmg.game.model.PotionInventoryModel;
 import kabam.rotmg.game.view.components.TabStripView;
 import kabam.rotmg.messaging.impl.GameServerConnection;
 import kabam.rotmg.ui.model.HUDModel;
@@ -38,9 +35,6 @@ public class ItemGridMediator extends Mediator
 
    [Inject]
    public var playerModel:PlayerModel;
-
-   [Inject]
-   public var potionInventoryModel:PotionInventoryModel;
 
    [Inject]
    public var hudModel:HUDModel;

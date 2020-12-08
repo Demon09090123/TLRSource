@@ -14,7 +14,6 @@ package kabam.rotmg.game
    import com.company.assembleegameclient.ui.panels.mediators.ItemGridMediator;
    import kabam.rotmg.game.commands.PlayGameCommand;
    import kabam.rotmg.game.commands.TransitionFromGameToMenuCommand;
-import kabam.rotmg.game.commands.UsePotionCommand;
 import kabam.rotmg.game.focus.GameFocusConfig;
    import kabam.rotmg.game.model.ChatFilter;
    import kabam.rotmg.game.model.GameModel;
@@ -26,7 +25,6 @@ import kabam.rotmg.game.focus.GameFocusConfig;
    import kabam.rotmg.game.signals.PlayGameSignal;
    import kabam.rotmg.game.signals.SetTextBoxVisibilitySignal;
    import kabam.rotmg.game.signals.SetWorldInteractionSignal;
-import kabam.rotmg.game.signals.UsePotionSignal;
 import kabam.rotmg.game.view.CreditDisplay;
    import kabam.rotmg.game.view.CreditDisplayMediator;
    import kabam.rotmg.game.view.GameSpriteMediator;
@@ -97,7 +95,6 @@ import kabam.rotmg.ui.model.TabStripModel;
          this.mediatorMap.map(StatView).toMediator(StatMediator);
          this.mediatorMap.map(StatsView).toMediator(StatsMediator);
          this.mediatorMap.map(TabStripView).toMediator(TabStripMediator);
-         this.commandMap.map(UsePotionSignal).toCommand(UsePotionCommand);
          this.commandMap.map(GameClosedSignal).toCommand(TransitionFromGameToMenuCommand);
          this.commandMap.map(PlayGameSignal).toCommand(PlayGameCommand);
       }

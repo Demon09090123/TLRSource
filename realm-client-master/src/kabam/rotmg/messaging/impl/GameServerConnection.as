@@ -56,13 +56,12 @@ import kabam.rotmg.classes.model.ClassesModel;
    import kabam.rotmg.game.model.AddSpeechBalloonVO;
    import kabam.rotmg.game.model.AddTextLineVO;
    import kabam.rotmg.game.model.GameModel;
-import kabam.rotmg.game.model.PotionInventoryModel;
-import kabam.rotmg.game.signals.AddSpeechBalloonSignal;
+   import kabam.rotmg.game.signals.AddSpeechBalloonSignal;
    import kabam.rotmg.game.signals.AddTextLineSignal;
-import kabam.rotmg.messaging.impl.data.GroundTileData;
+   import kabam.rotmg.messaging.impl.data.GroundTileData;
    import kabam.rotmg.messaging.impl.data.ObjectData;
-import kabam.rotmg.messaging.impl.data.ObjectDropData;
-import kabam.rotmg.messaging.impl.data.ObjectStatusData;
+   import kabam.rotmg.messaging.impl.data.ObjectDropData;
+   import kabam.rotmg.messaging.impl.data.ObjectStatusData;
    import kabam.rotmg.messaging.impl.data.StatData;
    import kabam.rotmg.messaging.impl.incoming.AccountList;
    import kabam.rotmg.messaging.impl.incoming.AllyShoot;
@@ -802,7 +801,6 @@ import kabam.rotmg.ui.view.MessageCloseDialog;
       
       private function handleNewPlayer(player:Player, map:Map) : void
       {
-         this.setPlayerSkinTemplate(player,0);
          if(player.objectId_ == this.playerId_)
          {
             this.player = player;
@@ -1037,6 +1035,7 @@ import kabam.rotmg.ui.view.MessageCloseDialog;
                   continue;
                 case StatData.MAGIC_POWER_STAT:
                   player.magicPower_ = value;
+                  continue;
                case StatData.PHYSICAL_DEFENSE_STAT:
                   go.physicalDefense = value;
                   continue;
@@ -1159,7 +1158,7 @@ import kabam.rotmg.ui.view.MessageCloseDialog;
                   player.magicPotionCount_ = value;
                   continue;
                case StatData.TEXTURE_STAT:
-                  player.skinId != value && this.setPlayerSkinTemplate(player,value);
+                  player.skinId != value;
                   continue;
                case StatData.HASBACKPACK_STAT:
                   (go as Player).hasBackpack_ = Boolean(value);
@@ -1201,19 +1200,41 @@ import kabam.rotmg.ui.view.MessageCloseDialog;
                case StatData.ITEMDATA_19_STAT:
                     go.itemDatas_[stat.statType_ - StatData.ITEMDATA_0_STAT] = value;
                     continue;
+               case StatData.MAX_HP_BOOST_STAT:
+                    player.maxHPBoost_ = value;
+                    continue;
+               case StatData.MAX_MP_BOOST_STAT:
+                    player.maxMPBoost_ = value;
+                    continue;
+               case StatData.ATTACK_BOOST_STAT:
+                    player.attackBoost_ = value;
+                    continue;
+                case StatData.MAGIC_POWER_BOOST_STAT:
+                    player.magicPowerBoost_ = value;
+                    continue;
+                case StatData.PHYSICAL_DEFENSE_BOOST_STAT:
+                    player.physicalDefenseBoost = value;
+                    continue;
+               case StatData.MAGIC_DEFENSE_BOOST_STAT:
+                    player.magicDefenseBoost_ = value;
+                    continue;
+               case StatData.SPEED_BOOST_STAT:
+                    player.speedBoost_ = value;
+                    continue;
+               case StatData.VITALITY_BOOST_STAT:
+                    player.vitalityBoost_ = value;
+                    continue;
+               case StatData.WISDOM_BOOST_STAT:
+                    player.wisdomBoost_ = value;
+                    continue;
+               case StatData.DEXTERITY_BOOST_STAT:
+                    player.dexterityBoost_ = value;
+                    continue;
                default:
                   trace("unhandled stat: " + stat.statType_);
                   continue;
             }
          }
-      }
-      
-      private function setPlayerSkinTemplate(player:Player, skinId:int) : void
-      {
-         var message:Reskin = this.messages.require(RESKIN) as Reskin;
-         message.skinID = skinId;
-         message.player = player;
-         message.consume();
       }
       
       private function processObjectStatus(objectStatus:ObjectStatusData) : void

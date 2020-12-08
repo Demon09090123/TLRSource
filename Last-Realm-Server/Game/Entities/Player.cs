@@ -273,7 +273,7 @@ namespace Last_Realm_Server.Game.Entities
                 p.Client.Send(text);
         }
 
-        public bool Damage(string hitter, int damage, ConditionEffectDesc[] effects, bool pierces)
+        public bool Damage(string hitter, ProjType type, int damage, ConditionEffectDesc[] effects, bool pierces, bool poison)
         {
 #if DEBUG
             if (HasConditionEffect(ConditionEffectIndex.Invincible))
@@ -293,7 +293,8 @@ namespace Last_Realm_Server.Game.Entities
                 pierces = true;
 
             //Calculate damage with defense
-            int damageWithDefense = this.GetDefenseDamage(damage, Stats[3] + Boosts[3], pierces);
+            int damageWithDefense = this.GetDefenseDamage(type, damage, 
+                Stats[4] + Boosts[4], Stats[5] + Boosts[5], pierces, poison);
 
             //Nullify damage if invulnerable
             if (HasConditionEffect(ConditionEffectIndex.Invulnerable))

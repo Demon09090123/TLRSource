@@ -1,13 +1,13 @@
 package kabam.rotmg.account.web.commands
 {
-   import com.company.assembleegameclient.screens.CharacterSelectionAndNewsScreen;
    import flash.display.Sprite;
    import kabam.rotmg.account.core.Account;
    import kabam.rotmg.core.model.ScreenModel;
    import kabam.rotmg.core.signals.InvalidateDataSignal;
    import kabam.rotmg.core.signals.SetScreenWithValidDataSignal;
-   
-   public class WebLogoutCommand
+import kabam.rotmg.ui.characterView.CharacterSelectionAndNewsScreen;
+
+public class WebLogoutCommand
    {
        
       

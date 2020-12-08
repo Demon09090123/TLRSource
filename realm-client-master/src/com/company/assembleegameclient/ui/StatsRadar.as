@@ -63,7 +63,7 @@ public class StatsRadar extends Sprite {
 
     private function createRadarBG():void {
         var bg:Sprite = new Sprite();
-        bg.graphics.beginFill(bgColor);
+        bg.graphics.beginFill(this.bgColor, 0.8);
         bg.graphics.lineStyle(2, this.lineColor);
         var points:Vector.<Point> = ShapeUtil.drawPolygon(bg.graphics, 0, 0, RADAR_STATS.length, MAX_LENGTH);
         bg.graphics.endFill();
@@ -86,7 +86,7 @@ public class StatsRadar extends Sprite {
             if (p.x < 0) {
                 p.x -= pTxt.width;
             }
-            if (Math.abs(p.y) == MAX_LENGTH) {
+            if (Math.abs(p.y) == this.MAX_LENGTH) {
                 p.x -= pTxt.width / 2;
             }
             if (p.y < 0) {

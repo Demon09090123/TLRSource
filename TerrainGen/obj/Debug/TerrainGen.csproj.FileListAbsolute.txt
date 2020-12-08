@@ -1,0 +1,10 @@
+C:\Users\mangz\OneDrive\Documents\GitHub\TLRSource\TerrainGen\bin\Debug\TerrainGen.exe.config
+C:\Users\mangz\OneDrive\Documents\GitHub\TLRSource\TerrainGen\bin\Debug\TerrainGen.exe
+C:\Users\mangz\OneDrive\Documents\GitHub\TLRSource\TerrainGen\bin\Debug\TerrainGen.pdb
+C:\Users\mangz\OneDrive\Documents\GitHub\TLRSource\TerrainGen\obj\Debug\TerrainGen.csprojAssemblyReference.cache
+C:\Users\mangz\OneDrive\Documents\GitHub\TLRSource\TerrainGen\obj\Debug\TerrainGen.Properties.Resources.resources
+C:\Users\mangz\OneDrive\Documents\GitHub\TLRSource\TerrainGen\obj\Debug\TerrainGen.csproj.GenerateResource.cache
+C:\Users\mangz\OneDrive\Documents\GitHub\TLRSource\TerrainGen\obj\Debug\TerrainGen.csproj.CoreCompileInputs.cache
+C:\Users\mangz\OneDrive\Documents\GitHub\TLRSource\TerrainGen\obj\Debug\TerrainGen.exe
+C:\Users\mangz\OneDrive\Documents\GitHub\TLRSource\TerrainGen\obj\Debug\TerrainGen.pdb
+C:\Users\mangz\OneDrive\Documents\GitHub\TLRSource\TerrainGen\obj\Debug\TerrainGen.Form1.resources

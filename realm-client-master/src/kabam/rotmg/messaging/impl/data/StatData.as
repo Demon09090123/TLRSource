@@ -13,6 +13,7 @@ package kabam.rotmg.messaging.impl.data
       public static const NEXT_LEVEL_EXP_STAT:int = 5;
       public static const EXP_STAT:int = 6;
       public static const LEVEL_STAT:int = 7;
+
       public static const INVENTORY_0_STAT:int = 8;
       public static const INVENTORY_1_STAT:int = 9;
       public static const INVENTORY_2_STAT:int = 10;
@@ -25,6 +26,7 @@ package kabam.rotmg.messaging.impl.data
       public static const INVENTORY_9_STAT:int = 17;
       public static const INVENTORY_10_STAT:int = 18;
       public static const INVENTORY_11_STAT:int = 19;
+
       public static const ATTACK_STAT:int = 20;
       public static const MAGIC_POWER_STAT:int = 21;
       public static const PHYSICAL_DEFENSE_STAT:int = 22;
@@ -33,6 +35,7 @@ package kabam.rotmg.messaging.impl.data
       public static const VITALITY_STAT:int = 25;
       public static const WISDOM_STAT:int = 26;
       public static const DEXTERITY_STAT:int = 27;
+
       public static const CONDITION_STAT:int = 28;
       public static const NUM_STARS_STAT:int = 29;
       public static const NAME_STAT:int = 30;
@@ -59,6 +62,7 @@ package kabam.rotmg.messaging.impl.data
       public static const BREATH_STAT:int = 51;
       public static const HEALTH_POTION_STACK_STAT:int = 52;
       public static const MAGIC_POTION_STACK_STAT:int = 53;
+
       public static const BACKPACK_0_STAT:int = 54;
       public static const BACKPACK_1_STAT:int = 55;
       public static const BACKPACK_2_STAT:int = 56;
@@ -69,6 +73,7 @@ package kabam.rotmg.messaging.impl.data
       public static const BACKPACK_7_STAT:int = 61;
       public static const HASBACKPACK_STAT:int = 62;
       public static const TEXTURE_STAT:int = 63;
+
       public static const ITEMDATA_0_STAT:int = 64;
       public static const ITEMDATA_1_STAT:int = 65;
       public static const ITEMDATA_2_STAT:int = 66;
@@ -90,6 +95,17 @@ package kabam.rotmg.messaging.impl.data
       public static const ITEMDATA_18_STAT:int = 82;
       public static const ITEMDATA_19_STAT:int = 83;
 
+      public static const MAX_HP_BOOST_STAT:int = 84;
+      public static const MAX_MP_BOOST_STAT:int = 85;
+      public static const ATTACK_BOOST_STAT:int = 86;
+      public static const MAGIC_POWER_BOOST_STAT:int = 87;
+      public static const PHYSICAL_DEFENSE_BOOST_STAT:int = 88;
+      public static const MAGIC_DEFENSE_BOOST_STAT:int = 89;
+      public static const SPEED_BOOST_STAT:int = 90;
+      public static const VITALITY_BOOST_STAT:int = 91;
+      public static const WISDOM_BOOST_STAT:int = 92;
+      public static const DEXTERITY_BOOST_STAT:int = 93;
+
       public var statType_:uint = 0;
       public var statValue_:int;
       public var strStatValue_:String;
@@ -98,7 +114,6 @@ package kabam.rotmg.messaging.impl.data
       public function StatData(name:String = "", value:int = 0)
       {
          super();
-
          if (name != "" && value != 0) {
              statName = name;
              statValue_ = value;
@@ -149,12 +164,10 @@ package kabam.rotmg.messaging.impl.data
       public function parseFromInput(data:IDataInput) : void
       {
          this.statType_ = data.readUnsignedByte();
-         if(!this.isStringStat())
-         {
+
+         if(!this.isStringStat()) {
             this.statValue_ = data.readInt();
-         }
-         else
-         {
+         } else {
             this.strStatValue_ = data.readUTF();
          }
       }
@@ -162,20 +175,17 @@ package kabam.rotmg.messaging.impl.data
       public function writeToOutput(data:IDataOutput) : void
       {
          data.writeByte(this.statType_);
-         if(!this.isStringStat())
-         {
+
+         if(!this.isStringStat()) {
             data.writeInt(this.statValue_);
-         }
-         else
-         {
+         } else {
             data.writeUTF(this.strStatValue_);
          }
       }
       
       public function toString() : String
       {
-         if(!this.isStringStat())
-         {
+         if(!this.isStringStat()) {
             return "[" + this.statType_ + ": " + this.statValue_ + "]";
          }
          return "[" + this.statType_ + ": \"" + this.strStatValue_ + "\"]";

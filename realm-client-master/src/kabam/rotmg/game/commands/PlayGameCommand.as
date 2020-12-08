@@ -47,7 +47,6 @@ package kabam.rotmg.game.commands
       
       private function makeGameView() : void
       {
-          trace("MAKE GAME VIEW!");
          var gameId:int = this.data.isNewGame ? int(this.getInitialGameId()) : int(this.data.gameId);
          var createCharacter:Boolean = this.data.createCharacter;
          this.setScreen.dispatch(new GameSprite(gameId,createCharacter,this.model,null));

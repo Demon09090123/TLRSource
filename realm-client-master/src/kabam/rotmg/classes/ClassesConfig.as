@@ -12,10 +12,6 @@ package kabam.rotmg.classes
    import kabam.rotmg.classes.view.CharacterSkinListItem;
    import kabam.rotmg.classes.view.CharacterSkinListItemFactory;
    import kabam.rotmg.classes.view.CharacterSkinListItemMediator;
-   import kabam.rotmg.classes.view.CharacterSkinListMediator;
-   import kabam.rotmg.classes.view.CharacterSkinListView;
-   import kabam.rotmg.classes.view.CharacterSkinMediator;
-   import kabam.rotmg.classes.view.CharacterSkinView;
    import kabam.rotmg.classes.view.ClassDetailMediator;
    import kabam.rotmg.classes.view.ClassDetailView;
    import org.swiftsuspenders.Injector;
@@ -50,8 +46,6 @@ package kabam.rotmg.classes
          this.injector.map(ClassesModel).asSingleton();
          this.injector.map(CharacterSkinListItemFactory).asSingleton();
          this.mediatorMap.map(CharacterSkinListItem).toMediator(CharacterSkinListItemMediator);
-         this.mediatorMap.map(CharacterSkinListView).toMediator(CharacterSkinListMediator);
-         this.mediatorMap.map(CharacterSkinView).toMediator(CharacterSkinMediator);
          this.mediatorMap.map(ClassDetailView).toMediator(ClassDetailMediator);
          this.commandMap.map(LogoutSignal).toCommand(ResetClassDataCommand);
          this.commandMap.map(CharListDataSignal).toCommand(ParseCharListXmlCommand);

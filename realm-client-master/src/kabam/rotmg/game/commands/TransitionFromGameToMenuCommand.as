@@ -1,12 +1,12 @@
 package kabam.rotmg.game.commands
 {
-   import com.company.assembleegameclient.screens.CharacterSelectionAndNewsScreen;
    import kabam.rotmg.core.model.PlayerModel;
    import kabam.rotmg.core.signals.InvalidateDataSignal;
    import kabam.rotmg.core.signals.SetScreenSignal;
    import kabam.rotmg.core.signals.SetScreenWithValidDataSignal;
-   
-   public class TransitionFromGameToMenuCommand
+   import kabam.rotmg.ui.characterView.CharacterSelectionAndNewsScreen;
+
+public class TransitionFromGameToMenuCommand
    {
        
       

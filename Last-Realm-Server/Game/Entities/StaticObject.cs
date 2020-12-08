@@ -2,8 +2,6 @@
 using Last_Realm_Server.Networking;
 using Last_Realm_Server.Utils;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Last_Realm_Server.Game.Entities
 {
@@ -23,7 +21,8 @@ namespace Last_Realm_Server.Game.Entities
 
             if (Desc.Enemy)
             {
-                int damageWithDefense = this.GetDefenseDamage(projectile.Damage, Desc.PhysicalDefense, projectile.Desc.ArmorPiercing);
+                int damageWithDefense = this.GetDefenseDamage(projectile.Desc.ProjectileType, 
+                    projectile.Damage, Desc.PhysicalDefense, Desc.MagicDefense, projectile.Desc.ArmorPiercing, false);
                 HP -= damageWithDefense;
 
                 Player owner = projectile.Owner as Player; 

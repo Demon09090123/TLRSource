@@ -11,7 +11,6 @@ package kabam.rotmg.game.view.components
 import kabam.rotmg.ui.signals.StatsTabHotKeyInputSignal;
 import kabam.rotmg.ui.signals.UpdateBackpackTabSignal;
    import kabam.rotmg.ui.signals.UpdateHUDSignal;
-   import kabam.rotmg.ui.view.PotionInventoryView;
    import robotlegs.bender.bundles.mvcs.Mediator;
    
    public class TabStripMediator extends Mediator
@@ -99,9 +98,6 @@ import kabam.rotmg.ui.signals.UpdateBackpackTabSignal;
          storageContent.x = storageContent.y = 7;
          var storage:InventoryGrid = new InventoryGrid(player,player,4);
          storageContent.addChild(storage);
-         var potionsInventory:PotionInventoryView = new PotionInventoryView();
-         potionsInventory.y = storage.height + 4;
-         storageContent.addChild(potionsInventory);
          var icon:Bitmap = this.iconFactory.makeIconBitmap(24);
          this.view.addTab(icon,storageContent);
       }
@@ -118,15 +114,11 @@ import kabam.rotmg.ui.signals.UpdateBackpackTabSignal;
       
       private function addBackPackTab(player:Player) : void
       {
-         var backpackPotionsInventory:PotionInventoryView = null;
          var backpackContent:Sprite = new Sprite();
          backpackContent.name = TabStripModel.BACKPACK;
          backpackContent.x = backpackContent.y = 7;
          var backpack:InventoryGrid = new InventoryGrid(player,player,GeneralConstants.NUM_EQUIPMENT_SLOTS + GeneralConstants.NUM_INVENTORY_SLOTS,true);
          backpackContent.addChild(backpack);
-         backpackPotionsInventory = new PotionInventoryView();
-         backpackPotionsInventory.y = backpack.height + 4;
-         backpackContent.addChild(backpackPotionsInventory);
          var icon:Bitmap = this.iconFactory.makeIconBitmap(26);
          this.view.addTab(icon,backpackContent);
       }

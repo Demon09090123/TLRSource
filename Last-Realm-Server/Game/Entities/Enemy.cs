@@ -29,7 +29,7 @@ namespace Last_Realm_Server.Game.Entities
                 if (j is Player k && k.Client.Account.Effects)
                     k.Client.Send(poison);
 
-            Damage(hitter, damage, effects, true, true);
+            Damage(hitter, damage, null, true, true);
             if (damageLeft <= 0) return;
             Manager.AddTimedAction(1000, () =>
             {
@@ -132,27 +132,21 @@ namespace Last_Realm_Server.Game.Entities
             Parent.RemoveEntity(this);
         }
 
-        public bool Damage(Player hitter, int damage, ConditionEffectDesc[] effects, bool pierces, bool showToHitter = false)
+        public bool Damage(Player hitter, int damage, Projectile proj, bool pierces, bool poison, bool showToHitter = false)
         {
-#if DEBUG
-            if (HasConditionEffect(ConditionEffectIndex.Invincible))
-                throw new Exception("Entity should not be damaged if invincible");
-            if (HasConditionEffect(ConditionEffectIndex.Stasis))
-                throw new Exception("Entity should not be damaged if stasised");
-            if (effects == null)
-                throw new Exception("Null effects");
-            if (hitter == null)
-                throw new Exception("Undefined hitter");
-#endif
+            if (proj != null)
+            {
+                var effects = proj.Desc.Effects;
 
+                foreach (ConditionEffectDesc eff in effects)
+                    ApplyConditionEffect(eff.Effect, eff.DurationMS);
 
-            foreach (ConditionEffectDesc eff in effects)
-                ApplyConditionEffect(eff.Effect, eff.DurationMS);
+                if (HasConditionEffect(ConditionEffectIndex.ArmorBroken))
+                    pierces = true;
+            }
 
-            if (HasConditionEffect(ConditionEffectIndex.ArmorBroken))
-                pierces = true;
-
-            int damageWithDefense = this.GetDefenseDamage(damage, Desc.PhysicalDefense, pierces);
+            int damageWithDefense = this.GetDefenseDamage(ProjType.None, damage, Desc.PhysicalDefense, Desc.MagicDefense,
+                pierces, poison);
 
             if (HasConditionEffect(ConditionEffectIndex.Invulnerable))
                 damageWithDefense = 0;
@@ -185,7 +179,7 @@ namespace Last_Realm_Server.Game.Entities
             if (projectile.Owner == null || !(projectile.Owner is Player))
                 throw new Exception("Projectile owner is not player");
 #endif
-            return Damage(projectile.Owner as Player, projectile.Damage, projectile.Desc.Effects, projectile.Desc.ArmorPiercing);
+            return Damage(projectile.Owner as Player, projectile.Damage, projectile, projectile.Desc.ArmorPiercing, false);
         }
 
         public override void Dispose()

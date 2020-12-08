@@ -13,13 +13,12 @@ namespace Last_Realm_Server.Game.Logic.Database
     {
         public void Init(BehaviorDb db)
         {
-            db.Init("Medusa", 
-                new IfConditionEffect(ConditionEffectIndex.Slowed, 
+            db.Init("Medusa",
+                new IfConditionEffect(ConditionEffectIndex.Slowed,
                     new Shoot(32, 16)),
-                new Shoot(7, 1, cooldown: 5000), 
-                new Wander(.4f), 
-                new Grenade(radius: 2, damage: 20, cooldown: 1500, color: 0xffFFFF00, effect: ConditionEffectIndex.Paralyzed, effectDuration: 300),
-                new ItemLoot("Demon Blade", 0.2f, 0));
+                new Shoot(7, 1, cooldown: 5000),
+                new Wander(.4f),
+                new Grenade(radius: 2, damage: 20, cooldown: 1500, color: 0xffFFFF00, effect: ConditionEffectIndex.Paralyzed, effectDuration: 300));
 
             db.Init("Beholder", 
                 new Wander(1f),

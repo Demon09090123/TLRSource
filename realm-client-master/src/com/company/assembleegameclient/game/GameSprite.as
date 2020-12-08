@@ -65,7 +65,6 @@ import kabam.rotmg.ui.UIUtils;
       
       public function GameSprite(gameId:int, createCharacter:Boolean, model:PlayerModel, mapJSON:String)
       {
-          trace("GameSprite Reached!");
          this.camera_ = new Camera();
          super();
          this.model = model;

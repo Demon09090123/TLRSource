@@ -20,17 +20,22 @@ namespace Last_Realm_Server.Game.Entities
         public float PushX;
         public float PushY;
 
+        public int ValidThreshold = 0;//To account for desync between client and server
+
         public bool ValidMove(int time, Position pos)
         {
             int diff = time - MoveTime;
-            float speed = (GetMovementSpeed() * diff) * MoveSpeedThreshold;
+            float speed = GetMovementSpeed();
+            float dist = (speed * diff) * MoveSpeedThreshold;
             Position pushedServer = new Position(Position.X - (diff * PushX), Position.Y - (diff * PushY));
-            if (pos.Distance(pushedServer) > speed && pos.Distance(Position) > speed)
+            if (pos.Distance(pushedServer) > dist && pos.Distance(Position) > dist)
             {
-#if DEBUG
-                Program.Print(PrintType.Error, "Move stuffs... DIST/SPD = " + pos.Distance(pushedServer) + " : " + speed);
-#endif
-                return false;
+                if (ValidThreshold > 3)
+                {
+                    Program.Print(PrintType.Error, "INVALID MOVEMENT DIST/SPD = " + pos.Distance(pushedServer) + " : " + speed);
+                    return false;
+                }
+                ValidThreshold++;
             }
             return true;
         }
@@ -54,26 +59,17 @@ namespace Last_Realm_Server.Game.Entities
                         return;
                     }
                 }
-#if DEBUG
-                Program.Print(PrintType.Error, "Waiting for goto ack...");
-#endif
                 return;
             }
 
             if (!ValidMove(time, pos))
             {
-#if DEBUG
-                Program.Print(PrintType.Error, "Invalid move");
-#endif
                 Client.Disconnect();
                 return;
             }
 
             if (TileFullOccupied(pos.X, pos.Y))
             {
-#if DEBUG
-                Program.Print(PrintType.Error, "Tile occupied");
-#endif
                 Client.Disconnect();
                 return;
             }
@@ -81,9 +77,6 @@ namespace Last_Realm_Server.Game.Entities
             AwaitingMoves--;
             if (AwaitingMoves < 0)
             {
-#if DEBUG
-                Program.Print(PrintType.Error, "Too many move packets");
-#endif
                 Client.Disconnect();
                 return;
             }
@@ -92,7 +85,7 @@ namespace Last_Realm_Server.Game.Entities
             TileDesc desc = Resources.Type2Tile[tile.Type];
             if (desc.Damage > 0 && !HasConditionEffect(ConditionEffectIndex.Invincible))
             {
-                if (!(tile.StaticObject?.Desc.ProtectFromGroundDamage ?? false) && Damage(desc.Id, desc.Damage, new ConditionEffectDesc[0], true))
+                if (!(tile.StaticObject?.Desc.ProtectFromGroundDamage ?? false) && Damage(desc.Id, ProjType.None, desc.Damage, new ConditionEffectDesc[0], true, false))
                     return;
             }
 

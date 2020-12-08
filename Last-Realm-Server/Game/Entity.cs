@@ -19,6 +19,7 @@ namespace Last_Realm_Server.Game
         NextLevelEXP,
         EXP,
         Level,
+
         Inventory_0,
         Inventory_1,
         Inventory_2,
@@ -31,6 +32,7 @@ namespace Last_Realm_Server.Game
         Inventory_9,
         Inventory_10,
         Inventory_11,
+
         Attack,
         MagicPower,
         PhysicalDefense,
@@ -39,6 +41,7 @@ namespace Last_Realm_Server.Game
         Vitality,
         Wisdom,
         Dexterity,
+
         Condition,
         NumStars,
         Name,
@@ -65,6 +68,7 @@ namespace Last_Realm_Server.Game
         Breath,
         HealthPotionStack,
         MagicPotionStack,
+
         Backpack_0,
         Backpack_1,
         Backpack_2,
@@ -73,8 +77,10 @@ namespace Last_Realm_Server.Game
         Backpack_5,
         Backpack_6,
         Backpack_7,
+
         HasBackpack,
         Texture,
+
         ItemData_0,
         ItemData_1,
         ItemData_2,
@@ -94,7 +100,18 @@ namespace Last_Realm_Server.Game
         ItemData_16,
         ItemData_17,
         ItemData_18,
-        ItemData_19
+        ItemData_19,
+
+        MaxHpBoost,
+        MaxMpBoost,
+        AttackBoost,
+        MagicPowerBoost,
+        PhysicalDefenseBoost,
+        MagicDefenseBoost,
+        SpeedBoost,
+        VitalityBoost,
+        WisdomBoost,
+        DexterityBoost
     }
 
     public class Entity : IDisposable

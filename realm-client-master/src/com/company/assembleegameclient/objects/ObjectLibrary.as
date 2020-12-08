@@ -40,7 +40,6 @@ import com.company.util.AssetLibrary;
          "GuildMerchant":GuildMerchant,
          "GuildRegister":GuildRegister,
          "Merchant":Merchant,
-         "ReskinVendor":ReskinVendor,
          "OneWayContainer":OneWayContainer,
          "Player":Player,
          "Portal":Portal,
@@ -251,10 +250,7 @@ import com.company.util.AssetLibrary;
             return false;
          }
          var slotType:int = objectXML.SlotType;
-         if(slotType == ItemConstants.POTION_TYPE)
-         {
-            return true;
-         }
+
          for(var i:int = 0; i < player.slotTypes_.length; i++)
          {
             if(player.slotTypes_[i] == slotType)
@@ -282,7 +278,7 @@ import com.company.util.AssetLibrary;
             return null;
          }
          var slotType:int = objectXML.SlotType;
-         if(slotType == ItemConstants.POTION_TYPE || slotType == ItemConstants.RING_TYPE)
+         if(slotType == ItemConstants.RING_TYPE)
          {
             return null;
          }

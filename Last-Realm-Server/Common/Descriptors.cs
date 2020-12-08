@@ -29,15 +29,17 @@ namespace Last_Realm_Server.Common
         MaxHP = 1 << 8,
         MaxMP = 1 << 9,
         Attack = 1 << 10,
-        Defense = 1 << 11,
-        Speed = 1 << 12,
-        Dexterity = 1 << 13,
-        Vitality = 1 << 14,
-        Wisdom = 1 << 15,
-        RateOfFire = 1 << 16,
-        Damage = 1 << 17,
-        Cooldown = 1 << 18,
-        FameBonus = 1 << 19
+        MagicPower = 1 << 11,
+        PhysicalDefense = 1 << 12,
+        MagicDefense = 1 << 13,
+        Speed = 1 << 15,
+        Dexterity = 1 << 16,
+        Vitality = 1 << 17,
+        Wisdom = 1 << 18,
+        RateOfFire = 1 << 19,
+        Damage = 1 << 20,
+        Cooldown = 1 << 21,
+        FameBonus = 1 << 22
     }
 
     [Flags]
@@ -104,7 +106,6 @@ namespace Last_Realm_Server.Common
 
     public enum ActivateEffectIndex
     {
-        Create,
         Dye,
         Shoot,
         IncrementStat,
@@ -117,24 +118,12 @@ namespace Last_Realm_Server.Common
         ConditionEffectSelf,
         ConditionEffectAura,
         Teleport,
-        PoisonGrenade,
-        VampireBlast,
-        Trap,
-        StasisBlast,
-        Pet,
-        Decoy,
-        Lightning,
-        UnlockPortal,
         MagicNova,
         ClearConditionEffectAura,
         RemoveNegativeConditions,
         ClearConditionEffectSelf,
         ClearConditionsEffectSelf,
-        RemoveNegativeConditionsSelf,
-        Shuriken,
-        DazeBlast,
-        Backpack,
-        PermaPet
+        RemoveNegativeConditionsSelf
     }
 
     public enum ShowEffectIndex
@@ -194,6 +183,7 @@ namespace Last_Realm_Server.Common
 
         public readonly int MaxHP;
         public readonly int PhysicalDefense;
+        public readonly int MagicDefense;
 
         public readonly Dictionary<int, ProjectileDesc> Projectiles;
 
@@ -233,6 +223,7 @@ namespace Last_Realm_Server.Common
 
             MaxHP = e.ParseInt("MaxHitPoints");
             PhysicalDefense = e.ParseInt("PhysicalDefense");
+            MagicDefense = e.ParseInt("MagicDefense");
 
             Projectiles = new Dictionary<int, ProjectileDesc>();
             foreach (XElement k in e.Elements("Projectile"))
@@ -311,8 +302,8 @@ namespace Last_Realm_Server.Common
                 case 1: return "MaxMagicPoints";
                 case 2: return "Attack";
                 case 3: return "MagicPower";
-                case 4: return "PhysicalPhysicalDefense";
-                case 5: return "MagicPhysicalDefense";
+                case 4: return "PhysicalDefense";
+                case 5: return "MagicDefense";
                 case 6: return "Speed";
                 case 7: return "Dexterity";
                 case 8: return "HpRegen";
@@ -329,8 +320,8 @@ namespace Last_Realm_Server.Common
                 case "MaxMagicPoints": return 1;
                 case "Attack": return 2;
                 case "MagicPower": return 3;
-                case "PhysicalPhysicalDefense": return 4;
-                case "MagicPhysicalDefense": return 5;
+                case "PhysicalDefense": return 4;
+                case "MagicDefense": return 5;
                 case "Speed": return 6;
                 case "Dexterity": return 7;
                 case "HpRegen": return 8;
@@ -399,30 +390,15 @@ namespace Last_Realm_Server.Common
         {
             All,
             Sword,
-            Dagger,
             Bow,
-            Tome,
             Shield,
             Leather,
             Plate,
-            Wand,
             Ring,
-            Potion,
             Spell,
-            Seal,
-            Cloak,
             Robe,
             Quiver,
-            Helm,
-            Staff,
-            Poison,
-            Skull,
-            Trap,
-            Orb,
-            Prism,
-            Scepter,
-            Katana,
-            Shuriken,
+            Staff
         }
 
         static ItemData[] GlobalModifiers =
@@ -430,7 +406,9 @@ namespace Last_Realm_Server.Common
             ItemData.MaxHP, 
             ItemData.MaxMP, 
             ItemData.Attack,
-            ItemData.Defense, 
+            ItemData.MagicPower,
+            ItemData.PhysicalDefense,
+            ItemData.MagicDefense,
             ItemData.Speed, 
             ItemData.Dexterity, 
             ItemData.Vitality, 
@@ -455,10 +433,7 @@ namespace Last_Realm_Server.Common
         static ItemType[] WeaponTypes =
         {
             ItemType.Sword,
-            ItemType.Dagger,
             ItemType.Staff,
-            ItemType.Wand,
-            ItemType.Katana,
             ItemType.Bow
         };
 
@@ -476,20 +451,9 @@ namespace Last_Realm_Server.Common
 
         static ItemType[] AbilityTypes =
         {
-            ItemType.Cloak,
             ItemType.Spell,
-            ItemType.Tome,
-            ItemType.Helm,
             ItemType.Quiver,
-            ItemType.Seal,
-            ItemType.Poison,
-            ItemType.Skull,
-            ItemType.Shield,
-            ItemType.Trap,
-            ItemType.Orb,
-            ItemType.Shuriken,
-            ItemType.Prism,
-            ItemType.Scepter
+            ItemType.Shield
         };
 
         static ItemType[] ModifiableTypes = WeaponTypes.Concat(ArmorTypes).Concat(RingTypes).Concat(AbilityTypes).ToArray();
@@ -685,6 +649,13 @@ namespace Last_Realm_Server.Common
         }
     }
 
+
+    public enum ProjType : int
+    {
+        None = -1,
+        Physical = 0,
+        Magic = 1
+    }
     public class ProjectileDesc
     {
         public readonly byte BulletType;
@@ -692,6 +663,7 @@ namespace Last_Realm_Server.Common
         public readonly int LifetimeMS;
         public readonly float Speed;
 
+        public readonly ProjType ProjectileType;
         public readonly int Damage;
         public readonly int MinDamage; //Only for players
         public readonly int MaxDamage;
@@ -718,6 +690,7 @@ namespace Last_Realm_Server.Common
         {
             ContainerType = containerType;
             BulletType = (byte)e.ParseInt("@id");
+            ProjectileType = (ProjType)e.ParseInt("@type");
             ObjectId = e.ParseString("ObjectId");
             LifetimeMS = e.ParseInt("LifetimeMS");
             Speed = e.ParseFloat("Speed");

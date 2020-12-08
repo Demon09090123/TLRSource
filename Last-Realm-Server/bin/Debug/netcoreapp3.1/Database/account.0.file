@@ -6,7 +6,7 @@
   <Banned>false</Banned>
   <GuildName />
   <GuildRank>0</GuildRank>
-  <RegisterTime>1606793932</RegisterTime>
+  <RegisterTime>1607389831</RegisterTime>
   <LockedIds></LockedIds>
   <IgnoredIds></IgnoredIds>
   <AllyShots>true</AllyShots>
@@ -14,7 +14,6 @@
   <Effects>true</Effects>
   <Sounds>true</Sounds>
   <Notifications>true</Notifications>
-  <HasCharacter>true</HasCharacter>
   <Stats>
     <TotalCredits>0</TotalCredits>
     <Credits>0</Credits>

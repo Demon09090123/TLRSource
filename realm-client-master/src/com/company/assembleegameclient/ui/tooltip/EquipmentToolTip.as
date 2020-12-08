@@ -277,6 +277,16 @@ import kabam.rotmg.constants.ActivationType;
          if(this.objectXML_.hasOwnProperty("Projectile"))
          {
             projXML = XML(this.objectXML_.Projectile);
+
+            var dmgType:int = int(projXML.@type);
+            var dmgTypeS:String = "";
+
+            if (dmgType == 0) {
+                dmgTypeS = "Physical Damage";
+            } else {
+                dmgTypeS = "Magic Damage";
+            }
+
             var minDmg:int = int(projXML.MinDamage);
             var maxDmg:int = int(projXML.MaxDamage);
             var dmgMod:Number = ItemData.getStat(this.itemData_, ItemData.DAMAGE_BIT, ItemData.DAMAGE_MULTIPLIER);
@@ -288,7 +298,8 @@ import kabam.rotmg.constants.ActivationType;
                dmgString += " (+" + int(dmgMod * 100) + "%)";
                dmgString = TooltipHelper.wrapInFontTag(dmgString, color);
             }
-            this.effects.push(new Effect("Damage", dmgString));
+
+            this.effects.push(new Effect(dmgTypeS, dmgString));
 
             range = Number(projXML.Speed) * Number(projXML.LifetimeMS) / 10000;
             this.effects.push(new Effect("Range",TooltipHelper.getFormattedString(range)));
@@ -357,27 +368,6 @@ import kabam.rotmg.constants.ActivationType;
                case ActivationType.TELEPORT:
                   this.effects.push(new Effect("","Teleport to Target"));
                   continue;
-               case ActivationType.VAMPIRE_BLAST:
-                  this.effects.push(new Effect("Steal",activateXML.@totalDamage + " HP within " + activateXML.@radius + " sqrs"));
-                  continue;
-               case ActivationType.TRAP:
-                  this.effects.push(new Effect("Trap",activateXML.@totalDamage + " HP within " + activateXML.@radius + " sqrs"));
-                  this.effects.push(new Effect("","  " + activateXML.@effect + " for " + activateXML.@duration + " secs"));
-                  continue;
-               case ActivationType.STASIS_BLAST:
-                  this.effects.push(new Effect("Stasis on Group",activateXML.@duration + " secs"));
-                  continue;
-               case ActivationType.DECOY:
-                  this.effects.push(new Effect("Decoy",activateXML.@duration + " secs"));
-                  continue;
-               case ActivationType.LIGHTNING:
-                  this.effects.push(new Effect("Lightning",""));
-                  this.effects.push(new Effect(""," " + activateXML.@totalDamage + " to " + activateXML.@maxTargets + " targets"));
-                  continue;
-               case ActivationType.POISON_GRENADE:
-                  this.effects.push(new Effect("Poison Grenade",""));
-                  this.effects.push(new Effect(""," " + activateXML.@totalDamage + " HP over " + activateXML.@duration + " secs within " + activateXML.@radius + " sqrs\n"));
-                  continue;
                case ActivationType.REMOVE_NEG_COND:
                   this.effects.push(new Effect("","Removes negative conditions"));
                   continue;
@@ -386,11 +376,6 @@ import kabam.rotmg.constants.ActivationType;
                   continue;
                case ActivationType.BULLET_NOVA:
                   this.effects.push(new Effect("Shots", "20"));
-                  continue;
-               case ActivationType.SHURIKEN:
-                  this.effects.push(new Effect("Shots", activateXML.@amount));
-                  this.effects.push(new Effect("", "Stars seek nearby enemies"));
-                  this.effects.push(new Effect("", "Dazes nearby enemies"));
                   continue;
                case ActivationType.INCREMENT_STAT:
                   stat = int(activateXML.@stat);
@@ -448,28 +433,36 @@ import kabam.rotmg.constants.ActivationType;
                datas[1] = (datas[1] || 0) + k;
             }
             if ((k = ItemData.getStat(this.itemData_, ItemData.ATTACK_BIT, 1)) != 0) {
-               stats[2] = (stats[2] || 0) + k;
-               datas[2] = (datas[2] || 0) + k;
+                 stats[2] = (stats[2] || 0) + k;
+                 datas[2] = (datas[2] || 0) + k;
             }
-            if ((k = ItemData.getStat(this.itemData_, ItemData.DEFENSE_BIT, 1)) != 0) {
+            if ((k = ItemData.getStat(this.itemData_, ItemData.MAGIC_POWER_BIT, 1)) != 0) {
                stats[3] = (stats[3] || 0) + k;
                datas[3] = (datas[3] || 0) + k;
             }
-            if ((k = ItemData.getStat(this.itemData_, ItemData.SPEED_BIT, 1)) != 0) {
-               stats[4] = (stats[4] || 0) + k;
-               datas[4] = (datas[4] || 0) + k;
+            if ((k = ItemData.getStat(this.itemData_, ItemData.PHYSICAL_DEFENSE_BIT, 1)) != 0) {
+                 stats[4] = (stats[4] || 0) + k;
+                 datas[4] = (datas[4] || 0) + k;
             }
-            if ((k = ItemData.getStat(this.itemData_, ItemData.DEXTERITY_BIT, 1)) != 0) {
+            if ((k = ItemData.getStat(this.itemData_, ItemData.MAGIC_DEFENSE_BIT, 1)) != 0) {
                stats[5] = (stats[5] || 0) + k;
                datas[5] = (datas[5] || 0) + k;
             }
-            if ((k = ItemData.getStat(this.itemData_, ItemData.VITALITY_BIT, 1)) != 0) {
+            if ((k = ItemData.getStat(this.itemData_, ItemData.SPEED_BIT, 1)) != 0) {
                stats[6] = (stats[6] || 0) + k;
                datas[6] = (datas[6] || 0) + k;
             }
-            if ((k = ItemData.getStat(this.itemData_, ItemData.WISDOM_BIT, 1)) != 0) {
+            if ((k = ItemData.getStat(this.itemData_, ItemData.DEXTERITY_BIT, 1)) != 0) {
                stats[7] = (stats[7] || 0) + k;
                datas[7] = (datas[7] || 0) + k;
+            }
+            if ((k = ItemData.getStat(this.itemData_, ItemData.VITALITY_BIT, 1)) != 0) {
+               stats[8] = (stats[8] || 0) + k;
+               datas[8] = (datas[8] || 0) + k;
+            }
+            if ((k = ItemData.getStat(this.itemData_, ItemData.WISDOM_BIT, 1)) != 0) {
+               stats[9] = (stats[9] || 0) + k;
+               datas[9] = (datas[9] || 0) + k;
             }
          }
 

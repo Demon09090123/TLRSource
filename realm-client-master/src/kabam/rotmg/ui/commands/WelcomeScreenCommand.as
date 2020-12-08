@@ -18,7 +18,6 @@ public class WelcomeScreenCommand {
 
     public function execute(): void {
         this.setScreen.dispatch(new WelcomeScreen());
-        //this.updateAccount.dispatch();
     }
 }
 }

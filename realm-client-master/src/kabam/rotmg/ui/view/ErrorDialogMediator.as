@@ -1,11 +1,12 @@
 package kabam.rotmg.ui.view
 {
-   import com.company.assembleegameclient.screens.CharacterSelectionAndNewsScreen;
    import com.company.assembleegameclient.ui.dialogs.ErrorDialog;
    import flash.events.Event;
    import kabam.rotmg.core.signals.InvalidateDataSignal;
    import kabam.rotmg.core.signals.SetScreenWithValidDataSignal;
    import kabam.rotmg.dialogs.control.CloseDialogsSignal;
+   import kabam.rotmg.ui.characterView.CharacterSelectionAndNewsScreen;
+
    import robotlegs.bender.bundles.mvcs.Mediator;
    
    public class ErrorDialogMediator extends Mediator

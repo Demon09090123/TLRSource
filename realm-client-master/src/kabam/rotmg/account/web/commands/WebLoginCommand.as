@@ -1,7 +1,6 @@
 package kabam.rotmg.account.web.commands
 {
    import com.company.assembleegameclient.game.GameSprite;
-   import com.company.assembleegameclient.screens.CharacterSelectionAndNewsScreen;
    import flash.display.Sprite;
    import kabam.lib.tasks.BranchingTask;
    import kabam.lib.tasks.DispatchSignalTask;
@@ -17,7 +16,7 @@ package kabam.rotmg.account.web.commands
    import kabam.rotmg.core.signals.SetScreenWithValidDataSignal;
    import kabam.rotmg.core.signals.TaskErrorSignal;
    import kabam.rotmg.dialogs.control.OpenDialogSignal;
-import kabam.rotmg.ui.welcomeview.WelcomeScreen;
+   import kabam.rotmg.ui.characterView.CharacterSelectionAndNewsScreen;
 
 public class WebLoginCommand
    {

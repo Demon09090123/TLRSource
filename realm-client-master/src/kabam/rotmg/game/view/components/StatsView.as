@@ -9,8 +9,15 @@ import com.company.assembleegameclient.ui.Stats;
 
 public class StatsView extends Sprite
    {
-
-      private static const statsModel:Array = [new StatModel("ATT","Attack","This stat increases the amount of damage done.",true),new StatModel("DEF","Defense","This stat decreases the amount of damage taken.",false),new StatModel("SPD","Speed","This stat increases the speed at which the character moves.",true),new StatModel("DEX","Dexterity","This stat increases the speed at which the character attacks.",true),new StatModel("VIT","Vitality","This stat increases the speed at which hit points are recovered.",true),new StatModel("WIS","Wisdom","This stat increases the speed at which magic points are recovered.",true)];
+      private static const statsModel:Array =
+         [new StatModel("ATT","Attack","This stat increases the amount of damage done.",true),
+          new StatModel("MGP", "Magic Power", "This stat increases the amount of magic damage done.", true),
+          new StatModel("PDEF","Physical Defense","This stat decreases the amount of physical damage taken.",false),
+          new StatModel("MDEF","Magic Defense","This stat decreases the amount of magic damage taken.",false),
+          new StatModel("SPD","Speed","This stat increases the speed at which the character moves.",true),
+          new StatModel("DEX","Dexterity","This stat increases the speed at which the character attacks.",true),
+          new StatModel("VIT","Vitality","This stat increases the speed at which hit points are recovered.",true),
+          new StatModel("WIS","Wisdom","This stat increases the speed at which magic points are recovered.",true)];
        
       
       public var w_:int;
@@ -32,7 +39,7 @@ public class StatsView extends Sprite
          for(i = 0; i < statsModel.length; i++)
          {
             statModel = statsModel[i];
-            stat = new StatView(statModel.name,statModel.abbreviation,statModel.description,statModel.redOnZero);
+            stat = new StatView(statModel.name,statModel.abbreviation,statModel.description);
             stat.x = i % 2 * this.w_ / 2;
             stat.y = rows * (this.h_ / 3);
             this.containerSprite.addChild(stat);
@@ -46,14 +53,14 @@ public class StatsView extends Sprite
       {
          if(go != null)
          {
-            this.stats_[Stats.ATTACK].draw(go.attack_);
-            this.stats_[Stats.MAGIC_POWER].draw(go.magicPower_);
-            this.stats_[Stats.PHYSICAL_DEFENSE].draw(go.physicalDefense);
-            this.stats_[Stats.MAGIC_DEFENSE].draw(go.magicDefense_);
-            this.stats_[Stats.SPEED].draw(go.speed_);
-            this.stats_[Stats.DEXTERITY].draw(go.dexterity_);
-            this.stats_[Stats.VITALITY].draw(go.vitality_);
-            this.stats_[Stats.WISDOM].draw(go.wisdom_);
+            this.stats_[Stats.ATTACK].draw(go.attack_, go.attackBoost_);
+            this.stats_[Stats.MAGIC_POWER].draw(go.magicPower_, go.magicPowerBoost_);
+            this.stats_[Stats.PHYSICAL_DEFENSE].draw(go.physicalDefense, go.physicalDefenseBoost);
+            this.stats_[Stats.MAGIC_DEFENSE].draw(go.magicDefense_, go.magicDefenseBoost_);
+            this.stats_[Stats.SPEED].draw(go.speed_, go.speedBoost_);
+            this.stats_[Stats.DEXTERITY].draw(go.dexterity_, go.dexterityBoost_);
+            this.stats_[Stats.VITALITY].draw(go.vitality_, go.vitalityBoost_);
+            this.stats_[Stats.WISDOM].draw(go.wisdom_, go.wisdomBoost_);
          }
          this.containerSprite.x = 30 + (191 - this.containerSprite.width) * 0.5;
       }

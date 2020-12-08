@@ -1,95 +1,141 @@
 <Objects>
-	<Object type="0x0307" id="Archer">
-		<Class>Player</Class>
-		<Description>The archer has a long-range attack and can acquire very powerful weapons.</Description>
-		<AnimatedTexture><File>players</File><Index>1</Index></AnimatedTexture>
-		<HitSound>player/archer_hit</HitSound>
-		<DeathSound>player/archer_death</DeathSound>
-		<Player/>
-		<BloodProb>1.0</BloodProb>
-		<SlotTypes>3, 15, 6, 9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0</SlotTypes>
-		<Equipment>0xa1a, 0xa61, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1</Equipment>
-		<MaxHitPoints>130</MaxHitPoints>
-		<MaxMagicPoints>100</MaxMagicPoints>
-		<Attack>12</Attack>
-    <MagicPower>3</MagicPower>
-		<PhysicalDefense>5</PhysicalDefense>
-    <MagicDefense>5</MagicDefense>
-		<Speed>12</Speed>
-		<Dexterity>12</Dexterity>
-		<HpRegen>12</HpRegen>
-		<MpRegen>10</MpRegen>
-		<LevelIncrease min="20" max="30">MaxHitPoints</LevelIncrease>
-		<LevelIncrease min="2" max="8">MaxMagicPoints</LevelIncrease>
-		<LevelIncrease min="1" max="2">Attack</LevelIncrease>
+  <Object type="0x0307" id="Archer">
+    <Class>Player</Class>
+    <Description>
+      The archer has a long-range attack and can acquire very powerful weapons.
+      Weapon:
+      The Archer uses a bow as its primary choice of
+      weapon. The bow fires arrows to inflict moderate
+      damage to its target at long distances. This
+      weapon can be changed upon reaching its sub-classes
+      Ability:
+      The Archer carries around a quiver as its primary
+      ability. The quiver improves his efficiency and
+      damage. This ability can be changed upon reaching
+      its sub-classes.
+    </Description>
+    <AnimatedTexture>
+      <File>players</File>
+      <Index>1</Index>
+    </AnimatedTexture>
+    <HitSound>player/archer_hit</HitSound>
+    <DeathSound>player/archer_death</DeathSound>
+    <Player/>
+    <BloodProb>1.0</BloodProb>
+    <SlotTypes>2, 9, 4, 6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0</SlotTypes>
+    <Equipment>0xa1a, 0xa61, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1</Equipment>
+    <MaxHitPoints>130</MaxHitPoints>
+    <MaxMagicPoints>100</MaxMagicPoints>
+    <Attack>10</Attack>
+    <MagicPower>5</MagicPower>
+    <PhysicalDefense>7</PhysicalDefense>
+    <MagicDefense>7</MagicDefense>
+    <Speed>13</Speed>
+    <Dexterity>13</Dexterity>
+    <HpRegen>7</HpRegen>
+    <MpRegen>7</MpRegen>
+    <LevelIncrease min="20" max="30">MaxHitPoints</LevelIncrease>
+    <LevelIncrease min="2" max="8">MaxMagicPoints</LevelIncrease>
+    <LevelIncrease min="1" max="2">Attack</LevelIncrease>
     <LevelIncrease min="0" max="2">MagicPower</LevelIncrease>
-		<LevelIncrease min="0" max="0">PhysicalDefense</LevelIncrease>
+    <LevelIncrease min="0" max="0">PhysicalDefense</LevelIncrease>
     <LevelIncrease min="0" max="0">MagicDefense</LevelIncrease>
-		<LevelIncrease min="0" max="2">Speed</LevelIncrease>
-		<LevelIncrease min="0" max="2">Dexterity</LevelIncrease>
-		<LevelIncrease min="0" max="1">HpRegen</LevelIncrease>
-		<LevelIncrease min="0" max="2">MpRegen</LevelIncrease>
-	</Object>
-	<Object type="0x030e" id="Wizard">
-		<Class>Player</Class>
-		<Description>The wizard deals damage from a long distance and blasts enemies with powerful spells.</Description>
-		<AnimatedTexture><File>players</File><Index>2</Index></AnimatedTexture>
-		<HitSound>player/wizard_hit</HitSound>
-		<DeathSound>player/wizard_death</DeathSound>
-		<Player/>
-		<BloodProb>1.0</BloodProb>
-		<SlotTypes>17, 11, 14, 9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0</SlotTypes>
-		<Equipment>0xa97, 0xa2e, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1</Equipment>
-		<MaxHitPoints>100</MaxHitPoints>
-		<MaxMagicPoints>100</MaxMagicPoints>
-		<Attack>12</Attack>
-		<MagicPower>3</MagicPower>
-		<PhysicalDefense>5</PhysicalDefense>
+    <LevelIncrease min="0" max="2">Speed</LevelIncrease>
+    <LevelIncrease min="0" max="2">Dexterity</LevelIncrease>
+    <LevelIncrease min="0" max="1">HpRegen</LevelIncrease>
+    <LevelIncrease min="0" max="2">MpRegen</LevelIncrease>
+  </Object>
+  <Object type="0x030e" id="Wizard">
+    <Class>Player</Class>
+    <Description>
+      The wizard deals damage from a long distance and blasts enemies with powerful spells.
+      Weapon:
+      The Wizard uses a staff as its primary choice of
+      weapon. The staff fires elemental energy balls
+      to inflict massive damage to its target.
+      Ability:
+      The Wizard carries around a tablet as its
+      primary ability. The tablet generates a
+      powerful elemental nova upon the
+      enemy. This ability can be changed upon
+      reaching its sub-classes.
+    </Description>
+    <AnimatedTexture>
+      <File>players</File>
+      <Index>2</Index>
+    </AnimatedTexture>
+    <HitSound>player/wizard_hit</HitSound>
+    <DeathSound>player/wizard_death</DeathSound>
+    <Player/>
+    <BloodProb>1.0</BloodProb>
+    <SlotTypes>10, 7, 8, 6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0</SlotTypes>
+    <Equipment>0xa97, 0xa2e, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1</Equipment>
+    <MaxHitPoints>100</MaxHitPoints>
+    <MaxMagicPoints>100</MaxMagicPoints>
+    <Attack>3</Attack>
+    <MagicPower>15</MagicPower>
+    <PhysicalDefense>5</PhysicalDefense>
     <MagicDefense>5</MagicDefense>
-		<Speed>10</Speed>
-		<Dexterity>15</Dexterity>
-		<HpRegen>12</HpRegen>
-		<MpRegen>12</MpRegen>
-		<LevelIncrease min="20" max="30">MaxHitPoints</LevelIncrease>
-		<LevelIncrease min="5" max="15">MaxMagicPoints</LevelIncrease>
-		<LevelIncrease min="1" max="2">Attack</LevelIncrease>
+    <Speed>7</Speed>
+    <Dexterity>7</Dexterity>
+    <HpRegen>10</HpRegen>
+    <MpRegen>10</MpRegen>
+    <LevelIncrease min="20" max="30">MaxHitPoints</LevelIncrease>
+    <LevelIncrease min="5" max="15">MaxMagicPoints</LevelIncrease>
+    <LevelIncrease min="1" max="2">Attack</LevelIncrease>
     <LevelIncrease min="0" max="2">MagicPower</LevelIncrease>
-		<LevelIncrease min="0" max="0">PhysicalDefense</LevelIncrease>
+    <LevelIncrease min="0" max="0">PhysicalDefense</LevelIncrease>
     <LevelIncrease min="0" max="0">MagicDefense</LevelIncrease>
-		<LevelIncrease min="0" max="2">Speed</LevelIncrease>
-		<LevelIncrease min="1" max="2">Dexterity</LevelIncrease>
-		<LevelIncrease min="0" max="1">HpRegen</LevelIncrease>
-		<LevelIncrease min="0" max="2">MpRegen</LevelIncrease>
-	</Object>
-	<Object type="0x031d" id="Warrior">
-		<Class>Player</Class>
-		<Description>The warrior wears strong armor and uses his magic helmet to inspire his allies in battle.</Description>
-		<AnimatedTexture><File>players</File><Index>4</Index></AnimatedTexture>
-		<HitSound>player/warrior_hit</HitSound>
-		<DeathSound>player/warrior_death</DeathSound>
-		<Player/>
-		<BloodProb>1.0</BloodProb>
-		<SlotTypes>1, 16, 7, 9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0</SlotTypes>
-		<Equipment>0xa00, 0x0a66, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1</Equipment>
-		<MaxHitPoints>200</MaxHitPoints>
-		<MaxMagicPoints>100</MaxMagicPoints>
-		<Attack>15</Attack>
-    <MagicPower>3</MagicPower>
-		<PhysicalDefense>5</PhysicalDefense>
-    <MagicDefense>5</MagicDefense>
-		<Speed>7</Speed>
-		<Dexterity>10</Dexterity>
-		<HpRegen>10</HpRegen>
-		<MpRegen>10</MpRegen>
-		<LevelIncrease min="20" max="30">MaxHitPoints</LevelIncrease>
-		<LevelIncrease min="2" max="8">MaxMagicPoints</LevelIncrease>
-		<LevelIncrease min="1" max="2">Attack</LevelIncrease>
+    <LevelIncrease min="0" max="2">Speed</LevelIncrease>
+    <LevelIncrease min="1" max="2">Dexterity</LevelIncrease>
+    <LevelIncrease min="0" max="1">HpRegen</LevelIncrease>
+    <LevelIncrease min="0" max="2">MpRegen</LevelIncrease>
+  </Object>
+  <Object type="0x031d" id="Warrior">
+    <Class>Player</Class>
+    <Description>
+      The warrior wears strong armor and uses his magic helmet to inspire his allies in battle.
+      Weapon:
+      The Warrior uses a sword as its primary choice of
+      weapon. The sword creates close-range slashes that
+      deal large amounts of damage to its enemy. The
+      weapon type can be changed upon reaching
+      sub-classes
+      Ability:
+      The Warrior carries around a shield as its primary
+      ability. The shield creates a large force that stuns
+      its enemy on impact. This ability can be changed
+      upon reaching its sub-classes.
+    </Description>
+    <AnimatedTexture>
+      <File>players</File>
+      <Index>4</Index>
+    </AnimatedTexture>
+    <HitSound>player/warrior_hit</HitSound>
+    <DeathSound>player/warrior_death</DeathSound>
+    <Player/>
+    <BloodProb>1.0</BloodProb>
+    <SlotTypes>1, 3, 5, 6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0</SlotTypes>
+    <Equipment>0xa00, 0xa08, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1</Equipment>
+    <MaxHitPoints>200</MaxHitPoints>
+    <MaxMagicPoints>100</MaxMagicPoints>
+    <Attack>15</Attack>
+    <MagicPower>2</MagicPower>
+    <PhysicalDefense>12</PhysicalDefense>
+    <MagicDefense>12</MagicDefense>
+    <Speed>10</Speed>
+    <Dexterity>10</Dexterity>
+    <HpRegen>15</HpRegen>
+    <MpRegen>15</MpRegen>
+    <LevelIncrease min="20" max="30">MaxHitPoints</LevelIncrease>
+    <LevelIncrease min="2" max="8">MaxMagicPoints</LevelIncrease>
+    <LevelIncrease min="1" max="2">Attack</LevelIncrease>
     <LevelIncrease min="0" max="2">MagicPower</LevelIncrease>
-		<LevelIncrease min="0" max="0">PhysicalDefense</LevelIncrease>
+    <LevelIncrease min="0" max="0">PhysicalDefense</LevelIncrease>
     <LevelIncrease min="0" max="0">MagicDefense</LevelIncrease>
-		<LevelIncrease min="0" max="2">Speed</LevelIncrease>
-		<LevelIncrease min="0" max="2">Dexterity</LevelIncrease>
-		<LevelIncrease min="1" max="2">HpRegen</LevelIncrease>
-		<LevelIncrease min="0" max="2">MpRegen</LevelIncrease>
-	</Object>
+    <LevelIncrease min="0" max="2">Speed</LevelIncrease>
+    <LevelIncrease min="0" max="2">Dexterity</LevelIncrease>
+    <LevelIncrease min="1" max="2">HpRegen</LevelIncrease>
+    <LevelIncrease min="0" max="2">MpRegen</LevelIncrease>
+  </Object>
 </Objects>

@@ -178,9 +178,6 @@ namespace Last_Realm_Server.Game.Entities
                         if ((tile == null || tile.Type == 255) ||
                             (tile.StaticObject != null && !tile.StaticObject.Desc.Enemy && (tile.StaticObject.Desc.EnemyOccupySquare || !p.Desc.PassesCover && tile.StaticObject.Desc.OccupySquare)))
                         {
-#if DEBUG
-                            Program.Print(PrintType.Error, "Shot projectile hit wall, removed");
-#endif
                             ShotProjectiles.Remove(bulletId);
                             return;
                         }
@@ -334,9 +331,6 @@ namespace Last_Realm_Server.Game.Entities
                 int elapsed = time - p.Value.Time;
                 if (elapsed > p.Value.Desc.LifetimeMS)
                 {
-#if DEBUG
-                    Program.Print(PrintType.Error, "Shot projectile removed");
-#endif
                     ShotProjectiles.Remove(p.Key);
                     continue;
                 }
@@ -404,9 +398,10 @@ namespace Last_Realm_Server.Game.Entities
         public override bool HitByProjectile(Projectile projectile)
         {
             return Damage(Resources.Type2Object[projectile.Desc.ContainerType].DisplayId,
+                   projectile.Desc.ProjectileType, 
                    projectile.Damage, 
                    projectile.Desc.Effects, 
-                   projectile.Desc.ArmorPiercing);
+                   projectile.Desc.ArmorPiercing, false);
         }
 
         public void AwaitProjectiles(List<Projectile> projectiles)
@@ -472,7 +467,7 @@ namespace Last_Realm_Server.Game.Entities
 
                 if (pos.Distance(aoe.Position) < aoe.Radius && !HasConditionEffect(ConditionEffectIndex.Invincible))
                 {
-                    Damage(aoe.Hitter, aoe.Damage, aoe.Effects, false);
+                    Damage(aoe.Hitter, ProjType.None, aoe.Damage, aoe.Effects, false, false);
                 }
             }
             else

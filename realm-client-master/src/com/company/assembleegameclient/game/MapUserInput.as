@@ -11,18 +11,11 @@ import flash.display.StageDisplayState;
 import flash.events.Event;
 import flash.events.KeyboardEvent;
 import flash.events.MouseEvent;
-import flash.events.TimerEvent;
-import flash.geom.Point;
-import flash.system.Capabilities;
-import flash.utils.Timer;
 import kabam.rotmg.constants.GeneralConstants;
 import kabam.rotmg.core.StaticInjectorContext;
 import kabam.rotmg.core.view.Layers;
-import kabam.rotmg.game.model.PotionInventoryModel;
-import kabam.rotmg.game.model.UsePotionVO;
 import kabam.rotmg.game.signals.AddTextLineSignal;
 import kabam.rotmg.game.signals.SetTextBoxVisibilitySignal;
-import kabam.rotmg.game.signals.UsePotionSignal;
 import kabam.rotmg.messaging.impl.GameServerConnection;
 import kabam.rotmg.minimap.control.MiniMapZoomSignal;
 import kabam.rotmg.ui.model.TabStripModel;
@@ -50,8 +43,6 @@ public class MapUserInput
    private var setTextBoxVisibility:SetTextBoxVisibilitySignal;
    private var statsTabHotKeyInputSignal:StatsTabHotKeyInputSignal;
    private var miniMapZoom:MiniMapZoomSignal;
-   private var usePotionSignal:UsePotionSignal;
-   private var potionInventoryModel:PotionInventoryModel;
    private var tabStripModel:TabStripModel;
    private var layers:Layers;
 
@@ -68,8 +59,6 @@ public class MapUserInput
       this.setTextBoxVisibility = injector.getInstance(SetTextBoxVisibilitySignal);
       this.statsTabHotKeyInputSignal = injector.getInstance(StatsTabHotKeyInputSignal);
       this.miniMapZoom = injector.getInstance(MiniMapZoomSignal);
-      this.usePotionSignal = injector.getInstance(UsePotionSignal);
-      this.potionInventoryModel = injector.getInstance(PotionInventoryModel);
       this.tabStripModel = injector.getInstance(TabStripModel);
       this.layers = injector.getInstance(Layers);
       this.gs_.map.signalRenderSwitch.add(this.onRenderSwitch);
@@ -380,18 +369,6 @@ public class MapUserInput
             break;
          case Parameters.data_.useEquipInvSlot8:
             this.useEquipItem(11);
-            break;
-         case Parameters.data_.useHealthPotion:
-            if(this.potionInventoryModel.getPotionModel(PotionInventoryModel.HEALTH_POTION_ID).available)
-            {
-               this.usePotionSignal.dispatch(new UsePotionVO(PotionInventoryModel.HEALTH_POTION_ID,UsePotionVO.CONTEXTBUY));
-            }
-            break;
-         case Parameters.data_.useMagicPotion:
-            if(this.potionInventoryModel.getPotionModel(PotionInventoryModel.MAGIC_POTION_ID).available)
-            {
-               this.usePotionSignal.dispatch(new UsePotionVO(PotionInventoryModel.MAGIC_POTION_ID,UsePotionVO.CONTEXTBUY));
-            }
             break;
          case Parameters.data_.miniMapZoomOut:
             this.miniMapZoom.dispatch(MiniMapZoomSignal.OUT);

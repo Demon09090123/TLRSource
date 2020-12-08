@@ -56,11 +56,13 @@ namespace Last_Realm_Server.Game.Entities
                 Boosts[0] += (int)(ItemDesc.GetStat(data, ItemData.MaxHP, 5));
                 Boosts[1] += (int)(ItemDesc.GetStat(data, ItemData.MaxMP, 5));
                 Boosts[2] += (int)(ItemDesc.GetStat(data, ItemData.Attack, 1));
-                Boosts[3] += (int)(ItemDesc.GetStat(data, ItemData.Defense, 1));
-                Boosts[4] += (int)(ItemDesc.GetStat(data, ItemData.Speed, 1));
-                Boosts[5] += (int)(ItemDesc.GetStat(data, ItemData.Dexterity, 1));
-                Boosts[6] += (int)(ItemDesc.GetStat(data, ItemData.Vitality, 1));
-                Boosts[7] += (int)(ItemDesc.GetStat(data, ItemData.Wisdom, 1));
+                Boosts[3] += (int)(ItemDesc.GetStat(data, ItemData.MagicPower, 1));
+                Boosts[4] += (int)(ItemDesc.GetStat(data, ItemData.PhysicalDefense, 1));
+                Boosts[5] += (int)(ItemDesc.GetStat(data, ItemData.MagicDefense, 1));
+                Boosts[6] += (int)(ItemDesc.GetStat(data, ItemData.Speed, 1));
+                Boosts[7] += (int)(ItemDesc.GetStat(data, ItemData.Dexterity, 1));
+                Boosts[8] += (int)(ItemDesc.GetStat(data, ItemData.Vitality, 1));
+                Boosts[9] += (int)(ItemDesc.GetStat(data, ItemData.Wisdom, 1));
             }
 
             UpdateStats();

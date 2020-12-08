@@ -44,14 +44,8 @@ package com.company.assembleegameclient.ui.panels.itemgrids.itemtiles
             case ItemConstants.SWORD_TYPE:
                bd = AssetLibrary.getImageFromSet("lofiObj5",48);
                break;
-            case ItemConstants.DAGGER_TYPE:
-               bd = AssetLibrary.getImageFromSet("lofiObj5",96);
-               break;
             case ItemConstants.BOW_TYPE:
                bd = AssetLibrary.getImageFromSet("lofiObj5",80);
-               break;
-            case ItemConstants.TOME_TYPE:
-               bd = AssetLibrary.getImageFromSet("lofiObj6",80);
                break;
             case ItemConstants.SHIELD_TYPE:
                bd = AssetLibrary.getImageFromSet("lofiObj6",112);
@@ -62,20 +56,11 @@ package com.company.assembleegameclient.ui.panels.itemgrids.itemtiles
             case ItemConstants.PLATE_TYPE:
                bd = AssetLibrary.getImageFromSet("lofiObj5",32);
                break;
-            case ItemConstants.WAND_TYPE:
-               bd = AssetLibrary.getImageFromSet("lofiObj5",64);
-               break;
             case ItemConstants.RING_TYPE:
                bd = AssetLibrary.getImageFromSet("lofiObj",44);
                break;
             case ItemConstants.SPELL_TYPE:
                bd = AssetLibrary.getImageFromSet("lofiObj6",64);
-               break;
-            case ItemConstants.SEAL_TYPE:
-               bd = AssetLibrary.getImageFromSet("lofiObj6",160);
-               break;
-            case ItemConstants.CLOAK_TYPE:
-               bd = AssetLibrary.getImageFromSet("lofiObj6",32);
                break;
             case ItemConstants.ROBE_TYPE:
                bd = AssetLibrary.getImageFromSet("lofiObj5",16);
@@ -83,35 +68,9 @@ package com.company.assembleegameclient.ui.panels.itemgrids.itemtiles
             case ItemConstants.QUIVER_TYPE:
                bd = AssetLibrary.getImageFromSet("lofiObj6",48);
                break;
-            case ItemConstants.HELM_TYPE:
-               bd = AssetLibrary.getImageFromSet("lofiObj6",96);
-               break;
             case ItemConstants.STAFF_TYPE:
                bd = AssetLibrary.getImageFromSet("lofiObj5",112);
                break;
-            case ItemConstants.POISON_TYPE:
-               bd = AssetLibrary.getImageFromSet("lofiObj6",128);
-               break;
-            case ItemConstants.SKULL_TYPE:
-               bd = AssetLibrary.getImageFromSet("lofiObj6",0);
-               break;
-            case ItemConstants.TRAP_TYPE:
-               bd = AssetLibrary.getImageFromSet("lofiObj6",16);
-               break;
-            case ItemConstants.ORB_TYPE:
-               bd = AssetLibrary.getImageFromSet("lofiObj6",144);
-               break;
-            case ItemConstants.PRISM_TYPE:
-               bd = AssetLibrary.getImageFromSet("lofiObj6",176);
-               break;
-            case ItemConstants.SCEPTER_TYPE:
-               bd = AssetLibrary.getImageFromSet("lofiObj6",192);
-               break;
-            case ItemConstants.KATANA_TYPE:
-               bd = AssetLibrary.getImageFromSet("lofiObj3",540);
-               break;
-            case ItemConstants.SHURIKEN_TYPE:
-               bd = AssetLibrary.getImageFromSet("lofiObj3",555);
          }
          if(bd != null)
          {

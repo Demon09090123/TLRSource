@@ -1,4 +1,5 @@
 ﻿using Last_Realm_Server.Common;
+using Last_Realm_Server.Game.Entities;
 using System.Collections.Specialized;
 using System.Net;
 using System.Xml.Linq;
@@ -28,7 +29,11 @@ namespace Last_Realm_Server.Networking
                         var character = Database.LoadCharacter(acc);
 
                         if (!character.IsNull)
-                            data.Add(character.Export());
+                        {
+                            var exp = character.Export();
+                            exp.Add("NextLevelEXP", Player.GetNextLevelEXP(character.Level));
+                            data.Add(exp);
+                        }
                     }
             }, () => _listenEvent.Set());
             _listenEvent.WaitOne();

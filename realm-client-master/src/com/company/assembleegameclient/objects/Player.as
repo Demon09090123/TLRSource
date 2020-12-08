@@ -38,15 +38,10 @@ import com.company.ui.SimpleText;
    import kabam.rotmg.constants.GeneralConstants;
    import kabam.rotmg.core.StaticInjectorContext;
    import kabam.rotmg.game.model.AddTextLineVO;
-import kabam.rotmg.game.model.PotionInventoryModel;
-import kabam.rotmg.game.signals.AddTextLineSignal;
-import kabam.rotmg.messaging.impl.GameServerConnection;
-import kabam.rotmg.stage3D.GraphicsFillExtra;
-import kabam.rotmg.ui.model.TabStripModel;
-
-import org.hamcrest.core.isA;
-
-import org.swiftsuspenders.Injector;
+   import kabam.rotmg.game.signals.AddTextLineSignal;
+   import kabam.rotmg.stage3D.GraphicsFillExtra;
+   import kabam.rotmg.ui.model.TabStripModel;
+   import org.swiftsuspenders.Injector;
    
    public class Player extends Character
    {
@@ -94,6 +89,16 @@ import org.swiftsuspenders.Injector;
       public var dexterity_:int = 0;
       public var vitality_:int = 0;
       public var wisdom_:int = 0;
+      public var maxHPBoost_:int = 0;
+      public var maxMPBoost_:int = 0;
+      public var attackBoost_:int = 0;
+      public var magicPowerBoost_:int = 0;
+      public var physicalDefenseBoost:int = 0;
+      public var magicDefenseBoost_:int = 0;
+      public var speedBoost_:int = 0;
+      public var vitalityBoost_:int = 0;
+      public var wisdomBoost_:int = 0;
+      public var dexterityBoost_:int = 0;
 
       public var healthPotionCount_:int = 0;
       public var magicPotionCount_:int = 0;
@@ -144,6 +149,7 @@ import org.swiftsuspenders.Injector;
          player.maxMP_ = int(playerXML.MaxMagicPoints);
          player.mp_ = int(playerXML.MagicPoints);
          player.attack_ = int(playerXML.Attack);
+         player.magicPower_ = int(playerXML.MagicPower);
          player.physicalDefense = int(playerXML.PhysicalDefense);
          player.magicDefense_ = int(playerXML.MagicDefense);
          player.speed_ = int(playerXML.Speed);
@@ -659,8 +665,7 @@ import org.swiftsuspenders.Injector;
             return MIN_MOVE_SPEED * this.moveMultiplier_;
          }
          var moveSpeed:Number = MIN_MOVE_SPEED + this.speed_ / 75 * (MAX_MOVE_SPEED - MIN_MOVE_SPEED);
-         if(isSpeedy())
-         {
+         if(isSpeedy()) {
             moveSpeed = moveSpeed * 1.5;
          }
          moveSpeed = moveSpeed * this.moveMultiplier_;
@@ -876,7 +881,7 @@ import org.swiftsuspenders.Injector;
                validatePoint = true;
                checkPoint = true;
             }
-            else if(ae == ActivationType.BULLET_NOVA || ae == ActivationType.POISON_GRENADE || ae == ActivationType.VAMPIRE_BLAST || ae == ActivationType.TRAP || ae == ActivationType.STASIS_BLAST){
+            else if(ae == ActivationType.BULLET_NOVA){
                checkPoint = true;
             }
          }
@@ -1057,19 +1062,6 @@ import org.swiftsuspenders.Injector;
             }
          }
          return -1;
-      }
-
-      public function getPotionCount(objectType:int) : int
-      {
-         switch(objectType)
-         {
-            case PotionInventoryModel.HEALTH_POTION_ID:
-               return this.healthPotionCount_;
-            case PotionInventoryModel.MAGIC_POTION_ID:
-               return this.magicPotionCount_;
-            default:
-               return 0;
-         }
       }
    }
 }

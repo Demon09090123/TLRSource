@@ -5,8 +5,6 @@ package kabam.rotmg.messaging.impl.outgoing
    
    public class Reskin extends OutgoingMessage
    {
-       
-      
       public var skinID:int;
       
       public var player:Player;

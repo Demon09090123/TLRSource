@@ -19,26 +19,16 @@ public class SavedCharacter
       private static const selectedCT:ColorTransform = new ColorTransform(0.75, 0.75, 0.75, 1, 0, 0, 0, 0);
 
       private var charXML_:XML;
-      private var stats:Vector.<StatData>;
+      private var statsXML:XML;
       
       public function SavedCharacter(charXML:XML)
       {
          super();
          this.charXML_ = charXML;
-
-         makeStatList();
       }
 
-      private function makeStatList():void {
-          var idx:int = 0;
-          for each(var stat:XML in this.charXML_.Stats) {
-              stats.push(new StatData(StatData.statToName(idx), int(stat)));
-              idx++;
-          }
-      }
-
-      public function getStats() : Vector.<StatData> {
-          return this.stats;
+      public function getStats() : XML {
+          return XML(this.charXML_.Stats);
       }
       public function objectType() : int {
          return int(this.charXML_.ObjectType);
@@ -55,6 +45,9 @@ public class SavedCharacter
       public function tex2() : int
       {
          return int(this.charXML_.Tex2);
+      }
+      public function nextLvlXP():int {
+          return int(this.charXML_.NextLevelEXP);
       }
       public function xp() : int
       {
