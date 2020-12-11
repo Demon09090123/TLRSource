@@ -1,0 +1,7 @@
+C:\Users\mangz\OneDrive\Documents\GitHub\TLRSource\testPRoj\bin\Debug\testPRoj.exe.config
+C:\Users\mangz\OneDrive\Documents\GitHub\TLRSource\testPRoj\bin\Debug\testPRoj.exe
+C:\Users\mangz\OneDrive\Documents\GitHub\TLRSource\testPRoj\bin\Debug\testPRoj.pdb
+C:\Users\mangz\OneDrive\Documents\GitHub\TLRSource\testPRoj\obj\Debug\testPRoj.csprojAssemblyReference.cache
+C:\Users\mangz\OneDrive\Documents\GitHub\TLRSource\testPRoj\obj\Debug\testPRoj.csproj.CoreCompileInputs.cache
+C:\Users\mangz\OneDrive\Documents\GitHub\TLRSource\testPRoj\obj\Debug\testPRoj.exe
+C:\Users\mangz\OneDrive\Documents\GitHub\TLRSource\testPRoj\obj\Debug\testPRoj.pdb

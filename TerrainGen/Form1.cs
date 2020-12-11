@@ -1,104 +1,128 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Drawing;
+using System.Drawing.Drawing2D;
+using System.Drawing.Imaging;
 using System.Windows.Forms;
 
 namespace TerrainGen
 {
     public partial class Form1 : Form
     {
-        public float MapScale;
-        public int MapWidth { get; set; }
-        public int MapHeight { get; set; }
 
-        private OpenSimplexNoise SimplexNoise;
+        private int _riverCount;
+
+        private Bitmap _mask;
+
+        private TerrainGenerator _generator;
+        private OpenSimplexNoise _simplexNoise;
+        private Random _random;
 
         public Form1()
         {
-            InitializeComponent();
-
-            MapWidth = 0;
-            MapHeight = 0;
-            MapScale = 0f;
-
-            SimplexNoise = new OpenSimplexNoise();
+            _random = new Random();
+            InitializeComponent(); 
         }
-
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            _generator = new TerrainGenerator();
+            _generator.Load(1024);
+            seedBox.Text = _generator.Seed.ToString();
         }
 
-
-        /*        private double[,] createIslandMask()
-                {
-                    var mask = new double[Width, Height];
-                    int radius = Width / 2;
-
-                    for (var x = 0; x < Width; x++)
-                    {
-                        var xDist = 
-                        for (var y = 0; y < 0; y++)
-                        {
-
-
-
-                        }
-                    }
-
-
-
-                }*/
-
-
-        private void generateHeightMap()
+        private Color ApplyMoisture(Color clr, double moistureNoise)
         {
-            var bitmap = new Bitmap(MapWidth, MapHeight);
-            var zeroCounter = 0;
+            if (moistureNoise < .35)
+                return ControlPaint.Light(clr, .3f);
+            else if (moistureNoise < .7)
+                return ControlPaint.Light(clr, .1f);
+            else
+                return ControlPaint.Dark(clr, .2f);
+        }
 
-            for (var x = 0; x < MapWidth; x++)
-            {
-                for (var y = 0; y < MapHeight; y++)
+        private void onAddPicture(PictureBox picture)
+        {
+            if (canvas.Controls.Count > 0)
+                canvas.Controls.RemoveAt(0);
+            canvas.Controls.Add(picture);
+        }
+
+        public delegate void addPicture(Bitmap picture);
+
+        private void resetBtn_Click(object sender, EventArgs e) =>canvas.Controls.RemoveAt(0);
+        private void seedBtn_Click(object sender, EventArgs e)
+        {
+            _generator.RandomSeed();
+            seedBox.Text = _generator.Seed.ToString();
+        }
+
+        private void sizeBox_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                if (int.TryParse(sizeBox.Text, out int size))
                 {
-                    double noise = SimplexNoise.Evaluate(x * 0.06, y * 0.06);
-
-                    if (noise < 0)
-                    {
-                        noise = 0;
-                        zeroCounter++;
-                    }
-
-                    bitmap.SetPixel((int)x, (int)y, Color.FromArgb((int)(255 * noise ), 0, 0, 0));
+                    _generator.Size = size;
+                    Console.WriteLine("Enter");
                 }
-            }
-            var pictureBox = new PictureBox();
-            pictureBox.Image = bitmap;
-            pictureBox.Width = bitmap.Width;
-            pictureBox.Height = bitmap.Height;
-            canvas.Controls.Add(pictureBox);
-            Console.WriteLine(zeroCounter);
+
+        }
+
+        private void seedBox_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                if (long.TryParse(sizeBox.Text, out long seed))
+                {
+                    _generator.Seed = seed;
+                    Console.WriteLine("Enter");
+                }
         }
 
         private void generateBtn_Click(object sender, EventArgs e)
         {
-            if (MapWidth > 0 && MapHeight > 0)
-                generateHeightMap();
+            if (canvas.Controls.Count > 0)
+                canvas.Controls.RemoveAt(0);
+
+            _generator.GenerateTerrain((bitmap) =>
+            {
+                canvas.BeginInvoke(new addPicture(drawMap), bitmap);
+            });
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
+        private void drawMap(Bitmap pic)
         {
-            if (textBox1.Text.Length > 0)
-                MapWidth = int.Parse(textBox1.Text);
-        }
-        private void textBox2_TextChanged(object sender, EventArgs e)
-        {
-            if (textBox2.Text.Length > 0)
-                MapHeight = int.Parse(textBox2.Text);
+            var image = ResizeImage(pic, canvas.Width, canvas.Height);
+            canvas.Image = image;
         }
 
-        private void scaleBar_Scroll(object sender, EventArgs e)
+        private void riverTBar_Scroll(object sender, EventArgs e)
         {
-            var mapScale = scaleBar.Value / 100f;
-            canvas.Controls[0].Scale(new SizeF(mapScale, mapScale));
+            _riverCount = riverTBar.Value;
+        }
+
+        public static Bitmap ResizeImage(Image image, int width, int height)
+        {
+            var destRect = new Rectangle(0, 0, width, height);
+            var destImage = new Bitmap(width, height);
+
+            destImage.SetResolution(image.HorizontalResolution, image.VerticalResolution);
+
+            using (var graphics = Graphics.FromImage(destImage))
+            {
+                graphics.CompositingMode = CompositingMode.SourceCopy;
+                graphics.CompositingQuality = CompositingQuality.HighQuality;
+                graphics.InterpolationMode = InterpolationMode.HighQualityBicubic;
+                graphics.SmoothingMode = SmoothingMode.HighQuality;
+                graphics.PixelOffsetMode = PixelOffsetMode.HighQuality;
+
+                using (var wrapMode = new ImageAttributes())
+                {
+                    wrapMode.SetWrapMode(WrapMode.TileFlipXY);
+                    graphics.DrawImage(image, destRect, 0, 0, image.Width, image.Height, GraphicsUnit.Pixel, wrapMode);
+                }
+            }
+
+            return destImage;
         }
     }
 }

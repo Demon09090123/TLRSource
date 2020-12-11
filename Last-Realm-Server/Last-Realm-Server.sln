@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Last-Realm-Server", "Last-R
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TerrainGen", "..\TerrainGen\TerrainGen.csproj", "{3F1EF5BD-58FE-4B10-B777-C081936FC4B2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "testPRoj", "..\testPRoj\testPRoj.csproj", "{CE342655-BD70-4A0E-A7F8-5E206F4A7CFC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{3F1EF5BD-58FE-4B10-B777-C081936FC4B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3F1EF5BD-58FE-4B10-B777-C081936FC4B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3F1EF5BD-58FE-4B10-B777-C081936FC4B2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CE342655-BD70-4A0E-A7F8-5E206F4A7CFC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE342655-BD70-4A0E-A7F8-5E206F4A7CFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE342655-BD70-4A0E-A7F8-5E206F4A7CFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE342655-BD70-4A0E-A7F8-5E206F4A7CFC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
