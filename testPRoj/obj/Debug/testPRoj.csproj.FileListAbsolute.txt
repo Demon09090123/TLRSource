@@ -5,3 +5,10 @@ C:\Users\mangz\OneDrive\Documents\GitHub\TLRSource\testPRoj\obj\Debug\testPRoj.c
 C:\Users\mangz\OneDrive\Documents\GitHub\TLRSource\testPRoj\obj\Debug\testPRoj.csproj.CoreCompileInputs.cache
 C:\Users\mangz\OneDrive\Documents\GitHub\TLRSource\testPRoj\obj\Debug\testPRoj.exe
 C:\Users\mangz\OneDrive\Documents\GitHub\TLRSource\testPRoj\obj\Debug\testPRoj.pdb
+D:\GitHub\TLRSource\testPRoj\bin\Debug\testPRoj.exe.config
+D:\GitHub\TLRSource\testPRoj\bin\Debug\testPRoj.exe
+D:\GitHub\TLRSource\testPRoj\bin\Debug\testPRoj.pdb
+D:\GitHub\TLRSource\testPRoj\obj\Debug\testPRoj.csprojAssemblyReference.cache
+D:\GitHub\TLRSource\testPRoj\obj\Debug\testPRoj.csproj.CoreCompileInputs.cache
+D:\GitHub\TLRSource\testPRoj\obj\Debug\testPRoj.exe
+D:\GitHub\TLRSource\testPRoj\obj\Debug\testPRoj.pdb

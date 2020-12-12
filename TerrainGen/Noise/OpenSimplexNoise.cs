@@ -11,7 +11,7 @@ namespace TerrainGen
         private const float NORM_2D = 1.0f / 47.0f;
 
         private const float NORMALIZED = .30674f;
-        private const float LACUNARITY = 1.7f;
+        private const float LACUNARITY = 2.0f;
         private const float GAIN = 0.5f;
 
         private byte[] perm;
@@ -114,7 +114,7 @@ namespace TerrainGen
                 total += NormalizeEvaluate(x * frequency, y * frequency, scale) * amplitude;
 
                 amplitude *= persistence;
-                frequency *= 2;
+                frequency *= LACUNARITY;
             }
 
             return total;
@@ -123,15 +123,14 @@ namespace TerrainGen
         public float RigidOctaveNoise(float x, float y, float scale, int octave)
         {
             float sum = 1 - EvaluateScale(x, y, scale);
-            float amplitude = 1;
+            float amplitude = 1f;
+            float frequency = 1f;
 
             for (var o = 0; o < octave; o++)
             {
-                x *= LACUNARITY;
-                y *= LACUNARITY;
-
                 amplitude *= GAIN;
-                sum -= (1 - Math.Abs(EvaluateScale(x, y, scale))) * amplitude;
+                sum -= (1 - Math.Abs(EvaluateScale(x * frequency, y * frequency, scale))) * amplitude;
+                frequency *= LACUNARITY;
             }
 
             return sum;

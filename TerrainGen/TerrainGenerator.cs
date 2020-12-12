@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
 using System.Threading;
@@ -58,6 +59,10 @@ namespace TerrainGen
         private OpenSimplexNoise _noise;
         private Random _random;
 
+        private WorkManager _workManager;
+
+        private BiomeGeneration _biomeGeneration;
+
 
         private float[,] _terrainNoise;
         private float[,] _heightNoise;
@@ -69,9 +74,13 @@ namespace TerrainGen
 
         private int _taskDone;
 
+
+
         public TerrainGenerator()
         {
             _random = new Random();
+            _workManager = new WorkManager();
+            _biomeGeneration = new BiomeGeneration();
         }
 
         public void Load(int size)
@@ -81,6 +90,8 @@ namespace TerrainGen
             _scale = (1024f / Size) * 0.0033f;
             _octave = 16;
             _persistence = .5f;
+
+            _workManager.Start();
         }
 
         public void RandomSeed() => Seed = _random.Next();
@@ -99,7 +110,7 @@ namespace TerrainGen
                     var yTo = halfRadius * (yQuad + 1);
                     var yStart = halfRadius * yQuad;
 
-                    ThreadPool.QueueUserWorkItem(new WaitCallback(doProcess), new Process()
+                    _workManager.QueueWork(doProcess, new Process()
                     {
                         xQuad = xQuad,
                         yQuad = yQuad
@@ -109,24 +120,15 @@ namespace TerrainGen
 
             Task.Factory.StartNew(() =>
             {
-                var timer = new Stopwatch();
-                timer.Start();
+                Thread.Sleep(100);
 
-                while (_taskDone < 16)
-                    Thread.Sleep(50); //retarded lock system
-                _taskDone = 0;
+                while (_workManager.CurrentWorkPool != 0)
+                    Thread.Sleep(50);
 
                 draw.Invoke(processBitmap());
-
-                timer.Stop();
-                Console.WriteLine("Completed: " + timer.ElapsedMilliseconds + " MS");
             });
         }
 
-        private Color getTile(float biome, float terrain, Color def)
-        {
-            return def; // true
-        }
 
         private bool getRiver(float moisture)
         {
@@ -135,11 +137,11 @@ namespace TerrainGen
             return false;
         }
 
+
         private Bitmap processBitmap()
         {
             var bitmap = new Bitmap(Size, Size);
 
-            
             for (int x = 0; x < Size; x++)
                 for (int y = 0; y < Size; y++)
                 {
@@ -147,28 +149,24 @@ namespace TerrainGen
                     float height = _heightNoise[x, y];
                     float moisture =  _moistureNoise[x, y];
 
+                    var biome = _biomeGeneration.GetBiome(terrain, height);
                     Color color = Color.Black;
-                    if (terrain > .08f)
+
+                    switch(biome.Type)
                     {
-                        if (terrain < .1)
-                            color = Color.Gray;
-                        else if (terrain < .25)
-                            color = getTile(height, terrain, Color.OrangeRed);
-                        else if (terrain < .4)
-                            color = getTile(height, terrain, Color.Pink);
-                        else if (terrain < .6)
-                            color = getTile(height, terrain, Color.YellowGreen);
-                        else if (terrain < .78)
-                            color = getTile(height, terrain, Color.DarkGreen);
-                        else 
-                            color = Color.Green;
+                        case BiomeType.Meadow: color = Color.LightGreen; break;
+                        case BiomeType.Forest: color = Color.DarkGreen; break;
+                        case BiomeType.Desert: color = Color.Khaki; break;
+                        case BiomeType.Mountians: color = Color.DarkGray; break;
+                        case BiomeType.ScorchLands: color = Color.DarkRed; break;
+                        case BiomeType.Void: color = Color.Black; break;
                     }
 
-                    if (getRiver(moisture) && terrain < .75)
+                    /*if (getRiver(moisture) && terrain < .75)
                         if (terrain <= .08f)
                             color = Color.DarkBlue;
                         else
-                            color = Color.Blue;
+                            color = Color.Blue;*/
 
                     bitmap.SetPixel(x, y, color);
                 }
@@ -176,9 +174,9 @@ namespace TerrainGen
             return bitmap;
         }
 
-        private void doProcess(object state)
+        private void doProcess(Process state)
         {
-            var process = (Process)state;
+            var process = state;
 
             var radius = Size / 2;
             var halfRadius = radius / 2;
@@ -205,10 +203,8 @@ namespace TerrainGen
             }
             Interlocked.Increment(ref _taskDone);
         }
-
     }
-
-    public struct Process
+    public class Process
     {
         public int xQuad { get; set; }
         public int yQuad { get; set; }

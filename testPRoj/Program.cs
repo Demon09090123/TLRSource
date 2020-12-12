@@ -1,53 +1,52 @@
 ﻿using System;
 using System.Collections.Concurrent;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Threading;
 using System.Threading.Tasks;
 
 namespace testPRoj
 {
+    public class Position
+    {
+        public int X;
+        public int Y;
+
+        public Position(int x, int y)
+        {
+            X = x;
+            Y = y;
+        }
+
+        public override bool Equals(object obj)
+        {
+            var pos = obj as Position;
+            return X == pos.X && Y == pos.Y;
+        }
+
+        public override int GetHashCode() => GetHashCode();
+
+        public static bool operator ==(Position left, Position right) => left.X == right.X && left.Y == right.Y;
+
+        public static bool operator !=(Position left, Position right) => left.X != right.X || left.Y != right.Y;
+    }
     class Program
     {
         static int _size = 4096;
         static void Main(string[] args)
         {
-            Stopwatch watch = new Stopwatch();
-            watch.Start();
-
-            var jaggedArray = new float[_size][];
-
-            for (var x = 0; x < _size; x++)
+            var posList = new List<Position>()
             {
-                jaggedArray[x] = new float[_size];
-                for (var y = 0; y < _size; y++)
-                    jaggedArray[x][y] = (x * y) / 2.16456f;
-            }
+                new Position(100, 100),
+                new Position(200, 200)
+            };
 
-            var test = 1.3333f;
-            for (var x = 0; x < _size; x++)
-                for (var y = 0; y < _size; y++)
-                    test += jaggedArray[x][y];
+            var pos = new Position(100, 100);
+            var pos1 = new Position(100, 100);
 
-            watch.Stop();
-            Console.WriteLine(watch.ElapsedMilliseconds);
-            watch.Reset();
-            watch.Start();
+            Console.WriteLine(posList.Contains(pos));
 
-            var multiArray = new float[_size, _size];
-
-            for (var x = 0; x < _size; x++)
-                for (var y = 0; y < _size; y++)
-                    multiArray[x, y] = (x * y) / 2.16456f;
-
-            test = 1.3333f;
-            for (var x = 0; x < _size; x++)
-                for (var y = 0; y < _size; y++)
-                    test += multiArray[x, y];
-
-            watch.Stop();
-            Console.WriteLine(watch.ElapsedMilliseconds);
-
-            Console.Read();
+            Console.ReadLine();
         }
     }
 }
