@@ -11,7 +11,7 @@ namespace TerrainGen
         private const float NORM_2D = 1.0f / 47.0f;
 
         private const float NORMALIZED = .30674f;
-        private const float LACUNARITY = 2.0f;
+        private const float LACUNARITY = 1.7f;
         private const float GAIN = 0.5f;
 
         private byte[] perm;

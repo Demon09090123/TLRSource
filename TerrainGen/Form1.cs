@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
@@ -9,18 +8,12 @@ namespace TerrainGen
 {
     public partial class Form1 : Form
     {
-
-        private int _riverCount;
-
         private Bitmap _mask;
 
         private TerrainGenerator _generator;
-        private OpenSimplexNoise _simplexNoise;
-        private Random _random;
 
         public Form1()
         {
-            _random = new Random();
             InitializeComponent(); 
         }
 
@@ -29,24 +22,7 @@ namespace TerrainGen
             _generator = new TerrainGenerator();
             _generator.Load(1024);
             seedBox.Text = _generator.Seed.ToString();
-        }
-
-        private Color ApplyMoisture(Color clr, double moistureNoise)
-        {
-            if (moistureNoise < .35)
-                return ControlPaint.Light(clr, .3f);
-            else if (moistureNoise < .7)
-                return ControlPaint.Light(clr, .1f);
-            else
-                return ControlPaint.Dark(clr, .2f);
-        }
-
-        private void onAddPicture(PictureBox picture)
-        {
-            if (canvas.Controls.Count > 0)
-                canvas.Controls.RemoveAt(0);
-            canvas.Controls.Add(picture);
-        }
+        } 
 
         public delegate void addPicture(Bitmap picture);
 
@@ -97,7 +73,6 @@ namespace TerrainGen
 
         private void riverTBar_Scroll(object sender, EventArgs e)
         {
-            _riverCount = riverTBar.Value;
         }
 
         public static Bitmap ResizeImage(Image image, int width, int height)

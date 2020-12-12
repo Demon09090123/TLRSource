@@ -28,15 +28,15 @@ namespace TerrainGen
             {
                 _size = value;
 
-                if (_heightNoise != null || _biomeNoise != null || _moistureNoise != null)
+                if (_heightNoise != null || _terrainNoise != null || _moistureNoise != null)
                 {
                     _heightNoise = ResizeArray(_heightNoise, _size, _size);
-                    _biomeNoise = ResizeArray(_biomeNoise, _size, _size);
+                    _terrainNoise = ResizeArray(_terrainNoise, _size, _size);
                     _moistureNoise = ResizeArray(_moistureNoise, _size, _size);
                 } else
                 {
                     _heightNoise = new float[_size, _size];
-                    _biomeNoise = new float[_size, _size];
+                    _terrainNoise = new float[_size, _size];
                     _moistureNoise = new float[_size, _size];
                 }
                 
@@ -59,8 +59,8 @@ namespace TerrainGen
         private Random _random;
 
 
-        private float[,] _heightNoise; 
-        private float[,] _biomeNoise;
+        private float[,] _terrainNoise;
+        private float[,] _heightNoise;
         private float[,] _moistureNoise;
 
         private float _octave;
@@ -123,49 +123,52 @@ namespace TerrainGen
             });
         }
 
-        private Color ApplyMoisture(Color clr, float moistureNoise)
+        private Color getTile(float biome, float terrain, Color def)
         {
-            if (moistureNoise < .35)
-                return ControlPaint.Light(clr, .3f);
-            else if (moistureNoise < .7)
-                return ControlPaint.Light(clr, .1f);
-            else
-                return ControlPaint.Dark(clr, .2f);
+            return def; // true
+        }
+
+        private bool getRiver(float moisture)
+        {
+            if (moisture < .3 && moisture > .27)
+                return true;
+            return false;
         }
 
         private Bitmap processBitmap()
         {
             var bitmap = new Bitmap(Size, Size);
 
-            Color color = Color.White;
+            
             for (int x = 0; x < Size; x++)
                 for (int y = 0; y < Size; y++)
                 {
-                    float noise = _heightNoise[x, y];
-                    float biome = _biomeNoise[x, y];
-                    float moisture = _moistureNoise[x, y];
+                    float terrain = _terrainNoise[x, y];
+                    float height = _heightNoise[x, y];
+                    float moisture =  _moistureNoise[x, y];
 
-                    if (noise < .08)
-                        color = Color.Black; //Border
-                    else if (noise < .1)
-                        color = Color.PaleVioletRed;
-                    else if (noise > .9)
-                        color = Color.Green; //Center
-                    else
+                    Color color = Color.Black;
+                    if (terrain > .08f)
                     {
-                        //Process rest
-                        if (noise < .25)
-                            color = ApplyMoisture(Color.Gray, biome);
-                        else if (noise < .4)
-                            color = ApplyMoisture(Color.Red, biome);
-                        else if (noise < .7)
-                            color = ApplyMoisture(Color.Orange, biome);
-                        else
-                            color = Color.DarkGreen;
-
-                        if (moisture > 1.15)
-                              color = Color.Blue;
+                        if (terrain < .1)
+                            color = Color.Gray;
+                        else if (terrain < .25)
+                            color = getTile(height, terrain, Color.OrangeRed);
+                        else if (terrain < .4)
+                            color = getTile(height, terrain, Color.Pink);
+                        else if (terrain < .6)
+                            color = getTile(height, terrain, Color.YellowGreen);
+                        else if (terrain < .78)
+                            color = getTile(height, terrain, Color.DarkGreen);
+                        else 
+                            color = Color.Green;
                     }
+
+                    if (getRiver(moisture) && terrain < .75)
+                        if (terrain <= .08f)
+                            color = Color.DarkBlue;
+                        else
+                            color = Color.Blue;
 
                     bitmap.SetPixel(x, y, color);
                 }
@@ -190,15 +193,14 @@ namespace TerrainGen
                 for (var y = yStart; y < yTo; y++)
                 {
                     var distanceY = radius - Math.Abs(radius - y); 
-                    float gradient = Math.Min(distanceX, distanceY) / (radius - 200.0f);
+                    float gradient = Math.Min(distanceX, distanceY) / (radius - (Size / 10f));
 
                     var noise = _noise.OctaveNoise(x, y, _scale, _octave, _persistence);
-                    var biomeNoise = _noise.OctaveNoise(x, y, .01f, _octave, _persistence);
-                    var riverNoise = _noise.RigidOctaveNoise(x, y, .0275f, 2);
+                    var moistureNoise = _noise.RigidOctaveNoise(x, y, .0025f, 9);
 
-                    _heightNoise[x, y] = noise * gradient;
-                    _biomeNoise[x, y] = biomeNoise;
-                    _moistureNoise[x, y] = riverNoise;
+                    _terrainNoise[x, y] = noise * gradient;
+                    _heightNoise[x, y] = noise;
+                    _moistureNoise[x, y] = moistureNoise;
                 }
             }
             Interlocked.Increment(ref _taskDone);
