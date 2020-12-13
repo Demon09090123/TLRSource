@@ -76,20 +76,20 @@ namespace TerrainGen
 
             for (var x = startX; x < endX; x++)
             {
-                int quadX = x / _mapMask.PixelLength;
+                //int quadX = x / _mapMask.PixelLength;
 
                 for (var y = startY; y < endY; y++)
                 {
-                    int quadY = y / _mapMask.PixelLength; 
+                    //int quadY = y / _mapMask.PixelLength; 
 
-                    var quadPos = new Position(quadX, quadY);
+                    //var quadPos = new Position(quadX, quadY);
 
-                    var quadAlpha = _mapMask.regionAlpha[x, y];
+                    //var quadAlpha = _mapMask.regionAlpha[x, y];
                     var shapeNoise = _noise.OctaveNoise(x, y, _scale, 8, .5f);
                     var heightNoise = _noise.OctaveNoise(x, y, _scale, 16, .5f);
                     var moistureNoise = _noise.OctaveNoise(x, y, _scale, 3, .5f);
 
-                    _shapeMap[x, y] = (quadAlpha) * shapeNoise;
+                    _shapeMap[x, y] = shapeNoise;
                     _heightMap[x, y] = heightNoise;
                     _moistureMap[x, y] = moistureNoise;
                 }

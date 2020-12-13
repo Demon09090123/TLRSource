@@ -63,8 +63,10 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="Generation\MapMask.cs" />
-    <Compile Include="Generation\Shape\CircularNoiseMap.cs" />
-    <Compile Include="Generation\Shape\RectangularNoiseMap.cs" />
+    <Compile Include="Generation\NoiseMapGeneration.cs" />
+    <Compile Include="Generation\Shape\CircularFilterMap.cs" />
+    <Compile Include="Generation\Shape\FilterMap.cs" />
+    <Compile Include="Generation\Shape\RectangularFilterMap.cs" />
     <Compile Include="JsMap.cs" />
     <Compile Include="Generation\MapGeneration.cs" />
     <Compile Include="Noise\OpenSimplexNoise.cs" />
