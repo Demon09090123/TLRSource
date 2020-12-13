@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 
@@ -22,14 +23,16 @@ namespace TerrainGen.Generation
             var pos = (Position)obj;
             return X == pos.X && Y == pos.Y;
         }
-        public override int GetHashCode() => GetHashCode(); // Maybe add quicker hashing
     }
     public class MapMask
     {
         public Dictionary<Position, float> ShapeMask { get; private set; } //Opacity level of overall map
         public List<List<Position>> RegionPosition { get; private set; } //Individual island quad positions
+        public float[,] regionAlpha { get; private set; }
 
         private Bitmap _mask;
+
+        public int PixelLength { get; private set; }
 
         public MapMask(Bitmap mask)
         {
@@ -37,28 +40,37 @@ namespace TerrainGen.Generation
             RegionPosition = new List<List<Position>>();
 
             _mask = mask;
+
+            generateMask();
         }
 
         private void generateMask()
         {
-            if (_mask.Width > MapGeneration.QUAD_SIZE || _mask.Height > MapGeneration.QUAD_SIZE)
-                Utils.ResizeImage(_mask, MapGeneration.QUAD_SIZE, MapGeneration.QUAD_SIZE);
+            if (_mask.Width != _mask.Height)
+            {
+                var toScale = Math.Max(_mask.Width, _mask.Height);
+                Utils.ResizeImage(_mask, toScale, toScale);
+            }
 
-            for (var x = 0; x < MapGeneration.QUAD_SIZE; x++)
-                for (var y = 0; y < MapGeneration.QUAD_SIZE; y++)
+            PixelLength = _mask.Width;
+
+            regionAlpha = new float[PixelLength, PixelLength];
+
+            for (var x = 0; x < PixelLength; x++)
+                for (var y = 0; y < PixelLength; y++)
                 {
-                    var pixelAlpha = _mask.GetPixel(x, y).A / 127.5f;
-                    ShapeMask.Add(new Position(x, y), pixelAlpha);
+                    var pixelAlpha = (_mask.GetPixel(x, y).A) / 255.0f;
+                    regionAlpha[x, y] = pixelAlpha;
                 }
 
-            findRegions();
+            //findRegions();
         }
 
-        private void findRegions()
+ /*       private void findRegions()
         {
             var exploredRegions = new List<Position>();
 
-            while(exploredRegions.Count < MapGeneration.QUAD_SIZE * MapGeneration.QUAD_SIZE)
+            while(exploredRegions.Count < PixelLength * PixelLength)
             {
                 var regionPosition = new List<Position>();
 
@@ -81,9 +93,9 @@ namespace TerrainGen.Generation
                             loop(pos);
                 }
             }
-        }
+        }*/
 
-        private List<Position> getNeighbors(Position pos)
+/*        private List<Position> getNeighbors(Position pos)
         {
             var neighbors = new List<Position>();
             var x = pos.X;
@@ -105,9 +117,9 @@ namespace TerrainGen.Generation
 
         private bool isValidPosition(int x, int y)
         {
-            if (x < MapGeneration.QUAD_SIZE && x >= 0 && y < MapGeneration.QUAD_SIZE && y >= 0)
+            if (x < PixelLength && x >= 0 && y < PixelLength && y >= 0)
                 return ShapeMask[new Position(x, y)] > 0;
             return false;
-        }
+        }*/
     }
 }

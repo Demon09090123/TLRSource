@@ -22,9 +22,9 @@ namespace TerrainGen
 
         }
 
-        public Biome GetBiome(float terrain, float height) //HANDLE HEIGHT LATER
+        public Biome GetBiome(float height) //HANDLE HEIGHT LATER
         {
-            return _biomes.Where(_ => _.IsValidTerrain(terrain)).FirstOrDefault();
+            return _biomes.Where(_ => _.IsValidTerrain(height)).FirstOrDefault();
         }
     }
 

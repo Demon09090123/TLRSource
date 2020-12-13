@@ -9,9 +9,7 @@ namespace TerrainGen
     public partial class Form1 : Form
     {
         private Bitmap _mask;
-
-        private TerrainGenerator _generator;
-
+        private MapGeneration _mapGenerator;
         public Form1()
         {
             InitializeComponent(); 
@@ -19,9 +17,9 @@ namespace TerrainGen
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            _generator = new TerrainGenerator();
-            _generator.Load(1024);
-            seedBox.Text = _generator.Seed.ToString();
+            _mapGenerator = new MapGeneration(Properties.Resources.shapeMask);
+            _mapGenerator.AddonDraw(drawMap);
+            seedBox.Text = _mapGenerator.GetSeed().ToString();
         } 
 
         public delegate void addPicture(Bitmap picture);
@@ -29,8 +27,8 @@ namespace TerrainGen
         private void resetBtn_Click(object sender, EventArgs e) =>canvas.Controls.RemoveAt(0);
         private void seedBtn_Click(object sender, EventArgs e)
         {
-            _generator.RandomSeed();
-            seedBox.Text = _generator.Seed.ToString();
+            _mapGenerator.SetSeed();
+            seedBox.Text = _mapGenerator.GetSeed().ToString();
         }
 
         private void sizeBox_KeyUp(object sender, KeyEventArgs e)
@@ -38,7 +36,7 @@ namespace TerrainGen
             if (e.KeyCode == Keys.Enter)
                 if (int.TryParse(sizeBox.Text, out int size))
                 {
-                    _generator.Size = size;
+                    _mapGenerator.Resize(size);
                     Console.WriteLine("Enter");
                 }
 
@@ -49,28 +47,41 @@ namespace TerrainGen
             if (e.KeyCode == Keys.Enter)
                 if (long.TryParse(sizeBox.Text, out long seed))
                 {
-                    _generator.Seed = seed;
+                    _mapGenerator.SetSeed(seed);
                     Console.WriteLine("Enter");
                 }
         }
 
         private void generateBtn_Click(object sender, EventArgs e)
         {
-            if (canvas.Controls.Count > 0)
-                canvas.Controls.RemoveAt(0);
-
-            _generator.GenerateTerrain((bitmap) =>
-            {
-                canvas.BeginInvoke(new addPicture(drawMap), bitmap);
-            });
+            _mapGenerator.Generate();
         }
+
+        private delegate void onDraw(Bitmap map);
 
         private void drawMap(Bitmap pic)
         {
+            canvas.BeginInvoke(new onDraw(draw), pic);
         }
 
-        private void riverTBar_Scroll(object sender, EventArgs e)
+        private void draw(Bitmap map)
         {
+            canvas.Image = Utils.ResizeImage(map, canvas.Width, canvas.Height); 
+        }
+
+        private void numIslandTrack_Scroll(object sender, EventArgs e)
+        {
+
+        }
+
+        private void shapeBtn1_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void shapeBtn2_CheckedChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

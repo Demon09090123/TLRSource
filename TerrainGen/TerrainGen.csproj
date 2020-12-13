@@ -63,6 +63,8 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="Generation\MapMask.cs" />
+    <Compile Include="Generation\Shape\CircularNoiseMap.cs" />
+    <Compile Include="Generation\Shape\RectangularNoiseMap.cs" />
     <Compile Include="JsMap.cs" />
     <Compile Include="Generation\MapGeneration.cs" />
     <Compile Include="Noise\OpenSimplexNoise.cs" />
@@ -103,6 +105,7 @@
     <Content Include="Resources\EmbeddedData_GroundCXML.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\shapeMask.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

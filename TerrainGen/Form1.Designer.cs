@@ -44,15 +44,17 @@ namespace TerrainGen
             this.seedBox = new System.Windows.Forms.TextBox();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.riverTxt = new System.Windows.Forms.Label();
-            this.riverTBar = new System.Windows.Forms.TrackBar();
+            this.numIslandLabel = new System.Windows.Forms.Label();
+            this.numIslandTrack = new System.Windows.Forms.TrackBar();
+            this.shapeBtn1 = new System.Windows.Forms.RadioButton();
+            this.shapeBtn2 = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.canvas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.riverTBar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numIslandTrack)).BeginInit();
             this.SuspendLayout();
             // 
             // canvas
@@ -67,7 +69,7 @@ namespace TerrainGen
             // generateBtn
             // 
             this.generateBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
-            this.generateBtn.Location = new System.Drawing.Point(850, 311);
+            this.generateBtn.Location = new System.Drawing.Point(850, 375);
             this.generateBtn.Name = "generateBtn";
             this.generateBtn.Size = new System.Drawing.Size(122, 39);
             this.generateBtn.TabIndex = 2;
@@ -89,7 +91,7 @@ namespace TerrainGen
             // 
             this.seedLabel.AutoSize = true;
             this.seedLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.seedLabel.Location = new System.Drawing.Point(825, 133);
+            this.seedLabel.Location = new System.Drawing.Point(821, 133);
             this.seedLabel.Name = "seedLabel";
             this.seedLabel.Size = new System.Drawing.Size(49, 17);
             this.seedLabel.TabIndex = 11;
@@ -98,7 +100,7 @@ namespace TerrainGen
             // seedBtn
             // 
             this.seedBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.seedBtn.Location = new System.Drawing.Point(981, 129);
+            this.seedBtn.Location = new System.Drawing.Point(972, 129);
             this.seedBtn.Name = "seedBtn";
             this.seedBtn.Size = new System.Drawing.Size(30, 26);
             this.seedBtn.TabIndex = 12;
@@ -109,7 +111,7 @@ namespace TerrainGen
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.pictureBox1.Location = new System.Drawing.Point(815, 300);
+            this.pictureBox1.Location = new System.Drawing.Point(815, 364);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(191, 5);
             this.pictureBox1.TabIndex = 13;
@@ -118,7 +120,7 @@ namespace TerrainGen
             // pictureBox2
             // 
             this.pictureBox2.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.pictureBox2.Location = new System.Drawing.Point(815, 356);
+            this.pictureBox2.Location = new System.Drawing.Point(815, 420);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(191, 5);
             this.pictureBox2.TabIndex = 14;
@@ -173,7 +175,7 @@ namespace TerrainGen
             // 
             // seedBox
             // 
-            this.seedBox.Location = new System.Drawing.Point(875, 133);
+            this.seedBox.Location = new System.Drawing.Point(866, 133);
             this.seedBox.Name = "seedBox";
             this.seedBox.Size = new System.Drawing.Size(100, 20);
             this.seedBox.TabIndex = 34;
@@ -194,35 +196,66 @@ namespace TerrainGen
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.label3.Location = new System.Drawing.Point(820, 169);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(89, 20);
+            this.label3.Size = new System.Drawing.Size(58, 20);
             this.label3.TabIndex = 36;
-            this.label3.Text = "BiomeData";
+            this.label3.Text = "Terrain";
             // 
-            // riverTxt
+            // numIslandLabel
             // 
-            this.riverTxt.AutoSize = true;
-            this.riverTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.riverTxt.Location = new System.Drawing.Point(809, 192);
-            this.riverTxt.Name = "riverTxt";
-            this.riverTxt.Size = new System.Drawing.Size(74, 17);
-            this.riverTxt.TabIndex = 37;
-            this.riverTxt.Text = "maxRiver :";
+            this.numIslandLabel.AutoSize = true;
+            this.numIslandLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.numIslandLabel.Location = new System.Drawing.Point(824, 202);
+            this.numIslandLabel.Name = "numIslandLabel";
+            this.numIslandLabel.Size = new System.Drawing.Size(65, 17);
+            this.numIslandLabel.TabIndex = 37;
+            this.numIslandLabel.Text = "# Island :";
             // 
-            // riverTBar
+            // numIslandTrack
             // 
-            this.riverTBar.Location = new System.Drawing.Point(881, 192);
-            this.riverTBar.Name = "riverTBar";
-            this.riverTBar.Size = new System.Drawing.Size(144, 45);
-            this.riverTBar.TabIndex = 38;
-            this.riverTBar.Scroll += new System.EventHandler(this.riverTBar_Scroll);
+            this.numIslandTrack.Location = new System.Drawing.Point(883, 193);
+            this.numIslandTrack.Maximum = 5;
+            this.numIslandTrack.Minimum = 1;
+            this.numIslandTrack.Name = "numIslandTrack";
+            this.numIslandTrack.Size = new System.Drawing.Size(104, 45);
+            this.numIslandTrack.TabIndex = 38;
+            this.numIslandTrack.Value = 1;
+            this.numIslandTrack.Scroll += new System.EventHandler(this.numIslandTrack_Scroll);
+            // 
+            // shapeBtn1
+            // 
+            this.shapeBtn1.AutoSize = true;
+            this.shapeBtn1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.shapeBtn1.Location = new System.Drawing.Point(827, 235);
+            this.shapeBtn1.Name = "shapeBtn1";
+            this.shapeBtn1.Size = new System.Drawing.Size(115, 21);
+            this.shapeBtn1.TabIndex = 39;
+            this.shapeBtn1.TabStop = true;
+            this.shapeBtn1.Text = "Circular Island";
+            this.shapeBtn1.UseVisualStyleBackColor = true;
+            this.shapeBtn1.CheckedChanged += new System.EventHandler(this.shapeBtn1_CheckedChanged);
+            // 
+            // shapeBtn2
+            // 
+            this.shapeBtn2.AutoSize = true;
+            this.shapeBtn2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.shapeBtn2.Location = new System.Drawing.Point(827, 262);
+            this.shapeBtn2.Name = "shapeBtn2";
+            this.shapeBtn2.Size = new System.Drawing.Size(144, 21);
+            this.shapeBtn2.TabIndex = 40;
+            this.shapeBtn2.TabStop = true;
+            this.shapeBtn2.Text = "Rectangular Island";
+            this.shapeBtn2.UseVisualStyleBackColor = true;
+            this.shapeBtn2.CheckedChanged += new System.EventHandler(this.shapeBtn2_CheckedChanged);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1026, 812);
-            this.Controls.Add(this.riverTBar);
-            this.Controls.Add(this.riverTxt);
+            this.Controls.Add(this.shapeBtn2);
+            this.Controls.Add(this.shapeBtn1);
+            this.Controls.Add(this.numIslandTrack);
+            this.Controls.Add(this.numIslandLabel);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.pictureBox6);
             this.Controls.Add(this.seedBox);
@@ -247,7 +280,7 @@ namespace TerrainGen
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.riverTBar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numIslandTrack)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -270,8 +303,10 @@ namespace TerrainGen
         private System.Windows.Forms.TextBox seedBox;
         private System.Windows.Forms.PictureBox pictureBox6;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label riverTxt;
-        private System.Windows.Forms.TrackBar riverTBar;
+        private System.Windows.Forms.Label numIslandLabel;
+        private System.Windows.Forms.TrackBar numIslandTrack;
+        private System.Windows.Forms.RadioButton shapeBtn1;
+        private System.Windows.Forms.RadioButton shapeBtn2;
     }
 }
 

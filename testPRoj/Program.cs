@@ -2,6 +2,7 @@
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Drawing;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -32,21 +33,31 @@ namespace testPRoj
     }
     class Program
     {
-        static int _size = 4096;
         static void Main(string[] args)
         {
-            var posList = new List<Position>()
-            {
-                new Position(100, 100),
-                new Position(200, 200)
-            };
+            var _testBitmap = new Bitmap(1024, 1024);
 
-            var pos = new Position(100, 100);
-            var pos1 = new Position(100, 100);
+            for (var x = 0; x < 1024; x++)
+                for (var y = 0; y < 1024; y++)
+                    _testBitmap.SetPixel(x, y, Color.Black);
 
-            Console.WriteLine(posList.Contains(pos));
+            long mem = GC.GetTotalMemory(true);
 
-            Console.ReadLine();
+            Console.WriteLine("Memory Used ~ " + GC.GetTotalMemory(true));
+
+            _testBitmap.Dispose();
+
+            Console.WriteLine("Memory Cleared ~ " + GC.GetTotalMemory(true));
+
+            var arr = new float[1024, 1024];
+
+            for (var x = 0; x < 1024; x++)
+                for (var y = 0; y < 1024; y++)
+                    arr[x, y] = 1024 * 2.5f * x;
+
+            Console.WriteLine("Memory Used ~ " + GC.GetTotalMemory(true));
+
+            Console.Read();
         }
     }
 }
