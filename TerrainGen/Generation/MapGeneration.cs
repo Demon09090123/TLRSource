@@ -14,7 +14,7 @@ namespace TerrainGen
         private WorkManager _workManager;
 
         private OpenSimplexNoise _noise;
-        private Random _random;
+        public static Random _random;
 
         private BiomeGeneration _biomeGeneration;
 

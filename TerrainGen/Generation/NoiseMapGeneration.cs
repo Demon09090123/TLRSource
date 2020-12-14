@@ -29,14 +29,37 @@ namespace TerrainGen.Generation
             _simplexNoise = new OpenSimplexNoise(_seed);
         }
 
+        private 
         public void AddFilter(FilterMap filter)
         {
 
+
+
         }
+
         public float getScale()
         {
             var scale = 0.0033f / (1024.0f / Size);
             return (1024.0f / Size) * scale;
+        }
+    }
+    public struct Position
+    {
+        public int X { get; private set; }
+        public int Y { get; private set; }
+
+        public Position(int x, int y)
+        {
+            X = x;
+            Y = y;
+        }
+
+        public static bool operator ==(Position left, Position right) => left.X == right.X && left.Y == right.Y;
+        public static bool operator !=(Position left, Position right) => left.X != right.X || left.Y != right.Y;
+        public override bool Equals(object obj)
+        {
+            var pos = (Position)obj;
+            return X == pos.X && Y == pos.Y;
         }
     }
 }
