@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using TerrainGen.Generation;
+using TerrainGen.Generation.Shape;
 
 namespace TerrainGen
 {
@@ -18,9 +19,14 @@ namespace TerrainGen
 
         private BiomeGeneration _biomeGeneration;
 
+        private FilterManager _filterManager;
+        private Bitmap _shapeBitmap;
+        private Bitmap _heightBitmap;
+        private Bitmap _moistureBitmap;
+/*
         public float[,] _shapeMap;
         public float[,] _heightMap;
-        public float[,] _moistureMap;
+        public float[,] _moistureMap;*/
 
         private int _size;
         private long _seed;
@@ -37,10 +43,16 @@ namespace TerrainGen
             _biomeGeneration = new BiomeGeneration();
 
             _size = 1024;
-            _scale = (1024f / _size) * 0.00333f; 
-            _shapeMap = new float[_size, _size];
+            _scale = (1024f / _size) * 0.00333f;
+
+            _filterManager = new FilterManager(_size);
+            _shapeBitmap = new Bitmap(_size, _size);
+            _heightBitmap = new Bitmap(_size, _size);
+            _moistureBitmap = new Bitmap(_size, _size);
+
+/*            _shapeMap = new float[_size, _size];
             _heightMap = new float[_size, _size];
-            _moistureMap = new float[_size, _size];
+            _moistureMap = new float[_size, _size];*/
 
             _workManager.Start();
         }
@@ -50,9 +62,10 @@ namespace TerrainGen
         public void Resize(int size)
         {
             _size = size;
-            _shapeMap = Utils.ResizeArray(_shapeMap, _size, _size);
-            _heightMap = Utils.ResizeArray(_heightMap, _size, _size);
-            _moistureMap = Utils.ResizeArray(_shapeMap, _size, _size);
+            _filterManager.Resize(_size);
+            _shapeBitmap = new Bitmap(_size, _size);
+            _heightBitmap = new Bitmap(_size, _size);
+            _moistureBitmap = new Bitmap(_size, _size);
         }
         public void SetSeed(long seed)
         {
@@ -62,36 +75,28 @@ namespace TerrainGen
         public void SetSeed() => SetSeed(_random.Next());
         public long GetSeed() => _seed;
 
+        public void AddFilter(FilterMap filter) => _filterManager.AddFilter(filter);
+
         private int _workDone;
-        private int _quadSize;
         private const int _quadLength = 4; // 4 by 4 grid
-
-        private void generateShapeMap()
-        {
-
-        }
 
         private void generateNoiseMap(int startX, int startY, int endX, int endY)
         {
-
-            for (var x = startX; x < endX; x++)
+            for (var x = 0; x < _size; x++)
             {
-                //int quadX = x / _mapMask.PixelLength;
-
-                for (var y = startY; y < endY; y++)
+                for (var y = 0; y < _size; y++)
                 {
-                    //int quadY = y / _mapMask.PixelLength; 
+                    float filter = _filterManager.TotalFilterBitmap.GetPixel(x, y).A / 127.5f;
+                    float noiseFilter = (filter * _noise.OctaveNoise(x, y, .01f, 9, 0.5f));
 
-                    //var quadPos = new Position(quadX, quadY);
+                    float shapeAlpha = Math.Min(255, 255 * noiseFilter);
 
-                    //var quadAlpha = _mapMask.regionAlpha[x, y];
-                    var shapeNoise = _noise.OctaveNoise(x, y, _scale, 8, .5f);
-                    var heightNoise = _noise.OctaveNoise(x, y, _scale, 16, .5f);
-                    var moistureNoise = _noise.OctaveNoise(x, y, _scale, 3, .5f);
+                    var heightAlpha = Math.Min(255, 255 * _noise.OctaveNoise(x, y, _scale, 12, 0.5f));
+                    var moistureAlpha = Math.Min(255, 255 * _noise.OctaveNoise(x, y, _scale, 16, 0.5f));
 
-                    _shapeMap[x, y] = shapeNoise;
-                    _heightMap[x, y] = heightNoise;
-                    _moistureMap[x, y] = moistureNoise;
+                    _shapeBitmap.SetPixel(x, y, Color.FromArgb((int)shapeAlpha, 0, 0, 0));
+                    _heightBitmap.SetPixel(x, y, Color.FromArgb((int)heightAlpha, 0, 0, 0));
+                    _moistureBitmap.SetPixel(x, y, Color.FromArgb((int)moistureAlpha, 0, 0, 0));
                 }
             }
         }
@@ -103,14 +108,14 @@ namespace TerrainGen
             for (int x = 0; x < _size; x++)
                 for (int y = 0; y < _size; y++)
                 {
-                    float shape = _shapeMap[x, y];
+                    /*float shape = _shapeMap[x, y];
                     float height = _heightMap[x, y];
-                    float moisture = _moistureMap[x, y];
+                    float moisture = _moistureMap[x, y];*/
 
-                    var biome = _biomeGeneration.GetBiome(height);
-                    Color color = Color.Black;
+                    //var biome = _biomeGeneration.GetBiome(height);
+                    //Color color = Color.Black;
 
-                    switch (biome.Type)
+                    /*switch (biome.Type)
                     {
                         case BiomeType.Meadow: color = Color.LightGreen; break;
                         case BiomeType.Forest: color = Color.DarkGreen; break;
@@ -121,7 +126,7 @@ namespace TerrainGen
                     }
 
                     if (shape < .01)
-                        color = Color.Black;
+                        color = Color.Black;*/
 
                     /*if (getRiver(moisture) && terrain < .75)
                         if (terrain <= .08f)
@@ -129,7 +134,13 @@ namespace TerrainGen
                         else
                             color = Color.Blue;*/
 
-                    bitmap.SetPixel(x, y, color);
+                    var alpha1 = _shapeBitmap.GetPixel(x, y).A;
+                    var alpha2 = _heightBitmap.GetPixel(x, y).A;
+                    var alpha3 = _moistureBitmap.GetPixel(x, y).A;
+
+                    var totalAlpha = alpha1;
+
+                    bitmap.SetPixel(x, y, Color.FromArgb(totalAlpha, 0, 0, 0));
                 }
 
             if (_onDraw != null)
@@ -139,9 +150,8 @@ namespace TerrainGen
         public void Generate()
         {
             _workDone = 0;
-            _quadSize = _size / _quadLength;
 
-            for (var xQuad = 0; xQuad < _quadLength; xQuad++)
+            /*for (var xQuad = 0; xQuad < _quadLength; xQuad++)
             {
                 var startX = xQuad * _quadSize;
                 var endX = (xQuad + 1) * _quadSize;
@@ -153,15 +163,20 @@ namespace TerrainGen
 
                     _workManager.QueueWork(new GenerateWork(() => generateNoiseMap(startX, startY, endX, endY), callBack));
                 }
-            }
+            }*/
+            generateNoiseMap(0, 0, 0, 0);
+            processNoise();
+           /* _workManager.QueueWork(new GenerateWork(() => generateNoiseMap(0, 0, _size, _size), callBack));
 
             Task.Factory.StartNew(() =>
             {
-                while (_workDone != _quadLength * _quadLength)
+                while (_workDone != 1)
                     Thread.Sleep(50);
 
+                Console.WriteLine("Processing");
+
                 processNoise();
-            });
+            });*/
         }
 
         private void callBack() => _workDone++;

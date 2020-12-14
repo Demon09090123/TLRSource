@@ -35,29 +35,6 @@ namespace testPRoj
     {
         static void Main(string[] args)
         {
-            var _testBitmap = new Bitmap(1024, 1024);
-
-            for (var x = 0; x < 1024; x++)
-                for (var y = 0; y < 1024; y++)
-                    _testBitmap.SetPixel(x, y, Color.Black);
-
-            long mem = GC.GetTotalMemory(true);
-
-            Console.WriteLine("Memory Used ~ " + GC.GetTotalMemory(true));
-
-            _testBitmap.Dispose();
-
-            Console.WriteLine("Memory Cleared ~ " + GC.GetTotalMemory(true));
-
-            var arr = new float[1024, 1024];
-
-            for (var x = 0; x < 1024; x++)
-                for (var y = 0; y < 1024; y++)
-                    arr[x, y] = 1024 * 2.5f * x;
-
-            Console.WriteLine("Memory Used ~ " + GC.GetTotalMemory(true));
-
-            Console.Read();
         }
     }
 }

@@ -62,8 +62,7 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Generation\MapMask.cs" />
-    <Compile Include="Generation\NoiseMapGeneration.cs" />
+    <Compile Include="Generation\FilterManager.cs" />
     <Compile Include="Generation\Shape\CircularFilterMap.cs" />
     <Compile Include="Generation\Shape\FilterMap.cs" />
     <Compile Include="Generation\Shape\RectangularFilterMap.cs" />

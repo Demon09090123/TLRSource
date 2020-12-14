@@ -20,13 +20,13 @@ namespace TerrainGen.Generation.Shape
                 {
                     float distY = Math.Abs(y - Size * 0.5f);
                     float dist = Math.Max(distX, distY);
-                    float maxWidth = Size * 0.5f - 10.0f;
+                    float maxWidth = Size * 0.5f;
                     float delta = dist / maxWidth;
                     float gradient = delta * delta;
 
-                    int alpha = (int)(255.0f * gradient);
+                    int alpha = (int)(255.0f * (1.0f - gradient));
 
-                    NoiseBitmap.SetPixel(x, y, Color.FromArgb(alpha, 0, 0, 0));
+                    FilterBitmap.SetPixel(x, y, Color.FromArgb(alpha, 0, 0, 0));
                 }
             }
         }

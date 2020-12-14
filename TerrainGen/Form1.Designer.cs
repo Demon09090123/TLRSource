@@ -44,17 +44,15 @@ namespace TerrainGen
             this.seedBox = new System.Windows.Forms.TextBox();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.numIslandLabel = new System.Windows.Forms.Label();
-            this.numIslandTrack = new System.Windows.Forms.TrackBar();
             this.shapeBtn1 = new System.Windows.Forms.RadioButton();
             this.shapeBtn2 = new System.Windows.Forms.RadioButton();
+            this.addFilterBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.canvas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numIslandTrack)).BeginInit();
             this.SuspendLayout();
             // 
             // canvas
@@ -200,27 +198,6 @@ namespace TerrainGen
             this.label3.TabIndex = 36;
             this.label3.Text = "Terrain";
             // 
-            // numIslandLabel
-            // 
-            this.numIslandLabel.AutoSize = true;
-            this.numIslandLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.numIslandLabel.Location = new System.Drawing.Point(824, 202);
-            this.numIslandLabel.Name = "numIslandLabel";
-            this.numIslandLabel.Size = new System.Drawing.Size(65, 17);
-            this.numIslandLabel.TabIndex = 37;
-            this.numIslandLabel.Text = "# Island :";
-            // 
-            // numIslandTrack
-            // 
-            this.numIslandTrack.Location = new System.Drawing.Point(883, 193);
-            this.numIslandTrack.Maximum = 5;
-            this.numIslandTrack.Minimum = 1;
-            this.numIslandTrack.Name = "numIslandTrack";
-            this.numIslandTrack.Size = new System.Drawing.Size(104, 45);
-            this.numIslandTrack.TabIndex = 38;
-            this.numIslandTrack.Value = 1;
-            this.numIslandTrack.Scroll += new System.EventHandler(this.numIslandTrack_Scroll);
-            // 
             // shapeBtn1
             // 
             this.shapeBtn1.AutoSize = true;
@@ -232,7 +209,6 @@ namespace TerrainGen
             this.shapeBtn1.TabStop = true;
             this.shapeBtn1.Text = "Circular Island";
             this.shapeBtn1.UseVisualStyleBackColor = true;
-            this.shapeBtn1.CheckedChanged += new System.EventHandler(this.shapeBtn1_CheckedChanged);
             // 
             // shapeBtn2
             // 
@@ -245,17 +221,25 @@ namespace TerrainGen
             this.shapeBtn2.TabStop = true;
             this.shapeBtn2.Text = "Rectangular Island";
             this.shapeBtn2.UseVisualStyleBackColor = true;
-            this.shapeBtn2.CheckedChanged += new System.EventHandler(this.shapeBtn2_CheckedChanged);
+            // 
+            // addFilterBtn
+            // 
+            this.addFilterBtn.Location = new System.Drawing.Point(827, 203);
+            this.addFilterBtn.Name = "addFilterBtn";
+            this.addFilterBtn.Size = new System.Drawing.Size(103, 23);
+            this.addFilterBtn.TabIndex = 41;
+            this.addFilterBtn.Text = "addFilter";
+            this.addFilterBtn.UseVisualStyleBackColor = true;
+            this.addFilterBtn.Click += new System.EventHandler(this.addFilterBtn_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1026, 812);
+            this.Controls.Add(this.addFilterBtn);
             this.Controls.Add(this.shapeBtn2);
             this.Controls.Add(this.shapeBtn1);
-            this.Controls.Add(this.numIslandTrack);
-            this.Controls.Add(this.numIslandLabel);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.pictureBox6);
             this.Controls.Add(this.seedBox);
@@ -280,7 +264,6 @@ namespace TerrainGen
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numIslandTrack)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -303,10 +286,9 @@ namespace TerrainGen
         private System.Windows.Forms.TextBox seedBox;
         private System.Windows.Forms.PictureBox pictureBox6;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label numIslandLabel;
-        private System.Windows.Forms.TrackBar numIslandTrack;
         private System.Windows.Forms.RadioButton shapeBtn1;
         private System.Windows.Forms.RadioButton shapeBtn2;
+        private System.Windows.Forms.Button addFilterBtn;
     }
 }
 

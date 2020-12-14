@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
+using TerrainGen.Generation.Shape;
 
 namespace TerrainGen
 {
@@ -66,20 +67,9 @@ namespace TerrainGen
         {
             canvas.Image = Utils.ResizeImage(map, canvas.Width, canvas.Height); 
         }
-
-        private void numIslandTrack_Scroll(object sender, EventArgs e)
+        private void addFilterBtn_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void shapeBtn1_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void shapeBtn2_CheckedChanged(object sender, EventArgs e)
-        {
-
+            _mapGenerator.AddFilter(new CircularFilterMap(600));
         }
     }
 }
