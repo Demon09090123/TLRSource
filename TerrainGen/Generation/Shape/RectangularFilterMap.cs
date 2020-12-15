@@ -24,9 +24,9 @@ namespace TerrainGen.Generation.Shape
                     float delta = dist / maxWidth;
                     float gradient = delta * delta;
 
-                    int alpha = (int)(255.0f * (1.0f - gradient));
+                    float alpha = 255.0f * (1.0f - gradient);
 
-                    FilterBitmap.SetPixel(x, y, Color.FromArgb(alpha, 0, 0, 0));
+                    FilterBitmap.SetPixel(x, y, Color.FromArgb((int)alpha, 0, 0, 0));
                 }
             }
         }

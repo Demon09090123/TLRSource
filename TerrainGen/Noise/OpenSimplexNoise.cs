@@ -10,10 +10,6 @@ namespace TerrainGen
         private const float SQUISH_2D = 0.366025403784439f;      //(Math.sqrt(2+1)-1)/2;
         private const float NORM_2D = 1.0f / 47.0f;
 
-        private const float NORMALIZED = .30674f;
-        private const float LACUNARITY = 2.0f;
-        private const float GAIN = 0.5f;
-
         private byte[] perm;
         private byte[] perm2D;
 
@@ -103,47 +99,56 @@ namespace TerrainGen
             }
         }
 
-        public float OctaveNoise(float x, float y, float scale, float octaves, float persistence)
+        public float OctaveNoise(float x, float y, float scale, float octaves, float persistence = 0.5f, float lacunarity = 2.0f)
         {
             float total = 0;
-            float frequency = 1;
-            float amplitude = 1;
+            float frequency = 1.0f;
+            float amplitude = 1.0f;
 
             for (int i = 0; i < octaves; i++)
             {
-                total += NormalizeEvaluate(x * frequency, y * frequency, scale) * amplitude;
+                total += NormalizedEvaluate(x * frequency, y * frequency, scale) * amplitude;
 
                 amplitude *= persistence;
-                frequency *= LACUNARITY;
+                frequency *= lacunarity;
             }
+
 
             return total;
         }
 
-        public float RigidOctaveNoise(float x, float y, float scale, int octave)
+        public float RigidOctaveNoise(float x, float y, float scale, int octave, float persistence = 0.5f, float lacunarity = 2.0f)
         {
-            float sum = 1 - EvaluateScale(x, y, scale);
-            float amplitude = 1f;
-            float frequency = 1f;
+            float sum = 1.0f - NormalizedEvaluate(x, y, scale);
+            float amplitude = 1.0f;
+            float frequency = 1.0f;
 
             for (var o = 0; o < octave; o++)
             {
-                amplitude *= GAIN;
-                sum -= (1 - Math.Abs(EvaluateScale(x * frequency, y * frequency, scale))) * amplitude;
-                frequency *= LACUNARITY;
+                amplitude *= persistence;
+                sum -= (1 - NormalizedEvaluate(x * frequency, y * frequency, scale)) * amplitude;
+                frequency *= lacunarity;
             }
 
             return sum;
         }
+        private static float NORMALIZED = 0.865f;
 
-        public float NormalizeEvaluate(float x, float y, float scale)
+        public float NormalizedEvaluate(float x, float y, float scale)
         {
-            var noise = EvaluateScale(x, y, scale);
-            noise += 1.08f;
-            return noise * NORMALIZED;
+            var noise = Evaluate(x, y, scale);
+            var normalized = (noise + NORMALIZED) / (NORMALIZED * 2);
+
+            //clamp
+            if (normalized > 1f)
+                normalized = 1.0f;
+            if (normalized < 0.0f)
+                normalized = 0.0f;
+
+            return normalized;
         }
 
-        public float EvaluateScale(float x, float y, float scale) => Evaluate(x * scale, y * scale);
+        public float Evaluate(float x, float y, float scale) => Evaluate(x * scale, y * scale);
 
         public float Evaluate(float x, float y)
         {

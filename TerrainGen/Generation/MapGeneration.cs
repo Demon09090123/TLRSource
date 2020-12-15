@@ -80,26 +80,6 @@ namespace TerrainGen
         private int _workDone;
         private const int _quadLength = 4; // 4 by 4 grid
 
-        private void generateNoiseMap(int startX, int startY, int endX, int endY)
-        {
-            for (var x = 0; x < _size; x++)
-            {
-                for (var y = 0; y < _size; y++)
-                {
-                    float filter = _filterManager.TotalFilterBitmap.GetPixel(x, y).A / 127.5f;
-                    float noiseFilter = (filter * _noise.OctaveNoise(x, y, .01f, 9, 0.5f));
-
-                    float shapeAlpha = Math.Min(255, 255 * noiseFilter);
-
-                    var heightAlpha = Math.Min(255, 255 * _noise.OctaveNoise(x, y, _scale, 12, 0.5f));
-                    var moistureAlpha = Math.Min(255, 255 * _noise.OctaveNoise(x, y, _scale, 16, 0.5f));
-
-                    _shapeBitmap.SetPixel(x, y, Color.FromArgb((int)shapeAlpha, 0, 0, 0));
-                    _heightBitmap.SetPixel(x, y, Color.FromArgb((int)heightAlpha, 0, 0, 0));
-                    _moistureBitmap.SetPixel(x, y, Color.FromArgb((int)moistureAlpha, 0, 0, 0));
-                }
-            }
-        }
 
         private void processNoise()
         {
@@ -151,32 +131,45 @@ namespace TerrainGen
         {
             _workDone = 0;
 
-            /*for (var xQuad = 0; xQuad < _quadLength; xQuad++)
+            _workManager.QueueWork(new GenerateWork(() =>
             {
-                var startX = xQuad * _quadSize;
-                var endX = (xQuad + 1) * _quadSize;
-
-                for (var yQuad = 0; yQuad < _quadLength; yQuad++)
-                {
-                    var startY = yQuad * _quadSize;
-                    var endY = (yQuad + 1) * _quadSize;
-
-                    _workManager.QueueWork(new GenerateWork(() => generateNoiseMap(startX, startY, endX, endY), callBack));
-                }
-            }*/
-            generateNoiseMap(0, 0, 0, 0);
-            processNoise();
-           /* _workManager.QueueWork(new GenerateWork(() => generateNoiseMap(0, 0, _size, _size), callBack));
+                for (var x = 0; x < _size; x++)
+                    for (var y = 0; y < _size; y++)
+                    {
+                        float filter = _filterManager.TotalFilterBitmap.GetPixel(x, y).A / 127.5f;
+                        float noiseFilter = (filter * _noise.OctaveNoise(x, y, _scale, 16, 0.5f)) / 2;
+                        float shapeAlpha = Math.Min(255, 255 * noiseFilter);
+                        _shapeBitmap.SetPixel(x, y, Color.FromArgb((int)shapeAlpha, 0, 0, 0));
+                    }
+            }, callBack));
+            _workManager.QueueWork(new GenerateWork(() =>
+            {
+                for (var x = 0; x < _size; x++)
+                    for (var y = 0; y < _size; y++)
+                    {
+                       /* var heightAlpha = 255 * _noise.OctaveNoise(x, y, _scale, 6, 0.5f);
+                        _heightBitmap.SetPixel(x, y, Color.FromArgb((int)heightAlpha, 0, 0, 0));*/
+                    }
+            }, callBack));
+            _workManager.QueueWork(new GenerateWork(() =>
+            {
+                for (var x = 0; x < _size; x++)
+                    for (var y = 0; y < _size; y++)
+                    {
+                        /*var moistureAlpha = 255 * _noise.OctaveNoise(x, y, _scale, 3, 0.5f);
+                        _moistureBitmap.SetPixel(x, y, Color.FromArgb((int)moistureAlpha, 0, 0, 0));*/
+                    }
+            }, callBack));
 
             Task.Factory.StartNew(() =>
             {
-                while (_workDone != 1)
+                while (_workDone != 3)
                     Thread.Sleep(50);
 
                 Console.WriteLine("Processing");
 
                 processNoise();
-            });*/
+            });
         }
 
         private void callBack() => _workDone++;

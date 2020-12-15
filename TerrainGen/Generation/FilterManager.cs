@@ -11,9 +11,11 @@ namespace TerrainGen.Generation
         public int Size { get; private set; }
 
         private List<FilterMap> _currentFilters;
+        private List<Position> _occupiedPosition;
         public FilterManager(int size)
         {
             _currentFilters = new List<FilterMap>();
+            _occupiedPosition = new List<Position>();
 
             Size = size;
 
@@ -38,13 +40,16 @@ namespace TerrainGen.Generation
             int tries = 0;
             int rX;
             int rY;
+
             do
             {
                 rX = MapGeneration._random.Next(radius, Size - radius);
                 rY = MapGeneration._random.Next(radius, Size - radius);
 
                 tries++;
-            } while(isValidPosition(rX, rY, radius) == false);
+                if (tries % 100 == 0)
+                    Console.WriteLine($" {rX} {rY} {filter.Size} {filter.Size / 2} ");
+            } while(!isValidPosition(rX, rY, radius));
 
             filter.SetCenterPosition(new Position(rX, rY));
             _currentFilters.Add(filter);
@@ -62,10 +67,11 @@ namespace TerrainGen.Generation
                     var mPixel = TotalFilterBitmap.GetPixel(totalX, totalY);
 
                     Color color = fPixel;
-                    if (mPixel.A < 255)
+                    if (mPixel.A > 0)
                         color = Color.FromArgb((fPixel.A + mPixel.A) / 2, 0, 0, 0);
 
                     TotalFilterBitmap.SetPixel(totalX, totalY, color);
+                    _occupiedPosition.Add(new Position(totalX, totalY));
                 }
             }
         }
@@ -75,6 +81,9 @@ namespace TerrainGen.Generation
             if (_currentFilters.Count == 0)
                 return true;
 
+            if (_occupiedPosition.Contains(new Position(x, y)))
+                return false;
+
             foreach (var f in _currentFilters)
             {
                 var fPos = f.CenterPosition;
@@ -82,7 +91,10 @@ namespace TerrainGen.Generation
 
                 if (x + radius > fPos.X - fRadius || x - radius < fPos.X + fRadius ||
                     y + radius > fPos.Y - fRadius || y - radius < fPos.Y + fRadius)
+                {
+                    Console.WriteLine($"{x + radius} > {fPos.X - fRadius} | {x - radius} < {fPos.X + fRadius} | {y + radius} > {fPos.Y - fRadius} | {y - radius} < {fPos.Y + fRadius}");
                     continue;
+                }
 
                 return true;
             }

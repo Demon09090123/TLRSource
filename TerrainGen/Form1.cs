@@ -11,7 +11,7 @@ namespace TerrainGen
         private MapGeneration _mapGenerator;
         public Form1()
         {
-            InitializeComponent(); 
+            InitializeComponent();
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -19,11 +19,11 @@ namespace TerrainGen
             _mapGenerator = new MapGeneration(Properties.Resources.shapeMask);
             _mapGenerator.AddonDraw(drawMap);
             seedBox.Text = _mapGenerator.GetSeed().ToString();
-        } 
+        }
 
         public delegate void addPicture(Bitmap picture);
 
-        private void resetBtn_Click(object sender, EventArgs e) =>canvas.Controls.RemoveAt(0);
+        private void resetBtn_Click(object sender, EventArgs e) => canvas.Controls.RemoveAt(0);
         private void seedBtn_Click(object sender, EventArgs e)
         {
             _mapGenerator.SetSeed();
@@ -65,11 +65,12 @@ namespace TerrainGen
 
         private void draw(Bitmap map)
         {
-            canvas.Image = Utils.ResizeImage(map, canvas.Width, canvas.Height); 
+            canvas.Image = Utils.ResizeImage(map, canvas.Width, canvas.Height);
         }
         private void addFilterBtn_Click(object sender, EventArgs e)
         {
-            _mapGenerator.AddFilter(new CircularFilterMap(600));
+            _mapGenerator.AddFilter(new RectangularFilterMap(400));
+            _mapGenerator.AddFilter(new RectangularFilterMap(400));
         }
     }
 }
