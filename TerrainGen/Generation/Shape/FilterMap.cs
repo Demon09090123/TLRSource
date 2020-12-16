@@ -17,11 +17,6 @@ namespace TerrainGen.Generation.Shape
             generateNoiseMap();
         }
 
-        public Position CenterPosition { get; private set; }
-        public void SetCenterPosition(Position pos)
-        {
-            CenterPosition = pos;
-        }
         protected abstract void generateNoiseMap();
     }
 }

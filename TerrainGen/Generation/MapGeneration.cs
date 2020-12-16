@@ -34,7 +34,7 @@ namespace TerrainGen
 
         private Action<Bitmap> _onDraw;
 
-        public MapGeneration(Bitmap mask)
+        public MapGeneration()
         {
             _workManager = new WorkManager();
             _random = new Random();
@@ -45,7 +45,7 @@ namespace TerrainGen
             _size = 1024;
             _scale = (1024f / _size) * 0.00333f;
 
-            _filterManager = new FilterManager(_size);
+            _filterManager = new FilterManager(_size, 4);
             _shapeBitmap = new Bitmap(_size, _size);
             _heightBitmap = new Bitmap(_size, _size);
             _moistureBitmap = new Bitmap(_size, _size);
@@ -62,11 +62,13 @@ namespace TerrainGen
         public void Resize(int size)
         {
             _size = size;
-            _filterManager.Resize(_size);
             _shapeBitmap = new Bitmap(_size, _size);
             _heightBitmap = new Bitmap(_size, _size);
             _moistureBitmap = new Bitmap(_size, _size);
         }
+
+        public void ResetFilter(int quadCount) => _filterManager.Resize(_size, quadCount);
+        
         public void SetSeed(long seed)
         {
             _seed = seed;
@@ -75,11 +77,10 @@ namespace TerrainGen
         public void SetSeed() => SetSeed(_random.Next());
         public long GetSeed() => _seed;
 
-        public void AddFilter(FilterMap filter) => _filterManager.AddFilter(filter);
+        public void AddFilter(int qX, int qY, int type) => 
+            _filterManager.AddFilter(qX, qY, type);
 
         private int _workDone;
-        private const int _quadLength = 4; // 4 by 4 grid
-
 
         private void processNoise()
         {
@@ -136,28 +137,11 @@ namespace TerrainGen
                 for (var x = 0; x < _size; x++)
                     for (var y = 0; y < _size; y++)
                     {
-                        float filter = _filterManager.TotalFilterBitmap.GetPixel(x, y).A / 127.5f;
+                        int filter = _filterManager.TotalFilterBitmap.GetPixel(x, y).A;
                         float noiseFilter = (filter * _noise.OctaveNoise(x, y, _scale, 16, 0.5f)) / 2;
                         float shapeAlpha = Math.Min(255, 255 * noiseFilter);
-                        _shapeBitmap.SetPixel(x, y, Color.FromArgb((int)shapeAlpha, 0, 0, 0));
-                    }
-            }, callBack));
-            _workManager.QueueWork(new GenerateWork(() =>
-            {
-                for (var x = 0; x < _size; x++)
-                    for (var y = 0; y < _size; y++)
-                    {
-                       /* var heightAlpha = 255 * _noise.OctaveNoise(x, y, _scale, 6, 0.5f);
-                        _heightBitmap.SetPixel(x, y, Color.FromArgb((int)heightAlpha, 0, 0, 0));*/
-                    }
-            }, callBack));
-            _workManager.QueueWork(new GenerateWork(() =>
-            {
-                for (var x = 0; x < _size; x++)
-                    for (var y = 0; y < _size; y++)
-                    {
-                        /*var moistureAlpha = 255 * _noise.OctaveNoise(x, y, _scale, 3, 0.5f);
-                        _moistureBitmap.SetPixel(x, y, Color.FromArgb((int)moistureAlpha, 0, 0, 0));*/
+
+                        _shapeBitmap.SetPixel(x, y, Color.FromArgb(filter, 0, 0, 0));
                     }
             }, callBack));
 

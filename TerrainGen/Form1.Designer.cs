@@ -43,16 +43,19 @@ namespace TerrainGen
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.seedBox = new System.Windows.Forms.TextBox();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.shapeBtn1 = new System.Windows.Forms.RadioButton();
-            this.shapeBtn2 = new System.Windows.Forms.RadioButton();
-            this.addFilterBtn = new System.Windows.Forms.Button();
+            this.regionMap = new System.Windows.Forms.PictureBox();
+            this.filterRegionlbl = new System.Windows.Forms.Label();
+            this.fourbtn = new System.Windows.Forms.Button();
+            this.twoBtn = new System.Windows.Forms.Button();
+            this.eightBtn = new System.Windows.Forms.Button();
+            this.sixteenBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.canvas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.regionMap)).BeginInit();
             this.SuspendLayout();
             // 
             // canvas
@@ -67,9 +70,9 @@ namespace TerrainGen
             // generateBtn
             // 
             this.generateBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
-            this.generateBtn.Location = new System.Drawing.Point(850, 375);
+            this.generateBtn.Location = new System.Drawing.Point(851, 459);
             this.generateBtn.Name = "generateBtn";
-            this.generateBtn.Size = new System.Drawing.Size(122, 39);
+            this.generateBtn.Size = new System.Drawing.Size(129, 39);
             this.generateBtn.TabIndex = 2;
             this.generateBtn.Text = "Generate Terrain";
             this.generateBtn.UseVisualStyleBackColor = true;
@@ -89,7 +92,7 @@ namespace TerrainGen
             // 
             this.seedLabel.AutoSize = true;
             this.seedLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.seedLabel.Location = new System.Drawing.Point(821, 133);
+            this.seedLabel.Location = new System.Drawing.Point(821, 135);
             this.seedLabel.Name = "seedLabel";
             this.seedLabel.Size = new System.Drawing.Size(49, 17);
             this.seedLabel.TabIndex = 11;
@@ -98,7 +101,7 @@ namespace TerrainGen
             // seedBtn
             // 
             this.seedBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.seedBtn.Location = new System.Drawing.Point(972, 129);
+            this.seedBtn.Location = new System.Drawing.Point(972, 131);
             this.seedBtn.Name = "seedBtn";
             this.seedBtn.Size = new System.Drawing.Size(30, 26);
             this.seedBtn.TabIndex = 12;
@@ -109,18 +112,18 @@ namespace TerrainGen
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.pictureBox1.Location = new System.Drawing.Point(815, 364);
+            this.pictureBox1.Location = new System.Drawing.Point(816, 448);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(191, 5);
+            this.pictureBox1.Size = new System.Drawing.Size(198, 5);
             this.pictureBox1.TabIndex = 13;
             this.pictureBox1.TabStop = false;
             // 
             // pictureBox2
             // 
             this.pictureBox2.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.pictureBox2.Location = new System.Drawing.Point(815, 420);
+            this.pictureBox2.Location = new System.Drawing.Point(816, 504);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(191, 5);
+            this.pictureBox2.Size = new System.Drawing.Size(198, 5);
             this.pictureBox2.TabIndex = 14;
             this.pictureBox2.TabStop = false;
             // 
@@ -173,7 +176,7 @@ namespace TerrainGen
             // 
             // seedBox
             // 
-            this.seedBox.Location = new System.Drawing.Point(866, 133);
+            this.seedBox.Location = new System.Drawing.Point(866, 135);
             this.seedBox.Name = "seedBox";
             this.seedBox.Size = new System.Drawing.Size(100, 20);
             this.seedBox.TabIndex = 34;
@@ -188,59 +191,76 @@ namespace TerrainGen
             this.pictureBox6.TabIndex = 35;
             this.pictureBox6.TabStop = false;
             // 
-            // label3
+            // regionMap
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.label3.Location = new System.Drawing.Point(820, 169);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(58, 20);
-            this.label3.TabIndex = 36;
-            this.label3.Text = "Terrain";
+            this.regionMap.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.regionMap.Location = new System.Drawing.Point(824, 262);
+            this.regionMap.Name = "regionMap";
+            this.regionMap.Size = new System.Drawing.Size(180, 180);
+            this.regionMap.TabIndex = 36;
+            this.regionMap.TabStop = false;
             // 
-            // shapeBtn1
+            // filterRegionlbl
             // 
-            this.shapeBtn1.AutoSize = true;
-            this.shapeBtn1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.shapeBtn1.Location = new System.Drawing.Point(827, 235);
-            this.shapeBtn1.Name = "shapeBtn1";
-            this.shapeBtn1.Size = new System.Drawing.Size(115, 21);
-            this.shapeBtn1.TabIndex = 39;
-            this.shapeBtn1.TabStop = true;
-            this.shapeBtn1.Text = "Circular Island";
-            this.shapeBtn1.UseVisualStyleBackColor = true;
+            this.filterRegionlbl.AutoSize = true;
+            this.filterRegionlbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.filterRegionlbl.Location = new System.Drawing.Point(825, 173);
+            this.filterRegionlbl.Name = "filterRegionlbl";
+            this.filterRegionlbl.Size = new System.Drawing.Size(99, 20);
+            this.filterRegionlbl.TabIndex = 37;
+            this.filterRegionlbl.Text = "Filter Region";
             // 
-            // shapeBtn2
+            // fourbtn
             // 
-            this.shapeBtn2.AutoSize = true;
-            this.shapeBtn2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.shapeBtn2.Location = new System.Drawing.Point(827, 262);
-            this.shapeBtn2.Name = "shapeBtn2";
-            this.shapeBtn2.Size = new System.Drawing.Size(144, 21);
-            this.shapeBtn2.TabIndex = 40;
-            this.shapeBtn2.TabStop = true;
-            this.shapeBtn2.Text = "Rectangular Island";
-            this.shapeBtn2.UseVisualStyleBackColor = true;
+            this.fourbtn.Location = new System.Drawing.Point(826, 233);
+            this.fourbtn.Name = "fourbtn";
+            this.fourbtn.Size = new System.Drawing.Size(75, 23);
+            this.fourbtn.TabIndex = 38;
+            this.fourbtn.Text = "4x4 Grid";
+            this.fourbtn.UseVisualStyleBackColor = true;
+            this.fourbtn.Click += new System.EventHandler(this.fourbtn_Click);
             // 
-            // addFilterBtn
+            // twoBtn
             // 
-            this.addFilterBtn.Location = new System.Drawing.Point(827, 203);
-            this.addFilterBtn.Name = "addFilterBtn";
-            this.addFilterBtn.Size = new System.Drawing.Size(103, 23);
-            this.addFilterBtn.TabIndex = 41;
-            this.addFilterBtn.Text = "addFilter";
-            this.addFilterBtn.UseVisualStyleBackColor = true;
-            this.addFilterBtn.Click += new System.EventHandler(this.addFilterBtn_Click);
+            this.twoBtn.Location = new System.Drawing.Point(826, 204);
+            this.twoBtn.Name = "twoBtn";
+            this.twoBtn.Size = new System.Drawing.Size(75, 23);
+            this.twoBtn.TabIndex = 39;
+            this.twoBtn.Text = "2x2 Grid";
+            this.twoBtn.UseVisualStyleBackColor = true;
+            this.twoBtn.Click += new System.EventHandler(this.twoBtn_Click);
+            // 
+            // eightBtn
+            // 
+            this.eightBtn.Location = new System.Drawing.Point(927, 204);
+            this.eightBtn.Name = "eightBtn";
+            this.eightBtn.Size = new System.Drawing.Size(75, 23);
+            this.eightBtn.TabIndex = 41;
+            this.eightBtn.Text = "8x8 Grid";
+            this.eightBtn.UseVisualStyleBackColor = true;
+            this.eightBtn.Click += new System.EventHandler(this.eightBtn_Click);
+            // 
+            // sixteenBtn
+            // 
+            this.sixteenBtn.Location = new System.Drawing.Point(927, 233);
+            this.sixteenBtn.Name = "sixteenBtn";
+            this.sixteenBtn.Size = new System.Drawing.Size(75, 23);
+            this.sixteenBtn.TabIndex = 40;
+            this.sixteenBtn.Text = "16x16 Grid";
+            this.sixteenBtn.UseVisualStyleBackColor = true;
+            this.sixteenBtn.Click += new System.EventHandler(this.sixteenBtn_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1026, 812);
-            this.Controls.Add(this.addFilterBtn);
-            this.Controls.Add(this.shapeBtn2);
-            this.Controls.Add(this.shapeBtn1);
-            this.Controls.Add(this.label3);
+            this.Controls.Add(this.eightBtn);
+            this.Controls.Add(this.sixteenBtn);
+            this.Controls.Add(this.twoBtn);
+            this.Controls.Add(this.fourbtn);
+            this.Controls.Add(this.filterRegionlbl);
+            this.Controls.Add(this.regionMap);
             this.Controls.Add(this.pictureBox6);
             this.Controls.Add(this.seedBox);
             this.Controls.Add(this.pictureBox4);
@@ -264,6 +284,7 @@ namespace TerrainGen
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.regionMap)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -285,10 +306,12 @@ namespace TerrainGen
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.TextBox seedBox;
         private System.Windows.Forms.PictureBox pictureBox6;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.RadioButton shapeBtn1;
-        private System.Windows.Forms.RadioButton shapeBtn2;
-        private System.Windows.Forms.Button addFilterBtn;
+        private System.Windows.Forms.PictureBox regionMap;
+        private System.Windows.Forms.Label filterRegionlbl;
+        private System.Windows.Forms.Button fourbtn;
+        private System.Windows.Forms.Button twoBtn;
+        private System.Windows.Forms.Button eightBtn;
+        private System.Windows.Forms.Button sixteenBtn;
     }
 }
 
