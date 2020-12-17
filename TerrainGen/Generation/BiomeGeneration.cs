@@ -13,7 +13,7 @@ namespace TerrainGen
             new Biome(BiomeType.Desert, new Threshold(.4f, .6f), new Threshold(.4f, .6f)),
             new Biome(BiomeType.Mountians, new Threshold(.23f, .4f), new Threshold(.25f, .4f)),
             new Biome(BiomeType.ScorchLands, new Threshold(.08f, .23f), new Threshold(.08f, .1f)),
-            new Biome(BiomeType.Void, new Threshold(-2f, .08f), new Threshold(-1, -1))
+            new Biome(BiomeType.Void, new Threshold(.05f, .08f), new Threshold(-1, -1))
         };
 
 

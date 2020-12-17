@@ -18,8 +18,6 @@ namespace TerrainGen
             _mapGenerator = new MapGeneration();
             _mapGenerator.AddonDraw(drawMap);
             seedBox.Text = _mapGenerator.GetSeed().ToString();
-
-            refreshAndUpdateGraph(2);
         }
 
         public delegate void addPicture(Bitmap picture);
@@ -69,71 +67,64 @@ namespace TerrainGen
             canvas.Image = Utils.ResizeImage(map, canvas.Width, canvas.Height);
         }
 
-        private int _curQuadSize = 4;
-        private void refreshAndUpdateGraph(int quadCount)
+        private void twoBtn_Click(object sender, EventArgs e)
         {
-            regionMap.Controls.Clear();
-
-            _curQuadSize = (int)Math.Sqrt(quadCount);
-            var w = regionMap.Width;
-            var h = regionMap.Height;
-            var gridSize = w / _curQuadSize;
-
-            _mapGenerator.ResetFilter(_curQuadSize);
-
-            for (var x = 0; x < _curQuadSize; x++)
-                for (var y = 0; y < _curQuadSize; y++)
-                {
-                    var gX = x * gridSize;
-                    var gY = y * gridSize;
-
-                    var grid = new Grid(x, y, onSelectRegion);
-                    grid.Size = new Size(gridSize, gridSize);
-                    grid.Location = new Point(gX, gY);
-                    regionMap.Controls.Add(grid);
-                }
+            var grid = new Grid();
+            grid.Size = new Size(40, 40);
+            grid.Location = new Point(10, 10);
+            regionMap.Controls.Add(grid);
         }
 
-        private void onSelectRegion(Grid g)
+        private void applyBtn_Click(object sender, EventArgs e)
         {
-            _mapGenerator.AddFilter(g.GridX, g.GridY, 0);
-            Console.WriteLine($"FilterAdded! {g.GridX} {g.GridY}");
-        }
+            foreach(Control c in regionMap.Controls)
+            {
+                var grid = c as Grid;
 
-        private void twoBtn_Click(object sender, EventArgs e) => refreshAndUpdateGraph(4);
-        private void fourbtn_Click(object sender, EventArgs e) => refreshAndUpdateGraph(16);
-        private void eightBtn_Click(object sender, EventArgs e) => refreshAndUpdateGraph(64);
-        private void sixteenBtn_Click(object sender, EventArgs e) => refreshAndUpdateGraph(256);
+                _mapGenerator.AddFilter(grid.Location.X, grid.Location.Y, grid.Width, grid.Height);
+            }
+        }
     }
     public class Grid : PictureBox
     {
-        private static readonly Color onSelected = Color.Black;
-        private static readonly Color notSelected = Color.Gray;
-
-        public int GridX { get; private set; }
-        public int GridY { get; private set; }
-
-        private Action<Grid> _onSelectRegion;
-
-        public Grid(int x, int y, Action<Grid> onSelect)
+        public Grid()
         {
-            Click += new EventHandler(onGridClick);
-            BackColor = notSelected;
-            BorderStyle = BorderStyle.FixedSingle;
-            GridX = x;
-            GridY = y;
-            _onSelectRegion = onSelect;
+            MouseDown += new MouseEventHandler(onMouseDown);
+            MouseMove += new MouseEventHandler(onMouseMove);
+            BackColor = Color.Black;
         }
 
-        private void onGridClick(object sender, EventArgs e)
+        private Point _onDownPos;
+        private void onMouseDown(object sender, MouseEventArgs e) => _onDownPos = e.Location;
+        private void onMouseMove(object sender, MouseEventArgs e)
         {
-            if (BackColor == onSelected)
+            if (e.Button == MouseButtons.Left)
             {
-                BackColor = notSelected;
-                return;
+                var pos = new Point(e.X + Left - _onDownPos.X, e.Y + Top - _onDownPos.Y);
+
+                if (pos.X + Width > 200)
+                    pos.X = 200 - Width;
+                if (pos.Y + Height > 200)
+                    pos.Y = 200 - Height;
+                if (pos.X < 0)
+                    pos.X = 0;
+                if (pos.Y < 0)
+                    pos.Y = 0;
+
+                Location = pos;
             }
-            BackColor = onSelected;
-            _onSelectRegion.Invoke(this);
         }
+
+        protected override void WndProc(ref Message m)
+        {
+            base.WndProc(ref m);
+            if (m.Msg == 0x84)
+            {  // Trap WM_NCHITTEST
+                var pos = this.PointToClient(new Point(m.LParam.ToInt32()));
+                if (pos.X >= this.ClientSize.Width - grab && pos.Y >= this.ClientSize.Height - grab)
+                    m.Result = new IntPtr(17);  // HT_BOTTOMRIGHT
+            }
+        }
+        private const int grab = 16;
     }
 }

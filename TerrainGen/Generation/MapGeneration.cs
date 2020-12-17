@@ -45,7 +45,7 @@ namespace TerrainGen
             _size = 1024;
             _scale = (1024f / _size) * 0.00333f;
 
-            _filterManager = new FilterManager(_size, 4);
+            _filterManager = new FilterManager(_size);
             _shapeBitmap = new Bitmap(_size, _size);
             _heightBitmap = new Bitmap(_size, _size);
             _moistureBitmap = new Bitmap(_size, _size);
@@ -62,12 +62,26 @@ namespace TerrainGen
         public void Resize(int size)
         {
             _size = size;
+            _filterManager.Resize(size);
             _shapeBitmap = new Bitmap(_size, _size);
             _heightBitmap = new Bitmap(_size, _size);
             _moistureBitmap = new Bitmap(_size, _size);
         }
 
-        public void ResetFilter(int quadCount) => _filterManager.Resize(_size, quadCount);
+        private void blankFill()
+        {
+            using (Graphics gfx = Graphics.FromImage(_shapeBitmap))
+                using (SolidBrush brush = new SolidBrush(Color.FromArgb(0, 0, 0, 0)))
+                    gfx.FillRectangle(brush, 0, 0, _size, _size);
+
+            using (Graphics gfx = Graphics.FromImage(_heightBitmap))
+                using (SolidBrush brush = new SolidBrush(Color.FromArgb(0, 0, 0, 0)))
+                    gfx.FillRectangle(brush, 0, 0, _size, _size);
+
+            using (Graphics gfx = Graphics.FromImage(_moistureBitmap))
+                using (SolidBrush brush = new SolidBrush(Color.FromArgb(0, 0, 0, 0)))
+                    gfx.FillRectangle(brush, 0, 0, _size, _size);
+        }
         
         public void SetSeed(long seed)
         {
@@ -76,9 +90,7 @@ namespace TerrainGen
         }
         public void SetSeed() => SetSeed(_random.Next());
         public long GetSeed() => _seed;
-
-        public void AddFilter(int qX, int qY, int type) => 
-            _filterManager.AddFilter(qX, qY, type);
+        public void AddFilter(int x, int y, int w, int h) => _filterManager.AddFilter(x, y, w, h);
 
         private int _workDone;
 
@@ -93,21 +105,6 @@ namespace TerrainGen
                     float height = _heightMap[x, y];
                     float moisture = _moistureMap[x, y];*/
 
-                    //var biome = _biomeGeneration.GetBiome(height);
-                    //Color color = Color.Black;
-
-                    /*switch (biome.Type)
-                    {
-                        case BiomeType.Meadow: color = Color.LightGreen; break;
-                        case BiomeType.Forest: color = Color.DarkGreen; break;
-                        case BiomeType.Desert: color = Color.Khaki; break;
-                        case BiomeType.Mountians: color = Color.DarkGray; break;
-                        case BiomeType.ScorchLands: color = Color.DarkRed; break;
-                        case BiomeType.Void: color = Color.Black; break;
-                    }
-
-                    if (shape < .01)
-                        color = Color.Black;*/
 
                     /*if (getRiver(moisture) && terrain < .75)
                         if (terrain <= .08f)
@@ -115,13 +112,28 @@ namespace TerrainGen
                         else
                             color = Color.Blue;*/
 
-                    var alpha1 = _shapeBitmap.GetPixel(x, y).A;
+                    var alpha1 = _shapeBitmap.GetPixel(x, y).A / 255.0f;
                     var alpha2 = _heightBitmap.GetPixel(x, y).A;
                     var alpha3 = _moistureBitmap.GetPixel(x, y).A;
 
-                    var totalAlpha = alpha1;
 
-                    bitmap.SetPixel(x, y, Color.FromArgb(totalAlpha, 0, 0, 0));
+                    var biome = _biomeGeneration.GetBiome(alpha1);
+                    Color color = Color.Black;
+
+                    switch (biome.Type)
+                    {
+                        case BiomeType.Meadow: color = Color.LightGreen; break;
+                        case BiomeType.Forest: color = Color.DarkGreen; break;
+                        case BiomeType.Desert: color = Color.LightGoldenrodYellow; break;
+                        case BiomeType.Mountians: color = Color.DarkGray; break;
+                        case BiomeType.ScorchLands: color = Color.DarkRed; break;
+                        case BiomeType.Void: color = Color.Pink; break;
+                    }
+
+                    if (alpha1 < .01)
+                        color = Color.Black;
+
+                    bitmap.SetPixel(x, y, color);
                 }
 
             if (_onDraw != null)
@@ -131,13 +143,14 @@ namespace TerrainGen
         public void Generate()
         {
             _workDone = 0;
+            blankFill();
 
             _workManager.QueueWork(new GenerateWork(() =>
             {
                 for (var x = 0; x < _size; x++)
                     for (var y = 0; y < _size; y++)
                     {
-                        float mapFilter = _noise.OctaveNoise(x, y, _scale, 16);
+                        float mapFilter = _noise.OctaveNoise(x, y, _scale, 8);
                         int filter = _filterManager.TotalFilterBitmap.GetPixel(x, y).A;
                         //float noiseFilter = (filter * _noise.OctaveNoise(x, y, _scale, 16, 0.5f)) / 2;
                         //float shapeAlpha = Math.Min(255, 255 * noiseFilter);

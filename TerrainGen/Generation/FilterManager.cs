@@ -8,24 +8,18 @@ namespace TerrainGen.Generation
     {
         public Bitmap TotalFilterBitmap { get; private set; }
         public int Size { get; private set; }
-        public int Quad { get; private set; }
-        public FilterManager(int size, int quad)
+        public FilterManager(int size)
         {
             Size = size;
-            Quad = quad;
-            _quadSize = Size / (int)Math.Sqrt(quad);
             TotalFilterBitmap = new Bitmap(Size, Size);
             blankFill();
         }
 
-        private int _quadSize = 0;
-        public void Resize(int size, int quadCount)
+        public void Resize(int size)
         {
             TotalFilterBitmap.Dispose();
 
             Size = size;
-            Quad = quadCount;
-            _quadSize = Size / Quad;
 
             TotalFilterBitmap = new Bitmap(Size, Size);
             blankFill();
@@ -37,28 +31,37 @@ namespace TerrainGen.Generation
                 using (SolidBrush brush = new SolidBrush(Color.FromArgb(0, 0, 0, 0)))
                     gfx.FillRectangle(brush, 0, 0, Size, Size);
         }
-        public void AddFilter(int qX, int qY, int filterType)
+
+        public void AddFilter(int x, int y, int width, int height)
         {
-            var rx = qX * _quadSize;
-            var ry = qY * _quadSize;
-            var qRadius = _quadSize / 2;
+            var scale = Size / 200.0f;
+            var mapX = x * scale;
+            var mapY = y * scale;
+            var mapWidth = width * scale;
+            var mapHeight = height * scale;
+            var radiusX = mapWidth / 2;
+            var radiusY = mapHeight / 2;
 
-            for (var x = 0; x < _quadSize; x++)
+            for (int rX = 0; rX < mapWidth; rX++)
             {
-                float dX = qRadius - Math.Abs(qRadius - x);
+                var dX = radiusX - Math.Abs(radiusX - rX);
 
-                for (var y = 0; y < _quadSize; y++)
+                for (int rY = 0; rY < mapHeight; rY++)
                 {
-                    float dY = qRadius - Math.Abs(qRadius - y);
-                    float delta = Math.Min(dX, dY) / (qRadius - 5.0f);
-                    float alpha = delta * 255.0f;
+                    var dY = radiusY - Math.Abs(radiusY - rY);
+                    var dMin = Math.Min(dX, dY);
+                    var dSize = Math.Min(radiusX, radiusY);
+
+                    var delta = dMin / dSize;
+                    var alpha = delta * 255.0f;
 
                     if (alpha > 255.0f)
                         alpha = 255.0f;
 
-                    TotalFilterBitmap.SetPixel(rx + x, ry + y, Color.FromArgb((int)alpha, Color.Black));
+                    TotalFilterBitmap.SetPixel((int)mapX + rX, (int)mapY + rY, Color.FromArgb((int)alpha, Color.Black));
                 }
             }
         }
+        
     }
 }

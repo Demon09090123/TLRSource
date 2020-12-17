@@ -45,10 +45,8 @@ namespace TerrainGen
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.regionMap = new System.Windows.Forms.PictureBox();
             this.filterRegionlbl = new System.Windows.Forms.Label();
-            this.fourbtn = new System.Windows.Forms.Button();
             this.twoBtn = new System.Windows.Forms.Button();
-            this.eightBtn = new System.Windows.Forms.Button();
-            this.sixteenBtn = new System.Windows.Forms.Button();
+            this.applyBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.canvas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -70,7 +68,7 @@ namespace TerrainGen
             // generateBtn
             // 
             this.generateBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
-            this.generateBtn.Location = new System.Drawing.Point(851, 459);
+            this.generateBtn.Location = new System.Drawing.Point(850, 487);
             this.generateBtn.Name = "generateBtn";
             this.generateBtn.Size = new System.Drawing.Size(129, 39);
             this.generateBtn.TabIndex = 2;
@@ -112,7 +110,7 @@ namespace TerrainGen
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.pictureBox1.Location = new System.Drawing.Point(816, 448);
+            this.pictureBox1.Location = new System.Drawing.Point(815, 476);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(198, 5);
             this.pictureBox1.TabIndex = 13;
@@ -121,7 +119,7 @@ namespace TerrainGen
             // pictureBox2
             // 
             this.pictureBox2.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.pictureBox2.Location = new System.Drawing.Point(816, 504);
+            this.pictureBox2.Location = new System.Drawing.Point(815, 532);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(198, 5);
             this.pictureBox2.TabIndex = 14;
@@ -194,9 +192,9 @@ namespace TerrainGen
             // regionMap
             // 
             this.regionMap.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.regionMap.Location = new System.Drawing.Point(824, 262);
+            this.regionMap.Location = new System.Drawing.Point(819, 241);
             this.regionMap.Name = "regionMap";
-            this.regionMap.Size = new System.Drawing.Size(180, 180);
+            this.regionMap.Size = new System.Drawing.Size(200, 200);
             this.regionMap.TabIndex = 36;
             this.regionMap.TabStop = false;
             // 
@@ -210,55 +208,33 @@ namespace TerrainGen
             this.filterRegionlbl.TabIndex = 37;
             this.filterRegionlbl.Text = "Filter Region";
             // 
-            // fourbtn
-            // 
-            this.fourbtn.Location = new System.Drawing.Point(826, 233);
-            this.fourbtn.Name = "fourbtn";
-            this.fourbtn.Size = new System.Drawing.Size(75, 23);
-            this.fourbtn.TabIndex = 38;
-            this.fourbtn.Text = "4x4 Grid";
-            this.fourbtn.UseVisualStyleBackColor = true;
-            this.fourbtn.Click += new System.EventHandler(this.fourbtn_Click);
-            // 
             // twoBtn
             // 
-            this.twoBtn.Location = new System.Drawing.Point(826, 204);
+            this.twoBtn.Location = new System.Drawing.Point(819, 212);
             this.twoBtn.Name = "twoBtn";
             this.twoBtn.Size = new System.Drawing.Size(75, 23);
             this.twoBtn.TabIndex = 39;
-            this.twoBtn.Text = "2x2 Grid";
+            this.twoBtn.Text = "addRegion";
             this.twoBtn.UseVisualStyleBackColor = true;
             this.twoBtn.Click += new System.EventHandler(this.twoBtn_Click);
             // 
-            // eightBtn
+            // applyBtn
             // 
-            this.eightBtn.Location = new System.Drawing.Point(927, 204);
-            this.eightBtn.Name = "eightBtn";
-            this.eightBtn.Size = new System.Drawing.Size(75, 23);
-            this.eightBtn.TabIndex = 41;
-            this.eightBtn.Text = "8x8 Grid";
-            this.eightBtn.UseVisualStyleBackColor = true;
-            this.eightBtn.Click += new System.EventHandler(this.eightBtn_Click);
-            // 
-            // sixteenBtn
-            // 
-            this.sixteenBtn.Location = new System.Drawing.Point(927, 233);
-            this.sixteenBtn.Name = "sixteenBtn";
-            this.sixteenBtn.Size = new System.Drawing.Size(75, 23);
-            this.sixteenBtn.TabIndex = 40;
-            this.sixteenBtn.Text = "16x16 Grid";
-            this.sixteenBtn.UseVisualStyleBackColor = true;
-            this.sixteenBtn.Click += new System.EventHandler(this.sixteenBtn_Click);
+            this.applyBtn.Location = new System.Drawing.Point(819, 447);
+            this.applyBtn.Name = "applyBtn";
+            this.applyBtn.Size = new System.Drawing.Size(75, 23);
+            this.applyBtn.TabIndex = 40;
+            this.applyBtn.Text = "apply";
+            this.applyBtn.UseVisualStyleBackColor = true;
+            this.applyBtn.Click += new System.EventHandler(this.applyBtn_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1026, 812);
-            this.Controls.Add(this.eightBtn);
-            this.Controls.Add(this.sixteenBtn);
+            this.Controls.Add(this.applyBtn);
             this.Controls.Add(this.twoBtn);
-            this.Controls.Add(this.fourbtn);
             this.Controls.Add(this.filterRegionlbl);
             this.Controls.Add(this.regionMap);
             this.Controls.Add(this.pictureBox6);
@@ -308,10 +284,8 @@ namespace TerrainGen
         private System.Windows.Forms.PictureBox pictureBox6;
         private System.Windows.Forms.PictureBox regionMap;
         private System.Windows.Forms.Label filterRegionlbl;
-        private System.Windows.Forms.Button fourbtn;
         private System.Windows.Forms.Button twoBtn;
-        private System.Windows.Forms.Button eightBtn;
-        private System.Windows.Forms.Button sixteenBtn;
+        private System.Windows.Forms.Button applyBtn;
     }
 }
 
