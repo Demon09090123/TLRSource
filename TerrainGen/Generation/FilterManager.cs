@@ -9,8 +9,6 @@ namespace TerrainGen.Generation
         public Bitmap TotalFilterBitmap { get; private set; }
         public int Size { get; private set; }
         public int Quad { get; private set; }
-
-        public FilterMap[,] _currentFilters;
         public FilterManager(int size, int quad)
         {
             Size = size;
@@ -27,10 +25,9 @@ namespace TerrainGen.Generation
 
             Size = size;
             Quad = quadCount;
-            _quadSize = Size / (int)Math.Sqrt(Quad);
+            _quadSize = Size / Quad;
 
             TotalFilterBitmap = new Bitmap(Size, Size);
-            _currentFilters = new FilterMap[Quad, Quad];
             blankFill();
         }
 
@@ -44,38 +41,24 @@ namespace TerrainGen.Generation
         {
             var rx = qX * _quadSize;
             var ry = qY * _quadSize;
+            var qRadius = _quadSize / 2;
 
             for (var x = 0; x < _quadSize; x++)
             {
-                float distX = Math.Abs(x - _quadSize * 0.5f);
+                float dX = qRadius - Math.Abs(qRadius - x);
+
                 for (var y = 0; y < _quadSize; y++)
                 {
-                    float distY = Math.Abs(y - _quadSize * 0.5f);
-                    float delta = Math.Max(distX, distY) / (_quadSize * 0.5f - 10.0f);
-                    int gradient =  (int)(1.0f - delta * delta);
+                    float dY = qRadius - Math.Abs(qRadius - y);
+                    float delta = Math.Min(dX, dY) / (qRadius - 5.0f);
+                    float alpha = delta * 255.0f;
 
-                    TotalFilterBitmap.SetPixel(rx + x, ry + y, Color.FromArgb(gradient, Color.Black));
+                    if (alpha > 255.0f)
+                        alpha = 255.0f;
+
+                    TotalFilterBitmap.SetPixel(rx + x, ry + y, Color.FromArgb((int)alpha, Color.Black));
                 }
             }
-        }
-    }
-    public struct Position
-    {
-        public int X { get; private set; }
-        public int Y { get; private set; }
-
-        public Position(int x, int y)
-        {
-            X = x;
-            Y = y;
-        }
-
-        public static bool operator ==(Position left, Position right) => left.X == right.X && left.Y == right.Y;
-        public static bool operator !=(Position left, Position right) => left.X != right.X || left.Y != right.Y;
-        public override bool Equals(object obj)
-        {
-            var pos = (Position)obj;
-            return X == pos.X && Y == pos.Y;
         }
     }
 }

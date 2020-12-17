@@ -137,9 +137,12 @@ namespace TerrainGen
                 for (var x = 0; x < _size; x++)
                     for (var y = 0; y < _size; y++)
                     {
+                        float mapFilter = _noise.OctaveNoise(x, y, _scale, 16);
                         int filter = _filterManager.TotalFilterBitmap.GetPixel(x, y).A;
-                        float noiseFilter = (filter * _noise.OctaveNoise(x, y, _scale, 16, 0.5f)) / 2;
-                        float shapeAlpha = Math.Min(255, 255 * noiseFilter);
+                        //float noiseFilter = (filter * _noise.OctaveNoise(x, y, _scale, 16, 0.5f)) / 2;
+                        //float shapeAlpha = Math.Min(255, 255 * noiseFilter);
+
+                        filter = (int)Math.Min(255, filter * mapFilter);
 
                         _shapeBitmap.SetPixel(x, y, Color.FromArgb(filter, 0, 0, 0));
                     }
@@ -147,7 +150,7 @@ namespace TerrainGen
 
             Task.Factory.StartNew(() =>
             {
-                while (_workDone != 3)
+                while (_workDone != 1)
                     Thread.Sleep(50);
 
                 Console.WriteLine("Processing");

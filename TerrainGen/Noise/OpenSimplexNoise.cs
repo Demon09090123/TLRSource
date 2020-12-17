@@ -140,7 +140,7 @@ namespace TerrainGen
             var normalized = (noise + NORMALIZED) / (NORMALIZED * 2);
 
             //clamp
-            if (normalized > 1f)
+            if (normalized > 1.0f)
                 normalized = 1.0f;
             if (normalized < 0.0f)
                 normalized = 0.0f;

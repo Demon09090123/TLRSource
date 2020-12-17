@@ -79,7 +79,7 @@ namespace TerrainGen
             var h = regionMap.Height;
             var gridSize = w / _curQuadSize;
 
-            _mapGenerator.ResetFilter(gridSize);
+            _mapGenerator.ResetFilter(_curQuadSize);
 
             for (var x = 0; x < _curQuadSize; x++)
                 for (var y = 0; y < _curQuadSize; y++)
@@ -97,7 +97,7 @@ namespace TerrainGen
         private void onSelectRegion(Grid g)
         {
             _mapGenerator.AddFilter(g.GridX, g.GridY, 0);
-            Console.WriteLine("FilterAdded!");
+            Console.WriteLine($"FilterAdded! {g.GridX} {g.GridY}");
         }
 
         private void twoBtn_Click(object sender, EventArgs e) => refreshAndUpdateGraph(4);
