@@ -98,8 +98,71 @@ namespace TerrainGen
                 source[r] = source[i];
             }
         }
+        public enum GenerationType
+        {
+            Normal = 0,
+            Rigid = 1
+        }
 
-        public float OctaveNoise(float x, float y, float scale, float octaves, float persistence = 0.5f, float lacunarity = 2.0f)
+        public float[,] Noise2D(int width, int height, float scale, int octaves, float persistence = 0.5f,
+            float lacunarity = 2.0f, GenerationType type = GenerationType.Normal)
+        {
+            float[,] noise2D = new float[width, height];
+
+            float min = float.MaxValue;
+            float max = float.MinValue;
+            float radWidth = width / 2;
+            float radHeight = height / 2;
+
+            for (var y = 0; y < height; y++)
+                for (var x = 0; x < width; x++)
+                {
+                    float n = 0.0f;
+                    switch(type)
+                    {
+                        case GenerationType.Normal:
+                            n = Noise(x - radWidth, y - radHeight, scale, octaves, persistence, lacunarity);
+                            continue;
+                        case GenerationType.Rigid:
+                            n = RigidNoise(x - radWidth, y - radHeight, scale, octaves, persistence, lacunarity);
+                            continue;
+                    }
+
+                    if (n > max)
+                        max = n;
+                    else if (n < min)
+                        min = n;
+
+                    noise2D[x, y] = n;
+                }
+
+            for (var y = 0; y < height; y++)
+                for (var x = 0; x < width; x++)
+                {
+                    var n = noise2D[x, y];
+                    var inLerp = Utils.clamp((n - min) / (max - min));
+                    noise2D[x, y] = inLerp;
+                }
+
+            return noise2D;
+        }
+
+        public float RigidNoise(float x, float y, float scale, int octave, float persistence = 0.5f, float lacunarity = 2.0f)
+        {
+            float sum = 1.0f - Evaluate(x, y, scale);
+            float amplitude = 1.0f;
+            float frequency = 1.0f;
+
+            for (var o = 0; o < octave; o++)
+            {
+                amplitude *= persistence;
+                sum -= (1 - Evaluate(x * frequency, y * frequency, scale)) * amplitude;
+                frequency *= lacunarity;
+            }
+
+            return sum;
+        }
+        public float Noise(float x, float y, float scale, int octaves, float persistence = 0.5f, float lacunarity = 2.0f)
         {
             float total = 0;
             float frequency = 1.0f;
@@ -107,7 +170,7 @@ namespace TerrainGen
 
             for (int i = 0; i < octaves; i++)
             {
-                total += NormalizedEvaluate(x * frequency, y * frequency, scale) * amplitude;
+                total += Evaluate(x * frequency, y * frequency, scale) * amplitude;
 
                 amplitude *= persistence;
                 frequency *= lacunarity;
@@ -115,37 +178,6 @@ namespace TerrainGen
 
 
             return total;
-        }
-
-        public float RigidOctaveNoise(float x, float y, float scale, int octave, float persistence = 0.5f, float lacunarity = 2.0f)
-        {
-            float sum = 1.0f - NormalizedEvaluate(x, y, scale);
-            float amplitude = 1.0f;
-            float frequency = 1.0f;
-
-            for (var o = 0; o < octave; o++)
-            {
-                amplitude *= persistence;
-                sum -= (1 - NormalizedEvaluate(x * frequency, y * frequency, scale)) * amplitude;
-                frequency *= lacunarity;
-            }
-
-            return sum;
-        }
-        private static float NORMALIZED = 0.865f;
-
-        public float NormalizedEvaluate(float x, float y, float scale)
-        {
-            var noise = Evaluate(x, y, scale);
-            var normalized = (noise + NORMALIZED) / (NORMALIZED * 2);
-
-            //clamp
-            if (normalized > 1.0f)
-                normalized = 1.0f;
-            if (normalized < 0.0f)
-                normalized = 0.0f;
-
-            return normalized;
         }
 
         public float Evaluate(float x, float y, float scale) => Evaluate(x * scale, y * scale);

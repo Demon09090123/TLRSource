@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
-using TerrainGen.Generation.Shape;
 
 namespace TerrainGen
 {
@@ -81,7 +80,7 @@ namespace TerrainGen
             {
                 var grid = c as Grid;
 
-                _mapGenerator.AddFilter(grid.Location.X, grid.Location.Y, grid.Width, grid.Height);
+                _mapGenerator.AddFilter(grid.Location.X, grid.Location.Y, grid.Height);
             }
         }
     }

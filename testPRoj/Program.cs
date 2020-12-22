@@ -35,6 +35,15 @@ namespace testPRoj
     {
         static void Main(string[] args)
         {
+            var f = new float[100, 100];
+
+            for(var x = 0; x < 100; x++)
+            {
+                for(var y = 0; y < 100; y++)
+                {
+                    Console.WriteLine(f[x, y]);
+                }
+            }
         }
     }
 }
