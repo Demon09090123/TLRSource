@@ -122,6 +122,10 @@ namespace TerrainGen
                 var pos = this.PointToClient(new Point(m.LParam.ToInt32()));
                 if (pos.X >= this.ClientSize.Width - grab && pos.Y >= this.ClientSize.Height - grab)
                     m.Result = new IntPtr(17);  // HT_BOTTOMRIGHT
+
+                var max = Math.Max(Width, Height);
+                Width = max;
+                Height = max;
             }
         }
         private const int grab = 16;

@@ -22,9 +22,12 @@ namespace TerrainGen.Generation
             for (var y = 0; y < size; y++)
                 for (var x = 0; x < size; x++)
                 {
-                    var dX = Math.Abs(x / (float)size * 2.0f - 1.0f);
-                    var dY = Math.Abs(y / (float)size * 2.0f - 1.0f);
-                    var dist = Math.Max(dX, dY);
+                    /*float xRatio = x / (float)size * 2.0f - 1.0f;
+                    float yRatio = y / (float)size * 2.0f - 1.0f;*/
+                    float xRatio = x - size * 0.5f;
+                    float yRatio = y - size * 0.5f;
+
+                    float dist = Math.Max( Math.Abs(xRatio), Math.Abs(yRatio) ) / (size * 0.5f);
 
                     fMap[x, y] = Evaluate(dist);
                 }
@@ -34,7 +37,7 @@ namespace TerrainGen.Generation
 
         private static float Evaluate(float v)
         {
-            float b = 1.0f;
+            float b = 5.0f;
             var v2 = v * v;
             var d = (float)Math.Pow((b - b * v), 2);
 

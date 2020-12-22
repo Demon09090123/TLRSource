@@ -84,10 +84,11 @@ namespace TerrainGen
                     {
                         var n = noiseMap[x, y];
                         var f = filterMap[x, y];
-                        int alpha = 0;
+                        var total = n + f;
+                        int alpha = (int)Utils.clamp(total * 255, 0, 255);
 
-                        if (f > 0.0f)
-                            alpha = (int)(Utils.clamp(n + (1.0f - f)) * 255.0f);
+                        if (f == 0f)
+                            alpha = 255;
 
                         bitmap.SetPixel(x, y, Color.FromArgb(alpha, 0, 0, 0));
                     }

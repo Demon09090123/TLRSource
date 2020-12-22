@@ -122,10 +122,10 @@ namespace TerrainGen
                     {
                         case GenerationType.Normal:
                             n = Noise(x - radWidth, y - radHeight, scale, octaves, persistence, lacunarity);
-                            continue;
+                            break;
                         case GenerationType.Rigid:
                             n = RigidNoise(x - radWidth, y - radHeight, scale, octaves, persistence, lacunarity);
-                            continue;
+                            break;
                     }
 
                     if (n > max)
@@ -175,7 +175,6 @@ namespace TerrainGen
                 amplitude *= persistence;
                 frequency *= lacunarity;
             }
-
 
             return total;
         }
