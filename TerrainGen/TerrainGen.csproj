@@ -75,7 +75,6 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resources\ResourceManager.cs" />
-    <Compile Include="TerrainGenerator.cs" />
     <Compile Include="Utils.cs" />
     <Compile Include="WorkManager.cs" />
     <EmbeddedResource Include="Form1.resx">

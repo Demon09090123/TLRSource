@@ -37,7 +37,7 @@ namespace TerrainGen.Generation
 
         private static float Evaluate(float v)
         {
-            float b = 5.0f;
+            float b = 2.0f;
             var v2 = v * v;
             var d = (float)Math.Pow((b - b * v), 2);
 

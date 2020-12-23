@@ -4,88 +4,91 @@ using System.Linq;
 
 namespace TerrainGen
 {
-    public class BiomeGeneration
-    {
-        private readonly List<Biome> _biomes = new List<Biome>()
-        {
-            new Biome(BiomeType.Meadow, new Threshold(.78f, 2f), new Threshold(-1, -1)),
-            new Biome(BiomeType.Forest, new Threshold(.6f, .78f), new Threshold(.6f, .78f)),
-            new Biome(BiomeType.Desert, new Threshold(.4f, .6f), new Threshold(.4f, .6f)),
-            new Biome(BiomeType.Mountians, new Threshold(.23f, .4f), new Threshold(.25f, .4f)),
-            new Biome(BiomeType.ScorchLands, new Threshold(.08f, .23f), new Threshold(.08f, .1f)),
-            new Biome(BiomeType.Void, new Threshold(.05f, .08f), new Threshold(-1, -1))
-        };
-
-
-        public BiomeGeneration()
-        {
-
-        }
-
-        public Biome GetBiome(float height) //HANDLE HEIGHT LATER
-        {
-            return _biomes.Where(_ => _.IsValidTerrain(height)).FirstOrDefault();
-        }
-    }
-
-    public struct Threshold
-    {
-        public float Min { get; private set; }
-        public float Max { get; private set; }
-
-        public Threshold(float min, float max)
-        {
-            Min = min;
-            Max = max;
-        }
-
-        public bool CompareTo(float factor) => factor < Max && factor > Min;
-        public static Threshold Blank() => new Threshold(-1, -1);
-    }
-
     public enum BiomeType
     {
-        //main-Biomes
-        Meadow,
-        Forest,
+        GrassLand,
         Desert,
-        Mountians,
-        ScorchLands,
-        //sub-Biomes
+        WetLand,
+        HighLand,
         Swamp,
-        Hills,
-        SnowCap,
-        LavaLake,
-        //void
-        Void
+        Mountian,
+        Snow,
+        None
     }
-
-    public struct Biome
+    public class BiomeGeneration
     {
-        public BiomeType Type { get; private set; }
-        public Threshold Terrain { get; private set; }
-        public Threshold Height { get; private set; }
-
-        public Biome(BiomeType biome, Threshold terrain, Threshold height)
+        public struct Biome
         {
-            Type = biome;
-            Terrain = terrain;
-            Height = height;
-        }
+            public float Weight { get; set; }
+            public float Height { get; set; }
+            public float Moisture { get; set; }
+            public BiomeType Type { get; set; }
 
-        public BiomeType GetBiomeType()
-        {
-            switch (Type) //HANDLE SUB_BIOMES
-            {  
-                case BiomeType.Forest: return BiomeType.Forest;
-                case BiomeType.Desert: return BiomeType.Desert;
-                case BiomeType.Mountians: return BiomeType.Mountians;
-                case BiomeType.ScorchLands: return BiomeType.ScorchLands;
-                default: return Type;
+            public Biome(float weight, float maxHeight, float maxMoisture, BiomeType type)
+            {
+                Weight = weight;
+                Height = maxHeight;
+                Moisture = maxMoisture;
+                Type = type;
+            }
+
+            public bool Validate(float height, float moisture)
+            {
+                var maxHeight = Height;
+                var maxMoisture = Moisture;
+
+                return height <= maxHeight && moisture <= maxMoisture;
             }
         }
 
-        public bool IsValidTerrain(float compareTo) => Terrain.CompareTo(compareTo);
-        public bool IsValidHeight(float compareTo) => Height.CompareTo(compareTo);
+        private const int SIZE = 6;
+
+        private static readonly BiomeType[,] _biomes = new BiomeType[SIZE, SIZE - 1]
+            {   //.2f                   .4f                  .6f                 .8                  .1                 1f      
+                { BiomeType.Desert,  BiomeType.Desert,    BiomeType.HighLand, BiomeType.Mountian, BiomeType.Mountian}, // .0
+                { BiomeType.Desert,  BiomeType.GrassLand,    BiomeType.HighLand, BiomeType.Mountian, BiomeType.Mountian}, // .2
+                { BiomeType.WetLand, BiomeType.GrassLand, BiomeType.GrassLand, BiomeType.Mountian, BiomeType.Mountian}, //.4
+                { BiomeType.WetLand,   BiomeType.GrassLand,  BiomeType.HighLand, BiomeType.Mountian, BiomeType.Snow}, // .6
+                { BiomeType.WetLand,   BiomeType.WetLand,   BiomeType.HighLand, BiomeType.Snow,     BiomeType.Snow}, // .8
+                { BiomeType.Swamp,     BiomeType.Swamp,     BiomeType.Snow,     BiomeType.Snow,     BiomeType.Snow} // 1
+            };
+
+        private static List<Biome> _biomesList;
+
+        public static void Load()
+        {
+            _biomesList = new List<Biome>();
+
+            Console.WriteLine(_biomes.GetLength(0)); //6
+            Console.WriteLine(_biomes.GetLength(1)); //5
+
+            for (var y = 0; y < _biomes.GetLength(0); y++)
+            {
+                var maxHeight = (y + 1) * .2f;
+                for (var x = 0; x < _biomes.GetLength(1); x++)
+                {
+                    var maxMoisture = x * .2f;
+
+                    _biomesList.Add(new Biome(0, maxHeight, maxMoisture, _biomes[y, x]));
+                }
+            }
+            _biomesList.Reverse();
+
+            Console.WriteLine("POL");
+        }
+
+        public static BiomeType GetBiome(float h, float m) //height, moisture
+        {
+            var type = BiomeType.None;
+
+            if (h >= .1f)
+            {
+                foreach (var biome in _biomesList)
+                    if (biome.Validate(h, m))
+                        type = biome.Type;
+            }
+
+            return type;
+        }
     }
 }

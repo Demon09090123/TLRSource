@@ -65,24 +65,6 @@ namespace TerrainGen
         {
             canvas.Image = Utils.ResizeImage(map, canvas.Width, canvas.Height);
         }
-
-        private void twoBtn_Click(object sender, EventArgs e)
-        {
-            var grid = new Grid();
-            grid.Size = new Size(40, 40);
-            grid.Location = new Point(10, 10);
-            regionMap.Controls.Add(grid);
-        }
-
-        private void applyBtn_Click(object sender, EventArgs e)
-        {
-            foreach(Control c in regionMap.Controls)
-            {
-                var grid = c as Grid;
-
-                _mapGenerator.AddFilter(grid.Location.X, grid.Location.Y, grid.Height);
-            }
-        }
     }
     public class Grid : PictureBox
     {
