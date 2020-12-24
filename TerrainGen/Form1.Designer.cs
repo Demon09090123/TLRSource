@@ -127,7 +127,7 @@ namespace TerrainGen
             this.sizeBox.Name = "sizeBox";
             this.sizeBox.Size = new System.Drawing.Size(145, 20);
             this.sizeBox.TabIndex = 15;
-            this.sizeBox.Text = "1024";
+            this.sizeBox.Text = "2048";
             this.sizeBox.KeyUp += new System.Windows.Forms.KeyEventHandler(this.sizeBox_KeyUp);
             // 
             // label1

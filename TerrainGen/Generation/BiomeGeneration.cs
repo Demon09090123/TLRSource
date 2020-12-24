@@ -1,94 +1,137 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Drawing;
 
 namespace TerrainGen
 {
     public enum BiomeType
     {
-        GrassLand,
+        None,
+        Beach,
+        Plains,
+        Forest,
         Desert,
+        ScorchLand,
         WetLand,
         HighLand,
         Swamp,
         Mountian,
-        Snow,
-        None
+        Snow
     }
+
     public class BiomeGeneration
     {
-        public struct Biome
+        private static BiomeType getLowBiomes(float m, float h)
         {
-            public float Weight { get; set; }
-            public float Height { get; set; }
-            public float Moisture { get; set; }
-            public BiomeType Type { get; set; }
+            if (m < .45f && h > .6f)
+                return BiomeType.Desert;
+            else if (m > .7f && h > .2f)
+                return BiomeType.WetLand;
 
-            public Biome(float weight, float maxHeight, float maxMoisture, BiomeType type)
-            {
-                Weight = weight;
-                Height = maxHeight;
-                Moisture = maxMoisture;
-                Type = type;
-            }
-
-            public bool Validate(float height, float moisture)
-            {
-                var maxHeight = Height;
-                var maxMoisture = Moisture;
-
-                return height <= maxHeight && moisture <= maxMoisture;
-            }
+            return BiomeType.Plains;
         }
 
-        private const int SIZE = 6;
-
-        private static readonly BiomeType[,] _biomes = new BiomeType[SIZE, SIZE - 1]
-            {   //.2f                   .4f                  .6f                 .8                  .1                 1f      
-                { BiomeType.Desert,  BiomeType.Desert,    BiomeType.HighLand, BiomeType.Mountian, BiomeType.Mountian}, // .0
-                { BiomeType.Desert,  BiomeType.GrassLand,    BiomeType.HighLand, BiomeType.Mountian, BiomeType.Mountian}, // .2
-                { BiomeType.WetLand, BiomeType.GrassLand, BiomeType.GrassLand, BiomeType.Mountian, BiomeType.Mountian}, //.4
-                { BiomeType.WetLand,   BiomeType.GrassLand,  BiomeType.HighLand, BiomeType.Mountian, BiomeType.Snow}, // .6
-                { BiomeType.WetLand,   BiomeType.WetLand,   BiomeType.HighLand, BiomeType.Snow,     BiomeType.Snow}, // .8
-                { BiomeType.Swamp,     BiomeType.Swamp,     BiomeType.Snow,     BiomeType.Snow,     BiomeType.Snow} // 1
-            };
-
-        private static List<Biome> _biomesList;
-
-        public static void Load()
+        private static BiomeType getMidBiomes(float m, float h)
         {
-            _biomesList = new List<Biome>();
-
-            Console.WriteLine(_biomes.GetLength(0)); //6
-            Console.WriteLine(_biomes.GetLength(1)); //5
-
-            for (var y = 0; y < _biomes.GetLength(0); y++)
-            {
-                var maxHeight = (y + 1) * .2f;
-                for (var x = 0; x < _biomes.GetLength(1); x++)
-                {
-                    var maxMoisture = x * .2f;
-
-                    _biomesList.Add(new Biome(0, maxHeight, maxMoisture, _biomes[y, x]));
-                }
-            }
-            _biomesList.Reverse();
-
-            Console.WriteLine("POL");
+            if (m < .45f && h > .7f)
+                return BiomeType.ScorchLand;
+            else if (m > .7f && h > .5f)
+                return BiomeType.Swamp;
+            return BiomeType.Forest;
         }
 
-        public static BiomeType GetBiome(float h, float m) //height, moisture
+        private static BiomeType getHighBiomes(float m, float h)
         {
-            var type = BiomeType.None;
+            if (m < .45f && h > .7f)
+                return BiomeType.ScorchLand;
+            else if (m > .65f && h > .5f)
+                return BiomeType.Swamp;
+            else if (m > .5f && h < .35f)
+                return BiomeType.Snow;
+            return BiomeType.HighLand;
+        }
 
-            if (h >= .1f)
+        private static BiomeType getMountianBiomes(float m, float h)
+        {
+            if (h < .2f && m > .2f)
+                return BiomeType.Snow;
+            return BiomeType.Mountian;
+        }
+
+        public static BiomeType GetBiome(float height, float moisture, float heat) //height, moisture, heat
+        {
+            if (height > .005f)
             {
-                foreach (var biome in _biomesList)
-                    if (biome.Validate(h, m))
-                        type = biome.Type;
+                if (height < .008)
+                    return BiomeType.Beach;
+                else if (height < .13f)
+                    return getLowBiomes(moisture, heat);
+                else if (height < .35f)
+                    return getMidBiomes(moisture, heat);
+                else if (height < .57f)
+                    return getHighBiomes(moisture, heat);
+                else if (height <= 1f)
+                    return getMountianBiomes(moisture, heat);
             }
+            return BiomeType.None;
+        }
 
-            return type;
+        public static ushort GetBiomeObjectType(BiomeType t)
+        {
+            switch (t)
+            {
+                case BiomeType.Beach:
+                    return 0xbd;
+                case BiomeType.Plains:
+                    return 0x46;
+                case BiomeType.Desert:
+                    return 0xf7;
+                case BiomeType.WetLand:
+                    return 0x57;
+                case BiomeType.Forest:
+                    return 0x48;
+                case BiomeType.HighLand:
+                    return 0x47;
+                case BiomeType.ScorchLand:
+                    return 0xf6;
+                case BiomeType.Swamp:
+                    return 0x56;
+                case BiomeType.Snow:
+                    return 0xb9;
+                case BiomeType.Mountian:
+                    return 0x60;
+                case BiomeType.None:
+                    return 0xbc;
+            }
+            return 0xbc;
+        }
+
+        public static Color GetBiomeColor(BiomeType t)
+        {
+            switch(t)
+            {
+                case BiomeType.Beach:
+                    return Color.LightYellow;
+                case BiomeType.Plains:
+                    return Color.ForestGreen;
+                case BiomeType.Desert:
+                    return Color.Yellow;
+                case BiomeType.WetLand:
+                    return Color.SlateBlue;
+                case BiomeType.Forest:
+                    return Color.Green;
+                case BiomeType.HighLand:
+                    return Color.DarkOliveGreen;
+                case BiomeType.ScorchLand:
+                    return Color.DarkOrange;
+                case BiomeType.Swamp:
+                    return Color.DarkSlateBlue;
+                case BiomeType.Snow:
+                    return Color.White;
+                case BiomeType.Mountian:
+                    return Color.Gray;
+                case BiomeType.None:
+                    return Color.Black;
+            }
+            return Color.Black;
         }
     }
 }

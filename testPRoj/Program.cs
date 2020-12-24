@@ -1,49 +1,29 @@
 ﻿using System;
-using System.Collections.Concurrent;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Drawing;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace testPRoj
 {
-    public class Position
-    {
-        public int X;
-        public int Y;
-
-        public Position(int x, int y)
-        {
-            X = x;
-            Y = y;
-        }
-
-        public override bool Equals(object obj)
-        {
-            var pos = obj as Position;
-            return X == pos.X && Y == pos.Y;
-        }
-
-        public override int GetHashCode() => GetHashCode();
-
-        public static bool operator ==(Position left, Position right) => left.X == right.X && left.Y == right.Y;
-
-        public static bool operator !=(Position left, Position right) => left.X != right.X || left.Y != right.Y;
-    }
     class Program
     {
         static void Main(string[] args)
         {
-            var f = new float[100, 100];
+            var size = 50;
+            float radius = size / 2.0f;
 
-            for(var x = 0; x < 100; x++)
+            for (var y = 0; y < size; y++)
             {
-                for(var y = 0; y < 100; y++)
+                for (var x = 0; x < size; x++)
                 {
-                    Console.WriteLine(f[x, y]);
+                    float xRatio = Math.Abs((x / radius) - 1.0f);
+                    float yRatio = Math.Abs((y / radius) - 1.0f);
+
+                    float dist = Math.Max(Math.Abs(xRatio), Math.Abs(yRatio));
+
+                    Console.Write(dist + "|");
                 }
+                Console.WriteLine();
             }
+            Console.ReadLine();
         }
     }
+    
 }

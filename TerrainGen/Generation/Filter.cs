@@ -19,27 +19,27 @@ namespace TerrainGen.Generation
         {
             var fMap = new float[size, size];
 
+            float radius = size / 2.0f;
+
             for (var y = 0; y < size; y++)
                 for (var x = 0; x < size; x++)
                 {
-                    /*float xRatio = x / (float)size * 2.0f - 1.0f;
-                    float yRatio = y / (float)size * 2.0f - 1.0f;*/
-                    float xRatio = x - size * 0.5f;
-                    float yRatio = y - size * 0.5f;
+                    float xRatio = Math.Abs((x / radius) - 1.0f);
+                    float yRatio = Math.Abs((y / radius) - 1.0f);
+                     
+                    float dist = Math.Max( Math.Abs(xRatio), Math.Abs(yRatio));
 
-                    float dist = Math.Max( Math.Abs(xRatio), Math.Abs(yRatio) ) / (size * 0.5f);
-
-                    fMap[x, y] = Evaluate(dist);
+                    fMap[x, y] = 1.0f - (float)Evaluate(dist);
                 }
 
             return fMap;
         }
 
-        private static float Evaluate(float v)
+        private static double Evaluate(float v)
         {
-            float b = 2.0f;
-            var v2 = v * v;
-            var d = (float)Math.Pow((b - b * v), 2);
+            float b = 1.4f;
+            var v2 = Math.Pow(v, 3);
+            var d = Math.Pow((b - b * v), 3);
 
             return v2 / (v2 + d);
         }

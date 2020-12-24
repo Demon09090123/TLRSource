@@ -54,62 +54,16 @@ namespace TerrainGen
             _mapGenerator.Generate();
         }
 
-        private delegate void onDraw(Bitmap map);
+        private delegate void onDraw(Image map);
 
-        private void drawMap(Bitmap pic)
+        private void drawMap(Image pic)
         {
             canvas.BeginInvoke(new onDraw(draw), pic);
         }
 
-        private void draw(Bitmap map)
+        private void draw(Image map)
         {
             canvas.Image = Utils.ResizeImage(map, canvas.Width, canvas.Height);
         }
-    }
-    public class Grid : PictureBox
-    {
-        public Grid()
-        {
-            MouseDown += new MouseEventHandler(onMouseDown);
-            MouseMove += new MouseEventHandler(onMouseMove);
-            BackColor = Color.Black;
-        }
-
-        private Point _onDownPos;
-        private void onMouseDown(object sender, MouseEventArgs e) => _onDownPos = e.Location;
-        private void onMouseMove(object sender, MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Left)
-            {
-                var pos = new Point(e.X + Left - _onDownPos.X, e.Y + Top - _onDownPos.Y);
-
-                if (pos.X + Width > 200)
-                    pos.X = 200 - Width;
-                if (pos.Y + Height > 200)
-                    pos.Y = 200 - Height;
-                if (pos.X < 0)
-                    pos.X = 0;
-                if (pos.Y < 0)
-                    pos.Y = 0;
-
-                Location = pos;
-            }
-        }
-
-        protected override void WndProc(ref Message m)
-        {
-            base.WndProc(ref m);
-            if (m.Msg == 0x84)
-            {  // Trap WM_NCHITTEST
-                var pos = this.PointToClient(new Point(m.LParam.ToInt32()));
-                if (pos.X >= this.ClientSize.Width - grab && pos.Y >= this.ClientSize.Height - grab)
-                    m.Result = new IntPtr(17);  // HT_BOTTOMRIGHT
-
-                var max = Math.Max(Width, Height);
-                Width = max;
-                Height = max;
-            }
-        }
-        private const int grab = 16;
     }
 }

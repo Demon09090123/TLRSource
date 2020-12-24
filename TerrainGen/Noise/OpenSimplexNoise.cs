@@ -104,6 +104,38 @@ namespace TerrainGen
             Rigid = 1
         }
 
+        public float[,] Noise2D(int width, int height, float scale)
+        {
+            float[,] noise2D = new float[width, height];
+            float min = float.MaxValue;
+            float max = float.MinValue;
+            int xOff = MapGeneration._random.Next(0, width * 10);
+            int yOff = MapGeneration._random.Next(0, height * 10);
+
+            for (var y = 0; y < height; y++)
+                for (var x = 0; x < width; x++)
+                {
+                    float n = Evaluate(x + xOff, y + yOff, scale);
+
+                    if (n > max)
+                        max = n;
+                    else if (n < min)
+                        min = n;
+
+                    noise2D[x, y] = n;
+                }
+
+            for (var y = 0; y < height; y++)
+                for (var x = 0; x < width; x++)
+                {
+                    var n = noise2D[x, y];
+                    var inLerp = Utils.clamp((n - min) / (max - min));
+                    noise2D[x, y] = inLerp;
+                }
+
+            return noise2D;
+        }
+
         public float[,] Noise2D(int width, int height, float scale, int octaves, float persistence = 0.5f,
             float lacunarity = 2.0f, GenerationType type = GenerationType.Normal)
         {
@@ -113,6 +145,8 @@ namespace TerrainGen
             float max = float.MinValue;
             float radWidth = width / 2;
             float radHeight = height / 2;
+            int xOff = MapGeneration._random.Next(0, width * 10);
+            int yOff = MapGeneration._random.Next(0, height * 10);
 
             for (var y = 0; y < height; y++)
                 for (var x = 0; x < width; x++)
@@ -121,10 +155,10 @@ namespace TerrainGen
                     switch(type)
                     {
                         case GenerationType.Normal:
-                            n = Noise(x - radWidth, y - radHeight, scale, octaves, persistence, lacunarity);
+                            n = Noise(x + xOff - radWidth, y - radHeight, scale, octaves, persistence, lacunarity);
                             break;
                         case GenerationType.Rigid:
-                            n = RigidNoise(x - radWidth, y - radHeight, scale, octaves, persistence, lacunarity);
+                            n = RigidNoise(x + yOff - radWidth, y - radHeight, scale, octaves, persistence, lacunarity);
                             break;
                     }
 

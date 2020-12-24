@@ -2,6 +2,7 @@
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -42,11 +43,10 @@ namespace TerrainGen
     }
     public struct MapData
     {
-        public uint GroundType { get; private set; }
-        public uint ObjectType { get; private set; }
-        public Region Region { get; private set; }
+        public ushort GroundType { get; private set; }
+        public ushort ObjectType { get; private set; }
     }
-    public struct JsMap
+    public struct WorldMap
     {
         public int Width { get; set; }
         public int Height { get; set; }
@@ -56,25 +56,30 @@ namespace TerrainGen
         [JsonIgnore]
         public MapData[,] RawData { get; set; }
 
-        public static string Export(int width, int height, MapData[,] rawData)
+        public string Export()
         {
-            var strData = JsonConvert.SerializeObject(rawData);
+            var strData = JsonConvert.SerializeObject(RawData);
             byte[] dataBuffer = Convert.FromBase64String(strData);
             var compressedBuffer = ZlibStream.CompressBuffer(dataBuffer);
 
-            var map = new JsMap()
-            {
-                Width = width,
-                Height = height,
-                Data = compressedBuffer
-            };
+            Data = compressedBuffer;
 
-            return JsonConvert.SerializeObject(map);
+            return JsonConvert.SerializeObject(this);
         }
 
-        public static JsMap Import(string data)
+        public static void WriteToFile(string data, string filePath)
         {
-            var jsMap = JsonConvert.DeserializeObject<JsMap>(data);
+            var dataBuffer = Convert.FromBase64String(data);
+            var compressedBuffer = ZlibStream.CompressBuffer(dataBuffer);
+
+            File.WriteAllBytes(filePath, compressedBuffer);
+        }
+
+        public static WorldMap Import(byte[] data)
+        {
+            var mapBuffer = ZlibStream.UncompressBuffer(data);
+            var mapDataStr = Convert.ToBase64String(mapBuffer);
+            var jsMap = JsonConvert.DeserializeObject<WorldMap>(mapDataStr);
             var dataBuffer = ZlibStream.UncompressBuffer(jsMap.Data);
             var strData = Convert.ToBase64String(dataBuffer);
             var rawData = JsonConvert.DeserializeObject<MapData[,]>(strData);
