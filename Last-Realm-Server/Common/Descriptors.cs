@@ -757,7 +757,8 @@ namespace Last_Realm_Server.Common
         public readonly bool ShowDisplays;
         public readonly bool AllowTeleport;
         public readonly int BlockSight;
-        public readonly JSMap[] Maps;
+        public readonly bool isRealm;
+        public readonly MapBase Map;
 
         public WorldDesc(XElement e)
         {
@@ -768,10 +769,16 @@ namespace Last_Realm_Server.Common
             AllowTeleport = e.ParseBool("AllowTeleport");
             BlockSight = e.ParseInt("BlockSight");
 
-            string[] maps = e.ParseStringArray("Maps", ";", new string[0]);
-            Maps = new JSMap[maps.Length];
-            for (int i = 0; i < maps.Length; i++)
-                Maps[i] = new JSMap(File.ReadAllText(Resources.CombineResourcePath($"Worlds/{maps[i]}")));
+            isRealm = e.ParseBool("IsRealm");
+            var map = e.ParseString("Map", string.Empty);
+
+            if (map == string.Empty)
+                return;
+           
+            if (isRealm)
+                Map = WorldMap.Load(File.ReadAllBytes(Resources.CombineResourcePath($"Worlds/{map}")));
+            else
+                Map = new JSMap(File.ReadAllText(Resources.CombineResourcePath($"Worlds/{map}")));
         }
     }
 }

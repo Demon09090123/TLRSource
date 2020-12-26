@@ -146,7 +146,7 @@ namespace Last_Realm_Server.Networking
         public static void Escape(Client client, PacketReader rdr)
         {
             client.Active = false;
-            client.Send(Reconnect(Manager.NexusId));
+            client.Send(Reconnect(Manager.RealmId));
             Manager.AddTimedAction(2000, client.Disconnect);
         }
 
@@ -293,8 +293,7 @@ namespace Last_Realm_Server.Networking
                 if (client.TargetWorldId == Manager.EditorId)
                 {
                     Program.Print(PrintType.Debug, "Loading editor world");
-                    JSMap map = new JSMap(Encoding.UTF8.GetString(mapJson));
-                    world = new World(map, Resources.Worlds["Dreamland"]);
+                    world = new World(Resources.Worlds["Dreamland"]);
                     client.TargetWorldId = Manager.AddWorld(world);
                 }
 #endif
@@ -354,6 +353,8 @@ namespace Last_Realm_Server.Networking
                 client.Character = character;
                 client.Player = new Player(client);
                 client.State = ProtocolState.Connected;
+
+
                 client.Send(CreateSuccess(world.AddEntity(client.Player, world.GetRegion(Region.Spawn).ToPosition())));
             }
         }

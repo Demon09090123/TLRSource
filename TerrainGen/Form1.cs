@@ -65,5 +65,10 @@ namespace TerrainGen
         {
             canvas.Image = Utils.ResizeImage(map, canvas.Width, canvas.Height);
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            _mapGenerator.SaveToFile();
+        }
     }
 }

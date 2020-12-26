@@ -69,7 +69,7 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="Generation\Filter.cs" />
-    <Compile Include="JsMap.cs" />
+    <Compile Include="Map.cs" />
     <Compile Include="Generation\MapGeneration.cs" />
     <Compile Include="Noise\OpenSimplexNoise.cs" />
     <Compile Include="Program.cs" />

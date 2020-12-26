@@ -51,7 +51,7 @@ namespace TerrainGen
 
         private static BiomeType getMountianBiomes(float m, float h)
         {
-            if (h < .2f && m > .2f)
+            if (h < .25f && m > .2f)
                 return BiomeType.Snow;
             return BiomeType.Mountian;
         }
@@ -66,7 +66,7 @@ namespace TerrainGen
                     return getLowBiomes(moisture, heat);
                 else if (height < .35f)
                     return getMidBiomes(moisture, heat);
-                else if (height < .57f)
+                else if (height < .555f)
                     return getHighBiomes(moisture, heat);
                 else if (height <= 1f)
                     return getMountianBiomes(moisture, heat);
@@ -129,9 +129,9 @@ namespace TerrainGen
                 case BiomeType.Mountian:
                     return Color.Gray;
                 case BiomeType.None:
-                    return Color.Black;
+                    return Color.DarkBlue;
             }
-            return Color.Black;
+            return Color.DarkBlue;
         }
     }
 }

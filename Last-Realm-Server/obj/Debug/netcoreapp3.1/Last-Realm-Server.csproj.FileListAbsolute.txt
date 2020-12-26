@@ -272,7 +272,6 @@ C:\Users\mangz\OneDrive\Documents\GitHub\TLRSource\Last-Realm-Server\bin\Debug\n
 C:\Users\mangz\OneDrive\Documents\GitHub\TLRSource\Last-Realm-Server\bin\Debug\netcoreapp3.1\Resources\GameData\EmbeddedData_OryxCastleCXML.xml
 C:\Users\mangz\OneDrive\Documents\GitHub\TLRSource\Last-Realm-Server\bin\Debug\netcoreapp3.1\Resources\GameData\EmbeddedData_OryxChamberCXML.xml
 C:\Users\mangz\OneDrive\Documents\GitHub\TLRSource\Last-Realm-Server\bin\Debug\netcoreapp3.1\Resources\GameData\EmbeddedData_OryxWineCellarCXML.xml
-C:\Users\mangz\OneDrive\Documents\GitHub\TLRSource\Last-Realm-Server\bin\Debug\netcoreapp3.1\Resources\GameData\EmbeddedData_PermapetsCXML.xml
 C:\Users\mangz\OneDrive\Documents\GitHub\TLRSource\Last-Realm-Server\bin\Debug\netcoreapp3.1\Resources\GameData\EmbeddedData_PetsCXML.xml
 C:\Users\mangz\OneDrive\Documents\GitHub\TLRSource\Last-Realm-Server\bin\Debug\netcoreapp3.1\Resources\GameData\EmbeddedData_PirateCaveCXML.xml
 C:\Users\mangz\OneDrive\Documents\GitHub\TLRSource\Last-Realm-Server\bin\Debug\netcoreapp3.1\Resources\GameData\EmbeddedData_PlayersCXML.xml
@@ -501,7 +500,6 @@ C:\Users\mangz\OneDrive\Documents\GitHub\TLRSource\Last-Realm-Server\obj\Debug\n
 C:\Users\mangz\OneDrive\Documents\GitHub\TLRSource\Last-Realm-Server\obj\Debug\netcoreapp3.1\Last-Realm-Server.dll
 C:\Users\mangz\OneDrive\Documents\GitHub\TLRSource\Last-Realm-Server\obj\Debug\netcoreapp3.1\Last-Realm-Server.pdb
 C:\Users\mangz\OneDrive\Documents\GitHub\TLRSource\Last-Realm-Server\obj\Debug\netcoreapp3.1\Last-Realm-Server.genruntimeconfig.cache
-C:\Users\mangz\OneDrive\Documents\GitHub\TLRSource\Last-Realm-Server\obj\Debug\netcoreapp3.1\Last-Realm-Server.csprojAssemblyReference.cache
 D:\GitHub\TLRSource\Last-Realm-Server\bin\Debug\netcoreapp3.1\Resources\GameData\EmbeddedData_AbyssOfDemonsCXML.xml
 D:\GitHub\TLRSource\Last-Realm-Server\bin\Debug\netcoreapp3.1\Resources\GameData\EmbeddedData_CandyLandCXML.xml
 D:\GitHub\TLRSource\Last-Realm-Server\bin\Debug\netcoreapp3.1\Resources\GameData\EmbeddedData_CaveOfAThousandTreasuresCXML.xml
@@ -754,3 +752,5 @@ D:\GitHub\TLRSource\Last-Realm-Server\obj\Debug\netcoreapp3.1\Last-Realm-Server.
 D:\GitHub\TLRSource\Last-Realm-Server\obj\Debug\netcoreapp3.1\Last-Realm-Server.dll
 D:\GitHub\TLRSource\Last-Realm-Server\obj\Debug\netcoreapp3.1\Last-Realm-Server.pdb
 D:\GitHub\TLRSource\Last-Realm-Server\obj\Debug\netcoreapp3.1\Last-Realm-Server.genruntimeconfig.cache
+C:\Users\mangz\OneDrive\Documents\GitHub\TLRSource\Last-Realm-Server\bin\Debug\netcoreapp3.1\Resources\Worlds\Realm\mapData.map
+C:\Users\mangz\OneDrive\Documents\GitHub\TLRSource\Last-Realm-Server\obj\Debug\netcoreapp3.1\Last-Realm-Server.csprojAssemblyReference.cache

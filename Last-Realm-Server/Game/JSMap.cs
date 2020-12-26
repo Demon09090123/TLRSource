@@ -52,13 +52,49 @@ namespace Last_Realm_Server.Game
         public string Key;
     }
 
-    public class JSMap
+    public class MapBase
     {
-        public JSTile[,] Tiles;
         public int Width;
         public int Height;
+
+        [JsonIgnore]
+        public JSTile[,] Tiles;
+        [JsonIgnore]
         public Dictionary<Region, List<IntPoint>> Regions;
 
+        public void InitRegions()
+        {
+            Regions = new Dictionary<Region, List<IntPoint>>();
+            for (int x = 0; x < Width; x++)
+                for (int y = 0; y < Height; y++)
+                {
+                    JSTile tile = Tiles[x, y];
+                    if (!Regions.ContainsKey(tile.Region))
+                        Regions[tile.Region] = new List<IntPoint>();
+                    Regions[tile.Region].Add(new IntPoint(x, y));
+                }
+        }
+    }
+
+    public class WorldMap : MapBase
+    {
+        public byte[] Data { get; set; }
+        public static WorldMap Load(byte[] data)
+        {
+            var worldData = ZlibStream.UncompressBuffer(data);
+            var map = JsonConvert.DeserializeObject<WorldMap>(Encoding.ASCII.GetString(worldData));
+
+            var tiles = JsonConvert.DeserializeObject<JSTile[,]>(Encoding.ASCII.GetString(ZlibStream.UncompressBuffer(map.Data)));
+
+            map.Tiles = tiles;
+            map.InitRegions();
+
+            return map;
+        }
+    }
+
+    public class JSMap : MapBase
+    {
         public JSMap(string data)
         {
             json_dat json = JsonConvert.DeserializeObject<json_dat>(data);
@@ -107,19 +143,6 @@ namespace Last_Realm_Server.Game
 
             InitRegions();
         } 
-
-        public void InitRegions()
-        {
-            Regions = new Dictionary<Region, List<IntPoint>>();
-            for (int x = 0; x < Width; x++)
-                for (int y = 0; y < Height; y++)
-                {
-                    JSTile tile = Tiles[x, y];
-                    if (!Regions.ContainsKey(tile.Region))
-                        Regions[tile.Region] = new List<IntPoint>();
-                    Regions[tile.Region].Add(new IntPoint(x, y));
-                }
-        }
 
         private struct json_dat
         {

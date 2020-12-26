@@ -44,6 +44,7 @@ namespace TerrainGen
             this.seedBox = new System.Windows.Forms.TextBox();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.filterRegionlbl = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.canvas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -115,7 +116,7 @@ namespace TerrainGen
             // pictureBox2
             // 
             this.pictureBox2.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.pictureBox2.Location = new System.Drawing.Point(823, 255);
+            this.pictureBox2.Location = new System.Drawing.Point(823, 308);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(198, 5);
             this.pictureBox2.TabIndex = 14;
@@ -195,11 +196,23 @@ namespace TerrainGen
             this.filterRegionlbl.TabIndex = 37;
             this.filterRegionlbl.Text = "Filter Region";
             // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
+            this.button1.Location = new System.Drawing.Point(858, 263);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(129, 39);
+            this.button1.TabIndex = 38;
+            this.button1.Text = "Save";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1026, 812);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.filterRegionlbl);
             this.Controls.Add(this.pictureBox6);
             this.Controls.Add(this.seedBox);
@@ -246,6 +259,7 @@ namespace TerrainGen
         private System.Windows.Forms.TextBox seedBox;
         private System.Windows.Forms.PictureBox pictureBox6;
         private System.Windows.Forms.Label filterRegionlbl;
+        private System.Windows.Forms.Button button1;
     }
 }
 

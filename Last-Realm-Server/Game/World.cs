@@ -34,7 +34,7 @@ namespace Last_Realm_Server.Game
         public List<string> ChatMessages;
 
         public Tile[,] Tiles;
-        public JSMap Map;
+        public MapBase Map;
 
         public int Width;
         public int Height;
@@ -47,11 +47,11 @@ namespace Last_Realm_Server.Game
         public string Name;
         public string DisplayName;
 
-        public World(JSMap map, WorldDesc desc)
+        public World(WorldDesc desc)
         {
-            Map = map;
-            Width = map.Width;
-            Height = map.Height;
+            Map = desc.Map;
+            Width = Map.Width;
+            Height = Map.Height;
 
             Background = desc.Background;
             ShowDisplays = desc.ShowDisplays;
@@ -77,7 +77,7 @@ namespace Last_Realm_Server.Game
             for (int x = 0; x < Width; x++)
                 for (int y = 0; y < Height; y++)
                 {
-                    JSTile js = map.Tiles[x, y];
+                    JSTile js = Map.Tiles[x, y];
                     Tile tile = Tiles[x, y] = new Tile()
                     {
                         Type = js.GroundType,
@@ -85,7 +85,7 @@ namespace Last_Realm_Server.Game
                         UpdateCount = int.MaxValue / 2
                     };
 
-                    if (js.ObjectType != 0xff)
+                    if (js.ObjectType != 0xff && js.ObjectType != 0)
                     {
                         Entity entity = Entity.Resolve(js.ObjectType);
                         if (entity.Desc.Static)

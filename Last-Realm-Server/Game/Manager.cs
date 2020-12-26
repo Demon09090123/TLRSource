@@ -2,21 +2,16 @@
 using Last_Realm_Server.Game.Entities;
 using Last_Realm_Server.Game.Logic;
 using Last_Realm_Server.Networking;
-using Last_Realm_Server.Utils;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading;
 
 namespace Last_Realm_Server.Game
 {
     public static class Manager
     {
-        public const int NexusId = -1;
-        public const int RealmId = -2;
+        public const int RealmId = -1;
         public const int GuildId = -3;
         public const int EditorId = -4;
 
@@ -47,7 +42,7 @@ namespace Last_Realm_Server.Game
 
             Behaviors = new BehaviorDb();
 
-            AddWorld(Resources.Worlds["Nexus"], NexusId);
+            AddWorld(Resources.Worlds["Realm"], RealmId);
         }
 
         public static void AddWorld(WorldDesc desc)
@@ -57,7 +52,7 @@ namespace Last_Realm_Server.Game
 
         public static World AddWorld(WorldDesc desc, int id)
         {
-            World world = new World(desc.Maps[MathUtils.Next(desc.Maps.Length)], desc);
+            World world = new World(desc);
             world.Id = id;
             Worlds[world.Id] = world;
 #if DEBUG
