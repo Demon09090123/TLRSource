@@ -1,6 +1,7 @@
 ﻿using Last_Realm_Server.Common;
 using Last_Realm_Server.Game.Entities;
 using Last_Realm_Server.Game.Logic;
+using Last_Realm_Server.Game.Worlds;
 using Last_Realm_Server.Networking;
 using System;
 using System.Collections.Generic;
@@ -52,7 +53,14 @@ namespace Last_Realm_Server.Game
 
         public static World AddWorld(WorldDesc desc, int id)
         {
-            World world = new World(desc);
+            World world;
+
+            switch(id)
+            {
+                case RealmId: world = new Realm(desc); break;
+                default: world = new World(desc); break;
+            }
+
             world.Id = id;
             Worlds[world.Id] = world;
 #if DEBUG

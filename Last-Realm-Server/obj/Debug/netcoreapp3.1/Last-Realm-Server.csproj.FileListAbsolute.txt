@@ -522,7 +522,6 @@ D:\GitHub\TLRSource\Last-Realm-Server\bin\Debug\netcoreapp3.1\Resources\GameData
 D:\GitHub\TLRSource\Last-Realm-Server\bin\Debug\netcoreapp3.1\Resources\GameData\EmbeddedData_OryxCastleCXML.xml
 D:\GitHub\TLRSource\Last-Realm-Server\bin\Debug\netcoreapp3.1\Resources\GameData\EmbeddedData_OryxChamberCXML.xml
 D:\GitHub\TLRSource\Last-Realm-Server\bin\Debug\netcoreapp3.1\Resources\GameData\EmbeddedData_OryxWineCellarCXML.xml
-D:\GitHub\TLRSource\Last-Realm-Server\bin\Debug\netcoreapp3.1\Resources\GameData\EmbeddedData_PermapetsCXML.xml
 D:\GitHub\TLRSource\Last-Realm-Server\bin\Debug\netcoreapp3.1\Resources\GameData\EmbeddedData_PetsCXML.xml
 D:\GitHub\TLRSource\Last-Realm-Server\bin\Debug\netcoreapp3.1\Resources\GameData\EmbeddedData_PirateCaveCXML.xml
 D:\GitHub\TLRSource\Last-Realm-Server\bin\Debug\netcoreapp3.1\Resources\GameData\EmbeddedData_PlayersCXML.xml
@@ -754,3 +753,4 @@ D:\GitHub\TLRSource\Last-Realm-Server\obj\Debug\netcoreapp3.1\Last-Realm-Server.
 D:\GitHub\TLRSource\Last-Realm-Server\obj\Debug\netcoreapp3.1\Last-Realm-Server.genruntimeconfig.cache
 C:\Users\mangz\OneDrive\Documents\GitHub\TLRSource\Last-Realm-Server\bin\Debug\netcoreapp3.1\Resources\Worlds\Realm\mapData.map
 C:\Users\mangz\OneDrive\Documents\GitHub\TLRSource\Last-Realm-Server\obj\Debug\netcoreapp3.1\Last-Realm-Server.csprojAssemblyReference.cache
+D:\GitHub\TLRSource\Last-Realm-Server\bin\Debug\netcoreapp3.1\Resources\Worlds\Realm\mapData.map

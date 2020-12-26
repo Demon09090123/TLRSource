@@ -9,6 +9,11 @@ namespace Last_Realm_Server.Game.Worlds
     {
         public Realm(WorldDesc desc) : base(desc)
         {
+            //sample Spawn
+            Map.Regions.Add(Region.Spawn, new List<IntPoint>()
+            {
+                new IntPoint(500, 500)
+            });
         }
     }
 }
