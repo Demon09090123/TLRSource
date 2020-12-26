@@ -743,7 +743,6 @@ D:\GitHub\TLRSource\Last-Realm-Server\bin\Debug\netcoreapp3.1\Last-Realm-Server.
 D:\GitHub\TLRSource\Last-Realm-Server\bin\Debug\netcoreapp3.1\Last-Realm-Server.pdb
 D:\GitHub\TLRSource\Last-Realm-Server\bin\Debug\netcoreapp3.1\Ionic.Zlib.Core.dll
 D:\GitHub\TLRSource\Last-Realm-Server\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
-D:\GitHub\TLRSource\Last-Realm-Server\obj\Debug\netcoreapp3.1\Last-Realm-Server.csprojAssemblyReference.cache
 D:\GitHub\TLRSource\Last-Realm-Server\obj\Debug\netcoreapp3.1\Last-Realm-Server.AssemblyInfoInputs.cache
 D:\GitHub\TLRSource\Last-Realm-Server\obj\Debug\netcoreapp3.1\Last-Realm-Server.AssemblyInfo.cs
 D:\GitHub\TLRSource\Last-Realm-Server\obj\Debug\netcoreapp3.1\Last-Realm-Server.csproj.CoreCompileInputs.cache
@@ -754,3 +753,5 @@ D:\GitHub\TLRSource\Last-Realm-Server\obj\Debug\netcoreapp3.1\Last-Realm-Server.
 C:\Users\mangz\OneDrive\Documents\GitHub\TLRSource\Last-Realm-Server\bin\Debug\netcoreapp3.1\Resources\Worlds\Realm\mapData.map
 C:\Users\mangz\OneDrive\Documents\GitHub\TLRSource\Last-Realm-Server\obj\Debug\netcoreapp3.1\Last-Realm-Server.csprojAssemblyReference.cache
 D:\GitHub\TLRSource\Last-Realm-Server\bin\Debug\netcoreapp3.1\Resources\Worlds\Realm\mapData.map
+D:\GitHub\TLRSource\Last-Realm-Server\bin\Debug\netcoreapp3.1\Resources\SetPieces\Nexus\0.jm
+D:\GitHub\TLRSource\Last-Realm-Server\bin\Debug\netcoreapp3.1\Resources\SetPieces\SetPieces.xml

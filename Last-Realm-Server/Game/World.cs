@@ -1,5 +1,6 @@
 ﻿using Last_Realm_Server.Common;
 using Last_Realm_Server.Game.Entities;
+using Last_Realm_Server.Game.Worlds.SetPieces;
 using Last_Realm_Server.Utils;
 using System;
 using System.Collections.Generic;
@@ -34,7 +35,7 @@ namespace Last_Realm_Server.Game
         public List<string> ChatMessages;
 
         public Tile[,] Tiles;
-        public MapBase Map;
+        public Dictionary<Region, List<IntPoint>> Regions;
 
         public int Width;
         public int Height;
@@ -49,9 +50,8 @@ namespace Last_Realm_Server.Game
 
         public World(WorldDesc desc)
         {
-            Map = desc.Map;
-            Width = Map.Width;
-            Height = Map.Height;
+            Width = desc.Map.Width;
+            Height = desc.Map.Height;
 
             Background = desc.Background;
             ShowDisplays = desc.ShowDisplays;
@@ -77,7 +77,7 @@ namespace Last_Realm_Server.Game
             for (int x = 0; x < Width; x++)
                 for (int y = 0; y < Height; y++)
                 {
-                    JSTile js = Map.Tiles[x, y];
+                    JSTile js = desc.Map.Tiles[x, y];
                     Tile tile = Tiles[x, y] = new Tile()
                     {
                         Type = js.GroundType,
@@ -98,22 +98,54 @@ namespace Last_Realm_Server.Game
                         AddEntity(entity, new Position(x + 0.5f, y + 0.5f));
                     }
                 }
+
+            InitRegions();
+
             UpdateCount = int.MaxValue / 2;
         }
-        
-        public IntPoint GetRegion(Region region)
+
+        private void InitRegions()
         {
-            if (!Map.Regions.ContainsKey(region))
-                return new IntPoint(0, 0);
-            return Map.Regions[region][MathUtils.Next(Map.Regions[region].Count)];
+            Regions = new Dictionary<Region, List<IntPoint>>();
+
+            for (int x = 0; x < Width; x++)
+                for (int y = 0; y < Height; y++)
+                {
+                    Tile tile = Tiles[x, y];
+                    if (!Regions.ContainsKey(tile.Region))
+                        Regions[tile.Region] = new List<IntPoint>();
+                    Regions[tile.Region].Add(new IntPoint(x, y));
+                }
         }
 
-        public void UpdateTile(int x, int y, ushort type)
+        public IntPoint GetRegion(Region region)
+        {
+            if (!Regions.ContainsKey(region))
+                return new IntPoint(0, 0);
+            return Regions[region][MathUtils.Next(Regions[region].Count)];
+        }
+
+
+
+        public void UpdateTile(int x, int y, ushort type, Region region = Region.None)
         {
             Tile tile = GetTile(x, y);
             if (tile != null)
             {
                 tile.Type = type;
+
+                if (region != Region.None)
+                {
+                    Regions[tile.Region].Remove(new IntPoint(x, y));
+
+                    tile.Region = region;
+
+                    if (!Regions.ContainsKey(tile.Region))
+                        Regions[tile.Region] = new List<IntPoint>();
+
+                    Regions[tile.Region].Add(new IntPoint(x, y));
+                }
+
                 tile.UpdateCount++;
 
                 UpdateCount++;

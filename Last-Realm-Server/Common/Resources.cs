@@ -29,6 +29,7 @@ namespace Last_Realm_Server.Common
         public static Dictionary<string, ItemDesc> IdLower2Item = new Dictionary<string, ItemDesc>();
 
         public static Dictionary<string, WorldDesc> Worlds = new Dictionary<string, WorldDesc>();
+        public static Dictionary<string, SetPieceDesc> SetPieces = new Dictionary<string, SetPieceDesc>();
 
         public static Dictionary<ushort, QuestDesc> Quests = new Dictionary<ushort, QuestDesc>();
 
@@ -47,6 +48,7 @@ namespace Last_Realm_Server.Common
             LoadQuests();
             LoadWorlds();
             LoadWebFiles();
+            LoadSetPieces();
         }
 
         private static void LoadGameData()
@@ -139,7 +141,16 @@ namespace Last_Realm_Server.Common
                 Worlds[desc.Id] = desc;
             }
         }
-        
+
+        private static void LoadSetPieces()
+        {
+            foreach (var e in XElement.Parse(File.ReadAllText(CombineResourcePath("SetPieces/SetPieces.xml"))).Elements("SetPiece"))
+            {
+                var desc = new SetPieceDesc(e);
+                SetPieces[desc.ID] = desc;
+            }
+        }
+
         public static void LoadWebFiles()
         {
             string[] paths = Directory.EnumerateFiles(CombineResourcePath("Web/"), "*", SearchOption.AllDirectories).ToArray();

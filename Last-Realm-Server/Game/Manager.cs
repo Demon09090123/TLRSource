@@ -2,6 +2,7 @@
 using Last_Realm_Server.Game.Entities;
 using Last_Realm_Server.Game.Logic;
 using Last_Realm_Server.Game.Worlds;
+using Last_Realm_Server.Game.Worlds.SetPieces;
 using Last_Realm_Server.Networking;
 using System;
 using System.Collections.Generic;
@@ -21,6 +22,7 @@ namespace Last_Realm_Server.Game
         public static Dictionary<int, int> AccountIdToClientId;
         public static Dictionary<int, Client> Clients;
         public static Dictionary<int, World> Worlds;
+        public static Dictionary<string, SetPieceBase> SetPieces;
         public static List<Tuple<int, Action>> Timers;
         public static BehaviorDb Behaviors;
         public static Stopwatch TickWatch;
@@ -39,11 +41,22 @@ namespace Last_Realm_Server.Game
             AccountIdToClientId = new Dictionary<int, int>();
             Clients = new Dictionary<int, Client>();
             Worlds = new Dictionary<int, World>();
+            SetPieces = new Dictionary<string, SetPieceBase>();
             Timers = new List<Tuple<int, Action>>();
 
             Behaviors = new BehaviorDb();
 
+            AddSetPiece(Resources.SetPieces["Nexus"]);
+
             AddWorld(Resources.Worlds["Realm"], RealmId);
+        }
+
+        public static void AddSetPiece(SetPieceDesc desc)
+        {
+            var setPiece = new SetPieceBase(desc);
+
+            if (!SetPieces.ContainsKey(setPiece.ID))
+                SetPieces[setPiece.ID] = setPiece;
         }
 
         public static void AddWorld(WorldDesc desc)

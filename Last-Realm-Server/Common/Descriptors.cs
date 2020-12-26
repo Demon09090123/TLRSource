@@ -749,6 +749,21 @@ namespace Last_Realm_Server.Common
         }
     }
 
+    public class SetPieceDesc
+    {
+        public readonly string ID;
+        public readonly MapBase Map;
+
+        public SetPieceDesc(XElement e)
+        {
+            ID = e.ParseString("@id");
+
+            var mapDist = e.ParseString("Map", string.Empty);
+            if (!string.IsNullOrEmpty(mapDist))
+                Map = new JSMap(File.ReadAllText(Resources.CombineResourcePath($"SetPieces/{mapDist}")));
+        }
+    }
+
     public class WorldDesc
     {
         public readonly string Id;
