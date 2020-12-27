@@ -27,3 +27,4 @@ D:\GitHub\TLRSource\TerrainGen\obj\Debug\TerrainGen.pdb
 D:\GitHub\TLRSource\TerrainGen\bin\Debug\Resources\EmbeddedData_GroundCXML.xml
 C:\Users\mangz\OneDrive\Documents\GitHub\TLRSource\TerrainGen\bin\Debug\Resources\EmbeddedData_GroundCXML.xml
 C:\Users\mangz\OneDrive\Documents\GitHub\TLRSource\TerrainGen\obj\Debug\TerrainGen.csprojAssemblyReference.cache
+D:\GitHub\TLRSource\TerrainGen\obj\Debug\TerrainGen.csprojAssemblyReference.cache

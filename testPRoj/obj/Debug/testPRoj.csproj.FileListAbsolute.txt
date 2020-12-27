@@ -11,3 +11,7 @@ D:\GitHub\TLRSource\testPRoj\bin\Debug\testPRoj.pdb
 D:\GitHub\TLRSource\testPRoj\obj\Debug\testPRoj.csproj.CoreCompileInputs.cache
 D:\GitHub\TLRSource\testPRoj\obj\Debug\testPRoj.exe
 D:\GitHub\TLRSource\testPRoj\obj\Debug\testPRoj.pdb
+D:\GitHub\TLRSource\testPRoj\bin\Debug\Newtonsoft.Json.dll
+D:\GitHub\TLRSource\testPRoj\bin\Debug\Newtonsoft.Json.xml
+D:\GitHub\TLRSource\testPRoj\obj\Debug\testPRoj.csproj.CopyComplete
+D:\GitHub\TLRSource\testPRoj\bin\Debug\Ionic.Zlib.Core.dll

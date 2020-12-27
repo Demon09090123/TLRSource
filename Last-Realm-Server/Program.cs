@@ -71,19 +71,8 @@ namespace Last_Realm_Server
                     }
                 }
 
-#if DEBUG
-                try
-                {
-#endif
-                    Database.Tick();
-                    Manager.Tick();
-#if DEBUG
-                } catch(Exception ex)
-                {
-                    Print(PrintType.Error, ex.ToString());
-                }
-#endif
-
+                Database.Tick();
+                Manager.Tick();
 #if DEBUG
                 Thread.Sleep(2);
 #endif

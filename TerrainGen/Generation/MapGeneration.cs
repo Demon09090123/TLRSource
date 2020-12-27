@@ -1,6 +1,7 @@
 ﻿using Ionic.Zlib;
 using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Text;
@@ -34,7 +35,7 @@ namespace TerrainGen
             _workManager = new WorkManager();
 
             SetSeed();
-            Resize(1024);
+            Resize(2048);
 
             _workManager.Start();
         }
@@ -64,19 +65,28 @@ namespace TerrainGen
 
             saveDialog.FileName = "mapData";
             saveDialog.DefaultExt = "map";
-            saveDialog.InitialDirectory = @"C:\Users\mangz\OneDrive\Documents\mapData\";
+            saveDialog.InitialDirectory = @"D:\MapData\";
 
             var f = File.Create(saveDialog.InitialDirectory + "mapData.map");
             f.Close();
 
             if (saveDialog.ShowDialog() == DialogResult.OK)
             {
-                using(var stream = saveDialog.OpenFile())
+                using(var br = new BinaryWriter(saveDialog.OpenFile(), Encoding.UTF8))
                 {
-                    var dataBuffer = Encoding.ASCII.GetBytes(_worldMap.Export());
-                    var compressedBuffer = ZlibStream.CompressBuffer(dataBuffer);
+                    br.Write(_worldMap.Width);
+                    br.Write(_worldMap.Height);
 
-                    stream.Write(compressedBuffer, 0, compressedBuffer.Length);
+                    for (var x = 0; x < _worldMap.Width; x++)
+                    {
+                        for (var y = 0; y < _worldMap.Height; y++)
+                        {
+                            var jsmap = _mapData[x, y];
+                            br.Write(jsmap.GroundType);
+                            br.Write(jsmap.ObjectType);
+                            br.Write((byte)jsmap.Region);
+                        }
+                    }
                 }
             }
         }
@@ -130,16 +140,10 @@ namespace TerrainGen
 
                     }, () =>
                     {
-                        string strData = JsonConvert.SerializeObject(_mapData);
-                        byte[] dataBuffer = Encoding.ASCII.GetBytes(strData);
-                        var compressedBuffer = ZlibStream.CompressBuffer(dataBuffer);
-
-                        _worldMap.Data = compressedBuffer;
-
                         _noiseMap = null;
                         _moistureMap = null;
                         _heatMap = null;
-                        _mapData = null;
+                        //_mapData = null;
                         bitmap.Dispose();
                     }));
                 }

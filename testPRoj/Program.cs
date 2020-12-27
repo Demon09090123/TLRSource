@@ -1,5 +1,9 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using Ionic.Zlib;
+using Newtonsoft.Json;
+using System;
+using System.IO;
+using System.Linq;
+using System.Text;
 
 namespace testPRoj
 {
@@ -7,16 +11,6 @@ namespace testPRoj
     {
         static void Main(string[] args)
         {
-            var arr = new int[100, 100];
-            Parallel.For(0, 100, x =>
-            {
-                for (var y = 0; y < 100; y++)
-                    arr[x, y] = x * y;
-            });
-
-
-            Console.ReadLine();
         }
     }
-    
 }

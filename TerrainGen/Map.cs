@@ -6,7 +6,7 @@ using System.Text;
 
 namespace TerrainGen
 {
-    public enum Region
+    public enum Region : byte
     {
         None,
         Spawn,
@@ -43,7 +43,6 @@ namespace TerrainGen
         public ushort GroundType { get; set; }
         public ushort ObjectType { get; set; }
         public Region Region;
-        public string Key;
     }
     public struct WorldMap : IDisposable
     {
@@ -59,8 +58,6 @@ namespace TerrainGen
             Height = size;
             Data = null;
         }
-
-        public string Export() => JsonConvert.SerializeObject(this);
 
         public void Dispose()
         {

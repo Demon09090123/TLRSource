@@ -11,7 +11,7 @@ using System.Text;
 
 namespace Last_Realm_Server.Game
 {
-    public enum Region
+    public enum Region : byte
     {
         None,
         Spawn,
@@ -49,7 +49,6 @@ namespace Last_Realm_Server.Game
         public ushort GroundType;
         public ushort ObjectType;
         public Region Region;
-        public string Key;
     }
 
     public class MapBase
@@ -59,37 +58,28 @@ namespace Last_Realm_Server.Game
 
         [JsonIgnore]
         public JSTile[,] Tiles;
-        [JsonIgnore]
-        public Dictionary<Region, List<IntPoint>> Regions;
-
-        public void InitRegions()
-        {
-            Regions = new Dictionary<Region, List<IntPoint>>();
-            for (int x = 0; x < Width; x++)
-                for (int y = 0; y < Height; y++)
-                {
-                    JSTile tile = Tiles[x, y];
-                    if (!Regions.ContainsKey(tile.Region))
-                        Regions[tile.Region] = new List<IntPoint>();
-                    Regions[tile.Region].Add(new IntPoint(x, y));
-                }
-        }
     }
 
     public class WorldMap : MapBase
     {
-        public byte[] Data { get; set; }
-        public static WorldMap Load(byte[] data)
+        public WorldMap(FileStream stream)
         {
-            var worldData = ZlibStream.UncompressBuffer(data);
-            var map = JsonConvert.DeserializeObject<WorldMap>(Encoding.ASCII.GetString(worldData));
+            using(var rdr = new BinaryReader(stream, Encoding.UTF8))
+            {
+                Width = rdr.ReadInt32();
+                Height = rdr.ReadInt32();
 
-            var tiles = JsonConvert.DeserializeObject<JSTile[,]>(Encoding.ASCII.GetString(ZlibStream.UncompressBuffer(map.Data)));
+                Tiles = new JSTile[Width, Height];
 
-            map.Tiles = tiles;
-            map.InitRegions();
-
-            return map;
+                for (var x = 0; x < Width; x++)
+                    for (var y = 0; y < Height; y++)
+                        Tiles[x, y] = new JSTile()
+                        {
+                            GroundType = rdr.ReadUInt16(),
+                            ObjectType = rdr.ReadUInt16(),
+                            Region = (Region)rdr.ReadByte()
+                        };
+            }
         }
     }
 
@@ -109,7 +99,6 @@ namespace Last_Realm_Server.Game
                 {
                     GroundType = o.ground == null ? (ushort)255 : Resources.Id2Tile[o.ground].Type,
                     ObjectType = o.objs == null ? (ushort)255 : Resources.Id2Object[o.objs[0].id].Type,
-                    Key = o.objs == null ? null : o.objs[0].name,
                     Region = o.regions == null ? Region.None : (Region)Enum.Parse(typeof(Region), o.regions[0].id.Replace(' ', '_'))
                 };
             }
@@ -140,8 +129,6 @@ namespace Last_Realm_Server.Game
             Tiles = tiles;
             Width = json.width;
             Height = json.height;
-
-            InitRegions();
         } 
 
         private struct json_dat

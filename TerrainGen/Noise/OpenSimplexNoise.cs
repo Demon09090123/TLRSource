@@ -99,6 +99,7 @@ namespace TerrainGen
                 source[r] = source[i];
             }
         }
+
         public enum GenerationType
         {
             Normal = 0,

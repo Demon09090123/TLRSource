@@ -43,10 +43,7 @@ namespace TerrainGen
         {
             if (e.KeyCode == Keys.Enter)
                 if (long.TryParse(sizeBox.Text, out long seed))
-                {
                     _mapGenerator.SetSeed(seed);
-                    Console.WriteLine("Enter");
-                }
         }
 
         private void generateBtn_Click(object sender, EventArgs e)

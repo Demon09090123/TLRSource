@@ -791,7 +791,8 @@ namespace Last_Realm_Server.Common
                 return;
            
             if (isRealm)
-                Map = WorldMap.Load(File.ReadAllBytes(Resources.CombineResourcePath($"Worlds/{map}")));
+                Map = new WorldMap(new FileStream(Resources.CombineResourcePath($"Worlds/{map}"),
+                    FileMode.Open,  FileAccess.Read));
             else
                 Map = new JSMap(File.ReadAllText(Resources.CombineResourcePath($"Worlds/{map}")));
         }
