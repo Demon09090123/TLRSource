@@ -1,11 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "CwBItUjU5n52jqus1H8IXfTeiWy8lu2dKJ6rDmzWFRirfJRHVPIj0bsu3g9CzyT+5YbFt8Ihs6gudlp2mlDbyw==",
+  "dgSpecHash": "xYDt4YqffrTUQngyUq33JhWrHlU4kPmWXNRuhSDftuxVP1aw8REAg0gEEZHNmrQe2z41PbDbQC26De1MfqnQtA==",
   "success": true,
-  "projectFilePath": "D:\\GitHub\\TLRSource\\Last-Realm-Server\\Last-Realm-Server.csproj",
+  "projectFilePath": "C:\\Users\\mangz\\OneDrive\\Documents\\GitHub\\TLRSource\\Last-Realm-Server\\Last-Realm-Server.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\mangn\\.nuget\\packages\\ionic.zlib.core\\1.0.0\\ionic.zlib.core.1.0.0.nupkg.sha512",
-    "C:\\Users\\mangn\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512"
+    "C:\\Users\\mangz\\.nuget\\packages\\ionic.zlib.core\\1.0.0\\ionic.zlib.core.1.0.0.nupkg.sha512",
+    "C:\\Users\\mangz\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512"
   ],
   "logs": []
 }
