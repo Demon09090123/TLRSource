@@ -34,7 +34,6 @@ namespace TerrainGen
             this.sizeLabel = new System.Windows.Forms.Label();
             this.seedLabel = new System.Windows.Forms.Label();
             this.seedBtn = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.sizeBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -43,19 +42,17 @@ namespace TerrainGen
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.seedBox = new System.Windows.Forms.TextBox();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
-            this.filterRegionlbl = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
-            this.mapTab = new System.Windows.Forms.TabControl();
+            this.controlTab = new System.Windows.Forms.TabControl();
             this.terrainTab = new System.Windows.Forms.TabPage();
             this.mapPage = new System.Windows.Forms.TabPage();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.canvas)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
-            this.mapTab.SuspendLayout();
+            this.controlTab.SuspendLayout();
             this.terrainTab.SuspendLayout();
             this.mapPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
@@ -104,22 +101,13 @@ namespace TerrainGen
             // seedBtn
             // 
             this.seedBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.seedBtn.Location = new System.Drawing.Point(790, 107);
+            this.seedBtn.Location = new System.Drawing.Point(800, 129);
             this.seedBtn.Name = "seedBtn";
             this.seedBtn.Size = new System.Drawing.Size(30, 26);
             this.seedBtn.TabIndex = 12;
             this.seedBtn.Text = "R";
             this.seedBtn.UseVisualStyleBackColor = true;
             this.seedBtn.Click += new System.EventHandler(this.seedBtn_Click);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.pictureBox1.Location = new System.Drawing.Point(651, 197);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(198, 5);
-            this.pictureBox1.TabIndex = 13;
-            this.pictureBox1.TabStop = false;
             // 
             // pictureBox2
             // 
@@ -194,16 +182,6 @@ namespace TerrainGen
             this.pictureBox6.TabIndex = 35;
             this.pictureBox6.TabStop = false;
             // 
-            // filterRegionlbl
-            // 
-            this.filterRegionlbl.AutoSize = true;
-            this.filterRegionlbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.filterRegionlbl.Location = new System.Drawing.Point(653, 171);
-            this.filterRegionlbl.Name = "filterRegionlbl";
-            this.filterRegionlbl.Size = new System.Drawing.Size(99, 20);
-            this.filterRegionlbl.TabIndex = 37;
-            this.filterRegionlbl.Text = "Filter Region";
-            // 
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
@@ -215,15 +193,16 @@ namespace TerrainGen
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // mapTab
+            // controlTab
             // 
-            this.mapTab.Controls.Add(this.terrainTab);
-            this.mapTab.Controls.Add(this.mapPage);
-            this.mapTab.Location = new System.Drawing.Point(1, 3);
-            this.mapTab.Name = "mapTab";
-            this.mapTab.SelectedIndex = 0;
-            this.mapTab.Size = new System.Drawing.Size(904, 647);
-            this.mapTab.TabIndex = 39;
+            this.controlTab.Controls.Add(this.terrainTab);
+            this.controlTab.Controls.Add(this.mapPage);
+            this.controlTab.Location = new System.Drawing.Point(1, 3);
+            this.controlTab.Name = "controlTab";
+            this.controlTab.SelectedIndex = 0;
+            this.controlTab.Size = new System.Drawing.Size(904, 647);
+            this.controlTab.TabIndex = 2;
+            this.controlTab.SelectedIndexChanged += new System.EventHandler(this.mapTab_SelectedIndexChanged);
             // 
             // terrainTab
             // 
@@ -231,7 +210,6 @@ namespace TerrainGen
             this.terrainTab.Controls.Add(this.pictureBox3);
             this.terrainTab.Controls.Add(this.button1);
             this.terrainTab.Controls.Add(this.label1);
-            this.terrainTab.Controls.Add(this.filterRegionlbl);
             this.terrainTab.Controls.Add(this.generateBtn);
             this.terrainTab.Controls.Add(this.pictureBox6);
             this.terrainTab.Controls.Add(this.sizeLabel);
@@ -240,7 +218,6 @@ namespace TerrainGen
             this.terrainTab.Controls.Add(this.pictureBox4);
             this.terrainTab.Controls.Add(this.seedBtn);
             this.terrainTab.Controls.Add(this.label2);
-            this.terrainTab.Controls.Add(this.pictureBox1);
             this.terrainTab.Controls.Add(this.pictureBox2);
             this.terrainTab.Controls.Add(this.sizeBox);
             this.terrainTab.Location = new System.Drawing.Point(4, 22);
@@ -276,17 +253,16 @@ namespace TerrainGen
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(910, 656);
-            this.Controls.Add(this.mapTab);
+            this.Controls.Add(this.controlTab);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.canvas)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
-            this.mapTab.ResumeLayout(false);
+            this.controlTab.ResumeLayout(false);
             this.terrainTab.ResumeLayout(false);
             this.terrainTab.PerformLayout();
             this.mapPage.ResumeLayout(false);
@@ -302,7 +278,6 @@ namespace TerrainGen
         private System.Windows.Forms.Label sizeLabel;
         private System.Windows.Forms.Label seedLabel;
         private System.Windows.Forms.Button seedBtn;
-        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.TextBox sizeBox;
         private System.Windows.Forms.Label label1;
@@ -311,9 +286,8 @@ namespace TerrainGen
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.TextBox seedBox;
         private System.Windows.Forms.PictureBox pictureBox6;
-        private System.Windows.Forms.Label filterRegionlbl;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TabControl mapTab;
+        private System.Windows.Forms.TabControl controlTab;
         private System.Windows.Forms.TabPage terrainTab;
         private System.Windows.Forms.TabPage mapPage;
         private System.Windows.Forms.PictureBox pictureBox5;

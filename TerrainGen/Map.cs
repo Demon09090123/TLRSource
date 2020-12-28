@@ -1,7 +1,4 @@
-﻿using Ionic.Zlib;
-using Newtonsoft.Json;
-using System;
-using System.IO;
+﻿using System.IO;
 using System.Text;
 
 namespace TerrainGen
@@ -44,33 +41,57 @@ namespace TerrainGen
         public ushort ObjectType { get; set; }
         public Region Region;
     }
-    public struct WorldMap : IDisposable
+    public struct WorldMap
     {
         public int Width { get; set; }
         public int Height { get; set; }
 
-        public byte[] Data { get; set; }
+        public JSTile[,] Tiles { get; set; }
 
-
-        public WorldMap(int size)
+        public WorldMap(int width, int height)
         {
-            Width = size;
-            Height = size;
-            Data = null;
+            Width = width;
+            Height = height;
+            Tiles = new JSTile[Width, Height];
         }
 
-        public void Dispose()
+        public void Export(Stream stream)
         {
-            Data = null;
+            using (var br = new BinaryWriter(stream, Encoding.UTF8))
+            {
+                br.Write(Width);
+                br.Write(Height);
+
+                for (var x = 0; x < Width; x++)
+                {
+                    for (var y = 0; y < Height; y++)
+                    {
+                        var jsmap = Tiles[x, y];
+                        br.Write(jsmap.GroundType);
+                        br.Write(jsmap.ObjectType);
+                        br.Write((byte)jsmap.Region);
+                    }
+                }
+            }
         }
 
-        public static WorldMap Import(byte[] data)
+        public static WorldMap Import(FileStream stream)
         {
-            var mapBuffer = ZlibStream.UncompressBuffer(data);
-            var mapDataStr = Encoding.ASCII.GetString(mapBuffer);
-            var jsMap = JsonConvert.DeserializeObject<WorldMap>(mapDataStr);
+            using (var rdr = new BinaryReader(stream, Encoding.UTF8))
+            {
+                var data = new WorldMap(rdr.ReadInt32(), rdr.ReadInt32());
 
-            return jsMap;
+                for (var x = 0; x < data.Width; x++)
+                    for (var y = 0; y < data.Height; y++)
+                        data.Tiles[x, y] = new JSTile()
+                        {
+                            GroundType = rdr.ReadUInt16(),
+                            ObjectType = rdr.ReadUInt16(),
+                            Region = (Region)rdr.ReadByte()
+                        };
+
+                return data;
+            }
         }
     }
 }

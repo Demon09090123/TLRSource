@@ -61,6 +61,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Editor\MapEditor.cs" />
     <Compile Include="Generation\BiomeGeneration.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -69,6 +70,7 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="Generation\Filter.cs" />
+    <Compile Include="Generation\GenerationData.cs" />
     <Compile Include="Map.cs" />
     <Compile Include="Generation\MapGeneration.cs" />
     <Compile Include="Noise\OpenSimplexNoise.cs" />
@@ -110,5 +112,6 @@
     </Content>
     <None Include="Resources\shapeMask.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

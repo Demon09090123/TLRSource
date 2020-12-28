@@ -1,10 +1,6 @@
-﻿using Ionic.Zlib;
-using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Drawing;
 using System.IO;
-using System.Text;
 using System.Windows.Forms;
 using TerrainGen.Generation;
 
@@ -24,11 +20,7 @@ namespace TerrainGen
 
         private Action<Image> _onDraw;
 
-        private JSTile[,] _mapData;
         private float[,] _filter;
-        private float[,] _noiseMap;
-        private float[,] _moistureMap;
-        private float[,] _heatMap;
 
         public MapGeneration()
         {
@@ -48,7 +40,7 @@ namespace TerrainGen
             _size = size;
             reScale();
             _filter = Filter.FalloutFilter(_size);
-            _worldMap = new WorldMap(_size);
+            _worldMap = new WorldMap(_size, _size);
         }
         public void SetSeed(long seed)
         {
@@ -67,87 +59,47 @@ namespace TerrainGen
             saveDialog.DefaultExt = "map";
             saveDialog.InitialDirectory = @"D:\MapData\";
 
-            var f = File.Create(saveDialog.InitialDirectory + "mapData.map");
-            f.Close();
-
             if (saveDialog.ShowDialog() == DialogResult.OK)
             {
-                using(var br = new BinaryWriter(saveDialog.OpenFile(), Encoding.UTF8))
+                if (!saveDialog.CheckFileExists)
                 {
-                    br.Write(_worldMap.Width);
-                    br.Write(_worldMap.Height);
-
-                    for (var x = 0; x < _worldMap.Width; x++)
-                    {
-                        for (var y = 0; y < _worldMap.Height; y++)
-                        {
-                            var jsmap = _mapData[x, y];
-                            br.Write(jsmap.GroundType);
-                            br.Write(jsmap.ObjectType);
-                            br.Write((byte)jsmap.Region);
-                        }
-                    }
+                    var f = File.Create(saveDialog.InitialDirectory + "mapData.map");
+                    f.Close();
                 }
+
+                _worldMap.Export(saveDialog.OpenFile());
             }
         }
 
-        public void Generate()
-        {
-            var workNeeded = 3;
-            var workDone = 0;
-
-            _noiseMap = new float[_size, _size];
-            _moistureMap = new float[_size, _size];
-            _heatMap = new float[_size, _size];
-            _mapData = new JSTile[_size, _size];
-
-            _workManager.QueueWork(new GenerateWork(() => _noiseMap = _noise.Noise2D(_size, _size, _scale, 16), callBack));
-            _workManager.QueueWork(new GenerateWork(() => _moistureMap = _noise.Noise2D(_size, _size, _scale * 2f, 6), callBack));
-            _workManager.QueueWork(new GenerateWork(() => _heatMap = _noise.Noise2D(_size, _size, _scale * 2f, 6), callBack));
-
-            void callBack()
+        public void Generate() =>
+            GenerationData.Generate(_noise, _size, _scale, (data) =>
             {
-                workDone++;
+                var image = new DirBitmap(_size, _size);
 
-                if (workDone == workNeeded)
-                {
-                    var bitmap = new DirBitmap(_size, _size);
-
-                    _workManager.QueueWork(new GenerateWork(() =>
+                for (var y = 0; y < _size; y++)
+                    for (var x = 0; x < _size; x++)
                     {
-                        for (var y = 0; y < _size; y++)
-                            for (var x = 0; x < _size; x++)
-                            {
-                                var noise = _noiseMap[x, y];
-                                var filter = _filter[x, y];
-                                var moisture = _moistureMap[x, y];
-                                var heat = _heatMap[x, y];
-                                var height = filter * noise;
+                        var noise = data.HeightNoise[x, y];
+                        var filter = _filter[x, y];
+                        var moisture = data.MoistureNoise[x, y];
+                        var heat = data.HeatNoise[x, y];
+                        var height = filter * noise;
 
-                                var biome = BiomeGeneration.GetBiome(height, moisture, heat);
+                        var biome = BiomeGeneration.GetBiome(height, moisture, heat);
+                        var color = BiomeGeneration.GetBiomeColor(biome);
 
-                                Color color = BiomeGeneration.GetBiomeColor(biome);
+                        _worldMap.Tiles[x, y] = new JSTile()
+                        {
+                            GroundType = BiomeGeneration.GetBiomeObjectType(biome)
+                        };
 
-                                _mapData[x, y] = new JSTile()
-                                {
-                                    GroundType = BiomeGeneration.GetBiomeObjectType(biome)
-                                };
+                        image.SetPixel(x, y, color);
+                    }
 
-                                bitmap.SetPixel(x, y, color);
-                            }
+                _onDraw.Invoke(image.Bitmap.Clone() as Image);
 
-                        _onDraw.Invoke(bitmap.Bitmap.Clone() as Image);
-
-                    }, () =>
-                    {
-                        _noiseMap = null;
-                        _moistureMap = null;
-                        _heatMap = null;
-                        //_mapData = null;
-                        bitmap.Dispose();
-                    }));
-                }
-            }
-        }
+                data.Dispose();
+                image.Dispose();
+            });
     }
 }

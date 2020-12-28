@@ -67,5 +67,9 @@ namespace TerrainGen
         {
             _mapGenerator.SaveToFile();
         }
+
+        private void mapTab_SelectedIndexChanged(object sender, EventArgs e)
+        {
+        }
     }
 }
